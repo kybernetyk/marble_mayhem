@@ -77,6 +77,13 @@
 		0399695612A824CA00D0C56D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0399695012A824CA00D0C56D /* QuartzCore.framework */; };
 		0399695712A824CA00D0C56D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0399695112A824CA00D0C56D /* libz.dylib */; };
 		0399695812A824CA00D0C56D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0399695212A824CA00D0C56D /* AudioToolbox.framework */; };
+		0399698512A828C700D0C56D /* banana40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399697E12A828C700D0C56D /* banana40.png */; };
+		0399698612A828C700D0C56D /* bug40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399697F12A828C700D0C56D /* bug40.png */; };
+		0399698712A828C700D0C56D /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698012A828C700D0C56D /* clock.png */; };
+		0399698812A828C700D0C56D /* grapes40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698112A828C700D0C56D /* grapes40.png */; };
+		0399698912A828C700D0C56D /* lemon40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698212A828C700D0C56D /* lemon40.png */; };
+		0399698A12A828C700D0C56D /* orange40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698312A828C700D0C56D /* orange40.png */; };
+		0399698B12A828C700D0C56D /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698412A828C700D0C56D /* pause.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -221,6 +228,13 @@
 		0399695012A824CA00D0C56D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0399695112A824CA00D0C56D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0399695212A824CA00D0C56D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0399697E12A828C700D0C56D /* banana40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana40.png; sourceTree = "<group>"; };
+		0399697F12A828C700D0C56D /* bug40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug40.png; sourceTree = "<group>"; };
+		0399698012A828C700D0C56D /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		0399698112A828C700D0C56D /* grapes40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grapes40.png; sourceTree = "<group>"; };
+		0399698212A828C700D0C56D /* lemon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemon40.png; sourceTree = "<group>"; };
+		0399698312A828C700D0C56D /* orange40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange40.png; sourceTree = "<group>"; };
+		0399698412A828C700D0C56D /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -253,6 +267,13 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0399697E12A828C700D0C56D /* banana40.png */,
+				0399697F12A828C700D0C56D /* bug40.png */,
+				0399698012A828C700D0C56D /* clock.png */,
+				0399698112A828C700D0C56D /* grapes40.png */,
+				0399698212A828C700D0C56D /* lemon40.png */,
+				0399698312A828C700D0C56D /* orange40.png */,
+				0399698412A828C700D0C56D /* pause.png */,
 				039968DF12A8245300D0C56D /* back.png */,
 				039968E012A8245300D0C56D /* zomg.fnt */,
 				039968E112A8245300D0C56D /* zomg.png */,
@@ -263,8 +284,8 @@
 		039967A112A823D700D0C56D /* ComponentV3 */ = {
 			isa = PBXGroup;
 			children = (
-				039967A212A823D700D0C56D /* Components */,
 				039967A512A823D700D0C56D /* ComponentV3.h */,
+				039967A212A823D700D0C56D /* Components */,
 				039967A612A823D700D0C56D /* Entity */,
 				039967A912A823D700D0C56D /* Entity Manager */,
 				039967AC12A823D700D0C56D /* Runtime */,
@@ -827,6 +848,13 @@
 				039968E212A8245300D0C56D /* back.png in Resources */,
 				039968E312A8245300D0C56D /* zomg.fnt in Resources */,
 				039968E412A8245300D0C56D /* zomg.png in Resources */,
+				0399698512A828C700D0C56D /* banana40.png in Resources */,
+				0399698612A828C700D0C56D /* bug40.png in Resources */,
+				0399698712A828C700D0C56D /* clock.png in Resources */,
+				0399698812A828C700D0C56D /* grapes40.png in Resources */,
+				0399698912A828C700D0C56D /* lemon40.png in Resources */,
+				0399698A12A828C700D0C56D /* orange40.png in Resources */,
+				0399698B12A828C700D0C56D /* pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
