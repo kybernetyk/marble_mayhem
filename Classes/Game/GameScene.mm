@@ -41,7 +41,11 @@ namespace game
 	void GameScene::init ()
 	{
 		srand(time(0));
-
+		
+		g_GameState.score = 0;
+		
+		g_GameState.game_state = 0;
+		g_GameState.next_state = 0;
 	
 		_entityManager = new EntityManager;
 		_renderSystem = new RenderSystem (_entityManager);

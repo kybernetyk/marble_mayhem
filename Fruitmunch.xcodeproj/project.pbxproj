@@ -70,7 +70,7 @@
 		039968D512A8243300D0C56D /* PlayerControlledSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 039968C612A8243300D0C56D /* PlayerControlledSystem.mm */; };
 		039968D612A8243300D0C56D /* GameLogicSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 039968C912A8243300D0C56D /* GameLogicSystem.mm */; };
 		039968D712A8243300D0C56D /* HUDSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 039968CC12A8243300D0C56D /* HUDSystem.mm */; };
-		039968D812A8243300D0C56D /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 039968CE12A8243300D0C56D /* AppController.m */; };
+		039968D812A8243300D0C56D /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 039968CE12A8243300D0C56D /* AppController.mm */; };
 		039968E212A8245300D0C56D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 039968DF12A8245300D0C56D /* back.png */; };
 		039968E312A8245300D0C56D /* zomg.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 039968E012A8245300D0C56D /* zomg.fnt */; };
 		039968E412A8245300D0C56D /* zomg.png in Resources */ = {isa = PBXBuildFile; fileRef = 039968E112A8245300D0C56D /* zomg.png */; };
@@ -97,7 +97,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		030625F312A9022700325249 /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController_fmunch.xib; sourceTree = "<group>"; };
+		030625F312A9022700325249 /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_fmunch.xib; path = ../../Resources/MainViewController_fmunch.xib; sourceTree = "<group>"; };
 		0306261412A9058400325249 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		0306261512A9058400325249 /* MenuScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScene.mm; sourceTree = "<group>"; };
 		033FEC1112A9098A00C5A94C /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		039968CB12A8243300D0C56D /* HUDSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDSystem.h; sourceTree = "<group>"; };
 		039968CC12A8243300D0C56D /* HUDSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDSystem.mm; sourceTree = "<group>"; };
 		039968CD12A8243300D0C56D /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
-		039968CE12A8243300D0C56D /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		039968CE12A8243300D0C56D /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		039968CF12A8243300D0C56D /* SystemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemConfig.h; sourceTree = "<group>"; };
 		039968DF12A8245300D0C56D /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		039968E012A8245300D0C56D /* zomg.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zomg.fnt; sourceTree = "<group>"; };
@@ -667,7 +667,6 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				030625F312A9022700325249 /* MainViewController_fmunch.xib */,
 				03996BC912A8770200D0C56D /* marker.pex */,
 				0399697E12A828C700D0C56D /* banana40.png */,
 				03996C0A12A87C5500D0C56D /* marker2.pex */,
@@ -687,8 +686,9 @@
 		039968B312A8243300D0C56D /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				030625F312A9022700325249 /* MainViewController_fmunch.xib */,
 				039968CD12A8243300D0C56D /* AppController.h */,
-				039968CE12A8243300D0C56D /* AppController.m */,
+				039968CE12A8243300D0C56D /* AppController.mm */,
 				039968CF12A8243300D0C56D /* SystemConfig.h */,
 				039968B412A8243300D0C56D /* globals.h */,
 				039968B512A8243300D0C56D /* globals.mm */,
@@ -925,7 +925,7 @@
 				039968D512A8243300D0C56D /* PlayerControlledSystem.mm in Sources */,
 				039968D612A8243300D0C56D /* GameLogicSystem.mm in Sources */,
 				039968D712A8243300D0C56D /* HUDSystem.mm in Sources */,
-				039968D812A8243300D0C56D /* AppController.m in Sources */,
+				039968D812A8243300D0C56D /* AppController.mm in Sources */,
 				0399698E12A855B400D0C56D /* Fruit.mm in Sources */,
 				0306261612A9058400325249 /* MenuScene.mm in Sources */,
 				033FEC9E12A9098A00C5A94C /* Component.mm in Sources */,

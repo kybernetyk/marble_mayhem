@@ -14,6 +14,7 @@
 #include "RenderDevice.h"
 #include "Timer.h"
 #include "GameScene.h"
+#include "MenuScene.h"
 
 using namespace mx3;
 using namespace game;
@@ -39,8 +40,12 @@ namespace game
 	{
 		g_pGame = this;
 		
-		scene = new GameScene();
-		scene->init();
+		GameScene *gc = new GameScene();
+		gc->init();
+		delete gc;
+		
+		current_scene = new MenuScene();
+		current_scene->init();
 		
 		next_game_tick = mx3::GetTickCount();
 		paused = false;
@@ -49,7 +54,17 @@ namespace game
 
 	void Game::update ()
 	{
-		
+		if (next_scene)
+		{
+			mx3::Scene *tmp = current_scene;
+			
+			current_scene = next_scene;
+			
+			tmp->end();
+			delete tmp;
+			
+			next_scene = NULL;
+		}
 		if (paused)
 			return;
 
@@ -61,22 +76,23 @@ namespace game
 		loops = 0;
 		while( mx3::GetTickCount() > next_game_tick && loops < MAX_FRAMESKIP) 
 		{
-			scene->update(FIXED_DELTA);
+			current_scene->update(FIXED_DELTA);
 			next_game_tick += SKIP_TICKS;
 			loops++;	
 		}
 		
 #else
-		scene->update(timer.fdelta());	//blob rotation doesn't work well with high dynamic delta! fix this before enabling dynamic delta
+		current_scene->update(timer.fdelta());	//blob rotation doesn't work well with high dynamic delta! fix this before enabling dynamic delta
 #endif
 		
 	}
 
+
 	void Game::render ()
 	{
 		RenderDevice::sharedInstance()->beginRender();
-		scene->render();
-		scene->frameDone();
+		current_scene->render();
+		current_scene->frameDone();
 		RenderDevice::sharedInstance()->endRender();
 	}
 	
@@ -97,5 +113,28 @@ namespace game
 		CV3Log ("restoring state ...\n");
 	}
 
+	
+	void Game::startNewGame ()
+	{
+		next_scene = new GameScene();
+		next_scene->init();
+	}
+	
+	void Game::returnToMainMenu ()
+	{
+		next_scene = new MenuScene();
+		next_scene->init();
+	}
 
+	void Game::setPaused (bool b)
+	{
+		game::paused = b;
+
+		if (!game::paused)
+		{
+			game::next_game_tick = mx3::GetTickCount();
+			game::timer.update();
+			game::timer.update();
+		}
+	}
 }

@@ -10,22 +10,13 @@
 
 namespace game 
 {
-	typedef struct GameState
+	struct GameState
 	{
 		int score;
 		
-		int enemies_left;
-		
-		
 		int game_state;
 		int next_state;
-		
-		int level;
-		
-		int experience;
-		int experience_needed_to_levelup;
-		
-	} GameState;
+	};
 
 
 

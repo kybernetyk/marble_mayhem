@@ -11,9 +11,18 @@
 
 @interface AppController : NSObject 
 {
-
+	UIView *mainView;
+	UIView *mainMenuView;
+	UIView *pauseView;
 }
 
-- (NSString *) mainViewNibName;
+@property (readwrite, retain) IBOutlet UIView *mainMenuView;
+@property (readwrite, retain) IBOutlet UIView *mainView;
+@property (readwrite, retain) IBOutlet UIView *pauseView;
+
+- (IBAction) startGame: (id) sender;
+- (IBAction) showPauseMenu: (id) sender;
+- (IBAction) hidePauseMenu: (id) sender;
+- (IBAction) returnToMainMenu: (id) sender;
 
 @end

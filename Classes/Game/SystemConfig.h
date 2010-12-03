@@ -7,6 +7,7 @@
  *
  */
 #pragma once
+
 //entity system checks and infos
 #define __VERBOSE__
 
@@ -27,15 +28,22 @@
 //device orientation mode
 //#define ORIENTATION_LANDSCAPE
 #define ORIENTATION_PORTRAIT
+#define MAINVIEWNIBNAME @"MainViewController_fmunch"
 
 //screen size
 #ifdef ORIENTATION_PORTRAIT
 	#define SCREEN_W 320.0
 	#define SCREEN_H 480.0
+	#ifndef MAINVIEWNIBNAME
+		#define MAINVIEWNIBNAME @"MainViewController_portrait"
+	#endif
 #endif
 #ifdef ORIENTATION_LANDSCAPE
 	#define SCREEN_W 480.0
 	#define SCREEN_H 320.0
+	#ifdef MAINVIEWNIBNAME
+		#define MAINVIEWNIBNAME @"MainViewController_landscape"
+	#endif
 #endif
 
 //allow offscreen texture rendertarget for the RenderDevice

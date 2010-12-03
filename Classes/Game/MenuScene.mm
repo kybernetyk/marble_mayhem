@@ -19,7 +19,8 @@ namespace game
 	
 	void MenuScene::init ()
 	{
-		
+//		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//		[dc postNotificationName: @"ShowMainMenu" object: nil];
 	}
 	
 	void MenuScene::end ()
