@@ -25,8 +25,16 @@ namespace game
 	protected:
 		EntityManager *_entityManager;
 
+		Entity *make_new_label (std::string fontname, vector2D pos, vector2D anchor);
+		
 		Entity *fps_label;
+		Entity *time_label;
+		Entity *score_label;
 		OGLFont *font;
+		
+		float last_score;
+		float score_init_diff;
+		float last_time;
 	};
 
 

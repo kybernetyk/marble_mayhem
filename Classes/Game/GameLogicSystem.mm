@@ -51,8 +51,8 @@ namespace game
 		
 		if (touch)
 		{
-			printf("touch: %f,%f\n",v.x,v.y);
-			printf("col: %i, row: %i\n",col,row);
+//			printf("touch: %f,%f\n",v.x,v.y);
+//			printf("col: %i, row: %i\n",col,row);
 		}
 		else 
 		{
@@ -137,6 +137,20 @@ namespace game
 		
 		if (!touch)
 		{
+			if (num_of_marks >= 2)
+			{
+				int score = (num_of_marks * 15) * num_of_marks;
+				float num = num_of_marks;
+				float time_add = ((float)(num*0.25*num*0.25));		//0.25
+				
+				g_GameState.score += score;
+				g_GameState.time_left += time_add;
+				
+				printf("%i combo:\n", num_of_marks);
+				printf("\t+score = %i. (%.2f score per fruit)\n", score, (float)((float)score/(float)num_of_marks) );
+				printf("\t+time = %.4f. (%.4f time per fruit)\nn", time_add, (time_add/num_of_marks) );
+			}
+			
 			num_of_marks = 0;
 		}
 		

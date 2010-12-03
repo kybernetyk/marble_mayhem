@@ -13,6 +13,7 @@ namespace game
 	struct GameState
 	{
 		int score;
+		float time_left;
 		
 		int game_state;
 		int next_state;

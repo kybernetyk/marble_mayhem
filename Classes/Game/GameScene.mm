@@ -46,6 +46,7 @@ namespace game
 		
 		g_GameState.game_state = 0;
 		g_GameState.next_state = 0;
+		g_GameState.time_left = 60.0;
 	
 		_entityManager = new EntityManager;
 		_renderSystem = new RenderSystem (_entityManager);
@@ -100,7 +101,7 @@ namespace game
 	
 	void GameScene::update (float delta)
 	{
-
+g_GameState.time_left -= (1.0 * delta);
 		//tex->updateTextureWithBufferData();
 		InputDevice::sharedInstance()->update();
 
@@ -163,6 +164,8 @@ namespace game
 		{
 			spawn_player = false;
 		}
+		
+		
 		
 		
 	}

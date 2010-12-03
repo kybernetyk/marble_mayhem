@@ -17,6 +17,25 @@
 namespace game 
 {
 
+	Entity *HUDSystem::make_new_label (std::string fontname, vector2D pos, vector2D anchor)
+	{
+		Entity *e = _entityManager->createNewEntity();
+		
+		Position *position = _entityManager->addComponent <Position> (e);
+		position->x = pos.x;
+		position->y = pos.y;
+		position->scale_x = position->scale_y = 0.5;
+		
+		TextLabel *label = _entityManager->addComponent<TextLabel> (e);
+		label->ogl_font = g_RenderableManager.accquireOGLFont(fontname);
+		label->anchorPoint = anchor;
+		label->text = "a label";
+		label->z = 6.0;
+		
+		return e;
+		
+	}
+	
 	HUDSystem::HUDSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
@@ -36,6 +55,21 @@ namespace game
 		label->text = "FPS: 0";
 		label->z = 6.0;
 		
+		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2, 32), vector2D_make(0.5, 0.5));
+		time_label = make_new_label ("zomg.fnt", vector2D_make(32.0, 32.0), vector2D_make(0.0, 0.5));
+		
+		Entity *clock = _entityManager->createNewEntity();
+		Position *pos = _entityManager->addComponent <Position> (clock);
+		pos->x = 16;
+		pos->y = 28.0;
+		
+		Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
+		sprite->quad = g_RenderableManager.accquireTexturedQuad("clock.png");
+		sprite->z = 6.0;
+		
+		last_time = g_GameState.time_left+1;
+		last_score = g_GameState.score+1;
+		score_init_diff = 0;
 	}
 
 	Action *flyin_and_shake_action ()
@@ -95,21 +129,54 @@ namespace game
 		return actn;
 	}
 
-
+	char s[255];
+	
 	void HUDSystem::update (float delta)
 	{
+		last_time += delta;
+		if (last_time >= 0.01)
+		{
+			last_time = 0.0;
+			sprintf(s, "%.2f", g_GameState.time_left);
+			time_label->get<TextLabel>()->text = s;
 
+		}
+		
+		if ((int)last_score != g_GameState.score)
+		{
+			if (score_init_diff == 0)
+			{
+				score_init_diff = (g_GameState.score - (int)last_score);
+			}
+			float add = (g_GameState.score - last_score);
+			add *= 2.5;
+			if (add < 3.0)
+				add = 3.0;
+			
+			
+			last_score += (add * delta);
+			
+			if ((int)last_score >= g_GameState.score)
+			{
+				last_score = g_GameState.score;
+				score_init_diff = 0;
+			}
+			
+			sprintf(s, "%i", (int)last_score);
+			score_label->get<TextLabel>()->text = s;
+
+		}
+		
+		
 		static float d = 0.0;
 		d += delta;
 		if (d > 2.0)
 		{
 			d = 0.0;
-			char s[255];
 			sprintf(s, "Fps: %.2f", g_FPS);
 			fps_label->get<TextLabel>()->text = s;
-			
-			//printf("fps: %.2f\n",g_FPS);
 		}
+		
 		
 		
 	}
