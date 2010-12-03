@@ -22,7 +22,9 @@
 #include "RenderDevice.h"
 
 #import "ParticleEmitter.h"
+#include "GameComponents.h"
 
+#import "Fruit.h"
 
 bool spawn_one = false;
 bool spawn_player = false;
@@ -76,6 +78,13 @@ namespace game
 		Name *name = _entityManager->addComponent <Name> (bg);
 		name->name = "Game Background";
 		
+		for (int row = 0; row < BOARD_NUM_ROWS-1; row ++)
+		{
+			for (int col = 0; col < BOARD_NUM_COLS; col ++)
+			{
+				make_fruit(rand()%NUM_OF_FRUITS, col, row);		
+			}
+		}
 		
 	}
 

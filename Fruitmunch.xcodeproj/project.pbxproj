@@ -84,6 +84,9 @@
 		0399698912A828C700D0C56D /* lemon40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698212A828C700D0C56D /* lemon40.png */; };
 		0399698A12A828C700D0C56D /* orange40.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698312A828C700D0C56D /* orange40.png */; };
 		0399698B12A828C700D0C56D /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698412A828C700D0C56D /* pause.png */; };
+		0399698E12A855B400D0C56D /* Fruit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0399698D12A855B400D0C56D /* Fruit.mm */; };
+		03996BCA12A8770200D0C56D /* marker.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996BC912A8770200D0C56D /* marker.pex */; };
+		03996C0B12A87C5500D0C56D /* marker2.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996C0A12A87C5500D0C56D /* marker2.pex */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -235,6 +238,10 @@
 		0399698212A828C700D0C56D /* lemon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemon40.png; sourceTree = "<group>"; };
 		0399698312A828C700D0C56D /* orange40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange40.png; sourceTree = "<group>"; };
 		0399698412A828C700D0C56D /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		0399698C12A855B400D0C56D /* Fruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruit.h; sourceTree = "<group>"; };
+		0399698D12A855B400D0C56D /* Fruit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Fruit.mm; sourceTree = "<group>"; };
+		03996BC912A8770200D0C56D /* marker.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marker.pex; sourceTree = "<group>"; };
+		03996C0A12A87C5500D0C56D /* marker2.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marker2.pex; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -267,7 +274,9 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03996BC912A8770200D0C56D /* marker.pex */,
 				0399697E12A828C700D0C56D /* banana40.png */,
+				03996C0A12A87C5500D0C56D /* marker2.pex */,
 				0399697F12A828C700D0C56D /* bug40.png */,
 				0399698012A828C700D0C56D /* clock.png */,
 				0399698112A828C700D0C56D /* grapes40.png */,
@@ -676,6 +685,8 @@
 		039968BC12A8243300D0C56D /* Game Objects */ = {
 			isa = PBXGroup;
 			children = (
+				0399698C12A855B400D0C56D /* Fruit.h */,
+				0399698D12A855B400D0C56D /* Fruit.mm */,
 			);
 			name = "Game Objects";
 			sourceTree = "<group>";
@@ -855,6 +866,8 @@
 				0399698912A828C700D0C56D /* lemon40.png in Resources */,
 				0399698A12A828C700D0C56D /* orange40.png in Resources */,
 				0399698B12A828C700D0C56D /* pause.png in Resources */,
+				03996BCA12A8770200D0C56D /* marker.pex in Resources */,
+				03996C0B12A87C5500D0C56D /* marker2.pex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +935,7 @@
 				039968D612A8243300D0C56D /* GameLogicSystem.mm in Sources */,
 				039968D712A8243300D0C56D /* HUDSystem.mm in Sources */,
 				039968D812A8243300D0C56D /* AppController.m in Sources */,
+				0399698E12A855B400D0C56D /* Fruit.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

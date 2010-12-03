@@ -22,8 +22,16 @@ namespace game
 		
 	protected:
 		float _delta;
+		int marked_color;
+		
+		int head_row;
+		int head_col;
+		int num_of_marks;
 		
 		EntityManager *_entityManager;
+#define MAX_MARKERS 32
+		Entity *markers[MAX_MARKERS];
+		int marker_index;
 	};
 
 }

@@ -11,6 +11,7 @@
 #include "PlayerControlledSystem.h"
 #include "InputDevice.h"
 #include "ParticleSystem.h"
+#include "GameComponents.h"
 
 namespace game 
 {

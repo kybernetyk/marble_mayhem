@@ -31,6 +31,8 @@ namespace game
 		void handle_state_idle ();
 		void handle_state_falling ();
 		
+		void refill ();
+		
 		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
 		void update_map ();
 		

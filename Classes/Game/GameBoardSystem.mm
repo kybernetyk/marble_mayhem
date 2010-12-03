@@ -9,6 +9,7 @@
 
 #include "GameBoardSystem.h"
 #include "GameComponents.h"
+#include "Fruit.h"
 
 namespace game 
 {
@@ -31,7 +32,7 @@ namespace game
 			++it;
 			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
 			
-			if ((_current_gbe->state == GBE_STATE_IDLE))
+			//if ((_current_gbe->state == GBE_STATE_IDLE))
 				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
 		}
 	}
@@ -59,16 +60,14 @@ namespace game
 
 	void GameBoardSystem::handle_state_idle ()
 	{
+		if (_current_gbe->prev_state == GBE_STATE_MOVING_FALL)
+		{
+			_current_gbe->prev_state = GBE_STATE_IDLE;
+		}
+		
 		if (can_move_down())
 		{
-//			_current_gbe->state &= (~GBE_STATE_IDLE);
-//			_current_gbe->state |= GBE_STATE_MOVING_FALL;
 			_current_gbe->state = GBE_STATE_MOVING_FALL;
-
-			_current_gbe->prev_row = _current_gbe->row;
-			_current_gbe->y_move_timer = 0.0;
-
-			_current_gbe->landed = false;  //remove this if you don't want falling blob neighbours to reconnect with the falling blob
 		}
 		else
 		{
@@ -78,24 +77,59 @@ namespace game
 
 	void GameBoardSystem::handle_state_falling ()
 	{
-		//_current_gbe->landed = false;
-		_current_gbe->y_move_timer += _delta;
-		_current_gbe->y_off -= _delta * (32.0/_current_gbe->fall_duration);	
-		
-		if (_current_gbe->y_move_timer >= _current_gbe->fall_duration)
+		if (_current_gbe->prev_state == GBE_STATE_IDLE)
 		{
-			//_current_gbe->state |= (GBE_STATE_IDLE);
-			//_current_gbe->state &= (~GBE_STATE_MOVING_FALL);
-
-			_current_gbe->state = GBE_STATE_IDLE;
-			
+			_current_gbe->prev_row = _current_gbe->row;
+			_current_gbe->y_move_timer = 0.0;
 			_current_gbe->row --;
+			_current_gbe->prev_state = GBE_STATE_MOVING_FALL;
+			_current_gbe->landed = false;
+			
 			_current_gbe->y_off = 0.0;
 			_current_gbe->y_move_timer = 0.0;
 		}
 		
+		_current_gbe->y_move_timer += _delta;
+		_current_gbe->y_off += _delta * (40.0/_current_gbe->fall_duration);	
+		
+		if (_current_gbe->y_move_timer >= _current_gbe->fall_duration)
+		{
+			_current_gbe->state = GBE_STATE_IDLE;
+			_current_gbe->y_off = 40.0;
+		}
+		
 	}
 
+	bool sortie (Entity *e1, Entity *e2)
+	{
+		EntityManager *em = Entity::entityManager;
+		GameBoardElement *gbe1 = em->getComponent<GameBoardElement>(e1);
+		GameBoardElement *gbe2 = em->getComponent<GameBoardElement>(e2);
+		
+		if (gbe1->row == gbe2->row)
+		{
+			if (gbe1->col == gbe2->col)
+			{
+				return (e1 < e2);
+			}
+			return (gbe1->col < gbe2->col);
+		}
+		return (gbe1->row < gbe2->row);
+	}
+	
+	void GameBoardSystem::refill ()
+	{
+		update_map();
+		
+		for (int col = 0; col < BOARD_NUM_COLS; col++)
+		{
+			if (!_map[col][BOARD_NUM_ROWS-2])
+			{
+				make_fruit(rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
+			}
+		}
+		
+	}
 	
 	void GameBoardSystem::update (float delta)
 	{
@@ -103,11 +137,25 @@ namespace game
 		/* create collision map */	
 		_entities.clear();
 		_entityManager->getEntitiesPossessingComponents(_entities,  GameBoardElement::COMPONENT_ID, ARGLIST_END );
+		std::sort (_entities.begin(), _entities.end(), sortie);
+		//falldown
 		update_map();
 		
+		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+		{
+			for (int col = 0; col < BOARD_NUM_COLS; col++)
+			{
+				if (!_map[col][row])
+				{
+					for (int j = row; j < BOARD_NUM_ROWS; j++)
+					{
+						_map[col][j] = NULL;
+					}
+				}
+			}
+		}
+		
 		std::vector<Entity*>::const_iterator it = _entities.begin();
-		
-		
 		_current_entity = NULL;
 		_current_gbe = NULL;
 		while (it != _entities.end())
@@ -118,15 +166,19 @@ namespace game
 			_current_position = _entityManager->getComponent<Position>(_current_entity);
 
 			if ((_current_gbe->state == GBE_STATE_IDLE))
+			{	
 				handle_state_idle();
+				_current_position->y = _current_gbe->row * 40.0 + BOARD_Y_OFFSET;
+			}
+
 			if (_current_gbe->state == GBE_STATE_MOVING_FALL)
+			{	
 				handle_state_falling ();
-
-			
-			//_current_position->x = _current_gbe->col * 32.0 + BOARD_X_OFFSET + _current_gbe->x_off;
-			_current_position->y = _current_gbe->row * 32.0 + BOARD_Y_OFFSET + _current_gbe->y_off;
+				_current_position->y = _current_gbe->row * 40.0 + BOARD_Y_OFFSET + 40.0 - (_current_gbe->y_off);
+			}
 		}
-
+		
+		//refill
+		refill();
 	}
-	
 }

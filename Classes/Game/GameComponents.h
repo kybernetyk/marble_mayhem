@@ -22,14 +22,11 @@ namespace game
 #define FRUIT_BANANA 0x02
 #define FRUIT_GRAPES 0x03
 	
+#define NUM_OF_FRUITS 4
+	
 #define GBE_STATE_IDLE 0
 #define GBE_STATE_MOVING_FALL 1
 
-#define GBE_CONNECTED_NONE (1 << 0)	
-#define GBE_CONNECTED_TO_UP (1 << 1)
-#define GBE_CONNECTED_TO_LEFT (1 << 2)
-#define GBE_CONNECTED_TO_DOWN (1 << 3)
-#define GBE_CONNECTED_TO_RIGHT (1 << 4)	
 	
 	struct GameBoardElement : public Component
 	{
@@ -43,6 +40,7 @@ namespace game
 		
 		int type;
 		
+		unsigned int prev_state;
 		unsigned int state;
 
 		float y_move_timer;
@@ -50,25 +48,25 @@ namespace game
 		
 		float fall_duration;
 		bool landed;
-		unsigned int connection_state;
-		unsigned int prev_connection_state;
+		
+		bool marked;
 		
 		GameBoardElement ()
 		{
 			_id = COMPONENT_ID;
 			prev_row = prev_col = row = col = 0;
 			type = FRUIT_ORANGE;
-			state = GBE_STATE_IDLE;
-			prev_connection_state = connection_state = GBE_CONNECTED_NONE;// GBE_CONNECTED_NONE;
+			prev_state = state = GBE_STATE_IDLE;
 			y_off = 0.0;
 			y_move_timer = 0.0;
 			landed = false;
 
-	
-			fall_duration = 0.1;
+			marked = false;
+			
+			fall_duration = 0.25;
 		}
 		
-		DEBUGINFO ("Game Board Element. connection state = %i, prev con = %i, state = %i, landed = %i\n", connection_state, prev_connection_state, state, landed)
+		DEBUGINFO ("Game Board Element. state = %i, landed = %i\n",  state, landed)
 	};
 	
 	
