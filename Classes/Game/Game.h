@@ -11,11 +11,13 @@
 
 #include "Timer.h"
 
+namespace mx3 
+{
+	class Scene;
+}
 
 namespace game 
 {
-
-class Scene;
 	class Game
 	{
 	public:
@@ -28,10 +30,12 @@ class Scene;
 		void saveGameState ();
 		void restoreGameState ();
 	protected:
-		game::Scene *scene;
+		mx3::Scene *scene;
 	};
 
 	extern bool paused;
 	extern mx3::Timer timer;
 	extern unsigned int next_game_tick;
+	
+	extern Game *g_pGame;
 }

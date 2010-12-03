@@ -13,7 +13,7 @@
 
 - (NSString *) mainViewNibName
 {
-	return nil;	//let handle the engine the stuff
+	return @"MainViewController_fmunch";
 }
 
 @end

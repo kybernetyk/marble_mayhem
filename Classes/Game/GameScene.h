@@ -23,23 +23,26 @@
 #include "AnimationSystem.h"
 #include "GameBoardSystem.h"
 
+#include "Scene.h"
 
 using namespace mx3;
 
 namespace game 
 {
 
-	class Scene
+	class GameScene : public mx3::Scene
 	{
 	public:
-		virtual void preload ();
-		virtual void init ();
-		virtual void end ();
+		void preload ();
+		void init ();
+		void end ();
 		
-		virtual void update (float delta);
-		virtual void render (float interpolation);
+		void update (float delta);
+		void render ();
 		
-		virtual void frameDone ();
+		void frameDone ();
+		
+		~GameScene ();
 		
 	protected:
 		EntityManager *_entityManager;

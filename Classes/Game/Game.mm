@@ -13,6 +13,7 @@
 #include "globals.h"
 #include "RenderDevice.h"
 #include "Timer.h"
+#include "GameScene.h"
 
 using namespace mx3;
 using namespace game;
@@ -30,14 +31,15 @@ namespace game
 	float interpolation;
 	bool paused = false;
 	mx3::Timer timer;
-		
+	Game *g_pGame;	
 	
 	
 
 	bool Game::init ()
 	{
+		g_pGame = this;
 		
-		scene = new Scene();
+		scene = new GameScene();
 		scene->init();
 		
 		next_game_tick = mx3::GetTickCount();
@@ -73,7 +75,7 @@ namespace game
 	void Game::render ()
 	{
 		RenderDevice::sharedInstance()->beginRender();
-		scene->render(1.0);
+		scene->render();
 		scene->frameDone();
 		RenderDevice::sharedInstance()->endRender();
 	}
