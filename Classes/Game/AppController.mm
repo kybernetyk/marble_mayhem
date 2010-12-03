@@ -8,6 +8,7 @@
 
 #import "AppController.h"
 #include "Game.h"
+#include "globals.h"
 
 @implementation AppController
 @synthesize mainMenuView;
@@ -78,7 +79,8 @@
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	[dc postNotificationName: @"HideMainMenu" object: nil];
 	
-	
+
+	g_GameState.game_mode = [sender tag];
 	game::g_pGame->startNewGame();
 }
 

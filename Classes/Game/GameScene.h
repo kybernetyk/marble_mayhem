@@ -60,6 +60,7 @@ namespace game
 		GameLogicSystem *_gameLogicSystem;
 		GameBoardSystem *_gameBoardSystem;
 
+		float prep_timer;
 	};
 
 }

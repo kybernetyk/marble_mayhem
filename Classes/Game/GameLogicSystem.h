@@ -20,6 +20,11 @@ namespace game
 		GameLogicSystem (EntityManager *entityManager);
 		void update (float delta);
 		
+		void mark_chain ();
+		void handle_chain ();
+		void remove_chain ();
+		
+
 	protected:
 		float _delta;
 		int marked_color;

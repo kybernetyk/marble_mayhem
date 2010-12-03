@@ -22,6 +22,9 @@ namespace game
 		HUDSystem (EntityManager *entityManager);
 		void update (float delta);
 		
+		void show_prep_label ();
+		void set_prep_text (const char *text);
+		void hide_prep_label ();
 	protected:
 		EntityManager *_entityManager;
 
@@ -31,6 +34,8 @@ namespace game
 		Entity *time_label;
 		Entity *score_label;
 		OGLFont *font;
+		
+		Entity *prep_label;
 		
 		float last_score;
 		float score_init_diff;

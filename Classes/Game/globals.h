@@ -17,10 +17,19 @@ namespace game
 		
 		int game_state;
 		int next_state;
+		
+		int game_mode;
 	};
 
 
+#define GAME_MODE_TIMED 0x01
+#define GAME_MODE_ENDLESS 0x02
 
+#define GAME_STATE_PREP 0x01
+#define GAME_STATE_PLAY 0x02
+#define GAME_STATE_GAMEOVER 0x03
+	
+	
 	#define BOARD_X_OFFSET (0+20)
 	#define BOARD_Y_OFFSET (72+20)
 	

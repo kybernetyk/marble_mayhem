@@ -12,7 +12,7 @@
 #include "SoundSystem.h"
 #include "Timer.h"
 #include "globals.h"
-
+#include "ActionSystem.h"
 
 namespace game 
 {
@@ -56,17 +56,27 @@ namespace game
 		label->z = 6.0;
 		
 		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2, 32), vector2D_make(0.5, 0.5));
-		time_label = make_new_label ("zomg.fnt", vector2D_make(32.0, 32.0), vector2D_make(0.0, 0.5));
 		
-		Entity *clock = _entityManager->createNewEntity();
-		Position *pos = _entityManager->addComponent <Position> (clock);
-		pos->x = 16;
-		pos->y = 28.0;
+		time_label = NULL;
+		if (g_GameState.game_mode == GAME_MODE_TIMED)
+		{
+			time_label = make_new_label ("zomg.fnt", vector2D_make(32.0, 32.0), vector2D_make(0.0, 0.5));
+			
+			Entity *clock = _entityManager->createNewEntity();
+			Position *pos = _entityManager->addComponent <Position> (clock);
+			pos->x = 16;
+			pos->y = 28.0;
+			
+			Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
+			sprite->quad = g_RenderableManager.accquireTexturedQuad("clock.png");
+			sprite->z = 6.0;
+		}
 		
-		Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
-		sprite->quad = g_RenderableManager.accquireTexturedQuad("clock.png");
-		sprite->z = 6.0;
-		
+		prep_label = make_new_label ("zomg.fnt", vector2D_make( SCREEN_W+200, SCREEN_H/2+20), vector2D_make(0.5,0.5));
+		prep_label->get<Position>()->scale_x = 1.0;
+		prep_label->get<Position>()->scale_y = 1.0;
+		prep_label->get<TextLabel>()->text = "Plankton!";
+
 		last_time = g_GameState.time_left+1;
 		last_score = g_GameState.score+1;
 		score_init_diff = 0;
@@ -74,7 +84,7 @@ namespace game
 
 	Action *flyin_and_shake_action ()
 	{
-		MoveToAction *actn = new MoveToAction;
+		MoveToAction *actn = new MoveToAction();
 		actn->duration = 0.3;
 		actn->x = SCREEN_W/2-10;
 		actn->y = SCREEN_H/2+20;
@@ -83,7 +93,7 @@ namespace game
 		int max = 10;
 		for (int i = 0; i < max; i++)
 		{
-			MoveByAction *mb = new MoveByAction;
+			MoveByAction *mb = new MoveByAction();
 			mb->duration = 0.05;
 			
 			if (i % 2 == 0)
@@ -101,45 +111,65 @@ namespace game
 
 	Action *flyout_and_reset_action ()
 	{
-		MoveToAction *actn = new MoveToAction;
+		MoveToAction *actn = new MoveToAction();
 		actn->duration = 0.3;
 		actn->x = -SCREEN_W;
 		actn->y = SCREEN_H/2+20;
-		/*
-		MoveByAction *mb = new MoveByAction;
+		
+/*		MoveByAction *mb = new MoveByAction();
 		mb->x = 0.0;
 		mb->y = 400;
 		mb->duration = 0.0;
-		actn->next_action = mb;
+		actn->on_complete_action = mb;
 		
-		MoveByAction *mb2 = new MoveByAction;
+		MoveByAction *mb2 = new MoveByAction();
 		mb2->x = 400+SCREEN_W+200;
 		mb2->y = 0;
 		mb2->duration = 0.0;
-		mb->next_action = mb2;
+		mb->on_complete_action = mb2;
 		*/
 		
-		MoveToAction *mb3 = new MoveToAction;
+		MoveToAction *mb3 = new MoveToAction();
 		mb3->x = SCREEN_W+200;
 		mb3->y = SCREEN_H/2+20;
 		mb3->duration = 0.0;
-		//mb2->next_action = mb3;
+//		mb2->on_complete_action = mb3;
 		actn->on_complete_action = mb3;
 
 		return actn;
+	}
+
+	void HUDSystem::show_prep_label ()
+	{
+		g_pActionSystem->addActionToEntity (prep_label, flyin_and_shake_action());		
+	}
+	
+	void HUDSystem::set_prep_text (const char *text)
+	{
+		TextLabel *label = _entityManager->getComponent<TextLabel>(prep_label);
+		label->text = text;
+	}
+	
+	
+	void HUDSystem::hide_prep_label ()
+	{
+		g_pActionSystem->addActionToEntity (prep_label, flyout_and_reset_action());
 	}
 
 	char s[255];
 	
 	void HUDSystem::update (float delta)
 	{
-		last_time += delta;
-		if (last_time >= 0.01)
+		if (time_label)
 		{
-			last_time = 0.0;
-			sprintf(s, "%.2f", g_GameState.time_left);
-			time_label->get<TextLabel>()->text = s;
-
+			last_time += delta;
+			if (last_time >= 0.01)
+			{
+				last_time = 0.0;
+				sprintf(s, "%.2f", g_GameState.time_left);
+				time_label->get<TextLabel>()->text = s;
+				
+			}
 		}
 		
 		if ((int)last_score != g_GameState.score)
@@ -176,8 +206,6 @@ namespace game
 			sprintf(s, "Fps: %.2f", g_FPS);
 			fps_label->get<TextLabel>()->text = s;
 		}
-		
-		
 		
 	}
 

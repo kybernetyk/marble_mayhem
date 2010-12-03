@@ -45,8 +45,8 @@ namespace game
 		g_GameState.score = 0;
 		
 		g_GameState.game_state = 0;
-		g_GameState.next_state = 0;
-		g_GameState.time_left = 60.0;
+		g_GameState.next_state = GAME_STATE_PREP;
+		
 	
 		_entityManager = new EntityManager;
 		_renderSystem = new RenderSystem (_entityManager);
@@ -83,13 +83,6 @@ namespace game
 		Name *name = _entityManager->addComponent <Name> (bg);
 		name->name = "Game Background";
 		
-		for (int row = 0; row < BOARD_NUM_ROWS-1; row ++)
-		{
-			for (int col = 0; col < BOARD_NUM_COLS; col ++)
-			{
-				make_fruit(rand()%NUM_OF_FRUITS, col, row);		
-			}
-		}
 		
 	}
 
@@ -101,7 +94,7 @@ namespace game
 	
 	void GameScene::update (float delta)
 	{
-g_GameState.time_left -= (1.0 * delta);
+
 		//tex->updateTextureWithBufferData();
 		InputDevice::sharedInstance()->update();
 
@@ -122,6 +115,42 @@ g_GameState.time_left -= (1.0 * delta);
 		}
 */
 		
+		if (g_GameState.game_state != g_GameState.next_state)
+		{
+			g_GameState.game_state = g_GameState.next_state;
+			
+			if (g_GameState.game_state == GAME_STATE_PREP)
+			{
+				prep_timer = 5.0;
+				g_GameState.time_left = 10.0;
+				_hudSystem->set_prep_text ("Get Ready ...");
+				_hudSystem->show_prep_label();
+
+//				for (int row = 0; row < BOARD_NUM_ROWS-1; row ++)
+//				{
+//					for (int col = 0; col < BOARD_NUM_COLS; col ++)
+//					{
+//						make_fruit(rand()%NUM_OF_FRUITS, col, row);		
+//					}
+//				}
+				
+			
+			}
+			
+			if (g_GameState.game_state == GAME_STATE_PLAY)
+			{
+				_hudSystem->hide_prep_label();	
+			}
+			
+			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
+			{
+				_hudSystem->set_prep_text ("Game Over!");
+				_hudSystem->show_prep_label();
+
+			}
+			
+		}
+		
 		//we must collect the corpses from the last frame
 		//as the entity-manager's isDirty property is reset each frame
 		//so if we did corpse collection at the end of update
@@ -133,28 +162,55 @@ g_GameState.time_left -= (1.0 * delta);
 		//wegen block removal und marking mit MOD
 		//im normalspiel wohl wayne
 		//kann also runterbewegt werden		
-		_gameLogicSystem->update(delta);
 
 		
-		
-		_playerControlledSystem->update(delta);
 		_actionSystem->update(delta);
 		_movementSystem->update(delta);
 		_attachmentSystem->update(delta);
-		_gameBoardSystem->update(delta);
-		
-
-
-
-
+		_gameBoardSystem->update(delta);		
 		_hudSystem->update(delta);
 		_soundSystem->update(delta);
-		
 		_particleSystem->update(delta);
-		
-
-
 		_animationSystem->update(delta);		
+		
+		if (g_GameState.game_state == GAME_STATE_PLAY)
+		{
+			_gameLogicSystem->update(delta);
+			_playerControlledSystem->update(delta);
+			g_GameState.time_left -= (1.0 * delta);
+			if (g_GameState.time_left < 0.0 && g_GameState.game_mode == GAME_MODE_TIMED)
+			{
+				g_GameState.time_left = 0.0;
+				g_GameState.next_state = GAME_STATE_GAMEOVER;
+				_gameLogicSystem->handle_chain();
+			}
+
+		}
+
+		if (g_GameState.game_state == GAME_STATE_PREP)
+		{
+			prep_timer -= delta;
+			char s[255];
+			sprintf(s,"Go in %.2f ...", prep_timer);
+			
+			if ((int)prep_timer >= 1 && (int)prep_timer < 4)
+			{
+				sprintf(s, "%i", (int)prep_timer);
+				_hudSystem->set_prep_text (s);
+			}
+			
+			if ((int)prep_timer < 1)
+			{
+				_hudSystem->set_prep_text ("Go!");
+			}
+				
+			
+			if (prep_timer <= 0.0)
+			{
+				g_GameState.next_state = GAME_STATE_PLAY;
+			}
+		}
+		
 		if (spawn_one)
 		{
 			spawn_one = false;
