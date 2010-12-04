@@ -88,7 +88,7 @@ namespace game
 
 	void GameScene::end ()
 	{
-
+		_entityManager->removeAllEntities();
 	}
 
 	
@@ -122,7 +122,7 @@ namespace game
 			if (g_GameState.game_state == GAME_STATE_PREP)
 			{
 				prep_timer = 5.0;
-				g_GameState.time_left = 10.0;
+				g_GameState.time_left = 60.0;
 				_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->show_prep_label();
 

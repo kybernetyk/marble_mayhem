@@ -80,10 +80,10 @@ namespace game
 				g_GameState.time_left += time_add;
 			}
 			g_GameState.score += score;
-			
-			printf("%i combo:\n", num_of_marks);
-			printf("\t+score = %i. (%.2f score per fruit)\n", score, (float)((float)score/(float)num_of_marks) );
-			printf("\t+time = %.4f. (%.4f time per fruit)\nn", time_add, (time_add/num_of_marks) );
+//			
+//			printf("%i combo:\n", num_of_marks);
+//			printf("\t+score = %i. (%.2f score per fruit)\n", score, (float)((float)score/(float)num_of_marks) );
+//			printf("\t+time = %.4f. (%.4f time per fruit)\n\n", time_add, (time_add/num_of_marks) );
 		}
 		
 		
