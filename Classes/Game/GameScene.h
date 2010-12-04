@@ -62,6 +62,7 @@ namespace game
 
 		float prep_timer;
 		bool go_played;
+		int preptmp;
 	};
 
 }

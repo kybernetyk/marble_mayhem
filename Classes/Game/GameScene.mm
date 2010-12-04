@@ -45,8 +45,13 @@ namespace game
 		"combo42.mp3",
 		"combo52.mp3",
 		"combo62.mp3",
-		"combo72.mp3"
+		"combo72.mp3",
+		"excellent1.mp3",
+		"Incredible.mp3",
+		"Good.mp3",
+		"gotset2.mp3"
 	};
+	
 	
 	void GameScene::preload ()
 	{
@@ -144,7 +149,10 @@ namespace game
 			{
 				go_played = false;
 				prep_timer = 5.0;
+				preptmp = (int)prep_timer;
 				g_GameState.time_left = 60.0;
+				g_GameState.killed_last_frame = 0;
+				g_GameState.previous_kill = 0;
 				SoundSystem::make_new_sound (SFX_GET_READY);
 				_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->show_prep_label();
@@ -222,6 +230,14 @@ namespace game
 				sprintf(s, "%i", (int)prep_timer);
 				_hudSystem->set_prep_text (s);
 			}
+
+			if (preptmp != (int)prep_timer)
+			{
+				preptmp = (int)prep_timer;
+				if (prep_timer > 1 && prep_timer < 4)
+					SoundSystem::make_new_sound (SFX_COUNTDOWN);
+			}
+			
 			
 			if ((int)prep_timer < 1)
 			{

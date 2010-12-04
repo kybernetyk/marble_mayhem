@@ -89,15 +89,38 @@ namespace game
 //			if (sfx > SFX_FRUIT_REMOVE_6)
 //				sfx = SFX_FRUIT_REMOVE_6;
 			
-			printf("sfx: %i\n", sfx);
+			//printf("sfx: %i\n", sfx);
 			
 			SoundSystem::make_new_sound (sfx);
-			
-//			printf("%i combo:\n", num_of_marks);
-//			printf("\t+score = %i. (%.2f score per fruit)\n", score, (float)((float)score/(float)num_of_marks) );
-//			printf("\t+time = %.4f. (%.4f time per fruit)\n\n", time_add, (time_add/num_of_marks) );
+			int bonus = 0;
+			if (g_GameState.previous_kill >= 4 && num_of_marks >= 4)
+			{	
+				sfx = SFX_GOOD;
+				bonus = 250 * num_of_marks;
+				
+				if (g_GameState.previous_kill >= 5 && num_of_marks >= 5)
+				{	
+					sfx = SFX_EXCELLENT;
+					bonus = 350 * num_of_marks;
+				}
+				
+				if (g_GameState.previous_kill >= 7 && num_of_marks >= 7)
+				{	
+					sfx = SFX_INCREDIBLE;
+					bonus = 600 * num_of_marks;
+				}
+				
+				
+				SoundSystem::make_new_sound (sfx);	
+			}
+			g_GameState.score += bonus;
+			g_GameState.time_left += bonus/1000.0;
+			printf("Bonus: %i\n", bonus);
+			printf("Bonus time: %f\n",bonus/1000.0);
+
 		}
-		
+
+		g_GameState.previous_kill = num_of_marks;
 		
 		//remove the markers
 		for (int i = 0; i < MAX_MARKERS; i++)

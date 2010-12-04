@@ -21,6 +21,7 @@ namespace game
 		int game_mode;
 		
 		int killed_last_frame;
+		int previous_kill;
 	};
 
 
@@ -38,7 +39,7 @@ namespace game
 #define BOARD_NUM_COLS 8
 #define BOARD_NUM_ROWS (10+1)
 	
-#define NUM_SOUNDS 10
+#define NUM_SOUNDS 14
 	
 #define SFX_TIME_UP 0x00
 #define SFX_GET_READY 0x01
@@ -49,7 +50,11 @@ namespace game
 #define SFX_FRUIT_REMOVE_3 0x06
 #define SFX_FRUIT_REMOVE_4 0x07
 #define SFX_FRUIT_REMOVE_5 0x08	
-#define SFX_FRUIT_REMOVE_6 0x09	
+#define SFX_FRUIT_REMOVE_6 0x09
+#define SFX_EXCELLENT 0x0a
+#define SFX_INCREDIBLE 0x0b
+#define SFX_GOOD 0x0c
+#define SFX_COUNTDOWN 0x0d
 	
 }
 

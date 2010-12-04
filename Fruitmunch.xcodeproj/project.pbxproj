@@ -102,6 +102,10 @@
 		03ABF27212AA8C0800320143 /* combo62.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26E12AA8C0800320143 /* combo62.mp3 */; };
 		03ABF27312AA8C0800320143 /* combo52.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26F12AA8C0800320143 /* combo52.mp3 */; };
 		03ABF27412AA8C0800320143 /* combo42.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF27012AA8C0800320143 /* combo42.mp3 */; };
+		03ABF29B12AA8EC300320143 /* excellent1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF29A12AA8EC300320143 /* excellent1.mp3 */; };
+		03ABF29D12AA8EEB00320143 /* Good.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF29C12AA8EEB00320143 /* Good.mp3 */; };
+		03ABF29F12AA8F0300320143 /* gotset2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF29E12AA8F0300320143 /* gotset2.mp3 */; };
+		03ABF2A112AA8F1500320143 /* Incredible.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2A012AA8F1500320143 /* Incredible.mp3 */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -274,6 +278,10 @@
 		03ABF26E12AA8C0800320143 /* combo62.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo62.mp3; sourceTree = "<group>"; };
 		03ABF26F12AA8C0800320143 /* combo52.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo52.mp3; sourceTree = "<group>"; };
 		03ABF27012AA8C0800320143 /* combo42.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo42.mp3; sourceTree = "<group>"; };
+		03ABF29A12AA8EC300320143 /* excellent1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = excellent1.mp3; sourceTree = "<group>"; };
+		03ABF29C12AA8EEB00320143 /* Good.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Good.mp3; sourceTree = "<group>"; };
+		03ABF29E12AA8F0300320143 /* gotset2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gotset2.mp3; sourceTree = "<group>"; };
+		03ABF2A012AA8F1500320143 /* Incredible.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Incredible.mp3; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -691,6 +699,10 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03ABF2A012AA8F1500320143 /* Incredible.mp3 */,
+				03ABF29E12AA8F0300320143 /* gotset2.mp3 */,
+				03ABF29C12AA8EEB00320143 /* Good.mp3 */,
+				03ABF29A12AA8EC300320143 /* excellent1.mp3 */,
 				03ABF26D12AA8C0800320143 /* combo72.mp3 */,
 				03ABF26E12AA8C0800320143 /* combo62.mp3 */,
 				03ABF26F12AA8C0800320143 /* combo52.mp3 */,
@@ -954,6 +966,10 @@
 				03ABF27212AA8C0800320143 /* combo62.mp3 in Resources */,
 				03ABF27312AA8C0800320143 /* combo52.mp3 in Resources */,
 				03ABF27412AA8C0800320143 /* combo42.mp3 in Resources */,
+				03ABF29B12AA8EC300320143 /* excellent1.mp3 in Resources */,
+				03ABF29D12AA8EEB00320143 /* Good.mp3 in Resources */,
+				03ABF29F12AA8F0300320143 /* gotset2.mp3 in Resources */,
+				03ABF2A112AA8F1500320143 /* Incredible.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
