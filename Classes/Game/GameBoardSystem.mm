@@ -96,12 +96,12 @@ namespace game
 		}
 		
 		_current_gbe->y_move_timer += _delta;
-		_current_gbe->y_off += _delta * (40.0/_current_gbe->fall_duration);	
+		_current_gbe->y_off += _delta * (TILESIZE_Y/_current_gbe->fall_duration);	
 		
 		if (_current_gbe->y_move_timer >= _current_gbe->fall_duration)
 		{
 			_current_gbe->state = GBE_STATE_IDLE;
-			_current_gbe->y_off = 40.0;
+			_current_gbe->y_off = TILESIZE_Y;
 
 		}
 		
@@ -181,13 +181,13 @@ namespace game
 			if ((_current_gbe->state == GBE_STATE_IDLE))
 			{	
 				handle_state_idle();
-				_current_position->y = _current_gbe->row * 40.0 + BOARD_Y_OFFSET;
+				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
 			}
 
 			if (_current_gbe->state == GBE_STATE_MOVING_FALL)
 			{	
 				handle_state_falling ();
-				_current_position->y = _current_gbe->row * 40.0 + BOARD_Y_OFFSET + 40.0 - (_current_gbe->y_off);
+				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET + TILESIZE_Y - (_current_gbe->y_off);
 			}
 		}
 		

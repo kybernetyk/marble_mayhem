@@ -95,9 +95,17 @@ namespace game
 		
 		preload();
 		
-		
-		_soundSystem->playMusic(MUSIC_GAME);
+		if (g_GameState.game_mode == GAME_MODE_TIMED)
+		{
+			SoundSystem::play_background_music("timed.mp3");
+		}
+		else 
+		{
+			SoundSystem::play_background_music("endless.mp3");	
+		}
 
+		
+		
 		/* create background */	
 		Entity *bg = _entityManager->createNewEntity();
 		Position *pos = _entityManager->addComponent <Position> (bg);

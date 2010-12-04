@@ -78,8 +78,6 @@
 {
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	[dc postNotificationName: @"HideMainMenu" object: nil];
-	
-
 	g_GameState.game_mode = [sender tag];
 	game::g_pGame->startNewGame();
 }

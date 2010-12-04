@@ -22,6 +22,7 @@ namespace game
 	{
 	public:
 		bool init ();
+		void loadGlobalResources ();
 		void terminate ();
 
 		void update ();

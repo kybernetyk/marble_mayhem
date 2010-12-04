@@ -8,6 +8,8 @@
  */
 
 #include "MenuScene.h"
+#import "SimpleAudioEngine.h"
+#import "SoundSystem.h"
 
 namespace game
 {
@@ -19,8 +21,8 @@ namespace game
 	
 	void MenuScene::init ()
 	{
-//		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-//		[dc postNotificationName: @"ShowMainMenu" object: nil];
+		mx3::SoundSystem::play_background_music("menu.mp3");
+		  		
 	}
 	
 	void MenuScene::end ()

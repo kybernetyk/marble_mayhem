@@ -32,12 +32,14 @@ namespace game
 #define GAME_STATE_PLAY 0x02
 #define GAME_STATE_GAMEOVER 0x03
 	
+#define TILESIZE_X 51.0
+#define TILESIZE_Y 51.0
 	
-#define BOARD_X_OFFSET (0+20)
-#define BOARD_Y_OFFSET (72+20)
+#define BOARD_X_OFFSET (7+TILESIZE_X/2)
+#define BOARD_Y_OFFSET (72+TILESIZE_Y/2)
 	
-#define BOARD_NUM_COLS 8
-#define BOARD_NUM_ROWS (10+1)
+#define BOARD_NUM_COLS 6
+#define BOARD_NUM_ROWS (8+1)
 	
 #define NUM_SOUNDS 14
 	

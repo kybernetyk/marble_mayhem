@@ -17,7 +17,7 @@ namespace game
 {
 	std::string fruit_filenames[] = {
 		"orange40.png",
-		"lemon40.png",
+		"strawberry.png",
 		"banana40.png",
 		"grapes40.png"
 	};
@@ -37,8 +37,8 @@ namespace game
 		sprite->z = 1.0;
 		
 		Position *pos = em->addComponent <Position> (e);
-		pos->x = BOARD_X_OFFSET + col * 40;
-		pos->y = BOARD_Y_OFFSET + row * 40;
+		pos->x = BOARD_X_OFFSET + col * TILESIZE_X;
+		pos->y = BOARD_Y_OFFSET + row * TILESIZE_Y;
 		
 		GameBoardElement *gbe = em->addComponent <GameBoardElement> (e);
 		gbe->type = fruit_type;

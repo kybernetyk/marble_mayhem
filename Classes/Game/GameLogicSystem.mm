@@ -57,7 +57,7 @@ namespace game
 					_entityManager->addComponent <MarkOfDeath> (current_entity);
 					
 					ParticleSystem::createParticleEmitter ("goldstar2.pex", 0.25 , 
-														   vector2D_make(current_gbe->col * 40 + BOARD_X_OFFSET, current_gbe->row*40+BOARD_Y_OFFSET));
+														   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
 				}
 				current_gbe->marked = false;
 			}
@@ -72,7 +72,7 @@ namespace game
 		{
 			int score = (num_of_marks * 15) * num_of_marks;
 			float num = num_of_marks;
-			float time_add = ((float)(num*0.25*num*0.25));		//0.25
+			float time_add = ((float)(num*0.20*num*0.20));		//0.25
 			
 			//only add time for chain if we're playinh (not game over)
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
@@ -93,18 +93,18 @@ namespace game
 			
 			SoundSystem::make_new_sound (sfx);
 			int bonus = 0;
-			if (g_GameState.previous_kill >= 4 && num_of_marks >= 4)
+			if (g_GameState.previous_kill >= 3 && num_of_marks >= 4)
 			{	
 				sfx = SFX_GOOD;
 				bonus = 250 * num_of_marks;
 				
-				if (g_GameState.previous_kill >= 5 && num_of_marks >= 5)
+				if (g_GameState.previous_kill >= 4 && num_of_marks >= 5)
 				{	
 					sfx = SFX_EXCELLENT;
 					bonus = 350 * num_of_marks;
 				}
 				
-				if (g_GameState.previous_kill >= 7 && num_of_marks >= 7)
+				if (g_GameState.previous_kill >= 5 && num_of_marks >= 6)
 				{	
 					sfx = SFX_INCREDIBLE;
 					bonus = 600 * num_of_marks;
@@ -116,11 +116,14 @@ namespace game
 			g_GameState.score += bonus;
 			g_GameState.time_left += bonus/1000.0;
 			printf("Bonus: %i\n", bonus);
-			printf("Bonus time: %f\n",bonus/1000.0);
 
+			printf("time add: %f\n", time_add);
+			printf("Bonus time: %f\n",bonus/1000.0);
+			printf("sum t: %f\n", time_add + (bonus/1000.0));
+			g_GameState.previous_kill = num_of_marks;
 		}
 
-		g_GameState.previous_kill = num_of_marks;
+		//g_GameState.previous_kill = num_of_marks;
 		
 		//remove the markers
 		for (int i = 0; i < MAX_MARKERS; i++)
@@ -143,8 +146,8 @@ namespace game
 	void GameLogicSystem::mark_chain ()
 	{
 		vector2D v = InputDevice::sharedInstance()->touchLocation();
-		int col = (v.x - BOARD_X_OFFSET + 20) / 40.0;
-		int row = (v.y - BOARD_Y_OFFSET + 20) / 40.0;
+		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
+		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
 		
 		std::vector<Entity*> entities;
 		_entityManager->getEntitiesPossessingComponents(entities, GameBoardElement::COMPONENT_ID, Position::COMPONENT_ID, ARGLIST_END );
@@ -186,7 +189,7 @@ namespace game
 							
 							if (marker_index < MAX_MARKERS)
 							{
-								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * 40 + BOARD_X_OFFSET, row*40+BOARD_Y_OFFSET));
+								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
 								
 								markers[marker_index++] = pe;
 							}

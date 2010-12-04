@@ -106,6 +106,10 @@
 		03ABF29D12AA8EEB00320143 /* Good.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF29C12AA8EEB00320143 /* Good.mp3 */; };
 		03ABF29F12AA8F0300320143 /* gotset2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF29E12AA8F0300320143 /* gotset2.mp3 */; };
 		03ABF2A112AA8F1500320143 /* Incredible.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2A012AA8F1500320143 /* Incredible.mp3 */; };
+		03ABF2CE12AAA48D00320143 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2CD12AAA48D00320143 /* menu.mp3 */; };
+		03ABF2D612AAA5EB00320143 /* timed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D512AAA5EB00320143 /* timed.mp3 */; };
+		03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D712AAA5F000320143 /* endless.mp3 */; };
+		03ABF3E412AABAFB00320143 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF3E312AABAFB00320143 /* strawberry.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -282,6 +286,10 @@
 		03ABF29C12AA8EEB00320143 /* Good.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Good.mp3; sourceTree = "<group>"; };
 		03ABF29E12AA8F0300320143 /* gotset2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gotset2.mp3; sourceTree = "<group>"; };
 		03ABF2A012AA8F1500320143 /* Incredible.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Incredible.mp3; sourceTree = "<group>"; };
+		03ABF2CD12AAA48D00320143 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu.mp3; sourceTree = "<group>"; };
+		03ABF2D512AAA5EB00320143 /* timed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timed.mp3; sourceTree = "<group>"; };
+		03ABF2D712AAA5F000320143 /* endless.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = endless.mp3; sourceTree = "<group>"; };
+		03ABF3E312AABAFB00320143 /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -699,6 +707,9 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03ABF2D712AAA5F000320143 /* endless.mp3 */,
+				03ABF2D512AAA5EB00320143 /* timed.mp3 */,
+				03ABF2CD12AAA48D00320143 /* menu.mp3 */,
 				03ABF2A012AA8F1500320143 /* Incredible.mp3 */,
 				03ABF29E12AA8F0300320143 /* gotset2.mp3 */,
 				03ABF29C12AA8EEB00320143 /* Good.mp3 */,
@@ -724,6 +735,7 @@
 				0399698212A828C700D0C56D /* lemon40.png */,
 				0399698312A828C700D0C56D /* orange40.png */,
 				0399698412A828C700D0C56D /* pause.png */,
+				03ABF3E312AABAFB00320143 /* strawberry.png */,
 				039968DF12A8245300D0C56D /* back.png */,
 				039968E012A8245300D0C56D /* zomg.fnt */,
 				039968E112A8245300D0C56D /* zomg.png */,
@@ -970,6 +982,10 @@
 				03ABF29D12AA8EEB00320143 /* Good.mp3 in Resources */,
 				03ABF29F12AA8F0300320143 /* gotset2.mp3 in Resources */,
 				03ABF2A112AA8F1500320143 /* Incredible.mp3 in Resources */,
+				03ABF2CE12AAA48D00320143 /* menu.mp3 in Resources */,
+				03ABF2D612AAA5EB00320143 /* timed.mp3 in Resources */,
+				03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */,
+				03ABF3E412AABAFB00320143 /* strawberry.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
