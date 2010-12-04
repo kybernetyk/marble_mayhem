@@ -56,7 +56,7 @@ namespace game
 				{
 					_entityManager->addComponent <MarkOfDeath> (current_entity);
 					
-					ParticleSystem::createParticleEmitter ("marker2.pex", 0.25 , 
+					ParticleSystem::createParticleEmitter ("goldstar2.pex", 0.25 , 
 														   vector2D_make(current_gbe->col * 40 + BOARD_X_OFFSET, current_gbe->row*40+BOARD_Y_OFFSET));
 				}
 				current_gbe->marked = false;

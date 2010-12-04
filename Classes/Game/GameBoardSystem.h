@@ -43,6 +43,9 @@ namespace game
 		Position *_current_position;
 		std::vector<Entity*> _entities;
 		float _delta;
+		
+		float refill_pause_time_between_rows;
+		float refill_pause_timer;
 	};
 	
 }

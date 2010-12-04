@@ -23,7 +23,7 @@ namespace game
 {
 	#define FIXED_STEP_LOOP
 	
-	const int TICKS_PER_SECOND = 60;
+	const int TICKS_PER_SECOND = DESIRED_FPS;
 	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
 	const int MAX_FRAMESKIP = 5;
 	const double FIXED_DELTA = (1.0/TICKS_PER_SECOND);

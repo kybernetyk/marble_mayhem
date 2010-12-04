@@ -89,7 +89,9 @@
 		0399698B12A828C700D0C56D /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0399698412A828C700D0C56D /* pause.png */; };
 		0399698E12A855B400D0C56D /* Fruit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0399698D12A855B400D0C56D /* Fruit.mm */; };
 		03996BCA12A8770200D0C56D /* marker.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996BC912A8770200D0C56D /* marker.pex */; };
-		03996C0B12A87C5500D0C56D /* marker2.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996C0A12A87C5500D0C56D /* marker2.pex */; };
+		03996C0B12A87C5500D0C56D /* stars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996C0A12A87C5500D0C56D /* stars.pex */; };
+		03ABF17812AA627600320143 /* goldstars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF17712AA627600320143 /* goldstars.pex */; };
+		03ABF18312AA636600320143 /* goldstar2.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF18212AA636600320143 /* goldstar2.pex */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -249,7 +251,9 @@
 		0399698C12A855B400D0C56D /* Fruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruit.h; sourceTree = "<group>"; };
 		0399698D12A855B400D0C56D /* Fruit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Fruit.mm; sourceTree = "<group>"; };
 		03996BC912A8770200D0C56D /* marker.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marker.pex; sourceTree = "<group>"; };
-		03996C0A12A87C5500D0C56D /* marker2.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marker2.pex; sourceTree = "<group>"; };
+		03996C0A12A87C5500D0C56D /* stars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stars.pex; sourceTree = "<group>"; };
+		03ABF17712AA627600320143 /* goldstars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstars.pex; sourceTree = "<group>"; };
+		03ABF18212AA636600320143 /* goldstar2.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstar2.pex; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -667,9 +671,11 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03ABF18212AA636600320143 /* goldstar2.pex */,
+				03ABF17712AA627600320143 /* goldstars.pex */,
 				03996BC912A8770200D0C56D /* marker.pex */,
 				0399697E12A828C700D0C56D /* banana40.png */,
-				03996C0A12A87C5500D0C56D /* marker2.pex */,
+				03996C0A12A87C5500D0C56D /* stars.pex */,
 				0399697F12A828C700D0C56D /* bug40.png */,
 				0399698012A828C700D0C56D /* clock.png */,
 				0399698112A828C700D0C56D /* grapes40.png */,
@@ -899,13 +905,15 @@
 				0399698A12A828C700D0C56D /* orange40.png in Resources */,
 				0399698B12A828C700D0C56D /* pause.png in Resources */,
 				03996BCA12A8770200D0C56D /* marker.pex in Resources */,
-				03996C0B12A87C5500D0C56D /* marker2.pex in Resources */,
+				03996C0B12A87C5500D0C56D /* stars.pex in Resources */,
 				030625F412A9022700325249 /* MainViewController_fmunch.xib in Resources */,
 				033FECB512A9098A00C5A94C /* FacebookSubmitController.xib in Resources */,
 				033FECB712A9098A00C5A94C /* FBDialog.bundle in Resources */,
 				033FECC212A9098A00C5A94C /* MainViewController_landscape.xib in Resources */,
 				033FECC312A9098A00C5A94C /* MainViewController_portrait.xib in Resources */,
 				033FECC412A9098A00C5A94C /* MainWindow.xib in Resources */,
+				03ABF17812AA627600320143 /* goldstars.pex in Resources */,
+				03ABF18312AA636600320143 /* goldstar2.pex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

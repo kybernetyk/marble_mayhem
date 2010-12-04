@@ -30,6 +30,8 @@
 #define ORIENTATION_PORTRAIT
 #define MAINVIEWNIBNAME @"MainViewController_fmunch"
 
+#define DESIRED_FPS 60
+
 //screen size
 #ifdef ORIENTATION_PORTRAIT
 	#define SCREEN_W 320.0

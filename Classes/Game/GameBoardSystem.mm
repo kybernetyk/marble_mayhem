@@ -17,6 +17,8 @@ namespace game
 	{
 		_entityManager = entityManager;
 		memset(_map,0x00,BOARD_NUM_COLS*BOARD_NUM_ROWS*sizeof(Entity*));
+		refill_pause_time_between_rows = 0.0;
+		refill_pause_timer = 0.0;
 	}
 	
 	void GameBoardSystem::update_map ()
@@ -116,7 +118,7 @@ namespace game
 		}
 		return (gbe1->row < gbe2->row);
 	}
-	
+
 	void GameBoardSystem::refill ()
 	{
 		update_map();
@@ -165,6 +167,12 @@ namespace game
 			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
 			_current_position = _entityManager->getComponent<Position>(_current_entity);
 
+			//reset fall speed to normal
+			if (g_GameState.game_state == GAME_STATE_PREP)
+				_current_gbe->fall_duration = 0.05;
+			else
+				_current_gbe->fall_duration = 0.20;
+			
 			if ((_current_gbe->state == GBE_STATE_IDLE))
 			{	
 				handle_state_idle();
@@ -178,7 +186,22 @@ namespace game
 			}
 		}
 		
-		//refill
-		refill();
+		refill_pause_timer += _delta;
+		
+		if (refill_pause_timer >= refill_pause_time_between_rows)
+		{
+			refill_pause_timer = 0.0;
+
+			if (g_GameState.game_state == GAME_STATE_PREP)
+				refill_pause_time_between_rows = 0.5;
+			else
+				refill_pause_time_between_rows = 0.0;
+			
+			
+			refill();
+		}
+		
+		
+		
 	}
 }
