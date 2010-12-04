@@ -33,6 +33,21 @@ extern int g_ActiveGFX;
 
 namespace game 
 {
+	
+	std::string sounds[] =
+	{
+		"Time_Up.mp3",
+		"Get_ready.mp3",
+		"Go.mp3",
+		"Game_Over.mp3",
+		"gemongem2.mp3",
+		"combo32.mp3",
+		"combo42.mp3",
+		"combo52.mp3",
+		"combo62.mp3",
+		"combo72.mp3"
+	};
+	
 	void GameScene::preload ()
 	{
 
@@ -65,7 +80,12 @@ namespace game
 		_gameBoardSystem = new GameBoardSystem (_entityManager);
 		
 		
+		for (int i = 0; i < NUM_SOUNDS; i++)
+		{
+			_soundSystem->registerSound (sounds[i], i);
+		}
 		
+		_soundSystem->preloadSounds();
 		
 		
 		preload();
@@ -83,6 +103,7 @@ namespace game
 		Name *name = _entityManager->addComponent <Name> (bg);
 		name->name = "Game Background";
 		
+		go_played = false;
 		
 	}
 
@@ -121,8 +142,10 @@ namespace game
 			
 			if (g_GameState.game_state == GAME_STATE_PREP)
 			{
+				go_played = false;
 				prep_timer = 5.0;
 				g_GameState.time_left = 60.0;
+				SoundSystem::make_new_sound (SFX_GET_READY);
 				_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->show_prep_label();
 
@@ -144,6 +167,7 @@ namespace game
 			
 			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
 			{
+				SoundSystem::make_new_sound (SFX_GAME_OVER);
 				_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->show_prep_label();
 
@@ -201,6 +225,11 @@ namespace game
 			
 			if ((int)prep_timer < 1)
 			{
+				if (!go_played)
+				{	
+					SoundSystem::make_new_sound (SFX_GO);
+					go_played = true;
+				}
 				_hudSystem->set_prep_text ("Go!");
 			}
 				

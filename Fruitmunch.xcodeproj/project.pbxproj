@@ -92,6 +92,16 @@
 		03996C0B12A87C5500D0C56D /* stars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03996C0A12A87C5500D0C56D /* stars.pex */; };
 		03ABF17812AA627600320143 /* goldstars.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF17712AA627600320143 /* goldstars.pex */; };
 		03ABF18312AA636600320143 /* goldstar2.pex in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF18212AA636600320143 /* goldstar2.pex */; };
+		03ABF1FF12AA869900320143 /* Time_Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF1FE12AA869900320143 /* Time_Up.mp3 */; };
+		03ABF21F12AA886F00320143 /* Go.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF21D12AA886F00320143 /* Go.mp3 */; };
+		03ABF22012AA886F00320143 /* Get_ready.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF21E12AA886F00320143 /* Get_ready.mp3 */; };
+		03ABF23A12AA89D100320143 /* Game_Over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF23912AA89D100320143 /* Game_Over.mp3 */; };
+		03ABF23D12AA8A0800320143 /* gemongem2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF23C12AA8A0800320143 /* gemongem2.mp3 */; };
+		03ABF26112AA8B5D00320143 /* combo32.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26012AA8B5D00320143 /* combo32.mp3 */; };
+		03ABF27112AA8C0800320143 /* combo72.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26D12AA8C0800320143 /* combo72.mp3 */; };
+		03ABF27212AA8C0800320143 /* combo62.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26E12AA8C0800320143 /* combo62.mp3 */; };
+		03ABF27312AA8C0800320143 /* combo52.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF26F12AA8C0800320143 /* combo52.mp3 */; };
+		03ABF27412AA8C0800320143 /* combo42.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF27012AA8C0800320143 /* combo42.mp3 */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -254,6 +264,16 @@
 		03996C0A12A87C5500D0C56D /* stars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stars.pex; sourceTree = "<group>"; };
 		03ABF17712AA627600320143 /* goldstars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstars.pex; sourceTree = "<group>"; };
 		03ABF18212AA636600320143 /* goldstar2.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstar2.pex; sourceTree = "<group>"; };
+		03ABF1FE12AA869900320143 /* Time_Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Time_Up.mp3; sourceTree = "<group>"; };
+		03ABF21D12AA886F00320143 /* Go.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Go.mp3; sourceTree = "<group>"; };
+		03ABF21E12AA886F00320143 /* Get_ready.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Get_ready.mp3; sourceTree = "<group>"; };
+		03ABF23912AA89D100320143 /* Game_Over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Game_Over.mp3; sourceTree = "<group>"; };
+		03ABF23C12AA8A0800320143 /* gemongem2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gemongem2.mp3; sourceTree = "<group>"; };
+		03ABF26012AA8B5D00320143 /* combo32.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo32.mp3; sourceTree = "<group>"; };
+		03ABF26D12AA8C0800320143 /* combo72.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo72.mp3; sourceTree = "<group>"; };
+		03ABF26E12AA8C0800320143 /* combo62.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo62.mp3; sourceTree = "<group>"; };
+		03ABF26F12AA8C0800320143 /* combo52.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo52.mp3; sourceTree = "<group>"; };
+		03ABF27012AA8C0800320143 /* combo42.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combo42.mp3; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -671,6 +691,16 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03ABF26D12AA8C0800320143 /* combo72.mp3 */,
+				03ABF26E12AA8C0800320143 /* combo62.mp3 */,
+				03ABF26F12AA8C0800320143 /* combo52.mp3 */,
+				03ABF27012AA8C0800320143 /* combo42.mp3 */,
+				03ABF26012AA8B5D00320143 /* combo32.mp3 */,
+				03ABF23C12AA8A0800320143 /* gemongem2.mp3 */,
+				03ABF23912AA89D100320143 /* Game_Over.mp3 */,
+				03ABF21D12AA886F00320143 /* Go.mp3 */,
+				03ABF21E12AA886F00320143 /* Get_ready.mp3 */,
+				03ABF1FE12AA869900320143 /* Time_Up.mp3 */,
 				03ABF18212AA636600320143 /* goldstar2.pex */,
 				03ABF17712AA627600320143 /* goldstars.pex */,
 				03996BC912A8770200D0C56D /* marker.pex */,
@@ -914,6 +944,16 @@
 				033FECC412A9098A00C5A94C /* MainWindow.xib in Resources */,
 				03ABF17812AA627600320143 /* goldstars.pex in Resources */,
 				03ABF18312AA636600320143 /* goldstar2.pex in Resources */,
+				03ABF1FF12AA869900320143 /* Time_Up.mp3 in Resources */,
+				03ABF21F12AA886F00320143 /* Go.mp3 in Resources */,
+				03ABF22012AA886F00320143 /* Get_ready.mp3 in Resources */,
+				03ABF23A12AA89D100320143 /* Game_Over.mp3 in Resources */,
+				03ABF23D12AA8A0800320143 /* gemongem2.mp3 in Resources */,
+				03ABF26112AA8B5D00320143 /* combo32.mp3 in Resources */,
+				03ABF27112AA8C0800320143 /* combo72.mp3 in Resources */,
+				03ABF27212AA8C0800320143 /* combo62.mp3 in Resources */,
+				03ABF27312AA8C0800320143 /* combo52.mp3 in Resources */,
+				03ABF27412AA8C0800320143 /* combo42.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

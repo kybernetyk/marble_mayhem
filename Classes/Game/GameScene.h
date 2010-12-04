@@ -61,6 +61,7 @@ namespace game
 		GameBoardSystem *_gameBoardSystem;
 
 		float prep_timer;
+		bool go_played;
 	};
 
 }

@@ -10,6 +10,7 @@
 #include "GameBoardSystem.h"
 #include "GameComponents.h"
 #include "Fruit.h"
+#include "SoundSystem.h"
 
 namespace game 
 {
@@ -65,6 +66,9 @@ namespace game
 		if (_current_gbe->prev_state == GBE_STATE_MOVING_FALL)
 		{
 			_current_gbe->prev_state = GBE_STATE_IDLE;
+			
+			if (!can_move_down())
+				SoundSystem::make_new_sound (SFX_FRUIT_LAND);
 		}
 		
 		if (can_move_down())
@@ -98,6 +102,7 @@ namespace game
 		{
 			_current_gbe->state = GBE_STATE_IDLE;
 			_current_gbe->y_off = 40.0;
+
 		}
 		
 	}

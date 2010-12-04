@@ -80,7 +80,19 @@ namespace game
 				g_GameState.time_left += time_add;
 			}
 			g_GameState.score += score;
+			g_GameState.killed_last_frame = num_of_marks;
 //			
+			int sfx = (num_of_marks-2);
+			sfx += SFX_FRUIT_REMOVE_2;
+			
+			sfx = std::min(SFX_FRUIT_REMOVE_6, sfx);
+//			if (sfx > SFX_FRUIT_REMOVE_6)
+//				sfx = SFX_FRUIT_REMOVE_6;
+			
+			printf("sfx: %i\n", sfx);
+			
+			SoundSystem::make_new_sound (sfx);
+			
 //			printf("%i combo:\n", num_of_marks);
 //			printf("\t+score = %i. (%.2f score per fruit)\n", score, (float)((float)score/(float)num_of_marks) );
 //			printf("\t+time = %.4f. (%.4f time per fruit)\n\n", time_add, (time_add/num_of_marks) );
@@ -165,6 +177,7 @@ namespace game
 	void GameLogicSystem::update (float delta)
 	{
 		_delta = delta;
+		g_GameState.killed_last_frame = 0;
 		
 		bool touch = InputDevice::sharedInstance()->isTouchActive();
 		if (touch)
