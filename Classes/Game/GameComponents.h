@@ -46,10 +46,15 @@ namespace game
 		float y_move_timer;
 		float y_off;
 		
+		float x_move_timer;
+		float x_off;
+		
 		float fall_duration;
 		bool landed;
 		
 		bool marked;
+		
+		bool moving_sideways;
 		
 		GameBoardElement ()
 		{
@@ -62,6 +67,9 @@ namespace game
 			landed = false;
 
 			marked = false;
+			moving_sideways = false;
+			x_move_timer = 0.0;
+			x_off = 0.0;
 			
 			fall_duration = 0.25;
 		}

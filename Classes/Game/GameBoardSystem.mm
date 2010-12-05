@@ -107,6 +107,22 @@ namespace game
 		
 	}
 
+	
+	void GameBoardSystem::handle_state_move_sideways ()
+	{
+		_current_gbe->x_move_timer += _delta;
+		_current_gbe->x_off += _delta * (TILESIZE_X/_current_gbe->fall_duration);	
+		
+		if (_current_gbe->x_move_timer >= _current_gbe->fall_duration)
+		{
+			_current_gbe->moving_sideways = false;
+			_current_gbe->x_off = TILESIZE_X;
+			
+		}
+		
+	}
+	
+	
 	bool sortie (Entity *e1, Entity *e2)
 	{
 		EntityManager *em = Entity::entityManager;
@@ -135,8 +151,52 @@ namespace game
 				make_fruit(rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
 			}
 		}
+	}
+	
+	void GameBoardSystem::refill_horizontal ()
+	{	
+		update_map();
+
+		bool move = false;
+		for (int col = BOARD_NUM_COLS-1; col >= 0; col--)
+		{
+			if (!move)
+			{
+				int sum = 0;
+				for (int row = 0; row < BOARD_NUM_ROWS; row++)
+				{
+					if (_map[col][row])
+					{
+						sum ++;
+					}
+				}
+				if (sum <= 0)
+					move = true;
+			}
+			else
+			{
+				for (int row = 0; row < BOARD_NUM_ROWS; row++)
+				{
+					if (_map[col][row])
+					{
+						Entity *e = _map[col][row];
+						GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+						if (!gbe->moving_sideways)
+						{
+							gbe->prev_col = gbe->col;
+							gbe->col ++;
+							gbe->x_move_timer = 0.0;
+							gbe->x_off = 0.0;
+							
+							gbe->moving_sideways = true;
+						}
+					}
+				}
+			}
+		}
 		
 	}
+	
 	
 	void GameBoardSystem::update (float delta)
 	{
@@ -189,6 +249,14 @@ namespace game
 				handle_state_falling ();
 				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET + TILESIZE_Y - (_current_gbe->y_off);
 			}
+			
+			if (_current_gbe->moving_sideways)
+			{
+				handle_state_move_sideways ();
+				_current_position->x = _current_gbe->col * TILESIZE_X + BOARD_X_OFFSET - TILESIZE_X + (_current_gbe->x_off);
+
+			}
+			
 		}
 		
 		refill_pause_timer += _delta;
@@ -202,8 +270,19 @@ namespace game
 			else
 				refill_pause_time_between_rows = 0.0;
 			
+			if (g_GameState.game_mode == GAME_MODE_SWEEP)
+			{
+				if (g_GameState.game_state == GAME_STATE_PREP)
+					refill();
+				else
+					refill_horizontal();
+
+			}
+			else
+			{
+				refill();
+			}
 			
-			refill();
 		}
 		
 		

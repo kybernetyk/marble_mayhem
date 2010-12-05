@@ -35,6 +35,7 @@ namespace game
 
 #define GAME_MODE_TIMED 0x01
 #define GAME_MODE_ENDLESS 0x02
+#define GAME_MODE_SWEEP 0x03
 
 #define GAME_STATE_PREP 0x01
 #define GAME_STATE_PLAY 0x02

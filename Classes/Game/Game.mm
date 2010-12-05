@@ -189,12 +189,12 @@ namespace game
 	
 	void Game::appWillResignActive ()
 	{
-		g_TextureManager.purgeCache();
 		CV3Log ("Game::appWillResignActive ()\n");		
 	}
 	
 	void Game::appDidEnterBackground ()
 	{
+		g_TextureManager.purgeCache();
 		CV3Log ("Game::appDidEnterBackground ()\n");		
 	}
 	
