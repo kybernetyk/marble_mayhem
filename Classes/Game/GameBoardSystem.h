@@ -25,15 +25,13 @@ namespace game
 	protected:
 		bool can_move_down ();
 		
-		void move_down();
-		
 	
 		void handle_state_idle ();
-		void handle_state_falling ();
-		void handle_state_move_sideways ();
+		void handle_state_falling ();		//move block down (fall)
+		void handle_state_move_sideways ();	//move block sideways (sweep mode)
 		
-		void refill ();
-		void refill_horizontal ();
+		void refill ();					//vertical fill
+		void refill_horizontal ();		//horizontal fill for sweep mode
 		
 		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
 		void update_map ();

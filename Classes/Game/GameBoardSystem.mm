@@ -54,12 +54,6 @@ namespace game
 		
 		return true;
 	}
-	
-	
-	void GameBoardSystem::move_down ()
-	{
-	}
-	
 
 	void GameBoardSystem::handle_state_idle ()
 	{
@@ -272,6 +266,7 @@ namespace game
 			
 			if (g_GameState.game_mode == GAME_MODE_SWEEP)
 			{
+				//don't horizontal fill during prep
 				if (g_GameState.game_state == GAME_STATE_PREP)
 					refill();
 				else
