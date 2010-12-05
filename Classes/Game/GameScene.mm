@@ -62,10 +62,11 @@ namespace game
 	{
 		srand(time(0));
 		
-		g_GameState.score = 0;
+		g_GameState.reset();
 		
 		g_GameState.game_state = 0;
 		g_GameState.next_state = GAME_STATE_PREP;
+		
 		
 	
 		_entityManager = new EntityManager;
@@ -158,9 +159,8 @@ namespace game
 				go_played = false;
 				prep_timer = 5.0;
 				preptmp = (int)prep_timer;
-				g_GameState.time_left = 60.0;
-				g_GameState.killed_last_frame = 0;
-				g_GameState.previous_kill = 0;
+				g_GameState.reset();
+
 				SoundSystem::make_new_sound (SFX_GET_READY);
 				_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->show_prep_label();

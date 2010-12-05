@@ -39,7 +39,6 @@ namespace game
 	
 	void Game::loadGlobalResources ()
 	{
-		return;
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"menu.mp3"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"endless.mp3"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"timed.mp3"];

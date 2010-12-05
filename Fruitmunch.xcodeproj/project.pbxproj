@@ -110,6 +110,7 @@
 		03ABF2D612AAA5EB00320143 /* timed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D512AAA5EB00320143 /* timed.mp3 */; };
 		03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D712AAA5F000320143 /* endless.mp3 */; };
 		03ABF3E412AABAFB00320143 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF3E312AABAFB00320143 /* strawberry.png */; };
+		03ABF46E12AAC7F900320143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF46D12AAC7F900320143 /* Icon.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -290,6 +291,9 @@
 		03ABF2D512AAA5EB00320143 /* timed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timed.mp3; sourceTree = "<group>"; };
 		03ABF2D712AAA5F000320143 /* endless.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = endless.mp3; sourceTree = "<group>"; };
 		03ABF3E312AABAFB00320143 /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
+		03ABF42C12AAC61100320143 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntitlementsDebug.plist; sourceTree = "<group>"; };
+		03ABF46D12AAC7F900320143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -722,6 +726,7 @@
 				03ABF23C12AA8A0800320143 /* gemongem2.mp3 */,
 				03ABF23912AA89D100320143 /* Game_Over.mp3 */,
 				03ABF21D12AA886F00320143 /* Go.mp3 */,
+				03ABF46D12AAC7F900320143 /* Icon.png */,
 				03ABF21E12AA886F00320143 /* Get_ready.mp3 */,
 				03ABF1FE12AA869900320143 /* Time_Up.mp3 */,
 				03ABF18212AA636600320143 /* goldstar2.pex */,
@@ -864,6 +869,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				03ABF42C12AAC61100320143 /* Entitlements.plist */,
+				03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */,
 				8D1107310486CEB800E47090 /* Fruitmunch-Info.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -986,6 +993,7 @@
 				03ABF2D612AAA5EB00320143 /* timed.mp3 in Resources */,
 				03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */,
 				03ABF3E412AABAFB00320143 /* strawberry.png in Resources */,
+				03ABF46E12AAC7F900320143 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,10 +1070,41 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		03ABF44812AAC72500320143 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2B52CCCB-FFDC-4D4A-B3C2-960BABDED001";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad-Hoc";
+		};
+		03ABF44912AAC72500320143 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Fruitmunch_Prefix.pch;
+				INFOPLIST_FILE = "Fruitmunch-Info.plist";
+				PRODUCT_NAME = Fruitmunch;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad-Hoc";
+		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1080,6 +1119,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Fruitmunch_Prefix.pch;
@@ -1124,6 +1164,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				03ABF44912AAC72500320143 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1133,6 +1174,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				03ABF44812AAC72500320143 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

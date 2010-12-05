@@ -55,7 +55,10 @@ namespace game
 		label->text = "FPS: 0";
 		label->z = 6.0;
 		
+		char s[255];
+		sprintf(s, "%i", g_GameState.score);
 		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2, 32), vector2D_make(0.5, 0.5));
+		score_label->get<TextLabel>()->text = s;
 		
 		time_label = NULL;
 		if (g_GameState.game_mode == GAME_MODE_TIMED)
@@ -70,6 +73,9 @@ namespace game
 			Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
 			sprite->quad = g_RenderableManager.accquireTexturedQuad("clock.png");
 			sprite->z = 6.0;
+			
+			sprintf(s, "%.2f", g_GameState.time_left);
+			time_label->get<TextLabel>()->text = s;
 		}
 		
 		prep_label = make_new_label ("zomg.fnt", vector2D_make( SCREEN_W+200, SCREEN_H/2+20), vector2D_make(0.5,0.5));
@@ -77,9 +83,11 @@ namespace game
 		prep_label->get<Position>()->scale_y = 1.0;
 		prep_label->get<TextLabel>()->text = "Plankton!";
 
-		last_time = g_GameState.time_left+1;
-		last_score = g_GameState.score+1;
+		last_time = g_GameState.time_left;
+		last_score = g_GameState.score;
 		score_init_diff = 0;
+		
+		
 	}
 
 	Action *flyin_and_shake_action ()
