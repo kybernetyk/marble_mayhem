@@ -120,6 +120,16 @@ namespace game
 			printf("Bonus time: %f\n",bonus/1000.0);
 			printf("sum t: %f\n", time_add + (bonus/1000.0));
 			g_GameState.previous_kill = num_of_marks;
+			g_GameState.total_killed += num_of_marks;
+			
+			if (g_GameState.game_mode == GAME_MODE_SWEEP)
+			{
+				int sweep_bonus = (g_GameState.total_killed * g_GameState.total_killed) + (score*time_add);
+				
+				printf("sweep bonus: %i\n", sweep_bonus);
+				
+				g_GameState.score += sweep_bonus;
+			}
 		}
 
 		//g_GameState.previous_kill = num_of_marks;

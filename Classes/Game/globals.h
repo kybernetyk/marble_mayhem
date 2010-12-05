@@ -22,6 +22,7 @@ namespace game
 		
 		int killed_last_frame;
 		int previous_kill;
+		int total_killed;
 		
 		void reset ()
 		{
@@ -29,6 +30,7 @@ namespace game
 			time_left = 60.0;
 			killed_last_frame = 0;
 			previous_kill = 0;
+			total_killed = 0;
 		}
 	};
 
