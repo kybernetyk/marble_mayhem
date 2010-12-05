@@ -12,7 +12,6 @@
 #include "ActionSystem.h"
 
 #include "GameLogicSystem.h"
-#include "Texture2D.h"
 #include "SoundSystem.h"
 #include "globals.h"
 

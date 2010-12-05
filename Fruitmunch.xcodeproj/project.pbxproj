@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		030625F412A9022700325249 /* MainViewController_fmunch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030625F312A9022700325249 /* MainViewController_fmunch.xib */; };
 		0306261612A9058400325249 /* MenuScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0306261512A9058400325249 /* MenuScene.mm */; };
+		032A14B512ABEDD10046B89E /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 032A14B412ABEDD10046B89E /* GameCenterManager.m */; };
 		033FEC9E12A9098A00C5A94C /* Component.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1212A9098A00C5A94C /* Component.mm */; };
 		033FEC9F12A9098A00C5A94C /* Entity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1612A9098A00C5A94C /* Entity.mm */; };
 		033FECA012A9098A00C5A94C /* EntityManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1912A9098A00C5A94C /* EntityManager.mm */; };
@@ -121,6 +122,8 @@
 		030625F312A9022700325249 /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_fmunch.xib; path = ../../Resources/MainViewController_fmunch.xib; sourceTree = "<group>"; };
 		0306261412A9058400325249 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		0306261512A9058400325249 /* MenuScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScene.mm; sourceTree = "<group>"; };
+		032A14B312ABEDD10046B89E /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		032A14B412ABEDD10046B89E /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		033FEC1112A9098A00C5A94C /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
 		033FEC1212A9098A00C5A94C /* Component.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Component.mm; sourceTree = "<group>"; };
 		033FEC1312A9098A00C5A94C /* ComponentV3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentV3.h; sourceTree = "<group>"; };
@@ -518,6 +521,8 @@
 		033FEC4E12A9098A00C5A94C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				032A14B312ABEDD10046B89E /* GameCenterManager.h */,
+				032A14B412ABEDD10046B89E /* GameCenterManager.m */,
 				033FEC4F12A9098A00C5A94C /* EAGLView.h */,
 				033FEC5012A9098A00C5A94C /* EAGLView.mm */,
 				033FEC5112A9098A00C5A94C /* Facebook Sumbit Controller */,
@@ -1064,6 +1069,7 @@
 				033FECD012A9098A00C5A94C /* ParticleSystem.mm in Sources */,
 				033FECD112A9098A00C5A94C /* RenderSystem.mm in Sources */,
 				033FECD212A9098A00C5A94C /* SoundSystem.mm in Sources */,
+				032A14B512ABEDD10046B89E /* GameCenterManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

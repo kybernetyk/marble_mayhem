@@ -22,6 +22,8 @@
 #define __ABORT_GUARDS__
 #define __ENTITY_MANAGER_WARNINGS__
 
+//#define USE_GAMECENTER
+
 #define MAX_REGISTERED_SOUNDS 32
 
 #define PORTRAIT 0x01

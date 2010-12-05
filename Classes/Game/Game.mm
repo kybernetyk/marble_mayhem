@@ -128,6 +128,8 @@ namespace game
 	
 	void Game::terminate()
 	{
+		current_scene->end();
+		current_scene = 0;
 		CV3Log ("terminating ...\n");
 	}
 	
@@ -167,4 +169,38 @@ namespace game
 			game::timer.update();
 		}
 	}
+	
+	#pragma mark -
+	#pragma mark app background unso
+	void Game::appDidFinishLaunching ()
+	{
+		CV3Log ("Game::appDidFinishLaunching ()\n");
+	}
+	
+	void Game::appDidBecomeActive ()
+	{
+		CV3Log ("Game::appDidBecomeActive ()\n");
+	}
+	
+	void Game::appWillEnterForeground ()
+	{
+		CV3Log ("Game::appWillEnterForeground ()\n");
+	}
+	
+	void Game::appWillResignActive ()
+	{
+		g_TextureManager.purgeCache();
+		CV3Log ("Game::appWillResignActive ()\n");		
+	}
+	
+	void Game::appDidEnterBackground ()
+	{
+		CV3Log ("Game::appDidEnterBackground ()\n");		
+	}
+	
+	void Game::appWillTerminate ()
+	{
+		CV3Log ("Game::appWillTerminate ()\n");		
+	}
+	
 }
