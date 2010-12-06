@@ -24,6 +24,8 @@ namespace game
 		int previous_kill;
 		int total_killed;
 		
+		int fruits_on_board;
+		
 		void reset ()
 		{
 			score = 0;
@@ -31,6 +33,8 @@ namespace game
 			killed_last_frame = 0;
 			previous_kill = 0;
 			total_killed = 0;
+			fruits_on_board = 0;
+		
 		}
 	};
 

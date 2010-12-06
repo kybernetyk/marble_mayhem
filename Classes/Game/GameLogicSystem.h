@@ -10,6 +10,7 @@
 #pragma once
 #include <vector>
 #include "EntityManager.h"
+#include "globals.h"
 using namespace mx3;
 
 namespace game 
@@ -24,8 +25,14 @@ namespace game
 		void handle_chain ();
 		void remove_chain ();
 		
+		bool moves_left ();
 
+		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
+		void update_map ();
+
+		
 	protected:
+		std::vector<Entity*> _entities;
 		float _delta;
 		int marked_color;
 		

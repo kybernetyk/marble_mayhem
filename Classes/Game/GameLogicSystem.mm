@@ -130,6 +130,10 @@ namespace game
 				
 				g_GameState.score += sweep_bonus;
 			}
+			
+			printf("removign %i from gamestate ...\n",num_of_marks);
+			g_GameState.fruits_on_board -= num_of_marks;
+			printf("now left: %i\n", g_GameState.fruits_on_board);
 		}
 
 		//g_GameState.previous_kill = num_of_marks;
@@ -152,19 +156,95 @@ namespace game
 		num_of_marks = 0;
 	}
 	
+	bool GameLogicSystem::moves_left ()
+	{
+		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+		{
+			int currtype = -1;
+			for (int col = 0; col < BOARD_NUM_COLS; col ++)
+			{
+				Entity *e = _map[col][row];
+				if (!e)
+				{	
+					currtype = -1;
+					continue;
+				}
+
+				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				if (currtype == -1)
+				{
+					currtype = gbe->type;
+				}
+				else
+				{
+					if (gbe->type == currtype)
+						return true;
+					else
+						currtype = gbe->type;
+				}
+			}
+		}
+
+		for (int col = 0; col < BOARD_NUM_COLS; col ++)
+		{
+			int currtype = -1;
+			for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+			{
+				Entity *e = _map[col][row];
+				if (!e)
+				{	
+					currtype = -1;
+					continue;
+				}
+				
+				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				if (currtype == -1)
+				{
+					currtype = gbe->type;
+				}
+				else
+				{
+					if (gbe->type == currtype)
+						return true;
+					else
+						currtype = gbe->type;
+				}
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	void GameLogicSystem::update_map ()
+	{
+		memset(_map,0x00,BOARD_NUM_COLS*BOARD_NUM_ROWS*sizeof(Entity*));
+		
+		std::vector<Entity*>::const_iterator it = _entities.begin();
+		Entity *_current_entity = NULL;
+		GameBoardElement *_current_gbe = NULL;
+		while (it != _entities.end())
+		{
+			_current_entity = *it;
+			++it;
+			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+			
+			//if ((_current_gbe->state == GBE_STATE_IDLE))
+			_map[_current_gbe->col][_current_gbe->row] = _current_entity;
+		}
+	}
+	
 	void GameLogicSystem::mark_chain ()
 	{
 		vector2D v = InputDevice::sharedInstance()->touchLocation();
 		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
 		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
 		
-		std::vector<Entity*> entities;
-		_entityManager->getEntitiesPossessingComponents(entities, GameBoardElement::COMPONENT_ID, Position::COMPONENT_ID, ARGLIST_END );
-		std::vector<Entity*>::const_iterator it = entities.begin();
+		std::vector<Entity*>::const_iterator it = _entities.begin();
 		
 		Entity *current_entity = NULL;
 		GameBoardElement *current_gbe = NULL;
-		while (it != entities.end())
+		while (it != _entities.end())
 		{
 			current_entity = *it;
 			++it;
@@ -214,6 +294,10 @@ namespace game
 		_delta = delta;
 		g_GameState.killed_last_frame = 0;
 		
+		_entities.clear();
+		_entityManager->getEntitiesPossessingComponents(_entities, GameBoardElement::COMPONENT_ID, Position::COMPONENT_ID, ARGLIST_END );
+
+		
 		bool touch = InputDevice::sharedInstance()->isTouchActive();
 		if (touch)
 		{
@@ -229,6 +313,24 @@ namespace game
 		if (InputDevice::sharedInstance()->touchUpReceived())
 		{
 			handle_chain();
+		}
+		
+		if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		{
+			update_map();
+			if (!moves_left())
+			{
+				g_GameState.next_state = GAME_STATE_GAMEOVER;
+				
+				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
+				
+				int bonus = ((BOARD_NUM_COLS * BOARD_NUM_ROWS) -  g_GameState.fruits_on_board) * 4;
+				bonus *= (bonus * 1.5);
+				
+				printf("bonus score = %i\n", bonus);
+				
+				g_GameState.score += bonus;
+			}
 		}
 	}
 }

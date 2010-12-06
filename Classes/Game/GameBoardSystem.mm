@@ -143,6 +143,7 @@ namespace game
 			if (!_map[col][BOARD_NUM_ROWS-2])
 			{
 				make_fruit(rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
+				g_GameState.fruits_on_board ++;
 			}
 		}
 	}
