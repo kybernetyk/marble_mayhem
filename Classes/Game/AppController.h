@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface AppController : NSObject 
 {
 	UIView *mainView;
@@ -24,5 +23,6 @@
 - (IBAction) showPauseMenu: (id) sender;
 - (IBAction) hidePauseMenu: (id) sender;
 - (IBAction) returnToMainMenu: (id) sender;
+- (IBAction) showHighScores: (id) sender;
 
 @end

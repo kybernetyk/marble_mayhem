@@ -9,6 +9,7 @@
 #import "AppController.h"
 #include "Game.h"
 #include "globals.h"
+#import "GameCenterManager.h"
 
 @implementation AppController
 @synthesize mainMenuView;
@@ -32,11 +33,16 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	
+	NSLog(@"app controller sagt bai!");
+	
 	[super dealloc];
 }
 
 - (void) setup
 {
+	NSLog(@"appcontroller setup: %@", self);
+	
+	
 	[self showMainMenu: nil];
 }
 
@@ -82,4 +88,11 @@
 	game::g_pGame->startNewGame();
 }
 
+- (void) showHighScores:(id)sender
+{
+	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+	[dc postNotificationName: @"ShowGameCenterLeaderBoard" object: nil];
+
+	
+}
 @end

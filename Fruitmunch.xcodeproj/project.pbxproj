@@ -10,6 +10,7 @@
 		030625F412A9022700325249 /* MainViewController_fmunch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030625F312A9022700325249 /* MainViewController_fmunch.xib */; };
 		0306261612A9058400325249 /* MenuScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0306261512A9058400325249 /* MenuScene.mm */; };
 		032A14B512ABEDD10046B89E /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 032A14B412ABEDD10046B89E /* GameCenterManager.m */; };
+		032A173D12AC56000046B89E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032A173C12AC56000046B89E /* GameKit.framework */; };
 		033FEC9E12A9098A00C5A94C /* Component.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1212A9098A00C5A94C /* Component.mm */; };
 		033FEC9F12A9098A00C5A94C /* Entity.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1612A9098A00C5A94C /* Entity.mm */; };
 		033FECA012A9098A00C5A94C /* EntityManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 033FEC1912A9098A00C5A94C /* EntityManager.mm */; };
@@ -124,6 +125,7 @@
 		0306261512A9058400325249 /* MenuScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScene.mm; sourceTree = "<group>"; };
 		032A14B312ABEDD10046B89E /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
 		032A14B412ABEDD10046B89E /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		032A173C12AC56000046B89E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		033FEC1112A9098A00C5A94C /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
 		033FEC1212A9098A00C5A94C /* Component.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Component.mm; sourceTree = "<group>"; };
 		033FEC1312A9098A00C5A94C /* ComponentV3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentV3.h; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				0399695612A824CA00D0C56D /* QuartzCore.framework in Frameworks */,
 				0399695712A824CA00D0C56D /* libz.dylib in Frameworks */,
 				0399695812A824CA00D0C56D /* AudioToolbox.framework in Frameworks */,
+				032A173D12AC56000046B89E /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +910,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				032A173C12AC56000046B89E /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

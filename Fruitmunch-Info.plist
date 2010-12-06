@@ -13,7 +13,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Icon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.minyxgames.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.minyxgames.fruitmunch</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

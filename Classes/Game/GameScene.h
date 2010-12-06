@@ -43,6 +43,8 @@ namespace game
 		
 		~GameScene ();
 		
+		void saveHiScore ();
+		
 	protected:
 		EntityManager *_entityManager;
 		RenderSystem *_renderSystem;

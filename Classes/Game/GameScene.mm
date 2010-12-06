@@ -26,6 +26,8 @@
 
 #import "Fruit.h"
 
+#import "GameCenterManager.h"
+
 bool spawn_one = false;
 bool spawn_player = false;
 
@@ -186,6 +188,8 @@ namespace game
 				SoundSystem::make_new_sound (SFX_GAME_OVER);
 				_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->show_prep_label();
+				
+				saveHiScore();
 
 			}
 			
@@ -295,5 +299,26 @@ namespace game
 		
 	}
 	
+	void GameScene::saveHiScore ()
+	{
+#ifdef USE_GAMECENTER
+		NSString *strs[] = 
+		{
+			NULL,
+			@"com.minyxgames.fruitmunch.timed",
+			NULL,
+			NULL
+		};
+		
+		NSString *cat = strs[g_GameState.game_mode];
+		
+		if (cat)
+		{	
+			[g_pGameCenterManger reportScore: g_GameState.score 
+								 forCategory: cat];
+		}
+		
+#endif
+	}
 
 }

@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="4"/>
 			<integer value="24"/>
+			<integer value="4"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -148,7 +148,7 @@
 					<object class="IBUIButton" id="84782540">
 						<reference key="NSNextResponder" ref="642695982"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{85, 330}, {151, 37}}</string>
+						<string key="NSFrame">{{85, 370}, {151, 37}}</string>
 						<reference key="NSSuperview" ref="642695982"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -167,7 +167,7 @@
 					<object class="IBUIButton" id="683438702">
 						<reference key="NSNextResponder" ref="642695982"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{84, 285}, {152, 37}}</string>
+						<string key="NSFrame">{{84, 325}, {152, 37}}</string>
 						<reference key="NSSuperview" ref="642695982"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -223,6 +223,25 @@
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="707933274"/>
 					</object>
+					<object class="IBUIButton" id="907734518">
+						<reference key="NSNextResponder" ref="642695982"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{84, 252}, {152, 37}}</string>
+						<reference key="NSSuperview" ref="642695982"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="1057233103"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Hi Scores</string>
+						<reference key="IBUIHighlightedTitleColor" ref="463655769"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="707933274"/>
+					</object>
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
@@ -233,7 +252,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="513775890">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -242,7 +261,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{127, 29}, {66, 21}}</string>
 						<reference key="NSSuperview" ref="513775890"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -259,7 +277,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{84, 95}, {152, 37}}</string>
 						<reference key="NSSuperview" ref="513775890"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -279,7 +296,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{83, 140}, {152, 37}}</string>
 						<reference key="NSSuperview" ref="513775890"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -296,8 +312,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAwLjAzMjU0MTgxMTQ3IDAAA</bytes>
@@ -410,6 +424,15 @@
 					</object>
 					<int key="connectionID">48</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showHighScores:</string>
+						<reference key="source" ref="907734518"/>
+						<reference key="destination" ref="679031114"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -466,6 +489,7 @@
 							<reference ref="801944331"/>
 							<reference ref="84782540"/>
 							<reference ref="683438702"/>
+							<reference ref="907734518"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Menu View</string>
@@ -532,6 +556,11 @@
 						<reference key="object" ref="801944331"/>
 						<reference key="parent" ref="642695982"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">50</int>
+						<reference key="object" ref="907734518"/>
+						<reference key="parent" ref="642695982"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -571,6 +600,7 @@
 					<string>45.IBViewBoundsToFrameTransform</string>
 					<string>47.IBPluginDependency</string>
 					<string>47.IBViewBoundsToFrameTransform</string>
+					<string>50.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -595,11 +625,11 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCjgAAw7KAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCqgAAw7aAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCjAAAw5wAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCqAAAw6AAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -629,6 +659,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABChAAAw3AAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -647,7 +678,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -661,11 +692,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>hidePauseMenu:</string>
 							<string>returnToMainMenu:</string>
+							<string>showHighScores:</string>
 							<string>showPauseMenu:</string>
 							<string>startGame:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -678,6 +711,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>hidePauseMenu:</string>
 							<string>returnToMainMenu:</string>
+							<string>showHighScores:</string>
 							<string>showPauseMenu:</string>
 							<string>startGame:</string>
 						</object>
@@ -689,6 +723,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">returnToMainMenu:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showHighScores:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
