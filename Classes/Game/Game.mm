@@ -44,14 +44,9 @@ namespace game
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"timed.mp3"];
 	
 		g_TextureManager.accquireTexture ("back.png");
-		g_TextureManager.accquireTexture ("banana40.png");
-		g_TextureManager.accquireTexture ("bug40.png");
 		g_TextureManager.accquireTexture ("clock.png");
-		g_TextureManager.accquireTexture ("grapes40.png");
-		g_TextureManager.accquireTexture ("strawberry.png");
-		g_TextureManager.accquireTexture ("bug40.png");
-		g_TextureManager.accquireTexture ("orange40.png");
 		g_TextureManager.accquireTexture ("pause.png");
+		g_TextureManager.accquireTexture ("fruits.png");
 		g_TextureManager.accquireTexture ("zomg.png");
 		
 		for (int i = 0; i < NUM_SOUNDS; i++)

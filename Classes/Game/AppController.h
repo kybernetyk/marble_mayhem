@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define kInAppFullGame @"com.minyxgames.fruitmunch.1"
+
 @interface AppController : NSObject 
 {
 	UIView *mainView;
@@ -24,5 +26,7 @@
 - (IBAction) hidePauseMenu: (id) sender;
 - (IBAction) returnToMainMenu: (id) sender;
 - (IBAction) showHighScores: (id) sender;
+
+- (IBAction) showInAppStore: (id) sender;
 
 @end

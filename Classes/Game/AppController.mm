@@ -10,11 +10,21 @@
 #include "Game.h"
 #include "globals.h"
 #import "GameCenterManager.h"
+#import "MKStoreManager.h"
 
 @implementation AppController
 @synthesize mainMenuView;
 @synthesize mainView;
 @synthesize pauseView;
+
+- (NSSet *) inAppProductIDs
+{
+	NSSet *iap = [NSSet setWithObjects:
+				  kInAppFullGame,
+				  nil];
+	
+	return iap;	
+}
 
 - (id) init
 {
@@ -41,7 +51,6 @@
 - (void) setup
 {
 	NSLog(@"appcontroller setup: %@", self);
-	
 	
 	[self showMainMenu: nil];
 }
@@ -82,17 +91,49 @@
 
 - (IBAction) startGame: (id) sender
 {
-	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-	[dc postNotificationName: @"HideMainMenu" object: nil];
-	g_GameState.game_mode = [sender tag];
-	game::g_pGame->startNewGame();
+	if (![MKStoreManager isFeaturePurchased: kInAppFullGame] && [sender tag] != GAME_MODE_TIMED)
+	{
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: @"Unlock the full game!" 
+															message: @"This game mode is not accessible until unlocked in the store. Open the store?" 
+														   delegate: self 
+												  cancelButtonTitle: @"No." 
+												  otherButtonTitles: @"Yes!", nil];
+		
+		[alertView show];
+		[alertView autorelease]; 
+		
+	}
+	else
+	{
+		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+		[dc postNotificationName: @"HideMainMenu" object: nil];
+		
+		
+		g_GameState.game_mode = [sender tag];
+		game::g_pGame->startNewGame();
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	NSLog(@"omg der buttonen indexen: %i, %@", buttonIndex,	[alertView buttonTitleAtIndex: buttonIndex]);
+	if (buttonIndex == 1)
+	{
+		[self showInAppStore: self];
+	}
 }
 
 - (void) showHighScores:(id)sender
 {
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	[dc postNotificationName: @"ShowGameCenterLeaderBoard" object: nil];
-
-	
 }
+
+- (void) showInAppStore: (id) sender
+{
+	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+	[dc postNotificationName: @"ShowInAppStore" object: nil];
+
+}
+
 @end

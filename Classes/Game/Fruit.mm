@@ -15,26 +15,19 @@
 using namespace mx3;
 namespace game 
 {
-	std::string fruit_filenames[] = {
-		"orange40.png",
-		"strawberry.png",
-		"banana40.png",
-		"grapes40.png"
-	};
-	
-	
 	
 	Entity *make_fruit (int fruit_type, int col, int row)
 	{
 		EntityManager *em = Entity::entityManager;
 		Entity *e = em->createNewEntity();
 
-		std::string fruit_filename = fruit_filenames[fruit_type];
+		std::string filename = "fruits.png";
 		
-		Sprite *sprite = em->addComponent <Sprite> (e);
-		sprite->quad = g_RenderableManager.accquireTexturedQuad(fruit_filename);
-		//sprite->anchorPoint = vector2D_make(0.0, 0.0);
-		sprite->z = 1.0;
+		AtlasSprite *as = em->addComponent<AtlasSprite>(e);
+		as->atlas_quad = g_RenderableManager.accquireTexturedAtlasQuad(filename);
+		as->src = rect_make(fruit_type*53, 0, 53, 53);
+		as->z = 3;
+		
 		
 		Position *pos = em->addComponent <Position> (e);
 		pos->x = BOARD_X_OFFSET + col * TILESIZE_X;
