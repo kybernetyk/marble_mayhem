@@ -158,6 +158,7 @@ namespace game
 	
 	bool GameLogicSystem::moves_left ()
 	{
+		//vertical
 		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
 		{
 			int currtype = -1;
@@ -169,8 +170,13 @@ namespace game
 					currtype = -1;
 					continue;
 				}
-
 				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+
+				//if there are any fruits in movement return true and do 
+				//a real check only if they are all idle
+				if (gbe->state != GBE_STATE_IDLE || gbe->moving_sideways)
+					return true;
+				
 				if (currtype == -1)
 				{
 					currtype = gbe->type;
@@ -185,6 +191,7 @@ namespace game
 			}
 		}
 
+		//horizontal
 		for (int col = 0; col < BOARD_NUM_COLS; col ++)
 		{
 			int currtype = -1;
@@ -198,6 +205,9 @@ namespace game
 				}
 				
 				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				if (gbe->state != GBE_STATE_IDLE || gbe->moving_sideways)
+					return true;
+
 				if (currtype == -1)
 				{
 					currtype = gbe->type;
