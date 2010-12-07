@@ -26,7 +26,6 @@
 - (IBAction) hidePauseMenu: (id) sender;
 - (IBAction) returnToMainMenu: (id) sender;
 - (IBAction) showHighScores: (id) sender;
-
 - (IBAction) showInAppStore: (id) sender;
-
+- (IBAction) showPromotion: (id) sender;
 @end

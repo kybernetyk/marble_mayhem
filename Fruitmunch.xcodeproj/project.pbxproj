@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		030625F412A9022700325249 /* MainViewController_fmunch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030625F312A9022700325249 /* MainViewController_fmunch.xib */; };
 		0306261612A9058400325249 /* MenuScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0306261512A9058400325249 /* MenuScene.mm */; };
+		030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */; };
+		030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */; };
+		030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDAA712AEEA0D008BC5CF /* promo_head.png */; };
 		03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03109E8B12AD4667008B6DF7 /* StoreKit.framework */; };
 		0310A0C712AD64FB008B6DF7 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C112AD64FB008B6DF7 /* orange.png */; };
 		0310A0C812AD64FB008B6DF7 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C212AD64FB008B6DF7 /* apple.png */; };
@@ -148,6 +151,10 @@
 		030625F312A9022700325249 /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_fmunch.xib; path = ../../Resources/MainViewController_fmunch.xib; sourceTree = "<group>"; };
 		0306261412A9058400325249 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		0306261512A9058400325249 /* MenuScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScene.mm; sourceTree = "<group>"; };
+		030BDA7F12AEE7D4008BC5CF /* PromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionViewController.h; sourceTree = "<group>"; };
+		030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
+		030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
+		030BDAA712AEEA0D008BC5CF /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
 		03109E8B12AD4667008B6DF7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0310A0C112AD64FB008B6DF7 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		0310A0C212AD64FB008B6DF7 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -402,6 +409,17 @@
 			name = MenuScene;
 			sourceTree = "<group>";
 		};
+		030BDA7E12AEE7D4008BC5CF /* PromotionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				030BDAA712AEEA0D008BC5CF /* promo_head.png */,
+				030BDA7F12AEE7D4008BC5CF /* PromotionViewController.h */,
+				030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */,
+				030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */,
+			);
+			path = PromotionViewController;
+			sourceTree = "<group>";
+		};
 		034E0CEE12AED89900CD8EFB /* ComponentV3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +597,7 @@
 		034E0D2D12AED89A00CD8EFB /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				030BDA7E12AEE7D4008BC5CF /* PromotionViewController */,
 				034E0D2E12AED89A00CD8EFB /* EAGLView.h */,
 				034E0D2F12AED89A00CD8EFB /* EAGLView.mm */,
 				034E0D3012AED89A00CD8EFB /* Facebook Sumbit Controller */,
@@ -1131,6 +1150,8 @@
 				034E0DB612AED89A00CD8EFB /* MinyxStoreDetailViewController.xib in Resources */,
 				034E0DB812AED89A00CD8EFB /* MinyxStoreViewController.xib in Resources */,
 				034E0DB912AED89A00CD8EFB /* moneyyy.jpg in Resources */,
+				030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */,
+				030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1227,7 @@
 				034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */,
 				034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */,
 				034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */,
+				030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

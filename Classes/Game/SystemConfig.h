@@ -25,6 +25,9 @@
 #define USE_GAMECENTER
 #define USE_INAPPSTORE
 
+#define USE_PROMOTION
+#define PROMOTION_URL @"http://dl.dropbox.com/u/8724227/inapp_promotion/promotion_portrait.html"
+
 #define MAX_REGISTERED_SOUNDS 32
 
 #define PORTRAIT 0x01

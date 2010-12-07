@@ -137,6 +137,12 @@
 
 }
 
+- (void) showPromotion:(id)sender
+{
+	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+	[dc postNotificationName: @"ShowPromotionView" object: nil];
+}
+
 #pragma mark -
 #pragma mark in app datasource
 - (NSString *) imageNameForProductID: (NSString *) productID
