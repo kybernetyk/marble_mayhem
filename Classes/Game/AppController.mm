@@ -119,7 +119,8 @@
 	NSLog(@"omg der buttonen indexen: %i, %@", buttonIndex,	[alertView buttonTitleAtIndex: buttonIndex]);
 	if (buttonIndex == 1)
 	{
-		[self showInAppStore: self];
+		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+		[dc postNotificationName: @"ShowInAppStore" object: kInAppFullGame];
 	}
 }
 
@@ -134,6 +135,13 @@
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	[dc postNotificationName: @"ShowInAppStore" object: nil];
 
+}
+
+#pragma mark -
+#pragma mark in app datasource
+- (NSString *) imageNameForProductID: (NSString *) productID
+{
+	return @"orange.png";
 }
 
 @end
