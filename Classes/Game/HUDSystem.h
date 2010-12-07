@@ -33,7 +33,7 @@ namespace game
 		Entity *fps_label;
 		Entity *time_label;
 		Entity *score_label;
-		OGLFont *font;
+		ResourceHandle font_handle;
 		
 		Entity *prep_label;
 		

@@ -24,7 +24,7 @@ namespace game
 		std::string filename = "fruits.png";
 		
 		AtlasSprite *as = em->addComponent<AtlasSprite>(e);
-		as->atlas_quad = g_RenderableManager.accquireTexturedAtlasQuad(filename);
+		as->res_handle = g_RenderableManager.acquireResource <TexturedAtlasQuad> (filename);
 		as->src = rect_make(fruit_type*53, 0, 53, 53);
 		as->z = 3;
 		

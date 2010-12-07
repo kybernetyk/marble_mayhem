@@ -27,7 +27,7 @@ namespace game
 		position->scale_x = position->scale_y = 0.5;
 		
 		TextLabel *label = _entityManager->addComponent<TextLabel> (e);
-		label->ogl_font = g_RenderableManager.accquireOGLFont(fontname);
+		label->res_handle = g_RenderableManager.acquireResource <OGLFont>(fontname);
 		label->anchorPoint = anchor;
 		label->text = "a label";
 		label->z = 6.0;
@@ -40,7 +40,7 @@ namespace game
 	{
 		_entityManager = entityManager;
 
-		font = g_RenderableManager.accquireOGLFont("zomg.fnt");
+		font_handle = g_RenderableManager.acquireResource <OGLFont> ("zomg.fnt");
 		
 		//fps label
 		fps_label = _entityManager->createNewEntity();
@@ -50,7 +50,7 @@ namespace game
 		fps_label->get<Position>()->y = SCREEN_H;
 		fps_label->get<Position>()->scale_x = 		fps_label->get<Position>()->scale_y =  0.5;
 		TextLabel *label = _entityManager->addComponent<TextLabel> (fps_label);
-		label->ogl_font = font;
+		label->res_handle = font_handle;
 		label->anchorPoint = vector2D_make(0.0, 1.0);
 		label->text = "FPS: 0";
 		label->z = 6.0;
@@ -71,7 +71,7 @@ namespace game
 			pos->y = 28.0;
 			
 			Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
-			sprite->quad = g_RenderableManager.accquireTexturedQuad("clock.png");
+			sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad>("clock.png");
 			sprite->z = 6.0;
 			
 			sprintf(s, "%.2f", g_GameState.time_left);
