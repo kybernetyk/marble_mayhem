@@ -153,7 +153,7 @@
 #pragma mark in app datasource
 - (NSString *) imageNameForProductID: (NSString *) productID
 {
-	return @"orange.png";
+	return @"full_game_screen.png";
 }
 
 @end

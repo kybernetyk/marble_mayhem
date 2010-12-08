@@ -17,6 +17,8 @@
 		030BDCF912B00DB8008BC5CF /* moneyyy2.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDCF712B00DB8008BC5CF /* moneyyy2.png */; };
 		030BDD3412B0140E008BC5CF /* shop_backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDD3312B0140E008BC5CF /* shop_backdrop.png */; };
 		030BDD6B12B01AA8008BC5CF /* buy_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDD6A12B01AA8008BC5CF /* buy_button.png */; };
+		030BDDB712B02693008BC5CF /* full_game_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDDB612B02693008BC5CF /* full_game_screen.png */; };
+		030BDDF912B02F27008BC5CF /* minyx_rubel.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDDF812B02F27008BC5CF /* minyx_rubel.png */; };
 		03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03109E8B12AD4667008B6DF7 /* StoreKit.framework */; };
 		0310A0C712AD64FB008B6DF7 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C112AD64FB008B6DF7 /* orange.png */; };
 		0310A0C812AD64FB008B6DF7 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C212AD64FB008B6DF7 /* apple.png */; };
@@ -166,6 +168,8 @@
 		030BDCF712B00DB8008BC5CF /* moneyyy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moneyyy2.png; sourceTree = "<group>"; };
 		030BDD3312B0140E008BC5CF /* shop_backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop_backdrop.png; sourceTree = "<group>"; };
 		030BDD6A12B01AA8008BC5CF /* buy_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_button.png; sourceTree = "<group>"; };
+		030BDDB612B02693008BC5CF /* full_game_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_game_screen.png; sourceTree = "<group>"; };
+		030BDDF812B02F27008BC5CF /* minyx_rubel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_rubel.png; sourceTree = "<group>"; };
 		03109E8B12AD4667008B6DF7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0310A0C112AD64FB008B6DF7 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		0310A0C212AD64FB008B6DF7 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -689,6 +693,7 @@
 		034E0D5512AED89A00CD8EFB /* Minyx Store */ = {
 			isa = PBXGroup;
 			children = (
+				030BDDF812B02F27008BC5CF /* minyx_rubel.png */,
 				030BDCF612B00DB8008BC5CF /* moneyyy.png */,
 				030BDCF712B00DB8008BC5CF /* moneyyy2.png */,
 				034E0D5612AED89A00CD8EFB /* DetailViewController */,
@@ -844,6 +849,7 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				030BDDB612B02693008BC5CF /* full_game_screen.png */,
 				03275A2C12AD7B1000B4CF98 /* fuck5.mp3 */,
 				03275A2D12AD7B1000B4CF98 /* fuck4.mp3 */,
 				03275A2E12AD7B1000B4CF98 /* fuck3.mp3 */,
@@ -1171,6 +1177,8 @@
 				030BDCF912B00DB8008BC5CF /* moneyyy2.png in Resources */,
 				030BDD3412B0140E008BC5CF /* shop_backdrop.png in Resources */,
 				030BDD6B12B01AA8008BC5CF /* buy_button.png in Resources */,
+				030BDDB712B02693008BC5CF /* full_game_screen.png in Resources */,
+				030BDDF912B02F27008BC5CF /* minyx_rubel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
