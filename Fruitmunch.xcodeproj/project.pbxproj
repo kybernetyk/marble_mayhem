@@ -12,6 +12,7 @@
 		030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */; };
 		030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */; };
 		030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDAA712AEEA0D008BC5CF /* promo_head.png */; };
+		030BDC8512AF01A0008BC5CF /* moneyyy.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDC8412AF01A0008BC5CF /* moneyyy.png */; };
 		03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03109E8B12AD4667008B6DF7 /* StoreKit.framework */; };
 		0310A0C712AD64FB008B6DF7 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C112AD64FB008B6DF7 /* orange.png */; };
 		0310A0C812AD64FB008B6DF7 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C212AD64FB008B6DF7 /* apple.png */; };
@@ -155,6 +156,7 @@
 		030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
 		030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
 		030BDAA712AEEA0D008BC5CF /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
+		030BDC8412AF01A0008BC5CF /* moneyyy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moneyyy.png; sourceTree = "<group>"; };
 		03109E8B12AD4667008B6DF7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0310A0C112AD64FB008B6DF7 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		0310A0C212AD64FB008B6DF7 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 		034E0D5512AED89A00CD8EFB /* Minyx Store */ = {
 			isa = PBXGroup;
 			children = (
+				030BDC8412AF01A0008BC5CF /* moneyyy.png */,
 				034E0D5612AED89A00CD8EFB /* DetailViewController */,
 				034E0D5A12AED89A00CD8EFB /* MinyxStoreViewController.h */,
 				034E0D5B12AED89A00CD8EFB /* MinyxStoreViewController.m */,
@@ -1152,6 +1155,7 @@
 				034E0DB912AED89A00CD8EFB /* moneyyy.jpg in Resources */,
 				030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */,
 				030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */,
+				030BDC8512AF01A0008BC5CF /* moneyyy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
