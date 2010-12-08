@@ -11,6 +11,7 @@
 #include "globals.h"
 #import "GameCenterManager.h"
 #import "MKStoreManager.h"
+#include "NotificationSystem.h"
 
 @implementation AppController
 @synthesize mainMenuView;
@@ -33,8 +34,8 @@
 	{
 		[self retain];
 		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-		[dc addObserver: self selector: @selector(showMainMenu:) name: @"ShowMainMenu" object: nil];
-		[dc addObserver: self selector: @selector(hideMainMenu:) name: @"HideMainMenu" object: nil];
+		[dc addObserver: self selector: @selector(showMainMenu:) name: kShowMainMenu object: nil];
+		[dc addObserver: self selector: @selector(hideMainMenu:) name: kHideMainMenu object: nil];
 	}
 	return self;
 }
@@ -105,9 +106,10 @@
 	}
 	else
 	{
-		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-		[dc postNotificationName: @"HideMainMenu" object: nil];
-		
+//		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//		[dc postNotificationName: kHideMainMenu object: nil];
+
+		post_notification(kHideMainMenu);
 		
 		g_GameState.game_mode = [sender tag];
 		game::g_pGame->startNewGame();
@@ -119,28 +121,32 @@
 	NSLog(@"omg der buttonen indexen: %i, %@", buttonIndex,	[alertView buttonTitleAtIndex: buttonIndex]);
 	if (buttonIndex == 1)
 	{
-		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-		[dc postNotificationName: @"ShowInAppStore" object: kInAppFullGame];
+//		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//		[dc postNotificationName: kShowInAppStore object: kInAppFullGame];
+		post_notification(kShowInAppStore, kInAppFullGame);
+
 	}
 }
 
 - (void) showHighScores:(id)sender
 {
-	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-	[dc postNotificationName: @"ShowGameCenterLeaderBoard" object: nil];
+//	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//	[dc postNotificationName: kShowLeaderBoard object: nil];
+	post_notification (kShowLeaderBoard);
 }
 
 - (void) showInAppStore: (id) sender
 {
-	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-	[dc postNotificationName: @"ShowInAppStore" object: nil];
-
+//	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//	[dc postNotificationName: kShowInAppStore object: nil];
+	post_notification (kShowInAppStore);
 }
 
 - (void) showPromotion:(id)sender
 {
-	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-	[dc postNotificationName: @"ShowPromotionView" object: nil];
+//	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+//	[dc postNotificationName: kShowPromotions object: nil];
+	post_notification (kShowPromotions);
 }
 
 #pragma mark -
