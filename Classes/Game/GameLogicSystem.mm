@@ -298,6 +298,25 @@ namespace game
 			}
 		}
 	}
+	
+	int GameLogicSystem::count_empty_cols ()
+	{
+		update_map ();
+		int ret = 0;
+		for (int col = 0; col < BOARD_NUM_COLS; col++)
+		{
+			int sum = 0;
+			for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+			{
+				if (_map[col][row])
+					sum ++;
+			}
+			if (sum <= 0)
+				ret++;
+		}
+		
+		return ret;
+	}
 
 	void GameLogicSystem::update (float delta)
 	{
@@ -330,6 +349,8 @@ namespace game
 			update_map();
 			if (!moves_left())
 			{
+				int cols_removed = count_empty_cols();
+				
 				g_GameState.next_state = GAME_STATE_GAMEOVER;
 				
 				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
@@ -339,7 +360,13 @@ namespace game
 				
 				printf("bonus score = %i\n", bonus);
 				
+				int col_bonus = (cols_removed * 10) * (cols_removed * 10) * (cols_removed * 10);
+				//col_bonus += (((float)col_bonus*0.2) * ((float)col_bonus*0.2));
+				
+				printf("removed col bonus = %i = %i\n", cols_removed, col_bonus);
+				
 				g_GameState.score += bonus;
+				g_GameState.score += col_bonus;
 			}
 		}
 	}

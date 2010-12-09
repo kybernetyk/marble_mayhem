@@ -232,13 +232,13 @@ namespace game
 				_current_gbe->fall_duration = 0.05;
 			else
 				_current_gbe->fall_duration = 0.20;
-			
+
 			if ((_current_gbe->state == GBE_STATE_IDLE))
 			{	
 				handle_state_idle();
 				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
 			}
-
+			
 			if (_current_gbe->state == GBE_STATE_MOVING_FALL)
 			{	
 				handle_state_falling ();
@@ -251,7 +251,31 @@ namespace game
 				_current_position->x = _current_gbe->col * TILESIZE_X + BOARD_X_OFFSET - TILESIZE_X + (_current_gbe->x_off);
 
 			}
+
+			if ((_current_gbe->state == GBE_STATE_IDLE))
+			{	
+				handle_state_idle();
+				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
+			}
 			
+		}
+		
+		update_map();
+
+		//urgs hack so puzzle mode will not go gameover before all stone in movement are accounted
+		it = _entities.begin();
+		while (it != _entities.end())
+		{
+			_current_entity = *it;
+			++it;
+			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+			_current_position = _entityManager->getComponent<Position>(_current_entity);
+
+			if ((_current_gbe->state == GBE_STATE_IDLE))
+			{	
+				handle_state_idle();
+				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
+			}
 		}
 		
 		refill_pause_timer += _delta;
