@@ -19,6 +19,7 @@
 		030BDD6B12B01AA8008BC5CF /* buy_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDD6A12B01AA8008BC5CF /* buy_button.png */; };
 		030BDDB712B02693008BC5CF /* full_game_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDDB612B02693008BC5CF /* full_game_screen.png */; };
 		030BDDF912B02F27008BC5CF /* minyx_rubel.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDDF812B02F27008BC5CF /* minyx_rubel.png */; };
+		030BDE8F12B045F8008BC5CF /* minyx_rubel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDE8E12B045F8008BC5CF /* minyx_rubel_2.png */; };
 		03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03109E8B12AD4667008B6DF7 /* StoreKit.framework */; };
 		0310A0C712AD64FB008B6DF7 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C112AD64FB008B6DF7 /* orange.png */; };
 		0310A0C812AD64FB008B6DF7 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 0310A0C212AD64FB008B6DF7 /* apple.png */; };
@@ -170,6 +171,7 @@
 		030BDD6A12B01AA8008BC5CF /* buy_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_button.png; sourceTree = "<group>"; };
 		030BDDB612B02693008BC5CF /* full_game_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_game_screen.png; sourceTree = "<group>"; };
 		030BDDF812B02F27008BC5CF /* minyx_rubel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_rubel.png; sourceTree = "<group>"; };
+		030BDE8E12B045F8008BC5CF /* minyx_rubel_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_rubel_2.png; sourceTree = "<group>"; };
 		03109E8B12AD4667008B6DF7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0310A0C112AD64FB008B6DF7 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		0310A0C212AD64FB008B6DF7 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		034E0D5512AED89A00CD8EFB /* Minyx Store */ = {
 			isa = PBXGroup;
 			children = (
+				030BDE8E12B045F8008BC5CF /* minyx_rubel_2.png */,
 				030BDDF812B02F27008BC5CF /* minyx_rubel.png */,
 				030BDCF612B00DB8008BC5CF /* moneyyy.png */,
 				030BDCF712B00DB8008BC5CF /* moneyyy2.png */,
@@ -1179,6 +1182,7 @@
 				030BDD6B12B01AA8008BC5CF /* buy_button.png in Resources */,
 				030BDDB712B02693008BC5CF /* full_game_screen.png in Resources */,
 				030BDDF912B02F27008BC5CF /* minyx_rubel.png in Resources */,
+				030BDE8F12B045F8008BC5CF /* minyx_rubel_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,11 +1329,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaroslaw Szpilewski (4M65AH57PH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE2D2884-90BB-4961-9234-14481A2D911D";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
