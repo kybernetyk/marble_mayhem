@@ -23,6 +23,7 @@ namespace game
 		void render ();
 		
 		void frameDone ();
+		void reset ();
 		
 		~MenuScene();
 	};

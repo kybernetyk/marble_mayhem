@@ -25,6 +25,8 @@ namespace game
 		void show_prep_label ();
 		void set_prep_text (const char *text);
 		void hide_prep_label ();
+		
+		void reset ();
 	protected:
 		EntityManager *_entityManager;
 

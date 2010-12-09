@@ -30,6 +30,7 @@ namespace game
 		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
 		void update_map ();
 		int count_empty_cols ();
+		void reset ();
 		
 	protected:
 		std::vector<Entity*> _entities;

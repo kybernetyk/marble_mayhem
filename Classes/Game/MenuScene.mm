@@ -44,7 +44,10 @@ namespace game
 	{
 		
 	}
-
+	void MenuScene::reset ()
+	{
+		
+	}
 	MenuScene::~MenuScene()
 	{
 		

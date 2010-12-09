@@ -17,11 +17,6 @@ namespace game
 #pragma mark -
 #pragma mark game 
 
-#define FRUIT_ORANGE 0x00
-#define FRUIT_LEMON 0x01
-#define FRUIT_BANANA 0x02
-#define FRUIT_GRAPES 0x03
-	
 #define NUM_OF_FRUITS 4
 	
 #define GBE_STATE_IDLE 0
@@ -60,7 +55,7 @@ namespace game
 		{
 			_id = COMPONENT_ID;
 			prev_row = prev_col = row = col = 0;
-			type = FRUIT_ORANGE;
+			type = 0;
 			prev_state = state = GBE_STATE_IDLE;
 			y_off = 0.0;
 			y_move_timer = 0.0;
@@ -77,5 +72,19 @@ namespace game
 		DEBUGINFO ("Game Board Element. state = %i, landed = %i\n",  state, landed)
 	};
 	
+	struct Star : public Component
+	{
+		static ComponentID COMPONENT_ID;
+
+		float fall_speed;
+		
+		Star ()
+		{
+			_id = COMPONENT_ID;
+			fall_speed = 0.0;
+		}
+		
+		DEBUGINFO ("Star")
+	};
 	
 }

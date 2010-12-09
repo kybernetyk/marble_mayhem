@@ -43,11 +43,23 @@ namespace game
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"endless.mp3"];
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"timed.mp3"];
 	
-		g_TextureManager.accquireTexture ("back.png");
+		g_TextureManager.accquireTexture ("amatuer_back.png");
+		g_TextureManager.accquireTexture ("holzpanel.png");
 		g_TextureManager.accquireTexture ("clock.png");
 		g_TextureManager.accquireTexture ("pause.png");
 		g_TextureManager.accquireTexture ("fruits.png");
 		g_TextureManager.accquireTexture ("zomg.png");
+		
+		
+		g_TextureManager.accquireTexture ("star1.png"); 
+		g_TextureManager.accquireTexture ("star2.png"); 
+		g_TextureManager.accquireTexture ("star3.png"); 
+		g_TextureManager.accquireTexture ("star4.png"); 
+		g_TextureManager.accquireTexture ("star5.png"); 
+		g_TextureManager.accquireTexture ("star6.png"); 
+		g_TextureManager.accquireTexture ("star7.png"); 
+		g_TextureManager.accquireTexture ("star8.png"); 
+		g_TextureManager.accquireTexture ("star9.png"); 
 		
 		for (int i = 0; i < NUM_SOUNDS; i++)
 		{
@@ -163,6 +175,11 @@ namespace game
 			game::timer.update();
 			game::timer.update();
 		}
+	}
+	
+	void Game::resetCurrentScene ()
+	{
+		current_scene->reset();
 	}
 	
 	#pragma mark -

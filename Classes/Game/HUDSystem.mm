@@ -78,16 +78,22 @@ namespace game
 			time_label->get<TextLabel>()->text = s;
 		}
 		
-		prep_label = make_new_label ("zomg.fnt", vector2D_make( SCREEN_W+200, SCREEN_H/2+20), vector2D_make(0.5,0.5));
+		prep_label = make_new_label ("zomg.fnt", vector2D_make( SCREEN_W+200, SCREEN_H/2+40), vector2D_make(0.5,0.5));
 		prep_label->get<Position>()->scale_x = 1.0;
 		prep_label->get<Position>()->scale_y = 1.0;
 		prep_label->get<TextLabel>()->text = "Plankton!";
-
+		
 		last_time = g_GameState.time_left;
 		last_score = g_GameState.score;
 		score_init_diff = 0;
 		
 		
+	}
+	
+	void HUDSystem::reset ()
+	{
+		prep_label->get<Position>()->x = SCREEN_W+200;
+		prep_label->get<Position>()->y = SCREEN_H/2+40;
 	}
 
 	Action *flyin_and_shake_action ()
@@ -95,7 +101,7 @@ namespace game
 		MoveToAction *actn = new MoveToAction();
 		actn->duration = 0.3;
 		actn->x = SCREEN_W/2-10;
-		actn->y = SCREEN_H/2+20;
+		actn->y = SCREEN_H/2+40;
 		
 		Action *prev_actn = actn;
 		int max = 10;
@@ -122,7 +128,7 @@ namespace game
 		MoveToAction *actn = new MoveToAction();
 		actn->duration = 0.3;
 		actn->x = -SCREEN_W;
-		actn->y = SCREEN_H/2+20;
+		actn->y = SCREEN_H/2+40;
 		
 /*		MoveByAction *mb = new MoveByAction();
 		mb->x = 0.0;
@@ -139,7 +145,7 @@ namespace game
 		
 		MoveToAction *mb3 = new MoveToAction();
 		mb3->x = SCREEN_W+200;
-		mb3->y = SCREEN_H/2+20;
+		mb3->y = SCREEN_H/2+40;
 		mb3->duration = 0.0;
 //		mb2->on_complete_action = mb3;
 		actn->on_complete_action = mb3;

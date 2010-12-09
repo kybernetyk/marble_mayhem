@@ -21,7 +21,7 @@
 #include "SoundSystem.h"
 #include "AnimationSystem.h"
 #include "GameBoardSystem.h"
-
+#include "StarSystem.h"
 #include "Scene.h"
 
 using namespace mx3;
@@ -45,6 +45,8 @@ namespace game
 		
 		void saveHiScore ();
 		
+		void reset ();
+		
 	protected:
 		EntityManager *_entityManager;
 		RenderSystem *_renderSystem;
@@ -60,7 +62,8 @@ namespace game
 		PlayerControlledSystem *_playerControlledSystem;
 		GameLogicSystem *_gameLogicSystem;
 		GameBoardSystem *_gameBoardSystem;
-
+		StarSystem *_starSystem;
+		
 		float prep_timer;
 		bool go_played;
 		int preptmp;

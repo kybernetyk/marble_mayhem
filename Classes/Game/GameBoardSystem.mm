@@ -17,9 +17,30 @@ namespace game
 	GameBoardSystem::GameBoardSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
+		reset();
+	}
+	
+	void GameBoardSystem::reset ()
+	{
 		memset(_map,0x00,BOARD_NUM_COLS*BOARD_NUM_ROWS*sizeof(Entity*));
 		refill_pause_time_between_rows = 0.0;
 		refill_pause_timer = 0.0;
+		fruit_alternator = 0;
+		
+		_entities.clear();
+		_entityManager->getEntitiesPossessingComponents(_entities,  GameBoardElement::COMPONENT_ID, ARGLIST_END );
+		
+		std::vector<Entity*>::const_iterator it = _entities.begin();
+		_current_entity = NULL;
+		_current_gbe = NULL;
+		while (it != _entities.end())
+		{
+			_current_entity = *it;
+			++it;
+			
+			//_entityManager->removeEntity(_current_entity->_guid);
+			_entityManager->addComponent <MarkOfDeath> (_current_entity);
+		}
 	}
 	
 	void GameBoardSystem::update_map ()
@@ -142,7 +163,7 @@ namespace game
 		{
 			if (!_map[col][BOARD_NUM_ROWS-2])
 			{
-				make_fruit(rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
+				make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
 				g_GameState.fruits_on_board ++;
 			}
 		}

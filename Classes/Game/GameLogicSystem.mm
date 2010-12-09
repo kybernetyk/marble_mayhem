@@ -20,11 +20,18 @@
 
 namespace game 
 {
-
+#define PARTICLE_MARKER
 
 	GameLogicSystem::GameLogicSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
+
+		reset();
+	}
+	
+	void GameLogicSystem::reset ()
+	{
+		
 		marked_color = -1;
 		head_row = -1;
 		head_col = -1;
@@ -32,7 +39,6 @@ namespace game
 		
 		memset (markers, 0x00, MAX_MARKERS * sizeof(Entity*));
 		marker_index = 0;
-		
 	}
 	
 	void GameLogicSystem::remove_chain ()
@@ -80,15 +86,10 @@ namespace game
 			}
 			g_GameState.score += score;
 			g_GameState.killed_last_frame = num_of_marks;
-//			
+			
 			int sfx = (num_of_marks-2);
 			sfx += SFX_FRUIT_REMOVE_2;
-			
 			sfx = std::min(SFX_FRUIT_REMOVE_6, sfx);
-//			if (sfx > SFX_FRUIT_REMOVE_6)
-//				sfx = SFX_FRUIT_REMOVE_6;
-			
-			//printf("sfx: %i\n", sfx);
 			
 			SoundSystem::make_new_sound (sfx);
 			int bonus = 0;
@@ -145,8 +146,12 @@ namespace game
 			if (e)
 			{
 				markers[i] = NULL;
+#ifdef PARTICLE_MARKER
 				PEmitter *pe = _entityManager->getComponent <PEmitter> (e);
 				[pe->pe->pe setDuration: 0.1];
+#else
+				_entityManager->addComponent <MarkOfDeath> (e);
+#endif
 			}
 		}		
 		
@@ -288,7 +293,20 @@ namespace game
 							
 							if (marker_index < MAX_MARKERS)
 							{
+#ifdef PARTICLE_MARKER
 								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+#else
+								Entity *pe = _entityManager->createNewEntity();
+								Position *pos = _entityManager->addComponent <Position> (pe);
+								pos->x = col * TILESIZE_X + BOARD_X_OFFSET;
+								pos->y = row*TILESIZE_Y+BOARD_Y_OFFSET;
+								
+								Sprite *sp = _entityManager->addComponent <Sprite> (pe);
+								sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
+								sp->z = 8.0;
+								
+								
+#endif
 								
 								markers[marker_index++] = pe;
 							}

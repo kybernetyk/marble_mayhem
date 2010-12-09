@@ -41,6 +41,8 @@ namespace game
 		void appDidEnterBackground ();
 		void appWillTerminate ();
 		
+		void resetCurrentScene ();
+		
 		void setNextScene (mx3::Scene *nscene)
 		{
 			next_scene = nscene;

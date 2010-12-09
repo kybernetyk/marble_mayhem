@@ -27,6 +27,7 @@
 #import "Fruit.h"
 
 #import "GameCenterManager.h"
+#include "NotificationSystem.h"
 
 bool spawn_one = false;
 bool spawn_player = false;
@@ -71,6 +72,23 @@ namespace game
 
 	}
 	
+	void GameScene::reset ()
+	{
+		g_GameState.game_state = 0;
+		g_GameState.next_state = GAME_STATE_PREP;
+
+//		_entityManager->removeAllEntities();
+		_hudSystem->reset();
+		_gameLogicSystem->reset();
+		_gameBoardSystem->reset();
+		
+		_corpseRetrievalSystem->collectCorpses();
+		
+		
+		go_played = false;
+		
+	}
+	
 	void GameScene::init ()
 	{
 		srand(time(0));
@@ -80,9 +98,8 @@ namespace game
 		g_GameState.game_state = 0;
 		g_GameState.next_state = GAME_STATE_PREP;
 		
-		
-	
 		_entityManager = new EntityManager;
+		
 		_renderSystem = new RenderSystem (_entityManager);
 		_movementSystem = new MovementSystem (_entityManager);
 		_attachmentSystem = new AttachmentSystem (_entityManager);
@@ -91,7 +108,7 @@ namespace game
 		_corpseRetrievalSystem = new CorpseRetrievalSystem (_entityManager);
 		_soundSystem = new SoundSystem (_entityManager);
 		_animationSystem = new AnimationSystem (_entityManager);
-
+		_starSystem = new StarSystem (_entityManager);
 		
 		_gameLogicSystem = new GameLogicSystem (_entityManager);
 		_hudSystem = new HUDSystem (_entityManager);
@@ -118,19 +135,25 @@ namespace game
 			SoundSystem::play_background_music("endless.mp3");	
 		}
 
-		
+		reset();
 		
 		/* create background */	
 		Entity *bg = _entityManager->createNewEntity();
 		Position *pos = _entityManager->addComponent <Position> (bg);
 		Sprite *sprite = _entityManager->addComponent <Sprite> (bg);
-		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("back.png");
+		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("amatuer_back.png");
 		sprite->anchorPoint = vector2D_make(0.0, 0.0);
 		sprite->z = -5.0;
 		Name *name = _entityManager->addComponent <Name> (bg);
 		name->name = "Game Background";
 		
-		go_played = false;
+		/*create holzpanel*/
+		bg = _entityManager->createNewEntity();
+		pos = _entityManager->addComponent <Position> (bg);
+		sprite = _entityManager->addComponent <Sprite> (bg);
+		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("holzpanel.png");
+		sprite->anchorPoint = vector2D_make(0.0, 0.0);
+		sprite->z = -3.9;
 		
 	}
 
@@ -201,6 +224,8 @@ namespace game
 				_hudSystem->show_prep_label();
 				
 				saveHiScore();
+				
+				post_notification(kShowGameOverView);
 
 			}
 			
@@ -227,7 +252,7 @@ namespace game
 		_soundSystem->update(delta);
 		_particleSystem->update(delta);
 		_animationSystem->update(delta);		
-		
+		_starSystem->update(delta);
 		if (g_GameState.game_state == GAME_STATE_PLAY)
 		{
 			_gameLogicSystem->update(delta);
@@ -307,7 +332,8 @@ namespace game
 	
 	GameScene::~GameScene()
 	{
-		
+	
+		delete _starSystem;
 	}
 	
 	void GameScene::saveHiScore ()

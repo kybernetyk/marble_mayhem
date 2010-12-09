@@ -15,11 +15,13 @@
 	UIView *mainView;
 	UIView *mainMenuView;
 	UIView *pauseView;
+	UIView *gameOverView;
 }
 
 @property (readwrite, retain) IBOutlet UIView *mainMenuView;
 @property (readwrite, retain) IBOutlet UIView *mainView;
 @property (readwrite, retain) IBOutlet UIView *pauseView;
+@property (readwrite, retain) IBOutlet UIView *gameOverView;
 
 - (IBAction) startGame: (id) sender;
 - (IBAction) showPauseMenu: (id) sender;
@@ -28,4 +30,9 @@
 - (IBAction) showHighScores: (id) sender;
 - (IBAction) showInAppStore: (id) sender;
 - (IBAction) showPromotion: (id) sender;
+
+
+- (IBAction) playAgain: (id) sender;
+- (IBAction) goToMainMenuFromGameOverView: (id) sender;
+
 @end

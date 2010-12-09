@@ -47,6 +47,8 @@ namespace game
 	//TODO: rename right blob and left blob to: left blob -> center blob, right blob -> rotating blob
 	void PlayerControlledSystem::update (float delta)
 	{
+		return;
+		
 		bool move_left = false;
 		bool move_right = false;
 		bool rotate = false;

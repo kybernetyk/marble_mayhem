@@ -21,7 +21,8 @@ namespace game
 	{
 	public:
 		GameBoardSystem (EntityManager *entityManager);
-		void update (float delta);	
+		void update (float delta);
+		void reset ();
 	protected:
 		bool can_move_down ();
 		
@@ -43,7 +44,7 @@ namespace game
 		Position *_current_position;
 		std::vector<Entity*> _entities;
 		float _delta;
-		
+		int fruit_alternator;
 		float refill_pause_time_between_rows;
 		float refill_pause_timer;
 	};

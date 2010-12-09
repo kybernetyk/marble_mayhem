@@ -17,6 +17,7 @@
 @synthesize mainMenuView;
 @synthesize mainView;
 @synthesize pauseView;
+@synthesize gameOverView;
 
 - (NSSet *) inAppProductIDs
 {
@@ -32,10 +33,19 @@
 	self = [super init];
 	if (self)
 	{
-		[self retain];
+		[self retain]; //important! IB doesnt retain us!
+		
+		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
+						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   nil];
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
+		
+		
 		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 		[dc addObserver: self selector: @selector(showMainMenu:) name: kShowMainMenu object: nil];
 		[dc addObserver: self selector: @selector(hideMainMenu:) name: kHideMainMenu object: nil];
+		[dc addObserver: self selector: @selector(showGameOverView:) name: kShowGameOverView object:nil];
 	}
 	return self;
 }
@@ -115,6 +125,29 @@
 		game::g_pGame->startNewGame();
 	}
 }
+
+- (IBAction) showGameOverView: (id) sender
+{
+	[mainView addSubview: gameOverView];
+}
+
+- (IBAction) playAgain: (id) sender
+{
+	g_GameState.reset();
+//	g_GameState.game_state = 0;
+//	g_GameState.next_state = GAME_STATE_PREP;
+	game::g_pGame->resetCurrentScene ();
+	[gameOverView removeFromSuperview];
+}
+
+- (IBAction) goToMainMenuFromGameOverView: (id) sender
+{
+	game::g_pGame->setPaused (false);
+	game::g_pGame->returnToMainMenu();
+	[gameOverView removeFromSuperview];
+	[self showMainMenu: nil];
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

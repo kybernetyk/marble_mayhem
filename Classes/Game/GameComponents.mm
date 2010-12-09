@@ -14,4 +14,6 @@ namespace game
 {
 	//user
 	ComponentID GameBoardElement::COMPONENT_ID = 16;
+	
+	ComponentID Star::COMPONENT_ID = 17;
 }
