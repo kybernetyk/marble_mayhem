@@ -24,6 +24,7 @@
 
 #define USE_GAMECENTER
 #define USE_INAPPSTORE
+#define USE_NEWSFEED
 
 #define USE_PROMOTION
 #define PROMOTION_URL @"http://dl.dropbox.com/u/8724227/inapp_promotion/promotion_portrait.html"

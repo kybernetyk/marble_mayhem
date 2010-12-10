@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		030625F412A9022700325249 /* MainViewController_fmunch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030625F312A9022700325249 /* MainViewController_fmunch.xib */; };
 		0306261612A9058400325249 /* MenuScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0306261512A9058400325249 /* MenuScene.mm */; };
+		030B5B4012B22D2D00B9721F /* MXAlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B5B3F12B22D2D00B9721F /* MXAlertPrompt.m */; };
+		030B5BA712B2343A00B9721F /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B5BA612B2343A00B9721F /* NSString+Search.m */; };
 		030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */; };
 		030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */; };
 		030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDAA712AEEA0D008BC5CF /* promo_head.png */; };
@@ -163,6 +165,9 @@
 		03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D712AAA5F000320143 /* endless.mp3 */; };
 		03ABF3E412AABAFB00320143 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF3E312AABAFB00320143 /* strawberry.png */; };
 		03ABF46E12AAC7F900320143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF46D12AAC7F900320143 /* Icon.png */; };
+		03FE160312B248E80066BED8 /* menu_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FE160212B248E80066BED8 /* menu_back_2.png */; };
+		03FE166512B260BF0066BED8 /* NewslineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FE166312B260BF0066BED8 /* NewslineViewController.m */; };
+		03FE166612B260BF0066BED8 /* NewslineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FE166412B260BF0066BED8 /* NewslineViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -173,6 +178,10 @@
 		030625F312A9022700325249 /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController_fmunch.xib; path = ../../Resources/MainViewController_fmunch.xib; sourceTree = "<group>"; };
 		0306261412A9058400325249 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		0306261512A9058400325249 /* MenuScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuScene.mm; sourceTree = "<group>"; };
+		030B5B3E12B22D2D00B9721F /* MXAlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXAlertPrompt.h; sourceTree = "<group>"; };
+		030B5B3F12B22D2D00B9721F /* MXAlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXAlertPrompt.m; sourceTree = "<group>"; };
+		030B5BA512B2343A00B9721F /* NSString+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Search.h"; sourceTree = "<group>"; };
+		030B5BA612B2343A00B9721F /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
 		030BDA7F12AEE7D4008BC5CF /* PromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionViewController.h; sourceTree = "<group>"; };
 		030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
 		030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
@@ -407,6 +416,10 @@
 		03ABF42C12AAC61100320143 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntitlementsDebug.plist; sourceTree = "<group>"; };
 		03ABF46D12AAC7F900320143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		03FE160212B248E80066BED8 /* menu_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back_2.png; sourceTree = "<group>"; };
+		03FE166212B260BF0066BED8 /* NewslineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewslineViewController.h; sourceTree = "<group>"; };
+		03FE166312B260BF0066BED8 /* NewslineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewslineViewController.m; sourceTree = "<group>"; };
+		03FE166412B260BF0066BED8 /* NewslineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewslineViewController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -644,6 +657,7 @@
 		034E0D2D12AED89A00CD8EFB /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				03FE166112B260AA0066BED8 /* NewslineViewController */,
 				030BDCD412AFDA8C008BC5CF /* NotificationNames.h */,
 				030BDA7E12AEE7D4008BC5CF /* PromotionViewController */,
 				034E0D2E12AED89A00CD8EFB /* EAGLView.h */,
@@ -726,11 +740,15 @@
 		034E0D5512AED89A00CD8EFB /* Minyx Store */ = {
 			isa = PBXGroup;
 			children = (
+				030B5BA512B2343A00B9721F /* NSString+Search.h */,
+				030B5BA612B2343A00B9721F /* NSString+Search.m */,
+				034E0D5612AED89A00CD8EFB /* DetailViewController */,
+				030B5B3E12B22D2D00B9721F /* MXAlertPrompt.h */,
+				030B5B3F12B22D2D00B9721F /* MXAlertPrompt.m */,
 				030BDE8E12B045F8008BC5CF /* minyx_rubel_2.png */,
 				030BDDF812B02F27008BC5CF /* minyx_rubel.png */,
 				030BDCF612B00DB8008BC5CF /* moneyyy.png */,
 				030BDCF712B00DB8008BC5CF /* moneyyy2.png */,
-				034E0D5612AED89A00CD8EFB /* DetailViewController */,
 				034E0D5A12AED89A00CD8EFB /* MinyxStoreViewController.h */,
 				034E0D5B12AED89A00CD8EFB /* MinyxStoreViewController.mm */,
 				034E0D5C12AED89A00CD8EFB /* MinyxStoreViewController.xib */,
@@ -899,6 +917,7 @@
 				0397713912B1787300CA6126 /* star6.png */,
 				0397713A12B1787300CA6126 /* star5.png */,
 				0397713B12B1787300CA6126 /* star4.png */,
+				03FE160212B248E80066BED8 /* menu_back_2.png */,
 				039770F812B1731F00CA6126 /* star3.png */,
 				039770F912B1731F00CA6126 /* star2.png */,
 				039770FA12B1731F00CA6126 /* star1.png */,
@@ -1061,6 +1080,16 @@
 				039968CC12A8243300D0C56D /* HUDSystem.mm */,
 			);
 			name = "HUD System";
+			sourceTree = "<group>";
+		};
+		03FE166112B260AA0066BED8 /* NewslineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03FE166212B260BF0066BED8 /* NewslineViewController.h */,
+				03FE166312B260BF0066BED8 /* NewslineViewController.m */,
+				03FE166412B260BF0066BED8 /* NewslineViewController.xib */,
+			);
+			path = NewslineViewController;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
@@ -1252,6 +1281,8 @@
 				0397717C12B17A8E00CA6126 /* star9.png in Resources */,
 				0397717D12B17A8E00CA6126 /* star8.png in Resources */,
 				0397717E12B17A8E00CA6126 /* star7.png in Resources */,
+				03FE160312B248E80066BED8 /* menu_back_2.png in Resources */,
+				03FE166612B260BF0066BED8 /* NewslineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1361,9 @@
 				030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */,
 				030BDCD712AFDD3E008BC5CF /* NotificationSystem.mm in Sources */,
 				0397710B12B1739800CA6126 /* StarSystem.mm in Sources */,
+				030B5B4012B22D2D00B9721F /* MXAlertPrompt.m in Sources */,
+				030B5BA712B2343A00B9721F /* NSString+Search.m in Sources */,
+				03FE166512B260BF0066BED8 /* NewslineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

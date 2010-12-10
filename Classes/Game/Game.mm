@@ -206,7 +206,7 @@ namespace game
 	
 	void Game::appDidEnterBackground ()
 	{
-		g_TextureManager.purgeCache();
+		//g_TextureManager.purgeCache();
 		CV3Log ("Game::appDidEnterBackground ()\n");		
 	}
 	

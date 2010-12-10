@@ -23,9 +23,22 @@
 {
 	NSSet *iap = [NSSet setWithObjects:
 				  kInAppFullGame,
+				  @"com.minyxgames.fruitmunch.8",
+				  @"com.minyxgames.fruitmunch.9",
 				  nil];
 	
 	return iap;	
+}
+
+- (NSArray *) newsItemsForOffline
+{
+	NSArray *ret = [NSArray arrayWithObjects:
+					@"Tip: Try to get AIDS.",
+					@"Tip: Don't play with negros!",
+					@"Tip: Try to remove many fruits at once to get bonus points.",
+					@"Tip: For extra bonus try to rape your sister.",
+					nil];
+	return ret;
 }
 
 - (id) init
@@ -35,11 +48,11 @@
 	{
 		[self retain]; //important! IB doesnt retain us!
 		
-		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
-						   nil];
-		
-		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
+//		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
+//						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+//						   nil];
+//		
+//		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
 		
 		
 		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
