@@ -12,6 +12,8 @@
 #import "GameCenterManager.h"
 #import "MKStoreManager.h"
 #include "NotificationSystem.h"
+#import "SoundSystem.h"
+#import "SimpleAudioEngine.h"
 
 @implementation AppController
 @synthesize mainMenuView;
@@ -32,6 +34,8 @@
 
 - (NSArray *) newsItemsForOffline
 {
+	return nil;
+	
 	NSArray *ret = [NSArray arrayWithObjects:
 					@"Tip: Try to get AIDS.",
 					@"Tip: Don't play with negros!",
@@ -75,7 +79,7 @@
 - (void) setup
 {
 	NSLog(@"appcontroller setup: %@", self);
-	
+	//[[SimpleAudioEngine sharedEngine] preloadEffect: @MENU_ITEM_SFX];
 	[self showMainMenu: nil];
 }
 
@@ -90,6 +94,7 @@
 
 - (void) returnToMainMenu: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	game::g_pGame->setPaused (false);
 	game::g_pGame->returnToMainMenu();
 	[pauseView removeFromSuperview];
@@ -98,12 +103,14 @@
 
 - (void) showPauseMenu: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	game::g_pGame->setPaused (!game::paused);
 	[mainView addSubview: pauseView];
 }
 
 - (void) hidePauseMenu: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	game::g_pGame->setPaused (false);
 	[pauseView removeFromSuperview];
 }
@@ -115,6 +122,7 @@
 
 - (IBAction) startGame: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	if (![MKStoreManager isFeaturePurchased: kInAppFullGame] && [sender tag] != GAME_MODE_TIMED)
 	{
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: @"Unlock the full game!" 
@@ -141,11 +149,13 @@
 
 - (IBAction) showGameOverView: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	[mainView addSubview: gameOverView];
 }
 
 - (IBAction) playAgain: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	g_GameState.reset();
 //	g_GameState.game_state = 0;
 //	g_GameState.next_state = GAME_STATE_PREP;
@@ -155,6 +165,7 @@
 
 - (IBAction) goToMainMenuFromGameOverView: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	game::g_pGame->setPaused (false);
 	game::g_pGame->returnToMainMenu();
 	[gameOverView removeFromSuperview];
@@ -164,6 +175,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	NSLog(@"omg der buttonen indexen: %i, %@", buttonIndex,	[alertView buttonTitleAtIndex: buttonIndex]);
 	if (buttonIndex == 1)
 	{
@@ -176,6 +188,7 @@
 
 - (void) showHighScores:(id)sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 //	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //	[dc postNotificationName: kShowLeaderBoard object: nil];
 	post_notification (kShowLeaderBoard);
@@ -183,6 +196,7 @@
 
 - (void) showInAppStore: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 //	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //	[dc postNotificationName: kShowInAppStore object: nil];
 	post_notification (kShowInAppStore);
@@ -190,6 +204,7 @@
 
 - (void) showPromotion:(id)sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 //	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //	[dc postNotificationName: kShowPromotions object: nil];
 	post_notification (kShowPromotions);

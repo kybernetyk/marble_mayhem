@@ -29,6 +29,8 @@
 #define USE_PROMOTION
 #define PROMOTION_URL @"http://dl.dropbox.com/u/8724227/inapp_promotion/promotion_portrait.html"
 
+#define MENU_ITEM_SFX "click.mp3"
+
 #define MAX_REGISTERED_SOUNDS 32
 
 #define PORTRAIT 0x01
@@ -58,7 +60,7 @@
 #endif
 
 //allow offscreen texture rendertarget for the RenderDevice
-#define __ALLOW_RENDER_TO_TEXTURE__
+//#define __ALLOW_RENDER_TO_TEXTURE__
 
 //enable/disable gesture recogniz
 //#define __ENABLE_GESTURE_RECOGNIZERS__

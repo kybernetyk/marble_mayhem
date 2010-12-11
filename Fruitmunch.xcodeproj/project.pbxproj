@@ -11,7 +11,7 @@
 		0306261612A9058400325249 /* MenuScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0306261512A9058400325249 /* MenuScene.mm */; };
 		030B5B4012B22D2D00B9721F /* MXAlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B5B3F12B22D2D00B9721F /* MXAlertPrompt.m */; };
 		030B5BA712B2343A00B9721F /* NSString+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 030B5BA612B2343A00B9721F /* NSString+Search.m */; };
-		030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */; };
+		030BDA8212AEE7D4008BC5CF /* PromotionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 030BDA8012AEE7D4008BC5CF /* PromotionViewController.mm */; };
 		030BDA8312AEE7D4008BC5CF /* PromotionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */; };
 		030BDAA812AEEA0D008BC5CF /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BDAA712AEEA0D008BC5CF /* promo_head.png */; };
 		030BDCD712AFDD3E008BC5CF /* NotificationSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 030BDCD612AFDD3E008BC5CF /* NotificationSystem.mm */; };
@@ -101,6 +101,7 @@
 		034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8512AED89A00CD8EFB /* ParticleSystem.mm */; };
 		034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8812AED89A00CD8EFB /* RenderSystem.mm */; };
 		034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */; };
+		03595DF812B2EE4A0020E48D /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03595DF712B2EE4A0020E48D /* click.mp3 */; };
 		03976F8012B14DE000CA6126 /* menu_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 03976F7F12B14DE000CA6126 /* menu_back.png */; };
 		03976F8E12B14F3700CA6126 /* minyx_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 03976F8D12B14F3700CA6126 /* minyx_bw.png */; };
 		0397705812B1641100CA6126 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397705712B1641100CA6126 /* marker.png */; };
@@ -183,7 +184,7 @@
 		030B5BA512B2343A00B9721F /* NSString+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Search.h"; sourceTree = "<group>"; };
 		030B5BA612B2343A00B9721F /* NSString+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Search.m"; sourceTree = "<group>"; };
 		030BDA7F12AEE7D4008BC5CF /* PromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionViewController.h; sourceTree = "<group>"; };
-		030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
+		030BDA8012AEE7D4008BC5CF /* PromotionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PromotionViewController.mm; sourceTree = "<group>"; };
 		030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewController.xib; sourceTree = "<group>"; };
 		030BDAA712AEEA0D008BC5CF /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
 		030BDCD412AFDA8C008BC5CF /* NotificationNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationNames.h; sourceTree = "<group>"; };
@@ -338,6 +339,7 @@
 		034E0D8A12AED89A00CD8EFB /* SoundSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSystem.h; sourceTree = "<group>"; };
 		034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		034E0D8C12AED89A00CD8EFB /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		03595DF712B2EE4A0020E48D /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = click.mp3; path = ../../Downloads/click.mp3; sourceTree = SOURCE_ROOT; };
 		03976F7F12B14DE000CA6126 /* menu_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back.png; sourceTree = "<group>"; };
 		03976F8D12B14F3700CA6126 /* minyx_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_bw.png; sourceTree = "<group>"; };
 		0397705712B1641100CA6126 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
@@ -474,7 +476,7 @@
 			children = (
 				030BDAA712AEEA0D008BC5CF /* promo_head.png */,
 				030BDA7F12AEE7D4008BC5CF /* PromotionViewController.h */,
-				030BDA8012AEE7D4008BC5CF /* PromotionViewController.m */,
+				030BDA8012AEE7D4008BC5CF /* PromotionViewController.mm */,
 				030BDA8112AEE7D4008BC5CF /* PromotionViewController.xib */,
 			);
 			path = PromotionViewController;
@@ -910,6 +912,7 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03595DF712B2EE4A0020E48D /* click.mp3 */,
 				0397717912B17A8E00CA6126 /* star9.png */,
 				0397717A12B17A8E00CA6126 /* star8.png */,
 				0397717B12B17A8E00CA6126 /* star7.png */,
@@ -1283,6 +1286,7 @@
 				0397717E12B17A8E00CA6126 /* star7.png in Resources */,
 				03FE160312B248E80066BED8 /* menu_back_2.png in Resources */,
 				03FE166612B260BF0066BED8 /* NewslineViewController.xib in Resources */,
+				03595DF812B2EE4A0020E48D /* click.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1358,7 +1362,7 @@
 				034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */,
 				034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */,
 				034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */,
-				030BDA8212AEE7D4008BC5CF /* PromotionViewController.m in Sources */,
+				030BDA8212AEE7D4008BC5CF /* PromotionViewController.mm in Sources */,
 				030BDCD712AFDD3E008BC5CF /* NotificationSystem.mm in Sources */,
 				0397710B12B1739800CA6126 /* StarSystem.mm in Sources */,
 				030B5B4012B22D2D00B9721F /* MXAlertPrompt.m in Sources */,
