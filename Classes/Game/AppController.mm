@@ -63,6 +63,8 @@
 		[dc addObserver: self selector: @selector(showMainMenu:) name: kShowMainMenu object: nil];
 		[dc addObserver: self selector: @selector(hideMainMenu:) name: kHideMainMenu object: nil];
 		[dc addObserver: self selector: @selector(showGameOverView:) name: kShowGameOverView object:nil];
+		[dc addObserver: self selector: @selector(fbDidFail:) name: kFacebookSubmitDidFail object: nil];
+		[dc addObserver: self selector: @selector(fbDidSucceed:) name: kFacebookSubmitDidSucceed object: nil];
 	}
 	return self;
 }
@@ -151,6 +153,10 @@
 {
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	[mainView addSubview: gameOverView];
+	
+	[checkMark setHidden: YES];
+	[activity stopAnimating];
+	[fbShareButton setEnabled: YES];
 }
 
 - (IBAction) playAgain: (id) sender
@@ -210,11 +216,58 @@
 	post_notification (kShowPromotions);
 }
 
+- (IBAction) shareOnFacebook: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	[fbShareButton setEnabled: NO];
+	[activity startAnimating];
+	
+	[[[UIApplication sharedApplication] delegate] initFBShare: self];
+}
+
 #pragma mark -
 #pragma mark in app datasource
 - (NSString *) imageNameForProductID: (NSString *) productID
 {
 	return @"full_game_screen.png";
 }
+
+#pragma mark -
+#pragma mark facebook datasource
+- (void) fbDidFail: (NSNotification *) notification
+{
+	[checkMark setHidden: YES];
+	[fbShareButton setEnabled: YES];
+	[activity stopAnimating];
+}
+
+- (void) fbDidSucceed: (NSNotification *) notification
+{
+	[checkMark setHidden: NO];
+	[activity stopAnimating];
+	
+}
+
+- (NSString *) titleForFBShare
+{
+	return @"I am retarded";
+}
+- (NSString *) captionForFBShare
+{
+	return @"{*actor*} is totaly retarded. LOL!";
+}
+- (NSString *) descriptionForFBShare
+{
+	return [NSString stringWithFormat: @"Score: %i", g_GameState.score];
+}
+- (NSString *) linkForFBShare
+{
+	return @"http://www.minyxgames.com";
+}
+- (NSString *) picurlForFBShare
+{
+	return @"http://www.minyxgames.com/minyx-ultra/icon_90.png";
+}
+
 
 @end

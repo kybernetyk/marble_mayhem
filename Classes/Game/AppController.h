@@ -16,6 +16,10 @@
 	UIView *mainMenuView;
 	UIView *pauseView;
 	UIView *gameOverView;
+	
+	IBOutlet UIButton *fbShareButton;
+	IBOutlet UIActivityIndicatorView *activity;
+	IBOutlet UIImageView *checkMark;
 }
 
 @property (readwrite, retain) IBOutlet UIView *mainMenuView;
@@ -30,7 +34,7 @@
 - (IBAction) showHighScores: (id) sender;
 - (IBAction) showInAppStore: (id) sender;
 - (IBAction) showPromotion: (id) sender;
-
+- (IBAction) shareOnFacebook: (id) sender;
 
 - (IBAction) playAgain: (id) sender;
 - (IBAction) goToMainMenuFromGameOverView: (id) sender;
