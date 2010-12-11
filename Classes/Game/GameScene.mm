@@ -121,7 +121,7 @@ namespace game
 			_soundSystem->registerSound (sounds[i], i);
 		}
 		
-		_soundSystem->preloadSounds();
+	//	_soundSystem->preloadSounds();
 		
 		
 		preload();
@@ -250,7 +250,7 @@ namespace game
 		_gameBoardSystem->update(delta);		
 		_hudSystem->update(delta);
 		_soundSystem->update(delta);
-		_particleSystem->update(delta);
+		
 		_animationSystem->update(delta);		
 		_starSystem->update(delta);
 		if (g_GameState.game_state == GAME_STATE_PLAY)
@@ -315,12 +315,13 @@ namespace game
 		}
 		
 		
-		
-		
+		//TODO: implement lateUpdate(dt) for systems that need to be updated after all other
+		_particleSystem->update(delta);
 	}
 
 	void GameScene::render ()
 	{
+		
 		_renderSystem->render();
 
 	}
@@ -332,7 +333,21 @@ namespace game
 	
 	GameScene::~GameScene()
 	{
-	
+		CV3Log("game scene dtor\n");
+		delete _entityManager;
+		delete _renderSystem;
+		delete _movementSystem;
+		delete _attachmentSystem;
+		delete _actionSystem;
+		delete _corpseRetrievalSystem;	
+		delete _soundSystem;
+		delete _animationSystem;
+		delete _particleSystem;
+		
+		delete _hudSystem;
+		delete _playerControlledSystem;
+		delete _gameLogicSystem;
+		delete _gameBoardSystem;
 		delete _starSystem;
 	}
 	

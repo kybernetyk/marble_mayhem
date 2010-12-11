@@ -10,10 +10,12 @@
 #pragma once
 
 #include "Timer.h"
+#include "globals.h"
 
 namespace mx3 
 {
 	class Scene;
+	class PE_Proxy;
 }
 
 namespace game 
@@ -60,4 +62,7 @@ namespace game
 	extern unsigned int next_game_tick;
 	
 	extern Game *g_pGame;
+	
+	extern mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
+	extern mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
 }

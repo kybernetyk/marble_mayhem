@@ -57,17 +57,17 @@ namespace game
 		
 		char s[255];
 		sprintf(s, "%i", g_GameState.score);
-		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2, 32), vector2D_make(0.5, 0.5));
+		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2+4, 32), vector2D_make(0.5, 0.5));
 		score_label->get<TextLabel>()->text = s;
 		
 		time_label = NULL;
 		if (g_GameState.game_mode == GAME_MODE_TIMED)
 		{
-			time_label = make_new_label ("zomg.fnt", vector2D_make(32.0, 32.0), vector2D_make(0.0, 0.5));
+			time_label = make_new_label ("zomg.fnt", vector2D_make(34.0, 32.0), vector2D_make(0.0, 0.5));
 			
 			Entity *clock = _entityManager->createNewEntity();
 			Position *pos = _entityManager->addComponent <Position> (clock);
-			pos->x = 16;
+			pos->x = 18;
 			pos->y = 28.0;
 			
 			Sprite *sprite = _entityManager->addComponent <Sprite> (clock);

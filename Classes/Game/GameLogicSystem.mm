@@ -22,12 +22,48 @@ namespace game
 {
 #define PARTICLE_MARKER
 
+	extern mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
+	extern mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
+
+	
 	GameLogicSystem::GameLogicSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
 
+		memset (markers, 0x00, BOARD_NUM_MARKERS * sizeof(Entity*));
+		
 		reset();
 	}
+
+	PE_Proxy *GameLogicSystem::get_free_explosion()
+	{
+		PE_Proxy *prox = NULL;
+		
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			prox = g_pExplosionCache[i];
+			
+			if (!prox->shoudHandle())
+				return prox;
+		}
+		return NULL;
+	}
+	
+	
+	PE_Proxy *GameLogicSystem::get_free_marker()
+	{
+		PE_Proxy *prox = NULL;
+		
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			prox = g_pMarkerCache[i];
+			
+			if (!prox->shoudHandle())
+				return prox;
+		}
+		return NULL;
+	}
+	
 	
 	void GameLogicSystem::reset ()
 	{
@@ -37,7 +73,10 @@ namespace game
 		head_col = -1;
 		num_of_marks = 0;
 		
-		memset (markers, 0x00, MAX_MARKERS * sizeof(Entity*));
+
+		remove_all_markers();
+		
+		memset (markers, 0x00, BOARD_NUM_MARKERS * sizeof(Entity*));
 		marker_index = 0;
 	}
 	
@@ -61,8 +100,24 @@ namespace game
 				{
 					_entityManager->addComponent <MarkOfDeath> (current_entity);
 					
-					ParticleSystem::createParticleEmitter ("goldstar2.pex", 0.25 , 
-														   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
+//					ParticleSystem::createParticleEmitter ("goldstar2.pex", 0.25 , 
+//														   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
+					
+
+					
+					
+					PE_Proxy *pe = get_free_explosion();
+					if (pe)
+					{
+						ParticleSystem::createParticleEmitter (pe,
+															   0.25,
+															   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
+						pe->setDuration(0.25);
+						pe->reset();
+						pe->start();
+					}
+					
+					
 				}
 				current_gbe->marked = false;
 			}
@@ -140,25 +195,30 @@ namespace game
 		//g_GameState.previous_kill = num_of_marks;
 		
 		//remove the markers
-		for (int i = 0; i < MAX_MARKERS; i++)
-		{
-			Entity *e = markers[i];
-			if (e)
-			{
-				markers[i] = NULL;
-#ifdef PARTICLE_MARKER
-				PEmitter *pe = _entityManager->getComponent <PEmitter> (e);
-				[pe->pe->pe setDuration: 0.1];
-#else
-				_entityManager->addComponent <MarkOfDeath> (e);
-#endif
-			}
-		}		
+		remove_all_markers ();
 		
 		remove_chain ();
 		
 		marker_index = 0;
 		num_of_marks = 0;
+	}
+
+	void GameLogicSystem::remove_all_markers()
+	{
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			Entity *e = markers[i];
+			if (e)
+			{
+				markers[i] = NULL;
+	#ifdef PARTICLE_MARKER
+				PEmitter *pe = _entityManager->getComponent <PEmitter> (e);
+				[pe->pe->pe setDuration: 0.1];
+	#else
+				_entityManager->addComponent <MarkOfDeath> (e);
+	#endif
+			}
+		}
 	}
 	
 	bool GameLogicSystem::moves_left ()
@@ -291,10 +351,22 @@ namespace game
 							head_col = current_gbe->col;
 							head_row = current_gbe->row;
 							
-							if (marker_index < MAX_MARKERS)
+							if (marker_index < BOARD_NUM_MARKERS)
 							{
 #ifdef PARTICLE_MARKER
-								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+//								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+								
+								PE_Proxy *pe = get_free_marker();
+								if (pe)
+								{
+									Entity *ent = ParticleSystem::createParticleEmitter (pe,
+																		   -1.0,
+																		   vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+									pe->setDuration(-1.0);
+									pe->reset();
+									pe->start();
+									markers[marker_index++] = ent;	
+								}
 #else
 								Entity *pe = _entityManager->createNewEntity();
 								Position *pos = _entityManager->addComponent <Position> (pe);
@@ -305,10 +377,8 @@ namespace game
 								sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
 								sp->z = 8.0;
 								
-								
+								markers[marker_index++] = pe;	
 #endif
-								
-								markers[marker_index++] = pe;
 							}
 						}
 					}

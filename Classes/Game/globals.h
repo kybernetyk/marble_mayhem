@@ -55,6 +55,7 @@ namespace game
 	
 #define BOARD_NUM_COLS 6
 #define BOARD_NUM_ROWS (8+1)
+#define BOARD_NUM_MARKERS 16
 	
 #define NUM_SOUNDS 14
 	

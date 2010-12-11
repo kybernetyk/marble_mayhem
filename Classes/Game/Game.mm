@@ -35,14 +35,31 @@ namespace game
 	mx3::Timer timer;
 	Game *g_pGame;	
 	
+	mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
+	mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
+
+	
 	extern std::string sounds[];
 	
 	void Game::loadGlobalResources ()
 	{
+		double t1 = mx3::GetDoubleTime();
+		CV3Log ("starting pre load: %f\n", t1);
+		
+		
+		
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"menu.mp3"];
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"endless.mp3"];
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"timed.mp3"];
+	//	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"endless.mp3"];
+	//	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: @"timed.mp3"];
 	
+		for (int i = 0; i < NUM_SOUNDS; i++)
+		{
+			//_soundSystem->registerSound (sounds[i], i);
+			
+			SoundSystem::preload_sound (sounds[i]);
+		}
+		
+		
 		g_TextureManager.accquireTexture ("amatuer_back.png");
 		g_TextureManager.accquireTexture ("holzpanel.png");
 		g_TextureManager.accquireTexture ("clock.png");
@@ -61,14 +78,48 @@ namespace game
 		g_TextureManager.accquireTexture ("star8.png"); 
 		g_TextureManager.accquireTexture ("star9.png"); 
 		
-		for (int i = 0; i < NUM_SOUNDS; i++)
-		{
-			//_soundSystem->registerSound (sounds[i], i);
-			NSString *fn = [NSString stringWithCString: sounds[i].c_str() encoding: NSASCIIStringEncoding];
-			if ([fn length] > 0)
-				[[SimpleAudioEngine sharedEngine] preloadEffect: fn];
-		}
+//		for (int i = 0; i < NUM_SOUNDS; i++)
+//		{
+//			//_soundSystem->registerSound (sounds[i], i);
+//			NSString *fn = [NSString stringWithCString: sounds[i].c_str() encoding: NSASCIIStringEncoding];
+//			if ([fn length] > 0)
+//				[[SimpleAudioEngine sharedEngine] preloadEffect: fn];
+//		}
 		
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			PE_Proxy *pe = g_RenderableManager.accquireParticleEmmiter ("marker.pex");
+			pe->z = 5.0;
+			pe->do_not_delete = true;
+			pe->stop();
+			pe->reset();
+
+			g_pMarkerCache[i] = pe;
+		}
+
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			PE_Proxy *pe = g_RenderableManager.accquireParticleEmmiter ("goldstar2.pex");
+			pe->z = 5.0;
+			pe->do_not_delete = true;
+			
+			g_pExplosionCache[i] = pe;
+		}
+
+		double t2 = mx3::GetDoubleTime();
+		CV3Log ("pre load ended: %f\n", t2);
+		CV3Log ("time to load: %f\n", (t2-t1));
+		
+		
+		NSString *loadTime = [NSString stringWithFormat: @"Loaded assets in %.2f seconds", (t2-t1)];
+		
+		UIAlertView *al = [[UIAlertView alloc] initWithTitle: @"No daddy no!" 
+													 message: loadTime 
+													delegate: nil 
+										   cancelButtonTitle: @"It's" 
+										   otherButtonTitles: @"too big", nil];
+		[al show];
+		[al release];
 	}
 	
 	bool Game::init ()

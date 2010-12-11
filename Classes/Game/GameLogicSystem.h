@@ -32,6 +32,10 @@ namespace game
 		int count_empty_cols ();
 		void reset ();
 		
+		PE_Proxy *get_free_explosion();
+		PE_Proxy *get_free_marker();
+		
+		void remove_all_markers();
 	protected:
 		std::vector<Entity*> _entities;
 		float _delta;
@@ -42,8 +46,8 @@ namespace game
 		int num_of_marks;
 		
 		EntityManager *_entityManager;
-#define MAX_MARKERS 32
-		Entity *markers[MAX_MARKERS];
+
+		Entity *markers[BOARD_NUM_MARKERS];
 		int marker_index;
 	};
 
