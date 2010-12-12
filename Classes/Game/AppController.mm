@@ -52,11 +52,11 @@
 	{
 		[self retain]; //important! IB doesnt retain us!
 		
-//		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-//						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
-//						   nil];
-//		
-//		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
+		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
+						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   nil];
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
 		
 		
 		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
@@ -250,15 +250,34 @@
 
 - (NSString *) titleForFBShare
 {
-	return @"I am retarded";
+	if (g_GameState.game_mode == GAME_MODE_TIMED)
+		return @"My Fruit Munch Time Challenge Score!";
+	if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		return @"My Fruit Munch Puzzle Mode Score!";
+	
+	return @"Fruit Munch";
 }
 - (NSString *) captionForFBShare
 {
-	return @"{*actor*} is totaly retarded. LOL!";
+	if (g_GameState.game_mode == GAME_MODE_TIMED)
+		return [NSString stringWithFormat: @"I took a try on the Fruit Munch Time Challenge and scored %i points!", g_GameState.score];
+	if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		return [NSString stringWithFormat: @"I took a try on the Fruit Munch Puzzle Mode and scored %i points!", g_GameState.score];
+	
+	return @"derp";
 }
 - (NSString *) descriptionForFBShare
 {
-	return [NSString stringWithFormat: @"Score: %i", g_GameState.score];
+	int minutes = (int)(g_GameState.time_played / 60.0);
+	int rest = ((int)g_GameState.time_played) - (minutes * 60.0);
+	
+	if (g_GameState.game_mode == GAME_MODE_TIMED)
+		return [NSString stringWithFormat: @"Total # of fruits removed: %i. Session length: %02i:%02i min:sec. Fruit Munch is awesome!", g_GameState.total_killed, minutes, rest];
+
+	if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		return [NSString stringWithFormat: @"Fruits left: %i. Session length: %02i:%02i min:sec. Fruit Munch is awesome!", g_GameState.fruits_on_board, minutes, rest];
+	
+	return @":-)";
 }
 - (NSString *) linkForFBShare
 {

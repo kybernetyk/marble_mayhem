@@ -439,7 +439,10 @@ namespace game
 			{
 				int cols_removed = count_empty_cols();
 				
-				g_GameState.next_state = GAME_STATE_GAMEOVER;
+				if (g_GameState.fruits_on_board > 0)
+					g_GameState.next_state = GAME_STATE_GAMEOVER;
+				else
+					g_GameState.next_state = GAME_STATE_SOLVED;
 				
 				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
 				

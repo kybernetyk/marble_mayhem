@@ -1,0 +1,23 @@
+TODO
+====
+
+1.0:
+
+-[j] serverside promo code scripts
+-[j] getready,3,2,1,go->gameover/solved animations
+-[j] "omg that's top blah %"-score msg for facebook
+-[j] create facebook app
+-[j] create leaderboard for timed mode
+-[s] music, sfx
+-[s] icon
+-[j] screen shots
+-[j] app store description
+
+1.1:
+-[s] additional theme for iap
+-[j] mac port
+{
+	rename mx3::component to something different (component collides with carbon)
+	single opengl.h header with redefines of _OES names to vanilla ogl names
+	custom particle emitter (current one uses ogl es only point sprite arrays)
+}

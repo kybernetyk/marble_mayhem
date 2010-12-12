@@ -198,7 +198,8 @@ namespace game
 				g_GameState.reset();
 
 				SoundSystem::make_new_sound (SFX_GET_READY);
-				_hudSystem->set_prep_text ("Get Ready ...");
+				//_hudSystem->set_prep_text ("Get Ready ...");
+				_hudSystem->change_prep_state (PREP_STATE_READY);
 				_hudSystem->show_prep_label();
 
 //				for (int row = 0; row < BOARD_NUM_ROWS-1; row ++)
@@ -220,13 +221,27 @@ namespace game
 			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
 			{
 				SoundSystem::make_new_sound (SFX_GAME_OVER);
-				_hudSystem->set_prep_text ("Game Over!");
+				//_hudSystem->set_prep_text ("Game Over!");
+				_hudSystem->change_prep_state (PREP_STATE_GAMEOVER);
 				_hudSystem->show_prep_label();
 				
 				saveHiScore();
 				
 				post_notification(kShowGameOverView);
 
+			}
+
+			if (g_GameState.game_state == GAME_STATE_SOLVED)
+			{
+				SoundSystem::make_new_sound (SFX_GAME_OVER);
+				//_hudSystem->set_prep_text ("Game Over!");
+				_hudSystem->change_prep_state (PREP_STATE_SOLVED);
+				_hudSystem->show_prep_label();
+				
+				saveHiScore();
+				
+				post_notification(kShowGameOverView);
+				
 			}
 			
 		}
@@ -258,6 +273,7 @@ namespace game
 			_gameLogicSystem->update(delta);
 			_playerControlledSystem->update(delta);
 			g_GameState.time_left -= (1.0 * delta);
+			g_GameState.time_played += (1.0 * delta);
 			if (g_GameState.time_left < 0.0 && g_GameState.game_mode == GAME_MODE_TIMED)
 			{
 				g_GameState.time_left = 0.0;
@@ -276,7 +292,14 @@ namespace game
 			if ((int)prep_timer >= 1 && (int)prep_timer < 4)
 			{
 				sprintf(s, "%i", (int)prep_timer);
-				_hudSystem->set_prep_text (s);
+				//_hudSystem->set_prep_text (s);
+				if ((int)prep_timer == 3)
+					_hudSystem->change_prep_state (PREP_STATE_3);
+				if ((int)prep_timer == 2)
+					_hudSystem->change_prep_state (PREP_STATE_2);
+				if ((int)prep_timer == 1)
+					_hudSystem->change_prep_state (PREP_STATE_1);
+
 			}
 
 			if (preptmp != (int)prep_timer)
@@ -294,7 +317,8 @@ namespace game
 					SoundSystem::make_new_sound (SFX_GO);
 					go_played = true;
 				}
-				_hudSystem->set_prep_text ("Go!");
+				//_hudSystem->set_prep_text ("Go!");
+				_hudSystem->change_prep_state (PREP_STATE_GO);
 			}
 				
 			

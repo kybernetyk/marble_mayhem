@@ -61,11 +61,15 @@ namespace game
 		
 		
 		g_TextureManager.accquireTexture ("amatuer_back.png");
+		g_TextureManager.accquireTexture ("fruits.png");
+		g_TextureManager.accquireTexture ("zomg.png");
+		Texture2D *t = g_TextureManager.accquireTexture ("schriften.png");
+		t->setAntiAliasTexParams();
+		
+		
 		g_TextureManager.accquireTexture ("holzpanel.png");
 		g_TextureManager.accquireTexture ("clock.png");
 		g_TextureManager.accquireTexture ("pause.png");
-		g_TextureManager.accquireTexture ("fruits.png");
-		g_TextureManager.accquireTexture ("zomg.png");
 		
 		
 		g_TextureManager.accquireTexture ("star1.png"); 
@@ -109,17 +113,17 @@ namespace game
 		double t2 = mx3::GetDoubleTime();
 		CV3Log ("pre load ended: %f\n", t2);
 		CV3Log ("time to load: %f\n", (t2-t1));
-		
-		
-		NSString *loadTime = [NSString stringWithFormat: @"Loaded assets in %.2f seconds", (t2-t1)];
-		
-		UIAlertView *al = [[UIAlertView alloc] initWithTitle: @"No daddy no!" 
-													 message: loadTime 
-													delegate: nil 
-										   cancelButtonTitle: @"It's" 
-										   otherButtonTitles: @"too big", nil];
-		[al show];
-		[al release];
+//		
+//		
+//		NSString *loadTime = [NSString stringWithFormat: @"Loaded assets in %.2f seconds", (t2-t1)];
+//		
+//		UIAlertView *al = [[UIAlertView alloc] initWithTitle: @"No daddy no!" 
+//													 message: loadTime 
+//													delegate: nil 
+//										   cancelButtonTitle: @"It's" 
+//										   otherButtonTitles: @"too big", nil];
+//		[al show];
+//		[al release];
 	}
 	
 	bool Game::init ()
@@ -178,10 +182,27 @@ namespace game
 
 	void Game::render ()
 	{
+#ifdef __ALLOW_RENDER_TO_TEXTURE__
+		RenderDevice::sharedInstance()->setRenderTargetBackingTexture();
 		RenderDevice::sharedInstance()->beginRender();
 		current_scene->render();
 		current_scene->frameDone();
 		RenderDevice::sharedInstance()->endRender();
+
+		RenderDevice::sharedInstance()->setRenderTargetScreen();
+		RenderDevice::sharedInstance()->beginRender();
+		glTranslatef( (0.5 * SCREEN_W),  (0.5 * SCREEN_H), 0);
+		//glRotatef(45.0, 0, 0, 1.0);
+		glTranslatef( -(0.5 * SCREEN_W),  -(0.5 * SCREEN_H), 0);
+		
+		RenderDevice::sharedInstance()->renderBackingTextureToScreen();
+		RenderDevice::sharedInstance()->endRender();	
+#else
+		RenderDevice::sharedInstance()->beginRender();
+		current_scene->render();
+		current_scene->frameDone();
+		RenderDevice::sharedInstance()->endRender();
+#endif
 	}
 	
 	void Game::terminate()

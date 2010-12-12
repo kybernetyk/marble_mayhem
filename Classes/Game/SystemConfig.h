@@ -24,7 +24,14 @@
 
 #define USE_GAMECENTER
 #define USE_INAPPSTORE
+
 #define USE_NEWSFEED
+
+
+#define USE_FACEBOOK
+#define FB_APP_ID @"167949196560754"
+#define FB_API_KEY @"1bd9880910bffe7a16dcd55f997ff951"
+
 
 #define USE_PROMOTION
 #define PROMOTION_URL @"http://dl.dropbox.com/u/8724227/inapp_promotion/promotion_portrait.html"
@@ -41,7 +48,7 @@
 #define ORIENTATION_PORTRAIT
 #define MAINVIEWNIBNAME @"MainViewController_fmunch"
 
-#define DESIRED_FPS 60
+#define DESIRED_FPS 30
 
 //screen size
 #ifdef ORIENTATION_PORTRAIT

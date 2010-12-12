@@ -154,6 +154,8 @@
 		03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D712AAA5F000320143 /* endless.mp3 */; };
 		03ABF3E412AABAFB00320143 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF3E312AABAFB00320143 /* strawberry.png */; };
 		03ABF46E12AAC7F900320143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF46D12AAC7F900320143 /* Icon.png */; };
+		03D1130F12B5233A00D1E6E4 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03D1130E12B5233A00D1E6E4 /* TODO.txt */; };
+		03D115F212B5417E00D1E6E4 /* schriften.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D115F112B5417E00D1E6E4 /* schriften.png */; };
 		03E4E8F412B3CA41008F937B /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E4E8F312B3CA41008F937B /* checkmark.png */; };
 		03FE160312B248E80066BED8 /* menu_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FE160212B248E80066BED8 /* menu_back_2.png */; };
 		03FE166512B260BF0066BED8 /* NewslineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FE166312B260BF0066BED8 /* NewslineViewController.m */; };
@@ -395,6 +397,8 @@
 		03ABF42C12AAC61100320143 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntitlementsDebug.plist; sourceTree = "<group>"; };
 		03ABF46D12AAC7F900320143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		03D1130E12B5233A00D1E6E4 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		03D115F112B5417E00D1E6E4 /* schriften.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schriften.png; sourceTree = "<group>"; };
 		03E4E8F312B3CA41008F937B /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		03FE160212B248E80066BED8 /* menu_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back_2.png; sourceTree = "<group>"; };
 		03FE166212B260BF0066BED8 /* NewslineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewslineViewController.h; sourceTree = "<group>"; };
@@ -890,6 +894,7 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03D115F112B5417E00D1E6E4 /* schriften.png */,
 				03E4E8F312B3CA41008F937B /* checkmark.png */,
 				03595DF712B2EE4A0020E48D /* click.mp3 */,
 				0397717912B17A8E00CA6126 /* star9.png */,
@@ -1082,6 +1087,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				03D1130E12B5233A00D1E6E4 /* TODO.txt */,
 				03ABF42C12AAC61100320143 /* Entitlements.plist */,
 				03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */,
 				8D1107310486CEB800E47090 /* Fruitmunch-Info.plist */,
@@ -1243,6 +1249,8 @@
 				03FE166612B260BF0066BED8 /* NewslineViewController.xib in Resources */,
 				03595DF812B2EE4A0020E48D /* click.mp3 in Resources */,
 				03E4E8F412B3CA41008F937B /* checkmark.png in Resources */,
+				03D1130F12B5233A00D1E6E4 /* TODO.txt in Resources */,
+				03D115F212B5417E00D1E6E4 /* schriften.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
