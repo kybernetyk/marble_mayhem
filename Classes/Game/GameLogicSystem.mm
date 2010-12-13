@@ -310,13 +310,12 @@ namespace game
 			_map[_current_gbe->col][_current_gbe->row] = _current_entity;
 		}
 	}
+
+	static int prev_col = -1;
+	static int prev_row = -1;
 	
-	void GameLogicSystem::mark_chain ()
+	void GameLogicSystem::mark_cell (int col, int row)
 	{
-		vector2D v = InputDevice::sharedInstance()->touchLocation();
-		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
-		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
-		
 		std::vector<Entity*>::const_iterator it = _entities.begin();
 		
 		Entity *current_entity = NULL;
@@ -326,7 +325,7 @@ namespace game
 			current_entity = *it;
 			++it;
 			current_gbe = _entityManager->getComponent <GameBoardElement> (current_entity);
-
+			
 			if (!current_gbe->marked)
 			{
 				if ((current_gbe->col == col) && (current_gbe->row == row))
@@ -390,6 +389,105 @@ namespace game
 				}
 			}
 		}
+		
+	}
+	
+	void GameLogicSystem::mark_chain ()
+	{
+		vector2D v = InputDevice::sharedInstance()->touchLocation();
+		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
+		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
+
+		int col_diff = (col - prev_col);
+		int row_diff = (row - prev_row);
+		
+		if (prev_col == -1 && prev_row == -1)
+		{
+			vector2D v2 = InputDevice::sharedInstance()->initialTouchLocation();
+			prev_col = (v2.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
+			prev_row = (v2.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
+			
+			mark_cell(prev_col, prev_row);
+			return;
+		}
+		
+		//nothing changed between frames
+		if (prev_col == col && prev_row == row)
+			return;
+		
+		//if the column difference is larger than the row difference
+		//handle the column first
+		if ( abs(col_diff) > abs(row_diff) )
+		{
+			while (1) 
+			{
+				int a = 1;
+				if (col_diff < 0)
+					a = -1;
+				if (col_diff == 0)
+					a = 0;
+
+				prev_col += a;
+				mark_cell(prev_col, prev_row);
+				
+				if (prev_col == col)
+					break;
+			}
+			
+			while (1) 
+			{
+				int a = 1;
+				if (row_diff < 0)
+					a = -1;
+				if (row_diff == 0)
+					a = 0;
+
+				prev_row += a;
+				mark_cell(prev_col, prev_row);
+				
+				if (prev_row == row)
+					break;
+			}
+		}
+		else //handle row first
+		{
+			while (1) 
+			{
+				int a = 1;
+				if (row_diff < 0)
+					a = -1;
+				if (row_diff == 0)
+					a = 0;
+
+				prev_row += a;
+				mark_cell(prev_col, prev_row);
+				
+				if (prev_row == row)
+					break;
+			}
+			
+			while (1) 
+			{
+				int a = 1;
+				if (col_diff < 0)
+					a = -1;
+				if (col_diff == 0)
+					a = 0;
+				
+				prev_col += a;
+				mark_cell(prev_col, prev_row);
+				
+				if (prev_col == col)
+					break;
+			}
+			
+		}
+		
+		
+		prev_col = col;
+		prev_row = row;
+
+		return;
 	}
 	
 	int GameLogicSystem::count_empty_cols ()
@@ -425,16 +523,28 @@ namespace game
 		{
 			mark_chain();
 		}
-		else 
-		{
-			marked_color = -1;
-			head_row = -1;
-			head_col = -1;
-		}
 		
 		if (InputDevice::sharedInstance()->touchUpReceived())
 		{
+			mark_chain ();	//just in case fps is too low and the time between last mark and up was too long
+							//to register all marks
+
+			marked_color = -1;
+			head_row = -1;
+			head_col = -1;
+			prev_col = -1;
+			prev_row = -1;
+			
 			handle_chain();
+		}
+		
+		if (!touch)
+		{
+				marked_color = -1;
+				head_row = -1;
+				head_col = -1;
+				prev_col = -1;
+				prev_row = -1;
 		}
 		
 		if (g_GameState.game_mode == GAME_MODE_SWEEP)

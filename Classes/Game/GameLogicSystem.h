@@ -21,6 +21,7 @@ namespace game
 		GameLogicSystem (EntityManager *entityManager);
 		void update (float delta);
 		
+		void mark_cell (int col, int row);
 		void mark_chain ();
 		void handle_chain ();
 		void remove_chain ();
