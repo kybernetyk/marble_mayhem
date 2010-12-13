@@ -1,0 +1,6 @@
+
+how to clone:
+
+  git clone <url>
+  git submodule init
+  git submodule update

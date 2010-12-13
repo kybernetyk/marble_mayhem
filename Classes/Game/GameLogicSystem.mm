@@ -374,8 +374,8 @@ namespace game
 								{
 									Entity *pe = _entityManager->createNewEntity();
 									Position *pos = _entityManager->addComponent <Position> (pe);
-									pos->x = col * TILESIZE_X + BOARD_X_OFFSET;
-									pos->y = row*TILESIZE_Y+BOARD_Y_OFFSET;
+									pos->x = col * TILESIZE_X + BOARD_X_OFFSET+2;
+									pos->y = row * TILESIZE_Y + BOARD_Y_OFFSET-4;
 									
 									Sprite *sp = _entityManager->addComponent <Sprite> (pe);
 									sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
@@ -449,17 +449,32 @@ namespace game
 				else
 					g_GameState.next_state = GAME_STATE_SOLVED;
 				
-				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
+//				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
 				
 				int bonus = ((BOARD_NUM_COLS * BOARD_NUM_ROWS) -  g_GameState.fruits_on_board) * 4;
 				bonus *= (bonus * 1.5);
 				
-				printf("bonus score = %i\n", bonus);
+//				printf("bonus score = %i\n", bonus);
 				
 				int col_bonus = (cols_removed * 10) * (cols_removed * 10) * (cols_removed * 10);
 				//col_bonus += (((float)col_bonus*0.2) * ((float)col_bonus*0.2));
 				
-				printf("removed col bonus = %i = %i\n", cols_removed, col_bonus);
+//				printf("removed col bonus = %i = %i\n", cols_removed, col_bonus);
+				
+				if (g_GameState.fruits_on_board <= 0)
+				{
+					printf("time played: %f\n", g_GameState.time_played);
+					printf("bonus: %i\n", bonus);
+
+					bonus += 45321;
+					float f = (1.5 - (g_GameState.time_played * 0.01));
+					if (f <= 0.3)
+						f = 0.3;
+					bonus *= f;
+
+					printf("bonus time abzuch: %i\n", bonus);
+				}
+
 				
 				g_GameState.score += bonus;
 				g_GameState.score += col_bonus;
