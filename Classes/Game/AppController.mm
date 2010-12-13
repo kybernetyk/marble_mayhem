@@ -105,6 +105,7 @@
 	
 	mx3::SoundSystem::set_sfx_volume (sfx_vol);
 	mx3::SoundSystem::set_music_volume (music_vol);
+	mx3::SoundSystem::play_sound ("minyx.caf");
 	g_ParticlesEnabled = parts;
 	
 	//[[SimpleAudioEngine sharedEngine] preloadEffect: @MENU_ITEM_SFX];
