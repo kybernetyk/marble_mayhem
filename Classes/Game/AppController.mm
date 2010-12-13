@@ -90,7 +90,7 @@
 	float music_vol = [defs floatForKey: @"music_volume"];
 	BOOL parts = [defs boolForKey: @"particles_enabled"];
 
-	if (music_vol <= 0.0)
+/*	if (music_vol <= 0.0)
 	{
 		CDAudioManager *am = [CDAudioManager sharedManager];
 		[am setMode: kAMM_FxOnly];
@@ -100,7 +100,7 @@
 		CDAudioManager *am = [CDAudioManager sharedManager];
 		[am setMode: kAMM_FxPlusMusic];
 		
-	}
+	}*/
 	
 	
 	mx3::SoundSystem::set_sfx_volume (sfx_vol);
