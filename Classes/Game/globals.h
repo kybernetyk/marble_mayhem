@@ -79,6 +79,7 @@ namespace game
 }
 
 extern game::GameState g_GameState;
+extern bool g_ParticlesEnabled;
 extern double g_FPS;
 	
 

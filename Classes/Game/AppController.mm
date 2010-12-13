@@ -20,6 +20,7 @@
 @synthesize mainView;
 @synthesize pauseView;
 @synthesize gameOverView;
+@synthesize settingsView;
 
 - (NSSet *) inAppProductIDs
 {
@@ -54,6 +55,9 @@
 		
 		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
 						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
+						   [NSNumber numberWithFloat: 0.5], @"music_volume",
+						   [NSNumber numberWithBool: YES], @"particles_enabled",
 						   nil];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
@@ -81,6 +85,28 @@
 - (void) setup
 {
 	NSLog(@"appcontroller setup: %@", self);
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	float sfx_vol = [defs floatForKey: @"sfx_volume"];
+	float music_vol = [defs floatForKey: @"music_volume"];
+	BOOL parts = [defs boolForKey: @"particles_enabled"];
+
+	if (music_vol <= 0.0)
+	{
+		CDAudioManager *am = [CDAudioManager sharedManager];
+		[am setMode: kAMM_FxOnly];
+	}
+	else
+	{
+		CDAudioManager *am = [CDAudioManager sharedManager];
+		[am setMode: kAMM_FxPlusMusic];
+		
+	}
+	
+	
+	mx3::SoundSystem::set_sfx_volume (sfx_vol);
+	mx3::SoundSystem::set_music_volume (music_vol);
+	g_ParticlesEnabled = parts;
+	
 	//[[SimpleAudioEngine sharedEngine] preloadEffect: @MENU_ITEM_SFX];
 	[self showMainMenu: nil];
 }
@@ -106,7 +132,7 @@
 - (void) showPauseMenu: (id) sender
 {
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
-	game::g_pGame->setPaused (!game::paused);
+	game::g_pGame->setPaused (true);
 	[mainView addSubview: pauseView];
 }
 
@@ -151,7 +177,7 @@
 
 - (IBAction) showGameOverView: (id) sender
 {
-	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	//mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	[mainView addSubview: gameOverView];
 	
 	[checkMark setHidden: YES];
@@ -176,6 +202,33 @@
 	game::g_pGame->returnToMainMenu();
 	[gameOverView removeFromSuperview];
 	[self showMainMenu: nil];
+}
+
+- (IBAction) showSettings: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	float sfx_vol = [defs floatForKey: @"sfx_volume"];
+	float music_vol = [defs floatForKey: @"music_volume"];
+	BOOL parts = [defs boolForKey: @"particles_enabled"];
+
+	[sfxSlider setValue: sfx_vol];
+	[musicSlider setValue: music_vol];
+	[particleSwitch setOn: parts];
+
+/*	IBOutlet UISlider *sfxSlider;
+	IBOutlet UISlider *musicSlider;
+	IBOutlet UISwitch *particleSwitch;*/
+	
+	[mainView addSubview: settingsView];
+}
+
+- (IBAction) hideSettings: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	[settingsView removeFromSuperview];
 }
 
 
@@ -223,6 +276,48 @@
 	[activity startAnimating];
 	
 	[[[UIApplication sharedApplication] delegate] initFBShare: self];
+}
+
+#pragma mark -
+#pragma mark settings panel
+- (IBAction) volumeDidChange: (id) sender
+{
+	UISlider *slider = (UISlider *)sender;
+	float vol = [slider value];
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	
+	//sfx
+	if ([sender tag] == 1)
+	{
+		//[[SimpleAudioEngine sharedEngine] setEffectsVolume: vol];
+		mx3::SoundSystem::set_sfx_volume (vol);
+		[defs setFloat: vol forKey: @"sfx_volume"];
+	}
+
+	//music
+	if ([sender tag] == 2)
+	{
+		//[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume: vol];
+		mx3::SoundSystem::set_music_volume (vol);
+		[defs setFloat: vol forKey: @"music_volume"];
+	}
+}
+
+- (IBAction) particlesDidChange: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	g_ParticlesEnabled = [sender isOn];
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	[defs setBool: g_ParticlesEnabled forKey: @"particles_enabled"];
+}
+
+- (IBAction) playPing: (id) sender
+{
+	if ([sender tag] == 1)	//sfx slider needs a different ping
+		mx3::SoundSystem::play_sound ("Good.mp3");
+	else
+		mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 }
 
 #pragma mark -

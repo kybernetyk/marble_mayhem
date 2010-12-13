@@ -4,10 +4,11 @@ TODO
 1.0:
 
 -[j] serverside promo code scripts
--[j] getready,3,2,1,go->gameover/solved animations
+-[*] getready,3,2,1,go->gameover/solved animations
+-[*] settings panel
 -[j] "omg that's top blah %"-score msg for facebook
 -[j] create facebook app
--[j] create leaderboard for timed mode
+-[j] create leaderboard for puzzle mode
 -[s] music, sfx
 -[s] icon
 -[j] screen shots

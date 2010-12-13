@@ -57,7 +57,7 @@ namespace game
 		mx3::Scene *next_scene;
 	};
 
-	extern bool paused;
+	extern int paused_count;
 	extern mx3::Timer timer;
 	extern unsigned int next_game_tick;
 	

@@ -20,8 +20,6 @@
 
 namespace game 
 {
-#define PARTICLE_MARKER
-
 	extern mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
 	extern mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
 
@@ -99,25 +97,19 @@ namespace game
 				if (num_of_marks >= 2)
 				{
 					_entityManager->addComponent <MarkOfDeath> (current_entity);
-					
-//					ParticleSystem::createParticleEmitter ("goldstar2.pex", 0.25 , 
-//														   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
-					
-
-					
-					
-					PE_Proxy *pe = get_free_explosion();
-					if (pe)
+					if (g_ParticlesEnabled)
 					{
-						ParticleSystem::createParticleEmitter (pe,
-															   0.25,
-															   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
-						pe->setDuration(0.25);
-						pe->reset();
-						pe->start();
+						PE_Proxy *pe = get_free_explosion();
+						if (pe)
+						{
+							ParticleSystem::createParticleEmitter (pe,
+																   0.25,
+																   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
+							pe->setDuration(0.25);
+							pe->reset();
+							pe->start();
+						}
 					}
-					
-					
 				}
 				current_gbe->marked = false;
 			}
@@ -211,12 +203,22 @@ namespace game
 			if (e)
 			{
 				markers[i] = NULL;
-	#ifdef PARTICLE_MARKER
-				PEmitter *pe = _entityManager->getComponent <PEmitter> (e);
-				[pe->pe->pe setDuration: 0.1];
-	#else
-				_entityManager->addComponent <MarkOfDeath> (e);
-	#endif
+				
+				if (g_ParticlesEnabled)
+				{
+					PEmitter *pe = _entityManager->getComponent <PEmitter> (e);
+
+					//we have to make sure that the marker is a PE at this point!
+					//user could have changed particles to on while the markers were bitmap markers
+					if (pe->_renderable_type ==  RENDERABLETYPE_PARTICLE_EMITTER)
+						[pe->pe->pe setDuration: 0.1];
+					else
+						_entityManager->addComponent <MarkOfDeath> (e);		
+				}
+				else
+				{
+					_entityManager->addComponent <MarkOfDeath> (e);	
+				}
 			}
 		}
 	}
@@ -353,32 +355,35 @@ namespace game
 							
 							if (marker_index < BOARD_NUM_MARKERS)
 							{
-#ifdef PARTICLE_MARKER
-//								Entity *pe = ParticleSystem::createParticleEmitter ("marker.pex", -1.0 , vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
-								
-								PE_Proxy *pe = get_free_marker();
-								if (pe)
+								if (g_ParticlesEnabled)
 								{
-									Entity *ent = ParticleSystem::createParticleEmitter (pe,
-																		   -1.0,
-																		   vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
-									pe->setDuration(-1.0);
-									pe->reset();
-									pe->start();
-									markers[marker_index++] = ent;	
+									PE_Proxy *pe = get_free_marker();
+									if (pe)
+									{
+										Entity *ent = ParticleSystem::createParticleEmitter (pe,
+																							 -1.0,
+																							 vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+										pe->setDuration(-1.0);
+										pe->reset();
+										pe->start();
+										markers[marker_index++] = ent;	
+									}
+									
 								}
-#else
-								Entity *pe = _entityManager->createNewEntity();
-								Position *pos = _entityManager->addComponent <Position> (pe);
-								pos->x = col * TILESIZE_X + BOARD_X_OFFSET;
-								pos->y = row*TILESIZE_Y+BOARD_Y_OFFSET;
-								
-								Sprite *sp = _entityManager->addComponent <Sprite> (pe);
-								sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
-								sp->z = 8.0;
-								
-								markers[marker_index++] = pe;	
-#endif
+								else
+								{
+									Entity *pe = _entityManager->createNewEntity();
+									Position *pos = _entityManager->addComponent <Position> (pe);
+									pos->x = col * TILESIZE_X + BOARD_X_OFFSET;
+									pos->y = row*TILESIZE_Y+BOARD_Y_OFFSET;
+									
+									Sprite *sp = _entityManager->addComponent <Sprite> (pe);
+									sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
+									sp->z = 8.0;
+									
+									markers[marker_index++] = pe;	
+									
+								}
 							}
 						}
 					}

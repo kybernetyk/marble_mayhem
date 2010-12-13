@@ -31,7 +31,7 @@ namespace game
 	unsigned int next_game_tick = 1;//SDL_GetTicks();
 	int loops;
 	float interpolation;
-	bool paused = false;
+	int paused = 0;
 	mx3::Timer timer;
 	Game *g_pGame;	
 	
@@ -239,10 +239,15 @@ namespace game
 
 	void Game::setPaused (bool b)
 	{
-		game::paused = b;
+		if (b)
+			game::paused ++;
+		else
+			game::paused --;
+		
 
-		if (!game::paused)
+		if (game::paused <= 0)
 		{
+			game::paused = 0;
 			game::next_game_tick = mx3::GetTickCount();
 			game::timer.update();
 			game::timer.update();

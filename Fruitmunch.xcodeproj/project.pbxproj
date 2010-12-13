@@ -324,6 +324,7 @@
 		034E0D8A12AED89A00CD8EFB /* SoundSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSystem.h; sourceTree = "<group>"; };
 		034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		034E0D8C12AED89A00CD8EFB /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		03563DC012B588F300A73D33 /* ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl.h; sourceTree = "<group>"; };
 		03595DF712B2EE4A0020E48D /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = click.mp3; path = ../../Downloads/click.mp3; sourceTree = SOURCE_ROOT; };
 		03976F7F12B14DE000CA6126 /* menu_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back.png; sourceTree = "<group>"; };
 		03976F8D12B14F3700CA6126 /* minyx_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_bw.png; sourceTree = "<group>"; };
@@ -556,6 +557,7 @@
 				034E0D2612AED89A00CD8EFB /* Texture2D.mm */,
 				034E0D2712AED89A00CD8EFB /* TexturedQuad.h */,
 				034E0D2812AED89A00CD8EFB /* TexturedQuad.mm */,
+				03563DC012B588F300A73D33 /* ogl.h */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
