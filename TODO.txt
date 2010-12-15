@@ -7,7 +7,7 @@ TODO
 -[*] getready,3,2,1,go->gameover/solved animations
 -[*] settings panel
 -[*] logo
--[j] "omg that's top blah %"-score msg for facebook
+-[*] "omg that's top blah %"-score msg for facebook
 -[j] create facebook app
 -[j] create leaderboard for puzzle mode
 -[s] music, sfx
