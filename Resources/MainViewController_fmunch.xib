@@ -394,6 +394,34 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="IBUILabel" id="930308376">
+						<reference key="NSNextResponder" ref="767577087"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 20}, {280, 93}}</string>
+						<reference key="NSSuperview" ref="767577087"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwLjA3Nzk3NTQwNzI0IDAuMjg1NzE0Mjk4NSAwLjUAA</bytes>
+						</object>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string type="base64-UTF8" key="IBUIText">V29ybGQgV2lkZSBSYW5rICMxMDAhCllvdSBzaG91bGQgYnJhZyBhYm91dCBpdCBvbiBGYWNlYm9vayE</string>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Arial-BoldMT</string>
+							<double key="NSSize">20</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<reference key="IBUITextColor" ref="463655769"/>
+						<reference key="IBUIHighlightedColor" ref="463655769"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">20</float>
+						<int key="IBUINumberOfLines">3</int>
+						<int key="IBUITextAlignment">1</int>
+						<int key="IBUILineBreakMode">0</int>
+					</object>
 					<object class="IBUIButton" id="689834336">
 						<reference key="NSNextResponder" ref="767577087"/>
 						<int key="NSvFlags">292</int>
@@ -448,7 +476,7 @@
 					<object class="IBUIActivityIndicatorView" id="363142847">
 						<reference key="NSNextResponder" ref="767577087"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{263, 20}, {37, 37}}</string>
+						<string key="NSFrame">{{261, 22}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -466,34 +494,6 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">checkmark.png</string>
 						</object>
-					</object>
-					<object class="IBUILabel" id="930308376">
-						<reference key="NSNextResponder" ref="767577087"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 20}, {280, 93}}</string>
-						<reference key="NSSuperview" ref="767577087"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwLjA3Nzk3NTQwMzcyIDAuMjg1NzE0Mjg1NyAwLjUAA</bytes>
-						</object>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">V29ybGQgV2lkZSBSYW5rICMxMDAhCllvdSBzaG91bGQgYnJhZyBhYm91dCBpdCBvbiBGYWNlYm9vayE</string>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Arial-BoldMT</string>
-							<double key="NSSize">20</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<reference key="IBUITextColor" ref="463655769"/>
-						<reference key="IBUIHighlightedColor" ref="463655769"/>
-						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">20</float>
-						<int key="IBUINumberOfLines">3</int>
-						<int key="IBUITextAlignment">1</int>
-						<int key="IBUILineBreakMode">0</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
@@ -1390,7 +1390,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAADAwAAAwwMAAA</bytes>
+						<bytes key="NSTransformStruct">AUGgAABBoAAAA</bytes>
 					</object>
 					<string>AppController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

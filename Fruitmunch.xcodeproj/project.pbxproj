@@ -95,6 +95,9 @@
 		034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8512AED89A00CD8EFB /* ParticleSystem.mm */; };
 		034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8812AED89A00CD8EFB /* RenderSystem.mm */; };
 		034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */; };
+		0394BFF412B8FB9C000CD668 /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 0394BFF012B8FB9C000CD668 /* promo_head.png */; };
+		0394BFF512B8FB9C000CD668 /* WebkitViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0394BFF212B8FB9C000CD668 /* WebkitViewController.mm */; };
+		0394BFF612B8FB9C000CD668 /* WebkitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0394BFF312B8FB9C000CD668 /* WebkitViewController.xib */; };
 		03976F8012B14DE000CA6126 /* menu_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 03976F7F12B14DE000CA6126 /* menu_back.png */; };
 		03976F8E12B14F3700CA6126 /* minyx_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 03976F8D12B14F3700CA6126 /* minyx_bw.png */; };
 		0397705812B1641100CA6126 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397705712B1641100CA6126 /* marker.png */; };
@@ -161,7 +164,7 @@
 		03EBCCB512B651F200785F0F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03EBCCB412B651F200785F0F /* logo.png */; };
 		03EBCCB812B6522000785F0F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03EBCCB712B6522000785F0F /* click.mp3 */; };
 		03FE160312B248E80066BED8 /* menu_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FE160212B248E80066BED8 /* menu_back_2.png */; };
-		03FE166512B260BF0066BED8 /* NewslineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FE166312B260BF0066BED8 /* NewslineViewController.m */; };
+		03FE166512B260BF0066BED8 /* NewslineViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03FE166312B260BF0066BED8 /* NewslineViewController.mm */; };
 		03FE166612B260BF0066BED8 /* NewslineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FE166412B260BF0066BED8 /* NewslineViewController.xib */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -328,6 +331,10 @@
 		034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		034E0D8C12AED89A00CD8EFB /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		03563DC012B588F300A73D33 /* ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl.h; sourceTree = "<group>"; };
+		0394BFF012B8FB9C000CD668 /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
+		0394BFF112B8FB9C000CD668 /* WebkitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebkitViewController.h; sourceTree = "<group>"; };
+		0394BFF212B8FB9C000CD668 /* WebkitViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebkitViewController.mm; sourceTree = "<group>"; };
+		0394BFF312B8FB9C000CD668 /* WebkitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebkitViewController.xib; sourceTree = "<group>"; };
 		03976F7F12B14DE000CA6126 /* menu_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back.png; sourceTree = "<group>"; };
 		03976F8D12B14F3700CA6126 /* minyx_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minyx_bw.png; sourceTree = "<group>"; };
 		0397705712B1641100CA6126 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
@@ -409,7 +416,7 @@
 		03EBCCB712B6522000785F0F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		03FE160212B248E80066BED8 /* menu_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back_2.png; sourceTree = "<group>"; };
 		03FE166212B260BF0066BED8 /* NewslineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewslineViewController.h; sourceTree = "<group>"; };
-		03FE166312B260BF0066BED8 /* NewslineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewslineViewController.m; sourceTree = "<group>"; };
+		03FE166312B260BF0066BED8 /* NewslineViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NewslineViewController.mm; sourceTree = "<group>"; };
 		03FE166412B260BF0066BED8 /* NewslineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewslineViewController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Fruitmunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fruitmunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -649,8 +656,8 @@
 		034E0D2D12AED89A00CD8EFB /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0394BFEF12B8FB9C000CD668 /* WebkitViewController */,
 				03FE166112B260AA0066BED8 /* NewslineViewController */,
-				030BDCD412AFDA8C008BC5CF /* NotificationNames.h */,
 				030BDA7E12AEE7D4008BC5CF /* PromotionViewController */,
 				034E0D2E12AED89A00CD8EFB /* EAGLView.h */,
 				034E0D2F12AED89A00CD8EFB /* EAGLView.mm */,
@@ -664,6 +671,7 @@
 				034E0D5E12AED89A00CD8EFB /* MKStore */,
 				034E0D6312AED89A00CD8EFB /* MXAppDelegate.h */,
 				034E0D6412AED89A00CD8EFB /* MXAppDelegate.mm */,
+				030BDCD412AFDA8C008BC5CF /* NotificationNames.h */,
 				030BDCD512AFDD3E008BC5CF /* NotificationSystem.h */,
 				030BDCD612AFDD3E008BC5CF /* NotificationSystem.mm */,
 			);
@@ -890,6 +898,17 @@
 			path = "Sound System";
 			sourceTree = "<group>";
 		};
+		0394BFEF12B8FB9C000CD668 /* WebkitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0394BFF012B8FB9C000CD668 /* promo_head.png */,
+				0394BFF112B8FB9C000CD668 /* WebkitViewController.h */,
+				0394BFF212B8FB9C000CD668 /* WebkitViewController.mm */,
+				0394BFF312B8FB9C000CD668 /* WebkitViewController.xib */,
+			);
+			path = WebkitViewController;
+			sourceTree = "<group>";
+		};
 		0397710812B1735400CA6126 /* Star System */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,7 +1091,7 @@
 			isa = PBXGroup;
 			children = (
 				03FE166212B260BF0066BED8 /* NewslineViewController.h */,
-				03FE166312B260BF0066BED8 /* NewslineViewController.m */,
+				03FE166312B260BF0066BED8 /* NewslineViewController.mm */,
 				03FE166412B260BF0066BED8 /* NewslineViewController.xib */,
 			);
 			path = NewslineViewController;
@@ -1265,6 +1284,8 @@
 				03EBCCB812B6522000785F0F /* click.mp3 in Resources */,
 				03C1180F12B6AB4D00860ECE /* minyx.caf in Resources */,
 				03C1181A12B6AE8100860ECE /* Default.png in Resources */,
+				0394BFF412B8FB9C000CD668 /* promo_head.png in Resources */,
+				0394BFF612B8FB9C000CD668 /* WebkitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,7 +1366,8 @@
 				0397710B12B1739800CA6126 /* StarSystem.mm in Sources */,
 				030B5B4012B22D2D00B9721F /* MXAlertPrompt.m in Sources */,
 				030B5BA712B2343A00B9721F /* NSString+Search.m in Sources */,
-				03FE166512B260BF0066BED8 /* NewslineViewController.m in Sources */,
+				03FE166512B260BF0066BED8 /* NewslineViewController.mm in Sources */,
+				0394BFF512B8FB9C000CD668 /* WebkitViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -327,7 +327,7 @@
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 //	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //	[dc postNotificationName: kShowPromotions object: nil];
-	post_notification (kShowPromotions);
+	post_notification (kShowPromotionView);
 }
 
 - (IBAction) shareOnFacebook: (id) sender
