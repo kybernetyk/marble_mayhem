@@ -14,6 +14,8 @@
 #include "NotificationSystem.h"
 #import "SoundSystem.h"
 #import "SimpleAudioEngine.h"
+#import <GameKit/GameKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation AppController
 @synthesize mainMenuView;
@@ -22,28 +24,20 @@
 @synthesize gameOverView;
 @synthesize settingsView;
 
-- (NSSet *) inAppProductIDs
+- (void) setBorderAndCornersForView: (UIView *) aView
 {
-	NSSet *iap = [NSSet setWithObjects:
-				  kInAppFullGame,
-				  @"com.minyxgames.fruitmunch.8",
-				  @"com.minyxgames.fruitmunch.9",
-				  nil];
+	[[aView layer] setCornerRadius: 8.0];
+	[[aView layer] setMasksToBounds: YES];
 	
-	return iap;	
-}
-
-- (NSArray *) newsItemsForOffline
-{
-	return nil;
+	//0x9f9087
 	
-	NSArray *ret = [NSArray arrayWithObjects:
-					@"Tip: Try to get AIDS.",
-					@"Tip: Don't play with negros!",
-					@"Tip: Try to remove many fruits at once to get bonus points.",
-					@"Tip: For extra bonus try to rape your sister.",
-					nil];
-	return ret;
+	
+	
+//	UIColor *col = [UIColor colorWithRed: (159.0/255.0) green: (144.0/255.0) blue: (135.0/255.0) alpha:1.0];
+//	
+//	[[aView layer] setBorderColor: [col CGColor]];
+//	[[aView layer] setBorderWidth: 1.0];
+	
 }
 
 - (id) init
@@ -168,26 +162,92 @@
 	{
 //		NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //		[dc postNotificationName: kHideMainMenu object: nil];
+		g_GameState.game_mode = [sender tag];
 
+		NSString *strs[] = 
+		{
+			NULL,
+			@"com.minyxgames.fruitmunch.timed",
+			NULL,
+			@"com.minyxgames.fruitmunch.testlol"
+		};
+		
+		NSString *cat = strs[g_GameState.game_mode];
+		
+		if (cat)
+		{			
+			[g_pGameCenterManger reloadHighScoresForCategory: cat];
+		}
+		
+		 
+		 
 		post_notification(kHideMainMenu);
 		
-		g_GameState.game_mode = [sender tag];
 		game::g_pGame->startNewGame();
 	}
 }
 
 - (IBAction) showGameOverView: (id) sender
 {
+	[self setBorderAndCornersForView: rankLabel];
 	//mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	[mainView addSubview: gameOverView];
 	
 	[checkMark setHidden: YES];
 	[activity stopAnimating];
 	[fbShareButton setEnabled: YES];
+	
+	NSUInteger lastscore = [(GKScore*)[[g_pGameCenterManger top100_scores] lastObject] value];
+	NSInteger lastrank = [(GKScore*)[[g_pGameCenterManger top100_scores] lastObject] rank];
+	
+	NSLog(@"lastscore: %i", lastscore);
+	NSLog(@"lastrank: %i", lastrank);
+	
+	NSInteger playerrank = lastrank+1;
+	NSInteger tmp = 0;
+	
+	for (GKScore *score in [g_pGameCenterManger top100_scores])
+	{
+		if (g_GameState.score > [score value] &&
+			tmp < [score value])
+		{
+			playerrank = [score rank];
+			tmp = [score value];
+		}
+	}
+	
+	NSLog(@"playerrank: %i", playerrank);
+	g_GameState.player_rank = playerrank;
+	
+	if (playerrank <= 100)
+	{
+		NSString *s = [NSString stringWithFormat: @"World Wide Rank #%i!\nYou should brag about it on Facebook!", playerrank];
+		[rankLabel setText: s];
+		[rankLabel setHidden: NO];
+	}
+	else
+	{
+		[rankLabel setHidden: YES];
+	}
 }
 
 - (IBAction) playAgain: (id) sender
 {
+	NSString *strs[] = 
+	{
+		NULL,
+		@"com.minyxgames.fruitmunch.timed",
+		NULL,
+		@"com.minyxgames.fruitmunch.testlol"
+	};
+	
+	NSString *cat = strs[g_GameState.game_mode];
+	
+	if (cat)
+	{			
+		[g_pGameCenterManger reloadHighScoresForCategory: cat];
+	}
+	
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	g_GameState.reset();
 //	g_GameState.game_state = 0;
@@ -346,6 +406,26 @@
 
 - (NSString *) titleForFBShare
 {
+	NSString *ret = nil;
+	
+	if (g_GameState.player_rank <= 100)
+		ret = @"World Wide Top 100 Score!!!";
+	if (g_GameState.player_rank <= 75)
+		ret = @"World Wide Top 75 Score!!!";
+	if (g_GameState.player_rank <= 50)
+		ret = @"World Wide Top 50 Score!!!";
+	if (g_GameState.player_rank <= 25)
+		ret = @"World Wide Top 25 Score!!!";
+	if (g_GameState.player_rank <= 10)
+		ret = @"World Wide Top 10 Score!!!";
+	if (g_GameState.player_rank <= 5)
+		ret = @"World Wide Top 5 Score!!!";
+	if (g_GameState.player_rank <= 1)
+		ret = @"I am #1!!! WORLD WIDE!!!";
+
+	if (ret)
+		return ret;
+	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
 		return @"My Fruit Munch Time Challenge Score!";
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
@@ -355,12 +435,29 @@
 }
 - (NSString *) captionForFBShare
 {
+	NSString *ret = nil;
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		return [NSString stringWithFormat: @"I took a try on the Fruit Munch Time Challenge and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Fruit Munch Time Challenge and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return [NSString stringWithFormat: @"I took a try on the Fruit Munch Puzzle Mode and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Fruit Munch Puzzle Mode and scored %i points!", g_GameState.score];
 	
-	return @"derp";
+	NSString *add = nil;
+	
+	if (g_GameState.player_rank <= 100)
+		add = [NSString stringWithFormat: @" That's world wide rank #%i!",g_GameState.player_rank];
+	if (g_GameState.player_rank <= 25)
+		add = [NSString stringWithFormat: @" That's world wide rank #%i!!",g_GameState.player_rank];
+	if (g_GameState.player_rank <= 10)
+		add = [NSString stringWithFormat: @" That's TOP 10!",g_GameState.player_rank];
+	if (g_GameState.player_rank <= 5)
+		add = [NSString stringWithFormat: @" That's TOP 5!",g_GameState.player_rank];
+	if (g_GameState.player_rank <= 1)
+		add = [NSString stringWithFormat: @" That's WORLD WIDE #1!!!",g_GameState.player_rank];
+	
+	if (add)
+		ret = [ret stringByAppendingString: add];
+	
+	return ret;
 }
 - (NSString *) descriptionForFBShare
 {
@@ -382,6 +479,33 @@
 - (NSString *) picurlForFBShare
 {
 	return @"http://www.minyxgames.com/minyx-ultra/icon_90.png";
+}
+#pragma mark -
+#pragma mark in inapp
+- (NSSet *) inAppProductIDs
+{
+	NSSet *iap = [NSSet setWithObjects:
+				  kInAppFullGame,
+				  @"com.minyxgames.fruitmunch.8",
+				  @"com.minyxgames.fruitmunch.9",
+				  nil];
+	
+	return iap;	
+}
+
+#pragma mark -
+#pragma mark news
+- (NSArray *) newsItemsForOffline
+{
+	return nil;
+	
+	NSArray *ret = [NSArray arrayWithObjects:
+					@"Tip: Try to get AIDS.",
+					@"Tip: Don't play with negros!",
+					@"Tip: Try to remove many fruits at once to get bonus points.",
+					@"Tip: For extra bonus try to rape your sister.",
+					nil];
+	return ret;
 }
 
 

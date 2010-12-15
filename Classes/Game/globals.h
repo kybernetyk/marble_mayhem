@@ -27,6 +27,8 @@ namespace game
 		
 		int fruits_on_board;
 		
+		int player_rank;
+		
 		void reset ()
 		{
 			score = 0;
@@ -36,6 +38,7 @@ namespace game
 			total_killed = 0;
 			fruits_on_board = 0;
 			time_played = 0.0f;
+			player_rank = 0;
 		}
 	};
 

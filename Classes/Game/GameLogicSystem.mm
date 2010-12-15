@@ -395,6 +395,9 @@ namespace game
 	void GameLogicSystem::mark_chain ()
 	{
 		vector2D v = InputDevice::sharedInstance()->touchLocation();
+		if (v.y <= 57.0)
+			return;
+		
 		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
 		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
 

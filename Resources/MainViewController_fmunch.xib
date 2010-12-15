@@ -467,6 +467,34 @@
 							<string key="NSResourceName">checkmark.png</string>
 						</object>
 					</object>
+					<object class="IBUILabel" id="930308376">
+						<reference key="NSNextResponder" ref="767577087"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 20}, {280, 93}}</string>
+						<reference key="NSSuperview" ref="767577087"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwLjA3Nzk3NTQwMzcyIDAuMjg1NzE0Mjg1NyAwLjUAA</bytes>
+						</object>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string type="base64-UTF8" key="IBUIText">V29ybGQgV2lkZSBSYW5rICMxMDAhCllvdSBzaG91bGQgYnJhZyBhYm91dCBpdCBvbiBGYWNlYm9vayE</string>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Arial-BoldMT</string>
+							<double key="NSSize">20</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<reference key="IBUITextColor" ref="463655769"/>
+						<reference key="IBUIHighlightedColor" ref="463655769"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">20</float>
+						<int key="IBUINumberOfLines">3</int>
+						<int key="IBUITextAlignment">1</int>
+						<int key="IBUILineBreakMode">0</int>
+					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
@@ -970,6 +998,14 @@
 					</object>
 					<int key="connectionID">111</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">rankLabel</string>
+						<reference key="source" ref="679031114"/>
+						<reference key="destination" ref="930308376"/>
+					</object>
+					<int key="connectionID">114</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1124,6 +1160,7 @@
 							<reference ref="107111989"/>
 							<reference ref="363142847"/>
 							<reference ref="566910999"/>
+							<reference ref="930308376"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Game Over View</string>
@@ -1242,6 +1279,11 @@
 						<reference key="object" ref="217708024"/>
 						<reference key="parent" ref="642695982"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">113</int>
+						<reference key="object" ref="930308376"/>
+						<reference key="parent" ref="767577087"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1255,6 +1297,8 @@
 					<string>1.IBViewBoundsToFrameTransform</string>
 					<string>112.IBPluginDependency</string>
 					<string>112.IBViewBoundsToFrameTransform</string>
+					<string>113.IBPluginDependency</string>
+					<string>113.IBViewBoundsToFrameTransform</string>
 					<string>22.CustomClassName</string>
 					<string>22.IBPluginDependency</string>
 					<string>24.IBEditorWindowLastContentRect</string>
@@ -1343,6 +1387,10 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUJoAAAAAAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAADAwAAAwwMAAA</bytes>
 					</object>
 					<string>AppController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1440,7 +1488,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABCqAAAw5sAAA</bytes>
 					</object>
-					<string>{{744, 271}, {320, 480}}</string>
+					<string>{{648, 271}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1497,7 +1545,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">112</int>
+			<int key="maxID">114</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1641,6 +1689,7 @@
 							<string>musicSlider</string>
 							<string>particleSwitch</string>
 							<string>pauseView</string>
+							<string>rankLabel</string>
 							<string>settingsView</string>
 							<string>sfxSlider</string>
 						</object>
@@ -1655,6 +1704,7 @@
 							<string>UISlider</string>
 							<string>UISwitch</string>
 							<string>UIView</string>
+							<string>UILabel</string>
 							<string>UIView</string>
 							<string>UISlider</string>
 						</object>
@@ -1672,6 +1722,7 @@
 							<string>musicSlider</string>
 							<string>particleSwitch</string>
 							<string>pauseView</string>
+							<string>rankLabel</string>
 							<string>settingsView</string>
 							<string>sfxSlider</string>
 						</object>
@@ -1712,6 +1763,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">pauseView</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">rankLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">settingsView</string>

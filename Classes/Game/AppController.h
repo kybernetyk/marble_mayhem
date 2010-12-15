@@ -22,6 +22,7 @@
 	IBOutlet UIButton *fbShareButton;
 	IBOutlet UIActivityIndicatorView *activity;
 	IBOutlet UIImageView *checkMark;
+	IBOutlet UILabel *rankLabel;
 	
 	//settings
 	IBOutlet UISlider *sfxSlider;
