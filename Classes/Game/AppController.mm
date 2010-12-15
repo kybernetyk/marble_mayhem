@@ -63,6 +63,7 @@
 		[dc addObserver: self selector: @selector(showGameOverView:) name: kShowGameOverView object:nil];
 		[dc addObserver: self selector: @selector(fbDidFail:) name: kFacebookSubmitDidFail object: nil];
 		[dc addObserver: self selector: @selector(fbDidSucceed:) name: kFacebookSubmitDidSucceed object: nil];
+		[dc addObserver: self selector: @selector(showPauseScreen:) name: kShowPauseScreen object: nil];
 	}
 	return self;
 }
@@ -126,9 +127,15 @@
 
 - (void) showPauseMenu: (id) sender
 {
+	post_notification(kShowPauseScreen, nil);
+}
+
+- (void) showPauseScreen: (NSNotification *) notification
+{
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	game::g_pGame->setPaused (true);
 	[mainView addSubview: pauseView];
+	
 }
 
 - (void) hidePauseMenu: (id) sender

@@ -41,8 +41,7 @@ namespace game
 			player_rank = 0;
 		}
 	};
-
-
+	
 #define GAME_MODE_TIMED 0x01
 #define GAME_MODE_ENDLESS 0x02
 #define GAME_MODE_SWEEP 0x03
@@ -51,6 +50,9 @@ namespace game
 #define GAME_STATE_PLAY 0x02
 #define GAME_STATE_GAMEOVER 0x03
 #define GAME_STATE_SOLVED 0x04
+	
+#define SCENE_TYPE_MAIN_MENU 0x00
+#define SCENE_TYPE_GAME 0x01
 	
 #define TILESIZE_X 51.0
 #define TILESIZE_Y 51.0

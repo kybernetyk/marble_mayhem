@@ -16,6 +16,7 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "SimpleAudioEngine.h"
+#include "NotificationSystem.h"
 
 using namespace mx3;
 using namespace game;
@@ -269,6 +270,7 @@ namespace game
 	void Game::appDidBecomeActive ()
 	{
 		CV3Log ("Game::appDidBecomeActive ()\n");
+		setPaused(false);
 	}
 	
 	void Game::appWillEnterForeground ()
@@ -278,11 +280,18 @@ namespace game
 	
 	void Game::appWillResignActive ()
 	{
-		CV3Log ("Game::appWillResignActive ()\n");		
+		if (current_scene)
+		{
+			if (current_scene->scene_type() == SCENE_TYPE_GAME && !paused)
+				post_notification(kShowPauseScreen);
+		}
+		CV3Log ("Game::appWillResignActive ()\n");
+		setPaused(true);
 	}
 	
 	void Game::appDidEnterBackground ()
 	{
+		
 		//g_TextureManager.purgeCache();
 		CV3Log ("Game::appDidEnterBackground ()\n");		
 	}

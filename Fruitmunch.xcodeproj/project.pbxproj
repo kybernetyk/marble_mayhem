@@ -156,6 +156,11 @@
 		03ABF2D812AAA5F000320143 /* endless.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF2D712AAA5F000320143 /* endless.mp3 */; };
 		03ABF3E412AABAFB00320143 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF3E312AABAFB00320143 /* strawberry.png */; };
 		03ABF46E12AAC7F900320143 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ABF46D12AAC7F900320143 /* Icon.png */; };
+		03AD770F12B935D600724C7C /* combo5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD770A12B935D600724C7C /* combo5.wav */; };
+		03AD771012B935D600724C7C /* combo4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD770B12B935D600724C7C /* combo4.wav */; };
+		03AD771112B935D600724C7C /* combo3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD770C12B935D600724C7C /* combo3.wav */; };
+		03AD771212B935D600724C7C /* combo2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD770D12B935D600724C7C /* combo2.wav */; };
+		03AD771312B935D600724C7C /* combo1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD770E12B935D600724C7C /* combo1.wav */; };
 		03C1180F12B6AB4D00860ECE /* minyx.caf in Resources */ = {isa = PBXBuildFile; fileRef = 03C1180E12B6AB4D00860ECE /* minyx.caf */; };
 		03C1181A12B6AE8100860ECE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C1181912B6AE8100860ECE /* Default.png */; };
 		03D1130F12B5233A00D1E6E4 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03D1130E12B5233A00D1E6E4 /* TODO.txt */; };
@@ -407,6 +412,11 @@
 		03ABF42C12AAC61100320143 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntitlementsDebug.plist; sourceTree = "<group>"; };
 		03ABF46D12AAC7F900320143 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		03AD770A12B935D600724C7C /* combo5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combo5.wav; sourceTree = "<group>"; };
+		03AD770B12B935D600724C7C /* combo4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combo4.wav; sourceTree = "<group>"; };
+		03AD770C12B935D600724C7C /* combo3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combo3.wav; sourceTree = "<group>"; };
+		03AD770D12B935D600724C7C /* combo2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combo2.wav; sourceTree = "<group>"; };
+		03AD770E12B935D600724C7C /* combo1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combo1.wav; sourceTree = "<group>"; };
 		03C1180E12B6AB4D00860ECE /* minyx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minyx.caf; sourceTree = "<group>"; };
 		03C1181912B6AE8100860ECE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		03D1130E12B5233A00D1E6E4 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
@@ -921,6 +931,11 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03AD770A12B935D600724C7C /* combo5.wav */,
+				03AD770B12B935D600724C7C /* combo4.wav */,
+				03AD770C12B935D600724C7C /* combo3.wav */,
+				03AD770D12B935D600724C7C /* combo2.wav */,
+				03AD770E12B935D600724C7C /* combo1.wav */,
 				03C1181912B6AE8100860ECE /* Default.png */,
 				03EBCCB712B6522000785F0F /* click.mp3 */,
 				03C1180E12B6AB4D00860ECE /* minyx.caf */,
@@ -1286,6 +1301,11 @@
 				03C1181A12B6AE8100860ECE /* Default.png in Resources */,
 				0394BFF412B8FB9C000CD668 /* promo_head.png in Resources */,
 				0394BFF612B8FB9C000CD668 /* WebkitViewController.xib in Resources */,
+				03AD770F12B935D600724C7C /* combo5.wav in Resources */,
+				03AD771012B935D600724C7C /* combo4.wav in Resources */,
+				03AD771112B935D600724C7C /* combo3.wav in Resources */,
+				03AD771212B935D600724C7C /* combo2.wav in Resources */,
+				03AD771312B935D600724C7C /* combo1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,6 +47,11 @@ namespace game
 		
 		void reset ();
 		
+		int scene_type ()
+		{
+			return SCENE_TYPE_GAME;
+		}
+		
 	protected:
 		EntityManager *_entityManager;
 		RenderSystem *_renderSystem;
