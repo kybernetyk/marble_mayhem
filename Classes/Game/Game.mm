@@ -283,7 +283,13 @@ namespace game
 		if (current_scene)
 		{
 			if (current_scene->scene_type() == SCENE_TYPE_GAME && !paused)
-				post_notification(kShowPauseScreen);
+			{
+				//don't show pause when game over/solved
+				if (g_GameState.game_state != GAME_STATE_GAMEOVER &&
+					g_GameState.game_state != GAME_STATE_SOLVED)
+					post_notification(kShowPauseScreen);
+			}
+				
 		}
 		CV3Log ("Game::appWillResignActive ()\n");
 		setPaused(true);
