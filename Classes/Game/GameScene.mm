@@ -44,11 +44,19 @@ namespace game
 		"Go.mp3",
 		"Game_Over.mp3",
 		"gemongem2.mp3",
-		"combo32.mp3",
-		"combo42.mp3",
-		"combo52.mp3",
-		"combo62.mp3",
-		"combo72.mp3",
+
+		"combo3.aiff",
+		"combo4.aiff",
+		"combo5.aiff",
+		"combo5.aiff",
+		"combo6.aiff",
+		
+		
+//		"combo32.mp3",
+//		"combo42.mp3",
+//		"combo52.mp3",
+//		"combo62.mp3",
+//		"combo72.mp3",
 
 //		"combo1.wav",
 //		"combo2.wav",

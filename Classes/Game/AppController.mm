@@ -392,7 +392,26 @@
 #pragma mark in app datasource
 - (NSString *) imageNameForProductID: (NSString *) productID
 {
-	return @"full_game_screen.png";
+	if ([productID isEqualToString: kInAppFullGame])
+		return @"full_game_screen.png";
+	
+	return nil;
+}
+
+- (NSString *) detailImageNameForProductID: (NSString *) productID
+{
+	if ([productID isEqualToString: kInAppFullGame])
+		return @"puzzle_mode.png";
+	
+	return nil;
+}
+
+- (NSString *) detailImageCaptionForProductID: (NSString *) productID
+{
+	if ([productID isEqualToString: kInAppFullGame])
+		return @"Puzzle Mode";
+	
+	return nil;
 }
 
 #pragma mark -
