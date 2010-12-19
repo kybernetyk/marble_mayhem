@@ -161,7 +161,10 @@ namespace game
 				SoundSystem::make_new_sound (sfx);	
 			}
 			g_GameState.score += bonus;
-			g_GameState.time_left += bonus/1000.0;
+			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
+			{
+				g_GameState.time_left += bonus/1000.0;
+			}
 			printf("Bonus: %i\n", bonus);
 
 			printf("time add: %f\n", time_add);

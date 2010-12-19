@@ -228,7 +228,7 @@ namespace game
 				SoundSystem::make_new_sound (SFX_GET_READY);
 				//_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->change_prep_state (PREP_STATE_READY);
-				_hudSystem->show_prep_label();
+//				_hudSystem->show_prep_label();
 
 //				for (int row = 0; row < BOARD_NUM_ROWS-1; row ++)
 //				{
@@ -243,7 +243,8 @@ namespace game
 			
 			if (g_GameState.game_state == GAME_STATE_PLAY)
 			{
-				_hudSystem->hide_prep_label();	
+				_hudSystem->change_prep_state (PREP_STATE_PLAY);
+//				_hudSystem->hide_prep_label();	
 			}
 			
 			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
@@ -251,7 +252,7 @@ namespace game
 				SoundSystem::make_new_sound (SFX_GAME_OVER);
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_GAMEOVER);
-				_hudSystem->show_prep_label();
+//				_hudSystem->show_prep_label();
 				
 				saveHiScore();
 				
@@ -264,7 +265,7 @@ namespace game
 				SoundSystem::make_new_sound (SFX_GAME_OVER);
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_SOLVED);
-				_hudSystem->show_prep_label();
+//				_hudSystem->show_prep_label();
 				
 				saveHiScore();
 				

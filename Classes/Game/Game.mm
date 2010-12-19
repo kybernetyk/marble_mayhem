@@ -69,7 +69,7 @@ namespace game
 		
 		
 		g_TextureManager.accquireTexture ("holzpanel.png");
-		g_TextureManager.accquireTexture ("clock.png");
+		g_TextureManager.accquireTexture ("clocks.png");
 		g_TextureManager.accquireTexture ("pause.png");
 		
 		

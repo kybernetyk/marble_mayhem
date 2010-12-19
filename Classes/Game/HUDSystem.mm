@@ -39,11 +39,11 @@ namespace game
 	Action *flyin_and_shake_action ()
 	{
 		MoveToAction *actn = new MoveToAction();
+		
 		actn->duration = 0.3;
 		actn->x = SCREEN_W/2-10;
 		actn->y = SCREEN_H/2+40;
 		
-		Action *prev_actn = actn;
 		int max = 10;
 		for (int i = 0; i < max; i++)
 		{
@@ -55,13 +55,12 @@ namespace game
 			else
 				mb->x = -(max-i)*2;
 			
-			prev_actn->on_complete_action = mb;
-			prev_actn = mb;
+			action_append_action (actn, mb);
 		}
-		
 		
 		return actn;
 	}
+
 	
 	Action *flyout_and_reset_action ()
 	{
@@ -88,10 +87,13 @@ namespace game
 		mb3->y = SCREEN_H/2+40;
 		mb3->duration = 0.0;
 		//		mb2->on_complete_action = mb3;
-		actn->on_complete_action = mb3;
+		//actn->on_complete_action = mb3;
+		action_append_action(actn, mb3);
 		
 		return actn;
 	}
+
+	
 	
 	
 	Entity *HUDSystem::make_new_label (std::string fontname, vector2D pos, vector2D anchor)
@@ -118,10 +120,15 @@ namespace game
 		if (current_prep_state == state)
 			return;
 		
+		printf("state: %i\n", state);
+
 		//handle state changes
 		switch (state)
 		{
 			case PREP_STATE_READY:
+				show_prep_label();
+				if (clock)
+					clock->get<FrameAnimation>()->state = ANIMATION_STATE_PAUSE;
 				break;
 			case PREP_STATE_3:
 				prep->get<Position>()->scale_x = 1.0;
@@ -156,15 +163,29 @@ namespace game
 				break;
 				
 			case PREP_STATE_GAMEOVER:
+				show_prep_label();
+				if (clock)
+					clock->get<FrameAnimation>()->state = ANIMATION_STATE_PAUSE;
 				break;
 			case PREP_STATE_SOLVED:
+				show_prep_label();
+				if (clock)
+					clock->get<FrameAnimation>()->state = ANIMATION_STATE_PAUSE;
+				break;
+			
+			case PREP_STATE_PLAY:
+				hide_prep_label();	
+				if (clock)
+					clock->get<FrameAnimation>()->state = ANIMATION_STATE_PLAY;
 				break;
 				
 			default:
 				break;
 		}
 		
-		_entityManager->getComponent <AtlasSprite> (prep)->src = prep_coords[state];
+		if (state != PREP_STATE_PLAY)
+			_entityManager->getComponent <AtlasSprite> (prep)->src = prep_coords[state];
+		
 		current_prep_state = state;
 	}
 	
@@ -193,18 +214,31 @@ namespace game
 		score_label->get<TextLabel>()->text = s;
 		
 		time_label = NULL;
+		clock = NULL;
 		if (g_GameState.game_mode == GAME_MODE_TIMED)
 		{
 			time_label = make_new_label ("zomg.fnt", vector2D_make(34.0, 32.0), vector2D_make(0.0, 0.5));
 			
-			Entity *clock = _entityManager->createNewEntity();
+			clock = _entityManager->createNewEntity();
 			Position *pos = _entityManager->addComponent <Position> (clock);
 			pos->x = 18;
 			pos->y = 28.0;
 			
-			Sprite *sprite = _entityManager->addComponent <Sprite> (clock);
-			sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad>("clock.png");
+			AtlasSprite *sprite = _entityManager->addComponent <AtlasSprite> (clock);
+			sprite->res_handle = g_RenderableManager.acquireResource <TexturedAtlasQuad>("clocks.png");
+			sprite->src = rect_make(0.0, 0.0, 32.0, 32.0);
 			sprite->z = 6.0;
+			
+			FrameAnimation *fa = _entityManager->addComponent <FrameAnimation> (clock);
+			fa->destroy_on_finish = false;
+			fa->loop = true;
+			fa->frames_per_second = 24;
+			fa->start_frame = 23;
+			fa->end_frame = 1;
+			fa->current_frame = fa->start_frame;		
+			fa->frame_size = rect_make(0.0, 0.0, 32.0, 32.0);
+			fa->state = ANIMATION_STATE_PAUSE;
+			
 			
 			sprintf(s, "%.2f", g_GameState.time_left);
 			time_label->get<TextLabel>()->text = s;
@@ -213,7 +247,7 @@ namespace game
 		current_prep_state = -1;
 		//ready
 		rect r0 = {254, 7, 253, 148};
-		prep_coords[0] = r0; 
+		prep_coords[PREP_STATE_READY] = r0; 
 
 		//3
 		rect r1 = {341, 157, 157, 166};
@@ -247,9 +281,10 @@ namespace game
 		
 		AtlasSprite *sprite = _entityManager->addComponent <AtlasSprite> (prep);
 		sprite->res_handle = g_RenderableManager.acquireResource <TexturedAtlasQuad>("schriften.png");
+		sprite->src = prep_coords[PREP_STATE_READY];
 		sprite->z = 6.0;
 		
-		change_prep_state (PREP_STATE_READY);
+		//change_prep_state (PREP_STATE_READY);
 		
 		
 		
@@ -274,11 +309,24 @@ namespace game
 		prep->get<Position>()->y = SCREEN_H/2+40;
 		current_prep_state = -1;
 	}
-	
+
+	//typedef void(^Block)(void);
 
 	void HUDSystem::show_prep_label ()
 	{
-		g_pActionSystem->addActionToEntity (prep, flyin_and_shake_action());		
+		Action *a = flyin_and_shake_action();
+//		Block bl = ^{
+//			printf("penis\n");
+//		};
+//		a->on_complete_block = Block_copy (bl);
+		
+//		Block bl = ^{
+//			printf("this: %p\n",this);
+//			this->hide_prep_label();
+//		};
+//		a->set_on_complete_block (bl);
+		
+		g_pActionSystem->addActionToEntity (prep, a);		
 	}
 	
 /*	void HUDSystem::set_prep_text (const char *text)
@@ -290,7 +338,20 @@ namespace game
 	
 	void HUDSystem::hide_prep_label ()
 	{
-		g_pActionSystem->addActionToEntity (prep, flyout_and_reset_action());
+		Action *a = flyout_and_reset_action();
+		
+//		__block MoveToAction *action;
+//		ActionBlock bl = ^{
+//			action = new MoveToAction();
+//			action->y = 480/2;
+//			action->x = 320/2;
+//			
+//			g_pActionSystem->addActionToEntity (prep, action);
+//		};
+//		action_set_complete_block (a, bl);
+		
+		
+		g_pActionSystem->addActionToEntity (prep, a);
 	}
 
 	char s[255];

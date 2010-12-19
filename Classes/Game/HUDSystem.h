@@ -23,6 +23,7 @@ namespace game
 #define PREP_STATE_GO 0x04
 #define PREP_STATE_GAMEOVER 0x05
 #define PREP_STATE_SOLVED 0x06
+#define PREP_STATE_PLAY 0x07
 
 	
 	class HUDSystem
@@ -44,6 +45,7 @@ namespace game
 		Entity *make_new_label (std::string fontname, vector2D pos, vector2D anchor);
 		
 //		Entity *fps_label;
+		Entity *clock;
 		Entity *time_label;
 		Entity *score_label;
 		ResourceHandle font_handle;

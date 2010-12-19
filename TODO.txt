@@ -10,7 +10,8 @@ TODO
 -[*] "omg that's top blah %"-score msg for facebook
 -[*] create facebook app
 -[*] create leaderboard for puzzle mode
--[s] music, sfx
+-[*] music
+-[s] sfx
 -[s] icon
 -[*] screen shots
 -[j] app store description

@@ -179,6 +179,7 @@
 		03AD784E12BD331800724C7C /* music2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD784912BD331800724C7C /* music2.wav */; };
 		03AD784F12BD331800724C7C /* music3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03AD784A12BD331800724C7C /* music3.wav */; };
 		03AD785012BD331800724C7C /* music4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03AD784B12BD331800724C7C /* music4.mp3 */; };
+		03B503D112BE546B00119A74 /* clocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B503D012BE546B00119A74 /* clocks.png */; };
 		03C1180F12B6AB4D00860ECE /* minyx.caf in Resources */ = {isa = PBXBuildFile; fileRef = 03C1180E12B6AB4D00860ECE /* minyx.caf */; };
 		03C1181A12B6AE8100860ECE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C1181912B6AE8100860ECE /* Default.png */; };
 		03D1130F12B5233A00D1E6E4 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 03D1130E12B5233A00D1E6E4 /* TODO.txt */; };
@@ -453,6 +454,7 @@
 		03AD784912BD331800724C7C /* music2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music2.wav; sourceTree = "<group>"; };
 		03AD784A12BD331800724C7C /* music3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music3.wav; sourceTree = "<group>"; };
 		03AD784B12BD331800724C7C /* music4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music4.mp3; sourceTree = "<group>"; };
+		03B503D012BE546B00119A74 /* clocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clocks.png; sourceTree = "<group>"; };
 		03C1180E12B6AB4D00860ECE /* minyx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minyx.caf; sourceTree = "<group>"; };
 		03C1181912B6AE8100860ECE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		03D1130E12B5233A00D1E6E4 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
@@ -969,6 +971,7 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03B503D012BE546B00119A74 /* clocks.png */,
 				03AD784712BD331800724C7C /* menu.wav */,
 				03AD784812BD331800724C7C /* music1.wav */,
 				03AD784912BD331800724C7C /* music2.wav */,
@@ -1378,6 +1381,7 @@
 				03AD784E12BD331800724C7C /* music2.wav in Resources */,
 				03AD784F12BD331800724C7C /* music3.wav in Resources */,
 				03AD785012BD331800724C7C /* music4.mp3 in Resources */,
+				03B503D112BE546B00119A74 /* clocks.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1531,6 +1535,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaroslaw Szpilewski (4M65AH57PH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
