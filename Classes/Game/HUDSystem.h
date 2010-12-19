@@ -43,7 +43,7 @@ namespace game
 
 		Entity *make_new_label (std::string fontname, vector2D pos, vector2D anchor);
 		
-		Entity *fps_label;
+//		Entity *fps_label;
 		Entity *time_label;
 		Entity *score_label;
 		ResourceHandle font_handle;

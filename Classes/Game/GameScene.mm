@@ -44,37 +44,36 @@ namespace game
 		"Go.mp3",
 		"Game_Over.mp3",
 		"gemongem2.mp3",
-
-		"combo3.aiff",
-		"combo4.aiff",
-		"combo5.aiff",
-		"combo5.aiff",
-		"combo6.aiff",
+		
+		//		"combo3.aiff",
+		//		"combo4.aiff",
+		//		"combo5.aiff",
+		//		"combo5.aiff",
+		//		"combo6.aiff",
 		
 		
-//		"combo32.mp3",
-//		"combo42.mp3",
-//		"combo52.mp3",
-//		"combo62.mp3",
-//		"combo72.mp3",
-
-//		"combo1.wav",
-//		"combo2.wav",
-//		"combo3.wav",
-//		"combo4.wav",
-//		"combo5.wav",
-//		"fuck1.mp3",
-//		"fuck2.mp3",
-//		"fuck3.mp3",
-//		"fuck4.mp3",
-//		"fuck5.mp3",
+		"combo32.mp3",
+		"combo42.mp3",
+		"combo52.mp3",
+		"combo62.mp3",
+		"combo72.mp3",
+		
+		//		"combo1.wav",
+		//		"combo2.wav",
+		//		"combo3.wav",
+		//		"combo4.wav",
+		//		"combo5.wav",
+		//		"fuck1.mp3",
+		//		"fuck2.mp3",
+		//		"fuck3.mp3",
+		//		"fuck4.mp3",
+		//		"fuck5.mp3",
 		
 		"excellent1.mp3",
 		"Incredible.mp3",
 		"Good.mp3",
 		"gotset2.mp3"
 	};
-	
 	
 	void GameScene::preload ()
 	{
@@ -125,24 +124,44 @@ namespace game
 		_gameBoardSystem = new GameBoardSystem (_entityManager);
 		
 		
+	//	_soundSystem->preloadSounds();
 		for (int i = 0; i < NUM_SOUNDS; i++)
 		{
 			_soundSystem->registerSound (sounds[i], i);
 		}
 		
-	//	_soundSystem->preloadSounds();
-		
 		
 		preload();
 		
-		if (g_GameState.game_mode == GAME_MODE_TIMED)
+		if (g_GameState.game_mode == GAME_MODE_TIMED || g_GameState.game_mode == GAME_MODE_ENDLESS)
 		{
-			SoundSystem::play_background_music("timed.mp3");
+			std::string mfx[] = 
+			{
+//				"music1.wav",
+				"music2.wav",
+				"music3.wav"
+			};
+			
+			int sz = sizeof (mfx) / sizeof (std::string);
+			int r = rand()%sz;
+			
+			SoundSystem::play_background_music(mfx[r]);
+			
 		}
 		else 
 		{
-			SoundSystem::play_background_music("endless.mp3");	
+			std::string mfx[] = 
+			{
+	
+				"music4.mp3"
+			};
+			
+			int sz = sizeof (mfx) / sizeof (std::string);
+			int r = rand()%sz;
+
+			SoundSystem::play_background_music(mfx[r]);
 		}
+		
 
 		reset();
 		

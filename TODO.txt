@@ -17,6 +17,7 @@ TODO
 
 1.1:
 -[s] additional theme for iap
+-[j] bubble breaker game mode
 -[j] mac port
 {
 	rename mx3::component to something different (component collides with carbon)

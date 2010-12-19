@@ -284,7 +284,7 @@ namespace game
 		{
 			if (current_scene->scene_type() == SCENE_TYPE_GAME && !paused)
 			{
-				//don't show pause when game over/solved
+				//don't show pause when game over
 				if (g_GameState.game_state != GAME_STATE_GAMEOVER &&
 					g_GameState.game_state != GAME_STATE_SOLVED)
 					post_notification(kShowPauseScreen);

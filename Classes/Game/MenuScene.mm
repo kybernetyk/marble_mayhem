@@ -21,7 +21,7 @@ namespace game
 	
 	void MenuScene::init ()
 	{
-		mx3::SoundSystem::play_background_music("menu.mp3");
+		mx3::SoundSystem::play_background_music("menu.wav");
 		  		
 	}
 	
