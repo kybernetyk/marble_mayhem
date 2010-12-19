@@ -176,7 +176,7 @@
 			NULL,
 			@"com.minyxgames.fruitmunch.timed",
 			NULL,
-			@"com.minyxgames.fruitmunch.testlol"
+			@"com.minyxgames.fruitmunch.puzzle"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];
@@ -245,7 +245,7 @@
 		NULL,
 		@"com.minyxgames.fruitmunch.timed",
 		NULL,
-		@"com.minyxgames.fruitmunch.testlol"
+		@"com.minyxgames.fruitmunch.puzzle"
 	};
 	
 	NSString *cat = strs[g_GameState.game_mode];
@@ -498,13 +498,20 @@
 	
 	return @":-)";
 }
+
 - (NSString *) linkForFBShare
 {
-	return @"http://www.minyxgames.com";
+	return @"http://www.minyxgames.com/fruit-munch/";
 }
+
+- (NSString *) linkNameForFBShare
+{
+	return @"Fruit Munch!";
+}
+
 - (NSString *) picurlForFBShare
 {
-	return @"http://www.minyxgames.com/minyx-ultra/icon_90.png";
+	return @"http://www.minyxgames.com/fruit-munch/screenshots/thumb3.png";
 }
 #pragma mark -
 #pragma mark in inapp

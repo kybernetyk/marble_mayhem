@@ -29,8 +29,8 @@
 
 
 #define USE_FACEBOOK
-#define FB_APP_ID @"167949196560754"
-#define FB_API_KEY @"1bd9880910bffe7a16dcd55f997ff951"
+#define FB_APP_ID @"126988490697464"
+#define FB_API_KEY @"a3d15a92ffbfcbbc745dec43d03c2211"
 
 
 #define USE_PROMOTION

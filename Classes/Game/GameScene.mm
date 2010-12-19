@@ -411,7 +411,7 @@ namespace game
 			NULL,
 			@"com.minyxgames.fruitmunch.timed",
 			NULL,
-			@"com.minyxgames.fruitmunch.testlol"
+			@"com.minyxgames.fruitmunch.puzzle"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];

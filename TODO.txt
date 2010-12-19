@@ -8,11 +8,11 @@ TODO
 -[*] settings panel
 -[*] logo
 -[*] "omg that's top blah %"-score msg for facebook
--[j] create facebook app
--[j] create leaderboard for puzzle mode
+-[*] create facebook app
+-[*] create leaderboard for puzzle mode
 -[s] music, sfx
 -[s] icon
--[j] screen shots
+-[*] screen shots
 -[j] app store description
 
 1.1:
