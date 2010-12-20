@@ -12,5 +12,5 @@
 
 
 game::GameState g_GameState;
-double g_FPS = 0.0;
+float g_FPS = 0.0;
 bool g_ParticlesEnabled = true;

@@ -28,7 +28,7 @@ namespace game
 	const int TICKS_PER_SECOND = DESIRED_FPS;
 	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
 	const int MAX_FRAMESKIP = 5;
-	const double FIXED_DELTA = (1.0/TICKS_PER_SECOND);
+	const float FIXED_DELTA = (1.0/TICKS_PER_SECOND);
 	unsigned int next_game_tick = 1;//SDL_GetTicks();
 	int loops;
 	float interpolation;
@@ -44,7 +44,7 @@ namespace game
 	
 	void Game::loadGlobalResources ()
 	{
-		double t1 = mx3::GetDoubleTime();
+		float t1 = mx3::GetFloatTime();
 		CV3Log ("starting pre load: %f\n", t1);
 		
 		
@@ -111,7 +111,7 @@ namespace game
 			g_pExplosionCache[i] = pe;
 		}
 
-		double t2 = mx3::GetDoubleTime();
+		float t2 = mx3::GetFloatTime();
 		CV3Log ("pre load ended: %f\n", t2);
 		CV3Log ("time to load: %f\n", (t2-t1));
 //		
