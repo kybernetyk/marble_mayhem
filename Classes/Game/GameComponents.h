@@ -51,6 +51,9 @@ namespace game
 		
 		bool moving_sideways;
 		
+		float vy;
+		bool nograv;
+		
 		GameBoardElement ()
 		{
 			_id = COMPONENT_ID;
@@ -60,7 +63,9 @@ namespace game
 			y_off = 0.0;
 			y_move_timer = 0.0;
 			landed = false;
+			vy = 1.0;
 
+			nograv = false;
 			marked = false;
 			moving_sideways = false;
 			x_move_timer = 0.0;

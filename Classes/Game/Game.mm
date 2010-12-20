@@ -38,6 +38,7 @@ namespace game
 	
 	mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
 	mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
+	mx3::PE_Proxy *g_pSparksCache[BOARD_NUM_MARKERS];
 
 	
 	extern std::string sounds[];
@@ -109,6 +110,15 @@ namespace game
 			pe->do_not_delete = true;
 			
 			g_pExplosionCache[i] = pe;
+		}
+		
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			PE_Proxy *pe = g_RenderableManager.accquireParticleEmmiter ("marker.pex");
+			pe->z = 5.0;
+			pe->do_not_delete = true;
+			
+			g_pSparksCache[i] = pe;
 		}
 
 		float t2 = mx3::GetFloatTime();

@@ -11,9 +11,26 @@
 #include "GameComponents.h"
 #include "Fruit.h"
 #include "SoundSystem.h"
+#include "ParticleSystem.h"
 
 namespace game 
 {
+	extern mx3::PE_Proxy *g_pSparksCache[BOARD_NUM_MARKERS];
+
+	PE_Proxy *get_free_spark ()
+	{
+		PE_Proxy *prox = NULL;
+		
+		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		{
+			prox = g_pSparksCache[i];
+			
+			if (!prox->shoudHandle())
+				return prox;
+		}
+		return NULL;
+	}
+	
 	GameBoardSystem::GameBoardSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
@@ -75,7 +92,8 @@ namespace game
 		
 		return true;
 	}
-
+	
+	
 	void GameBoardSystem::handle_state_idle ()
 	{
 		if (_current_gbe->prev_state == GBE_STATE_MOVING_FALL)
@@ -83,7 +101,28 @@ namespace game
 			_current_gbe->prev_state = GBE_STATE_IDLE;
 			
 			if (!can_move_down())
+			{	
+				_current_gbe->vy = 1.0;
+				_current_gbe->nograv = false;
+
+				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
+				
 				SoundSystem::make_new_sound (SFX_FRUIT_LAND);
+				//bam!
+				if (g_ParticlesEnabled)
+				{
+					PE_Proxy *pe = get_free_spark();
+					if (pe)
+					{
+						ParticleSystem::createParticleEmitter (pe,
+															   0.25,
+															   vector2D_make(_current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, _current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET-TILESIZE_Y+10));
+						pe->setDuration(0.25);
+						pe->reset();
+						pe->start();
+					}
+				}
+			}
 		}
 		
 		if (can_move_down())
@@ -93,6 +132,7 @@ namespace game
 		else
 		{
 			_current_gbe->landed = true;
+			
 		}
 	}
 
@@ -105,20 +145,43 @@ namespace game
 			_current_gbe->row --;
 			_current_gbe->prev_state = GBE_STATE_MOVING_FALL;
 			_current_gbe->landed = false;
-			
 			_current_gbe->y_off = 0.0;
 			_current_gbe->y_move_timer = 0.0;
 		}
 		
 		_current_gbe->y_move_timer += _delta;
-		_current_gbe->y_off += _delta * (TILESIZE_Y/_current_gbe->fall_duration);	
 		
-		if (_current_gbe->y_move_timer >= _current_gbe->fall_duration)
+		//in prep simply fall without accel
+		
+		if (g_GameState.game_state == GAME_STATE_PREP)
 		{
-			_current_gbe->state = GBE_STATE_IDLE;
-			_current_gbe->y_off = TILESIZE_Y;
-
+			_current_gbe->y_off += _delta * (TILESIZE_Y/_current_gbe->fall_duration);	
+			if (_current_gbe->y_move_timer >= _current_gbe->fall_duration)
+			{
+				_current_gbe->state = GBE_STATE_IDLE;
+				_current_gbe->y_off = TILESIZE_Y;
+			}
 		}
+		else
+		{
+			_current_gbe->vy += _delta * TILESIZE_Y;
+			if (_current_gbe->vy > 18.0)
+				_current_gbe->vy = 18.0;
+			printf("vy: %f\n", _current_gbe->vy);
+			_current_gbe->y_off += (_current_gbe->vy * _current_gbe->vy) * _delta;
+			
+			if (_current_gbe->y_off >= TILESIZE_Y)
+			{
+				_current_gbe->state = GBE_STATE_IDLE;
+				_current_gbe->y_off = TILESIZE_Y;
+				
+			}
+		}
+
+		//if (_current_gbe->vy > TILESIZE_Y/_current_gbe->fall_duration)
+		//	_current_gbe->vy = TILESIZE_Y/_current_gbe->fall_duration;
+
+		
 		
 	}
 
@@ -161,7 +224,7 @@ namespace game
 		
 		for (int col = 0; col < BOARD_NUM_COLS; col++)
 		{
-			if (!_map[col][BOARD_NUM_ROWS-2])
+			if (!_map[col][BOARD_NUM_ROWS-3] && !_map[col][BOARD_NUM_ROWS-2])
 			{
 				make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
 				g_GameState.fruits_on_board ++;
