@@ -196,17 +196,17 @@ namespace game
 	//	font_handle = g_RenderableManager.acquireResource <OGLFont> ("zomg.fnt");
 		
 		//fps label
-//		fps_label = _entityManager->createNewEntity();
-//		_entityManager->addComponent<Name>(fps_label)->name = "fps_label";
-//		_entityManager->addComponent<Position> (fps_label);
-//		fps_label->get<Position>()->x = 0.0;
-//		fps_label->get<Position>()->y = SCREEN_H;
-//		fps_label->get<Position>()->scale_x = 		fps_label->get<Position>()->scale_y =  0.5;
-//		TextLabel *label = _entityManager->addComponent<TextLabel> (fps_label);
-//		label->res_handle = font_handle;
-//		label->anchorPoint = vector2D_make(0.0, 1.0);
-//		label->text = "FPS: 0";
-//		label->z = 6.0;
+		fps_label = _entityManager->createNewEntity();
+		_entityManager->addComponent<Name>(fps_label)->name = "fps_label";
+		_entityManager->addComponent<Position> (fps_label);
+		fps_label->get<Position>()->x = 0.0;
+		fps_label->get<Position>()->y = SCREEN_H;
+		//fps_label->get<Position>()->scale_x = 		fps_label->get<Position>()->scale_y =  0.5;
+		TextLabel *label = _entityManager->addComponent<TextLabel> (fps_label);
+		label->res_handle = g_RenderableManager.acquireResource <OGLFont> ("impact20.fnt");;
+		label->anchorPoint = vector2D_make(0.0, 1.0);
+		label->text = "FPS: 0";
+		label->z = 6.0;
 		
 		char s[255];
 		sprintf(s, "%i", g_GameState.score);
@@ -396,14 +396,14 @@ namespace game
 		}
 		
 		
-//		static float d = 0.0;
-//		d += delta;
-//		if (d > 2.0)
-//		{
-//			d = 0.0;
-//			sprintf(s, "Fps: %.2f", g_FPS);
-//			fps_label->get<TextLabel>()->text = s;
-//		}
+		static float d = 0.0;
+		d += delta;
+		if (d > 2.0)
+		{
+			d = 0.0;
+			sprintf(s, "Fps: %.2f", g_FPS);
+			fps_label->get<TextLabel>()->text = s;
+		}
 		
 	}
 

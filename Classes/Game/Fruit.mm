@@ -43,7 +43,7 @@ namespace game
 		gbe->prev_col = gbe->col = col;
 		gbe->prev_row = gbe->row = row;
 		gbe->state = GBE_STATE_IDLE;
-		gbe->vy = 13.5;
+		gbe->vy = 1.0;
 		gbe->nograv = true;
 		
 		return e;

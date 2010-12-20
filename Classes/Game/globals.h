@@ -63,7 +63,8 @@ namespace game
 #define BOARD_Y_OFFSET (72+TILESIZE_Y/2)
 	
 #define BOARD_NUM_COLS 6
-#define BOARD_NUM_ROWS (8+2)
+#define BOARD_NUM_ROWS (8)*2
+#define BOARD_NUM_VISIBLE_ROWS 8
 #define BOARD_NUM_MARKERS 16
 	
 #define SFX_TIME_UP 0x00

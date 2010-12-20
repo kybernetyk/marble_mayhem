@@ -107,19 +107,14 @@ namespace game
 
 				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
 				
-				SoundSystem::make_new_sound (SFX_FRUIT_LAND);
-				//bam!
-				if (g_ParticlesEnabled)
-				{
-					PE_Proxy *pe = get_free_spark();
-					if (pe)
+				if (_current_gbe->row < BOARD_NUM_VISIBLE_ROWS)
+				{				
+					SoundSystem::make_new_sound (SFX_FRUIT_LAND);
+
+					// penis mark this row col for teh sparks
+					if (_current_gbe->row < spark_rows[_current_gbe->col])
 					{
-						ParticleSystem::createParticleEmitter (pe,
-															   0.25,
-															   vector2D_make(_current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, _current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET-TILESIZE_Y+10));
-						pe->setDuration(0.25);
-						pe->reset();
-						pe->start();
+						spark_rows[_current_gbe->col] = _current_gbe->row;
 					}
 				}
 			}
@@ -167,7 +162,6 @@ namespace game
 			_current_gbe->vy += _delta * TILESIZE_Y;
 			if (_current_gbe->vy > 18.0)
 				_current_gbe->vy = 18.0;
-			printf("vy: %f\n", _current_gbe->vy);
 			_current_gbe->y_off += (_current_gbe->vy * _current_gbe->vy) * _delta;
 			
 			if (_current_gbe->y_off >= TILESIZE_Y)
@@ -221,12 +215,22 @@ namespace game
 	void GameBoardSystem::refill ()
 	{
 		update_map();
+		//in prep fill only visible field
+		
+		int check_index = BOARD_NUM_ROWS-2;
+		int spawn_index = BOARD_NUM_ROWS-1;
+		
+		if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		{	
+			check_index = BOARD_NUM_VISIBLE_ROWS-1;
+			spawn_index = BOARD_NUM_VISIBLE_ROWS;
+		}
 		
 		for (int col = 0; col < BOARD_NUM_COLS; col++)
 		{
-			if (!_map[col][BOARD_NUM_ROWS-3] && !_map[col][BOARD_NUM_ROWS-2])
+			if (!_map[col][check_index])
 			{
-				make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, BOARD_NUM_ROWS-1);
+				make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, spawn_index);
 				g_GameState.fruits_on_board ++;
 			}
 		}
@@ -287,6 +291,11 @@ namespace game
 		//falldown
 		update_map();
 		
+		for (int col = 0; col < BOARD_NUM_COLS; col++)
+			spark_rows[col] = BOARD_NUM_ROWS;
+		
+
+		
 		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
 		{
 			for (int col = 0; col < BOARD_NUM_COLS; col++)
@@ -316,6 +325,8 @@ namespace game
 				_current_gbe->fall_duration = 0.05;
 			else
 				_current_gbe->fall_duration = 0.20;
+			
+			
 
 			if ((_current_gbe->state == GBE_STATE_IDLE))
 			{	
@@ -389,7 +400,26 @@ namespace game
 			
 		}
 		
-		
-		
+		if (g_ParticlesEnabled)
+		{
+			for (int col = 0; col < BOARD_NUM_COLS; col++)
+			{
+				if (spark_rows[col] < BOARD_NUM_ROWS)
+				{
+					int row = spark_rows[col];
+					
+					PE_Proxy *pe = get_free_spark();
+					if (pe)
+					{
+						ParticleSystem::createParticleEmitter (pe,
+															   0.25,
+															   vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET-TILESIZE_Y+10));
+						pe->setDuration(0.25);
+						pe->reset();
+						pe->start();
+					}
+				}
+			}
+		}		
 	}
 }

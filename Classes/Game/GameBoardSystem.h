@@ -38,7 +38,9 @@ namespace game
 		void update_map ();
 		
 		Entity *_current_entity;
+		int spark_rows[BOARD_NUM_COLS];
 		
+
 		EntityManager *_entityManager;
 		GameBoardElement *_current_gbe;
 		Position *_current_position;
