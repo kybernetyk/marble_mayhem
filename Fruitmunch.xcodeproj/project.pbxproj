@@ -95,6 +95,8 @@
 		034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8512AED89A00CD8EFB /* ParticleSystem.mm */; };
 		034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8812AED89A00CD8EFB /* RenderSystem.mm */; };
 		034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */; };
+		038E940D12BF73CF00BC7BD4 /* impact20_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 038E940B12BF73CF00BC7BD4 /* impact20_0.png */; };
+		038E940E12BF73CF00BC7BD4 /* impact20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 038E940C12BF73CF00BC7BD4 /* impact20.fnt */; };
 		0394BFF412B8FB9C000CD668 /* promo_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 0394BFF012B8FB9C000CD668 /* promo_head.png */; };
 		0394BFF512B8FB9C000CD668 /* WebkitViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0394BFF212B8FB9C000CD668 /* WebkitViewController.mm */; };
 		0394BFF612B8FB9C000CD668 /* WebkitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0394BFF312B8FB9C000CD668 /* WebkitViewController.xib */; };
@@ -355,6 +357,8 @@
 		034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		034E0D8C12AED89A00CD8EFB /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		03563DC012B588F300A73D33 /* ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl.h; sourceTree = "<group>"; };
+		038E940B12BF73CF00BC7BD4 /* impact20_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = impact20_0.png; sourceTree = "<group>"; };
+		038E940C12BF73CF00BC7BD4 /* impact20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = impact20.fnt; sourceTree = "<group>"; };
 		0394BFF012B8FB9C000CD668 /* promo_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_head.png; sourceTree = "<group>"; };
 		0394BFF112B8FB9C000CD668 /* WebkitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebkitViewController.h; sourceTree = "<group>"; };
 		0394BFF212B8FB9C000CD668 /* WebkitViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebkitViewController.mm; sourceTree = "<group>"; };
@@ -971,6 +975,8 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				038E940B12BF73CF00BC7BD4 /* impact20_0.png */,
+				038E940C12BF73CF00BC7BD4 /* impact20.fnt */,
 				03B503D012BE546B00119A74 /* clocks.png */,
 				03AD784712BD331800724C7C /* menu.wav */,
 				03AD784812BD331800724C7C /* music1.wav */,
@@ -1382,6 +1388,8 @@
 				03AD784F12BD331800724C7C /* music3.wav in Resources */,
 				03AD785012BD331800724C7C /* music4.mp3 in Resources */,
 				03B503D112BE546B00119A74 /* clocks.png in Resources */,
+				038E940D12BF73CF00BC7BD4 /* impact20_0.png in Resources */,
+				038E940E12BF73CF00BC7BD4 /* impact20.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

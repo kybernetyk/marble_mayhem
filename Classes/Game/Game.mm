@@ -63,7 +63,7 @@ namespace game
 		
 		g_TextureManager.accquireTexture ("amatuer_back.png");
 		g_TextureManager.accquireTexture ("fruits.png");
-		g_TextureManager.accquireTexture ("zomg.png");
+		g_TextureManager.accquireTexture ("impact20_0.png");
 		Texture2D *t = g_TextureManager.accquireTexture ("schriften.png");
 		t->setAntiAliasTexParams();
 		

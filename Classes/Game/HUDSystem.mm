@@ -103,7 +103,7 @@ namespace game
 		Position *position = _entityManager->addComponent <Position> (e);
 		position->x = pos.x;
 		position->y = pos.y;
-		position->scale_x = position->scale_y = 0.5;
+		//position->scale_x = position->scale_y = 0.5;
 		
 		TextLabel *label = _entityManager->addComponent<TextLabel> (e);
 		label->res_handle = g_RenderableManager.acquireResource <OGLFont>(fontname);
@@ -193,7 +193,7 @@ namespace game
 	{
 		_entityManager = entityManager;
 
-		font_handle = g_RenderableManager.acquireResource <OGLFont> ("zomg.fnt");
+	//	font_handle = g_RenderableManager.acquireResource <OGLFont> ("zomg.fnt");
 		
 		//fps label
 //		fps_label = _entityManager->createNewEntity();
@@ -210,19 +210,19 @@ namespace game
 		
 		char s[255];
 		sprintf(s, "%i", g_GameState.score);
-		score_label = make_new_label ("zomg.fnt", vector2D_make(SCREEN_W/2+4, 32), vector2D_make(0.5, 0.5));
+		score_label = make_new_label ("impact20.fnt", vector2D_make(SCREEN_W/2+4, 30), vector2D_make(0.5, 0.5));
 		score_label->get<TextLabel>()->text = s;
 		
 		time_label = NULL;
 		clock = NULL;
 		if (g_GameState.game_mode == GAME_MODE_TIMED)
 		{
-			time_label = make_new_label ("zomg.fnt", vector2D_make(34.0, 32.0), vector2D_make(0.0, 0.5));
+			time_label = make_new_label ("impact20.fnt", vector2D_make(34.0+4, 30.0), vector2D_make(0.0, 0.5));
 			
 			clock = _entityManager->createNewEntity();
 			Position *pos = _entityManager->addComponent <Position> (clock);
 			pos->x = 18;
-			pos->y = 28.0;
+			pos->y = 27.0;
 			
 			AtlasSprite *sprite = _entityManager->addComponent <AtlasSprite> (clock);
 			sprite->res_handle = g_RenderableManager.acquireResource <TexturedAtlasQuad>("clocks.png");
