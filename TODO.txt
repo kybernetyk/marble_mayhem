@@ -12,7 +12,7 @@ TODO
 -[*] create leaderboard for puzzle mode
 -[*] music
 -[s] sfx
--[s] icon
+-[*] icon
 -[*] screen shots
 -[j] app store description
 

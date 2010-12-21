@@ -105,13 +105,13 @@ namespace game
 				_current_gbe->vy = 1.0;
 				_current_gbe->nograv = false;
 
-				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
+				//_map[_current_gbe->col][_current_gbe->row] = _current_entity;
 				
 				if (_current_gbe->row < BOARD_NUM_VISIBLE_ROWS)
 				{				
 					SoundSystem::make_new_sound (SFX_FRUIT_LAND);
 
-					// penis mark this row col for teh sparks
+					// penis
 					if (_current_gbe->row < spark_rows[_current_gbe->col])
 					{
 						spark_rows[_current_gbe->col] = _current_gbe->row;
@@ -289,12 +289,12 @@ namespace game
 		_entityManager->getEntitiesPossessingComponents(_entities,  GameBoardElement::COMPONENT_ID, ARGLIST_END );
 		std::sort (_entities.begin(), _entities.end(), sortie);
 		//falldown
-		update_map();
 		
 		for (int col = 0; col < BOARD_NUM_COLS; col++)
 			spark_rows[col] = BOARD_NUM_ROWS;
 		
 
+		update_map();
 		
 		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
 		{
@@ -347,13 +347,43 @@ namespace game
 
 			}
 
+			
+		}
+		
+		update_map();
+		
+		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+		{
+			for (int col = 0; col < BOARD_NUM_COLS; col++)
+			{
+				if (!_map[col][row])
+				{
+					for (int j = row; j < BOARD_NUM_ROWS; j++)
+					{
+						_map[col][j] = NULL;
+					}
+				}
+			}
+		}
+		
+		
+		it = _entities.begin();
+		while (it != _entities.end())
+		{
+			_current_entity = *it;
+			++it;
+			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+			_current_position = _entityManager->getComponent<Position>(_current_entity);
+			
 			if ((_current_gbe->state == GBE_STATE_IDLE))
 			{	
 				handle_state_idle();
 				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
 			}
-			
 		}
+		
+		
+		
 		
 		update_map();
 
