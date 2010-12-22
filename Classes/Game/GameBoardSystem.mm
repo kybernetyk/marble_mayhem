@@ -74,10 +74,48 @@ namespace game
 			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
 			
 			//if ((_current_gbe->state == GBE_STATE_IDLE))
+			//if there should be another entity with our coordinates: remove it to prevent
+			//2 fruits occupying one spot
+//			if (_map[_current_gbe->col][_current_gbe->row])
+//			{
+//				_entityManager->addComponent <MarkOfDeath> (_current_entity);
+//			}
+//			else
+			{
 				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
+			}
 		}
 	}
 	
+	
+	
+	void GameBoardSystem::update_map_with_prevs ()
+	{
+		memset(_map,0x00,BOARD_NUM_COLS*BOARD_NUM_ROWS*sizeof(Entity*));
+		
+		std::vector<Entity*>::const_iterator it = _entities.begin();
+		_current_entity = NULL;
+		_current_gbe = NULL;
+		while (it != _entities.end())
+		{
+			_current_entity = *it;
+			++it;
+			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+			
+			//if ((_current_gbe->state == GBE_STATE_IDLE))
+			//if there should be another entity with our coordinates: remove it to prevent
+			//2 fruits occupying one spot
+			//			if (_map[_current_gbe->col][_current_gbe->row])
+			//			{
+			//				_entityManager->addComponent <MarkOfDeath> (_current_entity);
+			//			}
+			//			else
+			{
+				_map[_current_gbe->col][_current_gbe->prev_row] = _current_entity;
+				_map[_current_gbe->col][_current_gbe->row] = _current_entity;
+			}
+		}
+	}
 	
 	bool GameBoardSystem::can_move_down ()
 	{
@@ -89,6 +127,25 @@ namespace game
 		
 		if (_map[col][row])
 			return false;
+		
+//		
+//		std::vector<Entity*>::const_iterator it = _entities.begin();
+//		Entity *current_entity = NULL;
+//		GameBoardElement *current_gbe = NULL;
+//		Position *pos = NULL;
+//		while (it != _entities.end())
+//		{
+//			current_entity = *it;
+//			++it;
+//			current_gbe = _entityManager->getComponent<GameBoardElement>(current_entity);
+//			pos = _entityManager->getComponent<Position>(current_entity);
+//
+//			if (current_entity != _current_entity)
+//			{
+//				if (current_gbe->row == row && current_gbe->col == col)
+//					return false;
+//			}
+//		}
 		
 		return true;
 	}
@@ -123,6 +180,20 @@ namespace game
 		if (can_move_down())
 		{
 			_current_gbe->state = GBE_STATE_MOVING_FALL;
+			
+			
+			for (int row = _current_gbe->row; row < BOARD_NUM_ROWS; row++)
+			{
+				Entity *e = _map[_current_gbe->col][row];
+				if (!e)
+					continue;
+				
+				GameBoardElement *g = _entityManager->getComponent <GameBoardElement> (e);
+				if (g->state == GBE_STATE_MOVING_FALL)
+					g->vy = _current_gbe->vy;
+			}
+			
+			_map[_current_gbe->col][_current_gbe->row] = 0;
 		}
 		else
 		{
@@ -142,6 +213,7 @@ namespace game
 			_current_gbe->landed = false;
 			_current_gbe->y_off = 0.0;
 			_current_gbe->y_move_timer = 0.0;
+			
 		}
 		
 		_current_gbe->y_move_timer += _delta;
@@ -214,7 +286,7 @@ namespace game
 
 	void GameBoardSystem::refill ()
 	{
-		update_map();
+
 		//in prep fill only visible field
 		
 		int check_index = BOARD_NUM_ROWS-2;
@@ -226,12 +298,33 @@ namespace game
 			spawn_index = BOARD_NUM_VISIBLE_ROWS;
 		}
 		
-		for (int col = 0; col < BOARD_NUM_COLS; col++)
+		if (g_GameState.game_state == GAME_STATE_PREP)
 		{
-			if (!_map[col][check_index])
+			update_map ();
+			for (int col = 0; col < BOARD_NUM_COLS; col++)
 			{
-				make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, spawn_index);
-				g_GameState.fruits_on_board ++;
+				if (!_map[col][check_index])
+				{
+					make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, spawn_index);
+					g_GameState.fruits_on_board ++;
+				}
+			}
+		}
+		else
+		{
+			update_map_with_prevs ();
+			for (int row = BOARD_NUM_VISIBLE_ROWS; row < BOARD_NUM_ROWS-1; row ++)
+			{	
+				for (int col = 0; col < BOARD_NUM_COLS; col++)
+				{
+					if (!_map[col][row])
+					{
+						Entity *f = make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, row);
+						g_GameState.fruits_on_board ++;
+						_map[col][row] = f;
+
+					}
+				}
 			}
 		}
 	}
@@ -294,115 +387,146 @@ namespace game
 			spark_rows[col] = BOARD_NUM_ROWS;
 		
 
-		update_map();
+//		update_map();
+//		
+//		for (int row = 0; row < BOARD_NUM_ROWS; row++)
+//		{
+//			for (int col = 0; col < BOARD_NUM_COLS; col++)
+//			{
+//				//				_current_entity = *it;
+//				_current_entity = _map[col][row];
+//				if (!_current_entity)
+//					continue;
+//				
+//				
+//				_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+//				_current_position = _entityManager->getComponent<Position>(_current_entity);
+//				
+//				if ((_current_gbe->state == GBE_STATE_IDLE))
+//				{	
+//					handle_state_idle();
+//					_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
+//				}
+//			}
+//			
+//		}		
+//		
+				update_map();
 		
-		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+//		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+//		{
+//			for (int col = 0; col < BOARD_NUM_COLS; col++)
+//			{
+//				if (!_map[col][row])
+//				{
+//					for (int j = row; j < BOARD_NUM_ROWS; j++)
+//					{
+//						_map[col][j] = NULL;
+//					}
+//				}
+//			}
+//		}
+		
+//		std::vector<Entity*>::const_iterator it = _entities.begin();
+//		_current_entity = NULL;
+//		_current_gbe = NULL;
+//		while (it != _entities.end())
+//		{
+
+		for (int row = 0; row < BOARD_NUM_ROWS; row++)
 		{
 			for (int col = 0; col < BOARD_NUM_COLS; col++)
 			{
-				if (!_map[col][row])
-				{
-					for (int j = row; j < BOARD_NUM_ROWS; j++)
-					{
-						_map[col][j] = NULL;
-					}
+//				_current_entity = *it;
+				_current_entity = _map[col][row];
+				if (!_current_entity)
+					continue;
+				
+				//++it;
+				_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+				_current_position = _entityManager->getComponent<Position>(_current_entity);
+
+				//reset fall speed to normal
+				if (g_GameState.game_state == GAME_STATE_PREP)
+					_current_gbe->fall_duration = 0.05;
+				else
+					_current_gbe->fall_duration = 0.20;
+				
+				
+
+				if ((_current_gbe->state == GBE_STATE_IDLE))
+				{	
+					handle_state_idle();
+					_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
 				}
-			}
+				
+				if (_current_gbe->state == GBE_STATE_MOVING_FALL)
+				{	
+					handle_state_falling ();
+					_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET + TILESIZE_Y - (_current_gbe->y_off);
+				}
+				
+				if (_current_gbe->moving_sideways)
+				{
+					handle_state_move_sideways ();
+					_current_position->x = _current_gbe->col * TILESIZE_X + BOARD_X_OFFSET - TILESIZE_X + (_current_gbe->x_off);
+
+				}
+
+			}			
 		}
 		
-		std::vector<Entity*>::const_iterator it = _entities.begin();
-		_current_entity = NULL;
-		_current_gbe = NULL;
-		while (it != _entities.end())
-		{
-			_current_entity = *it;
-			++it;
-			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
-			_current_position = _entityManager->getComponent<Position>(_current_entity);
 
-			//reset fall speed to normal
-			if (g_GameState.game_state == GAME_STATE_PREP)
-				_current_gbe->fall_duration = 0.05;
-			else
-				_current_gbe->fall_duration = 0.20;
-			
-			
+		
+//		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+//		{
+//			for (int col = 0; col < BOARD_NUM_COLS; col++)
+//			{
+//				if (!_map[col][row])
+//				{
+//					for (int j = row; j < BOARD_NUM_ROWS; j++)
+//					{
+//						_map[col][j] = NULL;
+//					}
+//				}
+//			}
+//		}
+//		
+		
+//		it = _entities.begin();
+//		while (it != _entities.end())
+//		{
+//			_current_entity = *it;
+//			++it;
 
-			if ((_current_gbe->state == GBE_STATE_IDLE))
-			{	
-				handle_state_idle();
-				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
-			}
-			
-			if (_current_gbe->state == GBE_STATE_MOVING_FALL)
-			{	
-				handle_state_falling ();
-				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET + TILESIZE_Y - (_current_gbe->y_off);
-			}
-			
-			if (_current_gbe->moving_sideways)
-			{
-				handle_state_move_sideways ();
-				_current_position->x = _current_gbe->col * TILESIZE_X + BOARD_X_OFFSET - TILESIZE_X + (_current_gbe->x_off);
-
-			}
-
-			
-		}
+		
 		
 		update_map();
-		
-		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+//
+//		//urgs hack so puzzle mode will not go gameover before all stone in movement are accounted
+//		it = _entities.begin();
+//		while (it != _entities.end())
+//		{
+//			_current_entity = *it;
+//			++it;
+		for (int row = 0; row < BOARD_NUM_ROWS; row++)
 		{
 			for (int col = 0; col < BOARD_NUM_COLS; col++)
 			{
-				if (!_map[col][row])
-				{
-					for (int j = row; j < BOARD_NUM_ROWS; j++)
-					{
-						_map[col][j] = NULL;
-					}
+				//				_current_entity = *it;
+				_current_entity = _map[col][row];
+				if (!_current_entity)
+					continue;
+				_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
+				_current_position = _entityManager->getComponent<Position>(_current_entity);
+
+				if ((_current_gbe->state == GBE_STATE_IDLE))
+				{	
+					handle_state_idle();
+					_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
 				}
 			}
-		}
-		
-		
-		it = _entities.begin();
-		while (it != _entities.end())
-		{
-			_current_entity = *it;
-			++it;
-			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
-			_current_position = _entityManager->getComponent<Position>(_current_entity);
-			
-			if ((_current_gbe->state == GBE_STATE_IDLE))
-			{	
-				handle_state_idle();
-				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
-			}
-		}
-		
-		
-		
-		
-		update_map();
-
-		//urgs hack so puzzle mode will not go gameover before all stone in movement are accounted
-		it = _entities.begin();
-		while (it != _entities.end())
-		{
-			_current_entity = *it;
-			++it;
-			_current_gbe = _entityManager->getComponent<GameBoardElement>(_current_entity);
-			_current_position = _entityManager->getComponent<Position>(_current_entity);
-
-			if ((_current_gbe->state == GBE_STATE_IDLE))
-			{	
-				handle_state_idle();
-				_current_position->y = _current_gbe->row * TILESIZE_Y + BOARD_Y_OFFSET;
-			}
-		}
-		
+		}		
 		refill_pause_timer += _delta;
 		
 		if (refill_pause_timer >= refill_pause_time_between_rows)
@@ -429,6 +553,7 @@ namespace game
 			}
 			
 		}
+		
 		
 		if (g_ParticlesEnabled)
 		{

@@ -36,7 +36,7 @@ namespace game
 		
 		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
 		void update_map ();
-		
+		void update_map_with_prevs ();
 		Entity *_current_entity;
 		int spark_rows[BOARD_NUM_COLS];
 		

@@ -398,7 +398,7 @@ namespace game
 		
 		static float d = 0.0;
 		d += delta;
-		if (d > 2.0)
+		if (d > 0.0)
 		{
 			d = 0.0;
 			sprintf(s, "Fps: %.2f", g_FPS);
