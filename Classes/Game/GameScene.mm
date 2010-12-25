@@ -39,40 +39,28 @@ namespace game
 	
 	std::string sounds[] =
 	{
-		"Time_Up.mp3",
-		"Get_ready.mp3",
-		"Go.mp3",
-		"Game_Over.mp3",
-		"gemongem2.mp3",
-		
-		//		"combo3.aiff",
-		//		"combo4.aiff",
-		//		"combo5.aiff",
-		//		"combo5.aiff",
-		//		"combo6.aiff",
-		
-		
-		"combo32.mp3",
-		"combo42.mp3",
-		"combo52.mp3",
-		"combo62.mp3",
-		"combo72.mp3",
-		
-		//		"combo1.wav",
-		//		"combo2.wav",
-		//		"combo3.wav",
-		//		"combo4.wav",
-		//		"combo5.wav",
-		//		"fuck1.mp3",
-		//		"fuck2.mp3",
-		//		"fuck3.mp3",
-		//		"fuck4.mp3",
-		//		"fuck5.mp3",
-		
-		"excellent1.mp3",
-		"Incredible.mp3",
-		"Good.mp3",
-		"gotset2.mp3"
+		"time_up.wav",
+		"getready_soviet.wav",
+		"go1.wav",
+		"game over1.wav",
+		"blam1.wav",
+
+		"c2.wav",
+		"d2.wav",
+		"e2.wav",
+		"f2.wav",
+		"g2.wav",
+
+		"awesome2.wav",
+		"incredible1.wav",
+		"excellent3.wav",
+		"blam2.wav",
+		"solved2.wav",
+		"impressive2.wav",
+		"excellent1.wav",
+		"excellent2.wav",
+		"awesome1.wav",
+		"impressive1.wav"
 	};
 	
 	void GameScene::preload ()
@@ -249,7 +237,10 @@ namespace game
 			
 			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
 			{
-				SoundSystem::make_new_sound (SFX_GAME_OVER);
+				if (g_GameState.game_mode == GAME_MODE_TIMED)
+					SoundSystem::make_new_sound (SFX_TIME_UP);
+				else
+					SoundSystem::make_new_sound (SFX_GAME_OVER);
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_GAMEOVER);
 //				_hudSystem->show_prep_label();
@@ -262,7 +253,7 @@ namespace game
 
 			if (g_GameState.game_state == GAME_STATE_SOLVED)
 			{
-				SoundSystem::make_new_sound (SFX_GAME_OVER);
+				SoundSystem::make_new_sound (SFX_SOLVED);
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_SOLVED);
 //				_hudSystem->show_prep_label();

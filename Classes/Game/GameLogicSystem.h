@@ -45,7 +45,9 @@ namespace game
 		int head_row;
 		int head_col;
 		int num_of_marks;
-		
+		int last_sfx;
+		int awesome_count;
+		int nokaut;
 		EntityManager *_entityManager;
 
 		Entity *markers[BOARD_NUM_MARKERS];

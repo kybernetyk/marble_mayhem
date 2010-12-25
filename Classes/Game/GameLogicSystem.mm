@@ -70,7 +70,9 @@ namespace game
 		head_row = -1;
 		head_col = -1;
 		num_of_marks = 0;
-		
+		last_sfx = -1;
+		awesome_count = 0;
+		nokaut = 0;
 
 		remove_all_markers();
 		
@@ -140,30 +142,111 @@ namespace game
 			
 			SoundSystem::make_new_sound (sfx);
 			int bonus = 0;
+			if (num_of_marks >= 4)
+			{
+				sfx = SFX_AWESOME;
+				
+				if (num_of_marks >= 5)
+					sfx = SFX_EXCELLENT;
+				if (num_of_marks >= 6)
+					sfx = SFX_INCREDIBLE;
+				if (num_of_marks >= 7)
+					sfx = SFX_IMPRESSIVE;
+
+				BOOL play = YES;
+				
+				if (sfx == SFX_AWESOME)
+				{	
+					awesome_count ++;
+					
+					if (awesome_count > 4)
+						awesome_count = 4;
+	
+					if (awesome_count > 3)
+						play = NO;
+				}
+				else
+				{	
+					awesome_count --;
+					
+					if (awesome_count < 0)
+						awesome_count = 0;
+				}
+				
+				
+				if (sfx == SFX_AWESOME)
+				{
+					if (last_sfx == SFX_AWESOME)
+						sfx = SFX_AWESOME2;
+					else if (last_sfx == SFX_AWESOME2)
+						play = NO;
+				}
+				else if (sfx == SFX_EXCELLENT)
+				{
+					if (last_sfx == SFX_EXCELLENT)
+						sfx = SFX_EXCELLENT2;
+					else if (last_sfx == SFX_EXCELLENT2)
+						sfx = SFX_EXCELLENT3;
+					else if (last_sfx == SFX_EXCELLENT3)
+						sfx = SFX_INCREDIBLE;
+				}
+				else if (sfx == SFX_IMPRESSIVE)
+				{
+					if (last_sfx == SFX_IMPRESSIVE)
+						sfx = SFX_IMPRESSIVE2;
+				}
+	
+				if (nokaut >= 4)
+				{
+					awesome_count = 0;
+					play = YES;
+				}
+				nokaut = 0;
+				
+				
+				last_sfx = sfx;
+				
+				if (play)
+					SoundSystem::make_new_sound (sfx);	
+				
+			}
+			else 
+			{
+				nokaut ++;
+			}
+
+//			else
+//			{	
+//				awesome_count --;
+//				
+//				if (awesome_count < 0)
+//					awesome_count = 0;
+//			}
+			
+			
 			if (g_GameState.previous_kill >= 3 && num_of_marks >= 4)
 			{	
-				sfx = SFX_GOOD;
 				bonus = 250 * num_of_marks;
-				
 				if (g_GameState.previous_kill >= 4 && num_of_marks >= 5)
 				{	
-					sfx = SFX_EXCELLENT;
 					bonus = 350 * num_of_marks;
 				}
 				
 				if (g_GameState.previous_kill >= 5 && num_of_marks >= 6)
 				{	
-					sfx = SFX_INCREDIBLE;
 					bonus = 600 * num_of_marks;
 				}
+
+				if (g_GameState.previous_kill >= 6 && num_of_marks >= 7)
+				{	
+					bonus = 700 * num_of_marks;
+				}
 				
-				
-				SoundSystem::make_new_sound (sfx);	
 			}
 			g_GameState.score += bonus;
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1000.0;
+				g_GameState.time_left += bonus/1000.0;	//only add time bonus if we are and will not be game over
 			}
 			printf("Bonus: %i\n", bonus);
 

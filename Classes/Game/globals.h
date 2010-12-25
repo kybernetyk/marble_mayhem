@@ -42,7 +42,7 @@ namespace game
 		}
 	};
 	
-#define NUM_SOUNDS 14
+#define NUM_SOUNDS 20
 	
 #define GAME_MODE_TIMED 0x01
 #define GAME_MODE_ENDLESS 0x02
@@ -77,11 +77,16 @@ namespace game
 #define SFX_FRUIT_REMOVE_4 0x07
 #define SFX_FRUIT_REMOVE_5 0x08	
 #define SFX_FRUIT_REMOVE_6 0x09
-#define SFX_EXCELLENT 0x0a
+#define SFX_EXCELLENT 0x0c
 #define SFX_INCREDIBLE 0x0b
-#define SFX_GOOD 0x0c
+#define SFX_AWESOME 0x0a
 #define SFX_COUNTDOWN 0x0d
-	
+#define SFX_SOLVED 0x0e
+#define SFX_IMPRESSIVE 0x0f
+#define SFX_EXCELLENT2 0x10
+#define SFX_EXCELLENT3 0x11
+#define SFX_AWESOME2 0x12
+#define SFX_IMPRESSIVE2 0x13
 }
 
 extern game::GameState g_GameState;

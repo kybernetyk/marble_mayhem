@@ -100,7 +100,7 @@
 	
 	mx3::SoundSystem::set_sfx_volume (sfx_vol);
 	mx3::SoundSystem::set_music_volume (music_vol);
-	mx3::SoundSystem::play_sound ("minyx.caf");
+	mx3::SoundSystem::play_sound ("minyx_whisper.wav");
 	g_ParticlesEnabled = parts;
 	
 	//[[SimpleAudioEngine sharedEngine] preloadEffect: @MENU_ITEM_SFX];
@@ -390,6 +390,13 @@
 
 #pragma mark -
 #pragma mark in app datasource
+- (NSString *) youtubeURLForProductID: (NSString *) productID
+{
+	if ([productID isEqualToString: kInAppFullGame])
+		return @"http://www.youtube.com/watch?v=7ySoofI5nQ8";
+	return nil;
+}
+
 - (NSString *) imageNameForProductID: (NSString *) productID
 {
 	if ([productID isEqualToString: kInAppFullGame])
