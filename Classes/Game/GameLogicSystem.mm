@@ -236,23 +236,17 @@ namespace game
 				{	
 					bonus = 600 * num_of_marks;
 				}
-
-				if (g_GameState.previous_kill >= 6 && num_of_marks >= 7)
-				{	
-					bonus = 700 * num_of_marks;
-				}
-				
 			}
 			g_GameState.score += bonus;
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1000.0;	//only add time bonus if we are and will not be game over
+				g_GameState.time_left += bonus/1100.0;	//only add time bonus if we are and will not be game over
 			}
 			printf("Bonus: %i\n", bonus);
 
 			printf("time add: %f\n", time_add);
-			printf("Bonus time: %f\n",bonus/1000.0);
-			printf("sum t: %f\n", time_add + (bonus/1000.0));
+			printf("Bonus time: %f\n",bonus/1100.0);
+			printf("sum t: %f\n", time_add + (bonus/1100.0));
 			g_GameState.previous_kill = num_of_marks;
 			g_GameState.total_killed += num_of_marks;
 			
