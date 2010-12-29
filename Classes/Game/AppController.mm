@@ -48,7 +48,7 @@
 		[self retain]; //important! IB doesnt retain us!
 		
 		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-						   //[NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 						   [NSNumber numberWithFloat: 0.5], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",
@@ -410,7 +410,8 @@
 - (NSString *) youtubeURLForProductID: (NSString *) productID
 {
 	if ([productID isEqualToString: kInAppFullGame])
-		return @"http://www.youtube.com/watch?v=7ySoofI5nQ8";
+		return @"http://www.youtube.com/watch?v=40nLZt3lxEg";
+	
 	return nil;
 }
 
@@ -535,17 +536,14 @@
 
 - (NSString *) picurlForFBShare
 {
-	return @"http://www.minyxgames.com/fruit-munch/screenshots/thumb3.png";
+	return @"http://www.minyxgames.com/fruit-munch/fb_pic.png";
 }
 #pragma mark -
 #pragma mark in inapp
 - (NSSet *) inAppProductIDs
 {
 	NSSet *iap = [NSSet setWithObjects:
-				  kInAppFullGame,
-				  @"com.minyxgames.fruitmunch.8",
-				  @"com.minyxgames.fruitmunch.9",
-				  nil];
+				  kInAppFullGame, nil ];
 	
 	return iap;	
 }

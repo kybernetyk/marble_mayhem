@@ -27,6 +27,8 @@
 		031138F412CB6E4A00253B13 /* menu.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 031138F112CB6E4A00253B13 /* menu.m4a */; };
 		031138F512CB6E4A00253B13 /* music2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 031138F212CB6E4A00253B13 /* music2.m4a */; };
 		031138F612CB6E4A00253B13 /* music3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 031138F312CB6E4A00253B13 /* music3.m4a */; };
+		0311398A12CB89F300253B13 /* full_game_screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0311398912CB89F300253B13 /* full_game_screen@2x.png */; };
+		031139B512CB8E9500253B13 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031139B412CB8E9500253B13 /* MediaPlayer.framework */; };
 		0325BD8312C159BB000F7C10 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0325BD8112C159BB000F7C10 /* Icon@2x.png */; };
 		0325BD8412C159BB000F7C10 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0325BD8212C159BB000F7C10 /* Icon.png */; };
 		032A173D12AC56000046B89E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 032A173C12AC56000046B89E /* GameKit.framework */; };
@@ -221,6 +223,8 @@
 		031138F112CB6E4A00253B13 /* menu.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu.m4a; sourceTree = "<group>"; };
 		031138F212CB6E4A00253B13 /* music2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = music2.m4a; sourceTree = "<group>"; };
 		031138F312CB6E4A00253B13 /* music3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = music3.m4a; sourceTree = "<group>"; };
+		0311398912CB89F300253B13 /* full_game_screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_game_screen@2x.png"; sourceTree = "<group>"; };
+		031139B412CB8E9500253B13 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0325BD8112C159BB000F7C10 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0325BD8212C159BB000F7C10 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		032A173C12AC56000046B89E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -487,6 +491,7 @@
 				0399695812A824CA00D0C56D /* AudioToolbox.framework in Frameworks */,
 				032A173D12AC56000046B89E /* GameKit.framework in Frameworks */,
 				03109E8C12AD4667008B6DF7 /* StoreKit.framework in Frameworks */,
+				031139B512CB8E9500253B13 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1041,7 @@
 				0397705712B1641100CA6126 /* marker.png */,
 				03976F8D12B14F3700CA6126 /* minyx_bw.png */,
 				03976F7F12B14DE000CA6126 /* menu_back.png */,
+				0311398912CB89F300253B13 /* full_game_screen@2x.png */,
 				030BDDB612B02693008BC5CF /* full_game_screen.png */,
 				03ABF18212AA636600320143 /* goldstar2.pex */,
 				03ABF17712AA627600320143 /* goldstars.pex */,
@@ -1219,6 +1225,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				032A173C12AC56000046B89E /* GameKit.framework */,
 				03109E8B12AD4667008B6DF7 /* StoreKit.framework */,
+				031139B412CB8E9500253B13 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1374,6 +1381,7 @@
 				031138F412CB6E4A00253B13 /* menu.m4a in Resources */,
 				031138F512CB6E4A00253B13 /* music2.m4a in Resources */,
 				031138F612CB6E4A00253B13 /* music3.m4a in Resources */,
+				0311398A12CB89F300253B13 /* full_game_screen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
