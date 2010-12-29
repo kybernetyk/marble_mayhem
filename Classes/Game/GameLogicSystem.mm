@@ -126,7 +126,7 @@ namespace game
 		{
 			int score = (num_of_marks * 15) * num_of_marks;
 			float num = num_of_marks;
-			float time_add = ((float)(num*0.20*num*0.20));		//0.25
+			float time_add = ((float)(num*0.18*num*0.18));		//0.25
 			
 			//only add time for chain if we're playinh (not game over)
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
@@ -226,27 +226,27 @@ namespace game
 			
 			if (g_GameState.previous_kill >= 3 && num_of_marks >= 4)
 			{	
-				bonus = 250 * num_of_marks;
+				bonus = 200 * num_of_marks;
 				if (g_GameState.previous_kill >= 4 && num_of_marks >= 5)
 				{	
-					bonus = 350 * num_of_marks;
+					bonus = 300 * num_of_marks;
 				}
 				
 				if (g_GameState.previous_kill >= 5 && num_of_marks >= 6)
 				{	
-					bonus = 600 * num_of_marks;
+					bonus = 500 * num_of_marks;
 				}
 			}
 			g_GameState.score += bonus;
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1100.0;	//only add time bonus if we are and will not be game over
+				g_GameState.time_left += bonus/1500.0;	//only add time bonus if we are and will not be game over
 			}
 			printf("Bonus: %i\n", bonus);
 
 			printf("time add: %f\n", time_add);
-			printf("Bonus time: %f\n",bonus/1100.0);
-			printf("sum t: %f\n", time_add + (bonus/1100.0));
+			printf("Bonus time: %f\n",bonus/1500.0);
+			printf("sum t: %f\n", time_add + (bonus/1500.0));
 			g_GameState.previous_kill = num_of_marks;
 			g_GameState.total_killed += num_of_marks;
 			

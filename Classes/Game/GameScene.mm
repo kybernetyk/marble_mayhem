@@ -126,8 +126,8 @@ namespace game
 			std::string mfx[] = 
 			{
 //				"music1.wav",
-				"music2.wav",
-				"music3.wav"
+				"music2.m4a",
+				"music3.m4a"
 			};
 			
 			int sz = sizeof (mfx) / sizeof (std::string);
@@ -213,7 +213,8 @@ namespace game
 				preptmp = (int)prep_timer;
 				g_GameState.reset();
 
-				SoundSystem::make_new_sound (SFX_GET_READY);
+				//SoundSystem::make_new_sound (SFX_GET_READY);
+				SoundSystem::make_new_sound (SFX_COUNTDOWN);
 				//_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->change_prep_state (PREP_STATE_READY);
 //				_hudSystem->show_prep_label();

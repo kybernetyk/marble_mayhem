@@ -11,7 +11,7 @@ TODO
 -[*] create facebook app
 -[*] create leaderboard for puzzle mode
 -[*] music
--[s] sfx
+-[*] sfx
 -[*] icon
 -[*] screen shots
 -[j] app store description

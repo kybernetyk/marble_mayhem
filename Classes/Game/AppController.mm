@@ -48,7 +48,7 @@
 		[self retain]; //important! IB doesnt retain us!
 		
 		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   //[NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 						   [NSNumber numberWithFloat: 0.5], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",
@@ -318,7 +318,24 @@
 	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 //	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 //	[dc postNotificationName: kShowLeaderBoard object: nil];
-	post_notification (kShowLeaderBoard);
+	
+	
+	if (![GameCenterManager isLocalPlayerAuthenticated])
+	{
+/*		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: @"Gamecenter" 
+															message: @"Please sign in with Gamecenter to access Hi-Scores." 
+														   delegate: self 
+												  cancelButtonTitle: @"Ok." 
+												  otherButtonTitles: nil];
+		
+		[alertView show];
+		[alertView autorelease]; */
+		[g_pGameCenterManger authenticateLocalUser];
+	}
+	else
+	{
+		post_notification (kShowLeaderBoard);	
+	}
 }
 
 - (void) showInAppStore: (id) sender
