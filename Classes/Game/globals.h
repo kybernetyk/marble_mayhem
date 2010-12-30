@@ -42,7 +42,7 @@ namespace game
 		}
 	};
 	
-#define NUM_SOUNDS 20
+#define NUM_SOUNDS 22
 	
 #define GAME_MODE_TIMED 0x01
 #define GAME_MODE_ENDLESS 0x02
@@ -87,6 +87,8 @@ namespace game
 #define SFX_EXCELLENT3 0x11
 #define SFX_AWESOME2 0x12
 #define SFX_IMPRESSIVE2 0x13
+#define SFX_GOOD1 0x14
+#define SFX_GOOD2 0x15
 }
 
 extern game::GameState g_GameState;

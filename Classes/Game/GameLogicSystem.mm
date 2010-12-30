@@ -177,8 +177,12 @@ namespace game
 				if (sfx == SFX_AWESOME)
 				{
 					if (last_sfx == SFX_AWESOME)
+						sfx = SFX_GOOD1;
+					else if (last_sfx == SFX_GOOD1)
 						sfx = SFX_AWESOME2;
 					else if (last_sfx == SFX_AWESOME2)
+						sfx = SFX_GOOD2;
+					else if (last_sfx == SFX_GOOD2)
 						play = NO;
 				}
 				else if (sfx == SFX_EXCELLENT)

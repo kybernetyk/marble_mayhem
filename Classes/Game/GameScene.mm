@@ -40,9 +40,9 @@ namespace game
 	std::string sounds[] =
 	{
 		"time_up.wav",
-		"getready_soviet.wav",
+		"getready3.wav",
 		"go1.wav",
-		"game over1.wav",
+		"game_over.wav",
 		"blam1.wav",
 
 		"c2.wav",
@@ -60,7 +60,9 @@ namespace game
 		"excellent1.wav",
 		"excellent2.wav",
 		"awesome1.wav",
-		"impressive1.wav"
+		"impressive1.wav",
+		"good1.wav",
+		"good5.wav"
 	};
 	
 	void GameScene::preload ()
@@ -213,8 +215,8 @@ namespace game
 				preptmp = (int)prep_timer;
 				g_GameState.reset();
 
-				//SoundSystem::make_new_sound (SFX_GET_READY);
-				SoundSystem::make_new_sound (SFX_COUNTDOWN);
+				SoundSystem::make_new_sound (SFX_GET_READY);
+				//SoundSystem::make_new_sound (SFX_COUNTDOWN);
 				//_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->change_prep_state (PREP_STATE_READY);
 //				_hudSystem->show_prep_label();
