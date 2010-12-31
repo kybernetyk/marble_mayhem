@@ -120,7 +120,7 @@ namespace game
 		if (current_prep_state == state)
 			return;
 		
-		printf("state: %i\n", state);
+		CV3Log("state: %i\n", state);
 
 		//handle state changes
 		switch (state)

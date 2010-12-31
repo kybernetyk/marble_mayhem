@@ -17,7 +17,8 @@
 	UIView *pauseView;
 	UIView *gameOverView;
 	UIView *settingsView;
-
+	UIView *creditsView;
+	
 	//game over
 	IBOutlet UIButton *fbShareButton;
 	IBOutlet UIActivityIndicatorView *activity;
@@ -28,6 +29,9 @@
 	IBOutlet UISlider *sfxSlider;
 	IBOutlet UISlider *musicSlider;
 	IBOutlet UISwitch *particleSwitch;
+	
+	//credits
+	IBOutlet UITextView *creditsText;
 }
 
 @property (readwrite, retain) IBOutlet UIView *mainMenuView;
@@ -35,7 +39,7 @@
 @property (readwrite, retain) IBOutlet UIView *pauseView;
 @property (readwrite, retain) IBOutlet UIView *gameOverView;
 @property (readwrite, retain) IBOutlet UIView *settingsView;
-
+@property (readwrite, retain) IBOutlet UIView *creditsView;
 
 - (IBAction) startGame: (id) sender;
 - (IBAction) showPauseMenu: (id) sender;
@@ -56,5 +60,9 @@
 - (IBAction) volumeDidChange: (id) sender;
 - (IBAction) particlesDidChange: (id) sender;
 - (IBAction) playPing: (id) sender;
+
+//credits
+- (IBAction) showCredits: (id) sender;
+- (IBAction) hideCredits: (id) sender;
 
 @end

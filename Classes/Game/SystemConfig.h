@@ -9,7 +9,7 @@
 #pragma once
 
 //entity system checks and infos
-#define __VERBOSE__
+//#define __VERBOSE__
 
 #ifdef __VERBOSE__
 	#define CV3Log printf
@@ -18,9 +18,9 @@
 	#define NSLog(...)
 #endif
 
-#define __RUNTIME_INFORMATION__
-#define __ABORT_GUARDS__
-#define __ENTITY_MANAGER_WARNINGS__
+//#define __RUNTIME_INFORMATION__
+//#define __ABORT_GUARDS__
+//#define __ENTITY_MANAGER_WARNINGS__
 
 #define USE_GAMECENTER
 #define USE_INAPPSTORE
@@ -29,14 +29,14 @@
 
 
 #define USE_FACEBOOK
-#define FB_APP_ID @"126988490697464"
-#define FB_API_KEY @"a3d15a92ffbfcbbc745dec43d03c2211"
+#define FB_APP_ID @"154580501257727"
+#define FB_API_KEY @"ba9e96e77b1f0114604d5637d346b43f"
 
 
 #define USE_PROMOTION
-#define PROMOTION_URL @"http://dl.dropbox.com/u/8724227/inapp_promotion/promotion_portrait.html"
+#define PROMOTION_URL @"http://www.minyxgames.com/more_games/promotion_portrait.html"
 
-#define MENU_ITEM_SFX "click.mp3"
+#define MENU_ITEM_SFX "click.wav"
 
 #define MAX_REGISTERED_SOUNDS 32
 

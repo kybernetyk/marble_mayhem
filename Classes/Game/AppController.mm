@@ -23,6 +23,7 @@
 @synthesize pauseView;
 @synthesize gameOverView;
 @synthesize settingsView;
+@synthesize creditsView;
 
 - (void) setBorderAndCornersForView: (UIView *) aView
 {
@@ -48,7 +49,7 @@
 		[self retain]; //important! IB doesnt retain us!
 		
 		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						  // [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 						   [NSNumber numberWithFloat: 0.3], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",
@@ -364,6 +365,23 @@
 }
 
 #pragma mark -
+#pragma mark credits panel
+- (IBAction) showCredits: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	[mainView addSubview: creditsView];
+	[self setBorderAndCornersForView: creditsText];
+	
+}
+
+- (IBAction) hideCredits: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	[creditsView removeFromSuperview];	
+}
+
+
+#pragma mark -
 #pragma mark settings panel
 - (IBAction) volumeDidChange: (id) sender
 {
@@ -400,7 +418,7 @@
 - (IBAction) playPing: (id) sender
 {
 	if ([sender tag] == 1)	//sfx slider needs a different ping
-		mx3::SoundSystem::play_sound ("Good.mp3");
+		mx3::SoundSystem::play_sound ("impressive2.wav");
 	else
 		mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 }

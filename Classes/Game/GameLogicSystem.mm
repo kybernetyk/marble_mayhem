@@ -126,7 +126,7 @@ namespace game
 		{
 			int score = (num_of_marks * 15) * num_of_marks;
 			float num = num_of_marks;
-			float time_add = ((float)(num*0.18*num*0.18));		//0.25
+			float time_add = ((float)(num*0.18*num*0.18));		//0.18
 			
 			//only add time for chain if we're playinh (not game over)
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
@@ -244,13 +244,13 @@ namespace game
 			g_GameState.score += bonus;
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1500.0;	//only add time bonus if we are and will not be game over
+				g_GameState.time_left += bonus/1200.0;	//only add time bonus if we are and will not be game over
 			}
-			printf("Bonus: %i\n", bonus);
+			CV3Log("Bonus: %i\n", bonus);
 
-			printf("time add: %f\n", time_add);
-			printf("Bonus time: %f\n",bonus/1500.0);
-			printf("sum t: %f\n", time_add + (bonus/1500.0));
+			CV3Log("time add: %f\n", time_add);
+			CV3Log("Bonus time: %f\n",bonus/1200.0);
+			CV3Log("sum t: %f\n", time_add + (bonus/1200.0));
 			g_GameState.previous_kill = num_of_marks;
 			g_GameState.total_killed += num_of_marks;
 			
@@ -258,14 +258,14 @@ namespace game
 			{
 				int sweep_bonus = (g_GameState.total_killed * g_GameState.total_killed) + (score*time_add);
 				
-				printf("sweep bonus: %i\n", sweep_bonus);
+				CV3Log("sweep bonus: %i\n", sweep_bonus);
 				
 				g_GameState.score += sweep_bonus;
 			}
 			
-			printf("removign %i from gamestate ...\n",num_of_marks);
+			CV3Log("removign %i from gamestate ...\n",num_of_marks);
 			g_GameState.fruits_on_board -= num_of_marks;
-			printf("now left: %i\n", g_GameState.fruits_on_board);
+			CV3Log("now left: %i\n", g_GameState.fruits_on_board);
 		}
 
 		//g_GameState.previous_kill = num_of_marks;
@@ -660,8 +660,8 @@ namespace game
 				
 				if (g_GameState.fruits_on_board <= 0)
 				{
-					printf("time played: %f\n", g_GameState.time_played);
-					printf("bonus: %i\n", bonus);
+					CV3Log("time played: %f\n", g_GameState.time_played);
+					CV3Log("bonus: %i\n", bonus);
 
 					bonus += 45321;
 					float f = (1.5 - (g_GameState.time_played * 0.01));
@@ -669,7 +669,7 @@ namespace game
 						f = 0.3;
 					bonus *= f;
 
-					printf("bonus time abzuch: %i\n", bonus);
+					CV3Log("bonus time abzuch: %i\n", bonus);
 				}
 
 				
