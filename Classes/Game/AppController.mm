@@ -571,14 +571,6 @@
 - (NSArray *) newsItemsForOffline
 {
 	return nil;
-	
-	NSArray *ret = [NSArray arrayWithObjects:
-					@"Tip: Try to get AIDS.",
-					@"Tip: Don't play with negros!",
-					@"Tip: Try to remove many fruits at once to get bonus points.",
-					@"Tip: For extra bonus try to rape your sister.",
-					nil];
-	return ret;
 }
 
 

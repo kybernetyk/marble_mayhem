@@ -1494,6 +1494,44 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0392E32312CE2F7400EDBC8E /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_THUMB_SUPPORT = YES;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
+				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "362293A1-6691-4151-A3A7-5646B1E0E070";
+				SDKROOT = iphoneos;
+			};
+			name = "App Store";
+		};
+		0392E32412CE2F7400EDBC8E /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Fruitmunch_Prefix.pch;
+				INFOPLIST_FILE = "Fruitmunch-Info.plist";
+				PRODUCT_NAME = Fruitmunch;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "App Store";
+		};
 		03ABF44812AAC72500320143 /* Ad-Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1613,6 +1651,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				0392E32412CE2F7400EDBC8E /* App Store */,
 				03ABF44912AAC72500320143 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1623,6 +1662,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				0392E32312CE2F7400EDBC8E /* App Store */,
 				03ABF44812AAC72500320143 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;

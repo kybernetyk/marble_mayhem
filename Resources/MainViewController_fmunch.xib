@@ -12,9 +12,9 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="116"/>
-			<integer value="24"/>
 			<integer value="83"/>
+			<integer value="24"/>
+			<integer value="116"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -277,6 +277,7 @@
 						<string key="NSFrame">{{278, 20}, {18, 19}}</string>
 						<reference key="NSSuperview" ref="642695982"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.75</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -409,7 +410,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="767577087">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -418,7 +419,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 20}, {280, 93}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwLjA3Nzk3NTQwNzI0IDAuMjg1NzE0Mjk4NSAwLjUAA</bytes>
@@ -447,7 +447,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{19.5, 282}, {128, 37}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -465,7 +464,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{172, 282}, {128, 37}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -483,7 +481,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{82, 337}, {156, 37}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -501,7 +498,6 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{261, 22}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIStyle">0</int>
@@ -511,7 +507,6 @@
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{246, 339}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="767577087"/>
-						<reference key="NSWindow"/>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -522,8 +517,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MSAwAA</bytes>
@@ -736,13 +729,14 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIEditable">NO</bool>
 						<string type="base64-UTF8" key="IBUIText">RnJ1aXQgTXVuY2gKPT09PT09PT09PT0KClNGWCAmIEdGWCAmIE11c2ljCi0tLS0tLS0tLS0tLS0tLS0K
-U2ltb24gU3pwaWxld3NraQoKUHV6emxlIE1vZGUgTXVzaWMKLS0tLS0tLS0tLS0tLS0tLQpGcmFuayBP
-cGhvZgpvcGVuZ2FtZWFydC5vcmcvdXNlci83MzEKCkNvZGUKLS0tLQpKYXJvc2xhdyBTenBpbGV3c2tp
-CgooYykgMjAxMCBNaW55eCBHYW1lcwp3d3cuTWlueXhHYW1lcy5jb20</string>
+UHJ6ZW15c8WCYXcgU3pwaWxld3NraQoKVm9pY2UgQWN0aW5nCi0tLS0tLS0tLS0tLQogSnVkaXRoIFRy
+YWlsbAoKUHV6emxlIE1vZGUgTXVzaWMKLS0tLS0tLS0tLS0tLS0tLQpGcmFuayBPcGhvZgpvcGVuZ2Ft
+ZWFydC5vcmcvdXNlci83MzEKCkNvZGUoKTsKLS0tLS0tLQpKYXJvc8WCYXcgU3pwaWxld3NraQoKKGMp
+IDIwMTAgTWlueXggR2FtZXMKd3d3Lk1pbnl4R2FtZXMuY29tA</string>
 						<reference key="IBUITextColor" ref="463655769"/>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Courier-Bold</string>
-							<double key="NSSize">17</double>
+							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUITextAlignment">1</int>
