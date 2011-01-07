@@ -30,11 +30,11 @@ int SDL_main(int argc, char *argv[])
 	
 	
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_SetVideoMode(320, 480, 0, SDL_OPENGL);
+	SDL_SetVideoMode(SCREEN_W*2, SCREEN_H*2, 0, SDL_OPENGL);
 	
 	SDL_WM_SetCaption ("MaCV3",0);
 
-	mx3::RenderDevice::sharedInstance()->init();
+	mx3::RenderDevice::sharedInstance()->init(2.0);
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
 					   // [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 					   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
