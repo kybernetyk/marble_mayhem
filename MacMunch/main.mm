@@ -29,16 +29,18 @@ int SDL_main(int argc, char *argv[])
 	}
 	
 	
+	float scale = 1.0;
+	
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_SetVideoMode(SCREEN_W*2, SCREEN_H*2, 0, SDL_OPENGL);
+	SDL_SetVideoMode(SCREEN_W*scale, SCREEN_H*scale, 0, SDL_OPENGL);
 	
 	SDL_WM_SetCaption ("MaCV3",0);
 
-	mx3::RenderDevice::sharedInstance()->init(2.0);
+	mx3::RenderDevice::sharedInstance()->init(scale);
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
 					   // [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 					   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
-					   [NSNumber numberWithFloat: 0.3], @"music_volume",
+					   [NSNumber numberWithFloat: 0.5], @"music_volume",
 					   [NSNumber numberWithBool: NO], @"particles_enabled",
 					   nil];
 	
