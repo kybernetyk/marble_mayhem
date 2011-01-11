@@ -26,6 +26,9 @@
 
 #import "Fruit.h"
 
+#include "MenuScene.h"
+#include "Game.h"
+
 //#import "GameCenterManager.h"
 #include "NotificationSystem.h"
 
@@ -173,6 +176,17 @@ namespace game
 		sprite->anchorPoint = vector2D_make(0.0, 0.0);
 		sprite->z = -3.9;
 		
+		/*create pause*/
+		Entity *ps = _entityManager->createNewEntity();
+		pos = _entityManager->addComponent <Position> (ps);
+		pos->x = SCREEN_W - 12.0;
+		pos->y = 0 + 12;
+		
+		sprite = _entityManager->addComponent <Sprite> (ps);
+		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("pause.png");
+		sprite->anchorPoint = vector2D_make(1.0, 0.0);
+		sprite->z = -3.0;
+		
 	}
 
 	void GameScene::end ()
@@ -180,13 +194,90 @@ namespace game
 		_entityManager->removeAllEntities();
 	}
 
+	Button GameScene::create_button (vector2D pos, const char *text)
+	{
+		Entity *ent = _entityManager->createNewEntity();
+		
+		Position *posi = _entityManager->addComponent <Position> (ent);
+		posi->x = pos.x;
+		posi->y = pos.y;
+		
+		Sprite *sprite = _entityManager->addComponent <Sprite> (ent);
+		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("buy_button.png");
+		sprite->anchorPoint = vector2D_make(0.5, 0.5);
+		sprite->z = 4.0;
+		
+		
+		Entity *capt = _entityManager->createNewEntity();
+		
+		Position *position = _entityManager->addComponent <Position> (capt);
+		position->x = pos.x;
+		position->y = pos.y;
+		//position->scale_x = position->scale_y = 0.5;
+		
+		TextLabel *label = _entityManager->addComponent<TextLabel> (capt);
+		label->res_handle = g_RenderableManager.acquireResource <OGLFont>("impact20.fnt");
+		label->anchorPoint =  vector2D_make(0.5, 0.2);
+		label->text = text;
+		label->z = 6.0;
+		
+		Button ret;
+		ret.btn_sprite = ent;
+		ret.btn_caption = capt;
+		
+		return ret;
+	}
+	
 	
 	void GameScene::update (float delta)
 	{
 
 		//tex->updateTextureWithBufferData();
 		InputDevice::sharedInstance()->update();
+		if (mx3::InputDevice::sharedInstance()->touchUpReceived())
+		{
+			int xc = mx3::InputDevice::sharedInstance()->touchLocation().x;
+			int yc = mx3::InputDevice::sharedInstance()->touchLocation().y;
 
+//			printf("x: %i, y: %i\n", xc,yc);
+			//pause button
+			if (xc >= 282 && xc < 301 &&
+				yc >= 18 && yc < 36)
+			{
+				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+				g_pGame->returnToMainMenu();
+			}
+
+			if (g_GameState.game_state == GAME_STATE_GAMEOVER ||
+				g_GameState.game_state == GAME_STATE_SOLVED)
+			{
+				//ret to main menu
+				if (xc >= 165 && xc < 305 &&
+					yc >= 160 && yc < 195)
+				{
+					mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+					g_pGame->returnToMainMenu();
+					
+				}
+				
+				//play again
+				if (xc >= 12 && xc < 155 &&
+					yc >= 160 && yc < 195)
+				{
+					mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+					_entityManager->removeEntity(replay_button.btn_sprite->_guid);
+					_entityManager->removeEntity(replay_button.btn_caption->_guid);
+					
+					_entityManager->removeEntity(menu_button.btn_sprite->_guid);
+					_entityManager->removeEntity(menu_button.btn_caption->_guid);
+					
+					
+					g_GameState.reset();
+					game::g_pGame->resetCurrentScene ();
+				}
+			}
+			
+		}
 /*		if (InputDevice::sharedInstance()->touchUpReceived())
 		{
 			unsigned char *buf = tq->alpha_mask;
@@ -251,6 +342,9 @@ namespace game
 				saveHiScore();
 				
 				post_notification(kShowGameOverView);
+				
+				menu_button = create_button(vector2D_make(235, 175), "menu");
+				replay_button = create_button(vector2D_make(85,175), "again");
 
 			}
 
@@ -265,6 +359,9 @@ namespace game
 				
 				post_notification(kShowGameOverView);
 				
+				menu_button = create_button(vector2D_make(235, 175), "menu");
+				replay_button = create_button(vector2D_make(85,175), "again");
+
 			}
 			
 		}

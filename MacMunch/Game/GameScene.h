@@ -29,6 +29,12 @@ using namespace mx3;
 namespace game 
 {
 
+	struct Button
+	{
+		Entity *btn_sprite;
+		Entity *btn_caption;
+	};
+	
 	class GameScene : public mx3::Scene
 	{
 	public:
@@ -52,6 +58,8 @@ namespace game
 			return SCENE_TYPE_GAME;
 		}
 		
+		Button create_button (vector2D pos, const char *text);
+		
 	protected:
 		EntityManager *_entityManager;
 		RenderSystem *_renderSystem;
@@ -72,6 +80,9 @@ namespace game
 		float prep_timer;
 		bool go_played;
 		int preptmp;
+		
+		Button replay_button;
+		Button menu_button;
 	};
 
 }

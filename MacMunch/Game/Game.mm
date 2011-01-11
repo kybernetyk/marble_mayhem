@@ -167,6 +167,7 @@ namespace game
 			
 			next_scene = NULL;
 			next_game_tick = mx3::GetTickCount();
+			current_scene->init();
 		}
 		if (paused)
 			return;
@@ -239,13 +240,13 @@ namespace game
 	void Game::startNewGame ()
 	{
 		next_scene = new GameScene();
-		next_scene->init();
+		//next_scene->init();
 	}
 	
 	void Game::returnToMainMenu ()
 	{
 		next_scene = new MenuScene();
-		next_scene->init();
+		//next_scene->init();
 	}
 
 	void Game::setPaused (bool b)

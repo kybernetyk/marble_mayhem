@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03153AD712DC684D00C8449F /* buy_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03153AD612DC684D00C8449F /* buy_button.png */; };
 		034A89DF12D737C70019E6CB /* CDXMacOSXSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 034A89DE12D737C70019E6CB /* CDXMacOSXSupport.m */; };
 		034A89E312D737EF0019E6CB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034A89E212D737EF0019E6CB /* AudioToolbox.framework */; };
 		034A8A3312D739800019E6CB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034A8A3212D739800019E6CB /* OpenAL.framework */; };
@@ -164,6 +165,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03153AD612DC684D00C8449F /* buy_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_button.png; sourceTree = "<group>"; };
 		034A89DD12D737C70019E6CB /* CDXMacOSXSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDXMacOSXSupport.h; sourceTree = "<group>"; };
 		034A89DE12D737C70019E6CB /* CDXMacOSXSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDXMacOSXSupport.m; sourceTree = "<group>"; };
 		034A89E212D737EF0019E6CB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -879,6 +881,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03153AD612DC684D00C8449F /* buy_button.png */,
 				035297BD12D73BFE009C15A2 /* getready3.wav */,
 				035297BE12D73BFE009C15A2 /* good1.wav */,
 				035297BF12D73BFE009C15A2 /* good5.wav */,
@@ -1113,6 +1116,7 @@
 				0352985E12D73BFE009C15A2 /* strawberry.png in Resources */,
 				0352985F12D73BFE009C15A2 /* zomg.fnt in Resources */,
 				0352986012D73BFE009C15A2 /* zomg.png in Resources */,
+				03153AD712DC684D00C8449F /* buy_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

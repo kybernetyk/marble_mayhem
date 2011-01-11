@@ -74,8 +74,8 @@ int SDL_main(int argc, char *argv[])
 	the_game->init();
 
 	
-	g_GameState.game_mode = GAME_MODE_TIMED;
-	the_game->startNewGame();
+	//g_GameState.game_mode = GAME_MODE_TIMED;
+	//the_game->startNewGame();
 	
 	//the_game->setNextScene(new game::GameScene());
 	
