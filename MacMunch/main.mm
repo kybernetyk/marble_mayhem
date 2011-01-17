@@ -41,7 +41,7 @@ int SDL_main(int argc, char *argv[])
 					   // [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 					   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 					   [NSNumber numberWithFloat: 0.5], @"music_volume",
-					   [NSNumber numberWithBool: NO], @"particles_enabled",
+					   [NSNumber numberWithBool: YES], @"particles_enabled",
 					   nil];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults: d];

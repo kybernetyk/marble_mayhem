@@ -57,8 +57,12 @@ namespace game
 			prox = g_pMarkerCache[i];
 			
 			if (!prox->shoudHandle())
+			{	
+				printf("MARKER LOL!\n");
 				return prox;
+			}
 		}
+		printf("NO MARKER!\n");
 		return NULL;
 	}
 	
@@ -294,9 +298,9 @@ namespace game
 
 					//we have to make sure that the marker is a PE at this point!
 					//user could have changed particles to on while the markers were bitmap markers
-//					if (pe->_renderable_type ==  RENDERABLETYPE_PARTICLE_EMITTER)
-//						[pe->pe->pe setDuration: 0.1];
-//					else
+					if (pe->_renderable_type ==  RENDERABLETYPE_PARTICLE_EMITTER)
+						[pe->pe->pe setDuration: 0.1];
+					else
 						_entityManager->addComponent <MarkOfDeath> (e);		
 				}
 				else

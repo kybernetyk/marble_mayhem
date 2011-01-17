@@ -24,10 +24,10 @@ namespace game
 		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
 		{
 			prox = g_pSparksCache[i];
-			
 			if (!prox->shoudHandle())
 				return prox;
 		}
+
 		return NULL;
 	}
 	
