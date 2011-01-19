@@ -239,9 +239,9 @@ namespace game
 			int xc = mx3::InputDevice::sharedInstance()->touchLocation().x;
 			int yc = mx3::InputDevice::sharedInstance()->touchLocation().y;
 
-//			printf("x: %i, y: %i\n", xc,yc);
+			printf("x: %i, y: %i\n", xc,yc);
 			//pause button
-			if (xc >= 282 && xc < 301 &&
+			if (xc >= 282+320 && xc < 301+320 &&
 				yc >= 18 && yc < 36)
 			{
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
@@ -252,7 +252,7 @@ namespace game
 				g_GameState.game_state == GAME_STATE_SOLVED)
 			{
 				//ret to main menu
-				if (xc >= 165 && xc < 305 &&
+				if (xc >= 165+160+10 && xc < 305+160+10 &&
 					yc >= 160 && yc < 195)
 				{
 					mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
@@ -261,7 +261,7 @@ namespace game
 				}
 				
 				//play again
-				if (xc >= 12 && xc < 155 &&
+				if (xc >= 12+160-10 && xc < 155+160-10 &&
 					yc >= 160 && yc < 195)
 				{
 					mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
@@ -343,8 +343,9 @@ namespace game
 				
 				post_notification(kShowGameOverView);
 				
-				menu_button = create_button(vector2D_make(235, 175), "menu");
-				replay_button = create_button(vector2D_make(85,175), "again");
+				replay_button = create_button(vector2D_make(85+160-10,175), "again");
+
+				menu_button = create_button(vector2D_make(235+160+10, 175), "menu");
 
 			}
 
@@ -358,9 +359,9 @@ namespace game
 				saveHiScore();
 				
 				post_notification(kShowGameOverView);
-				
-				menu_button = create_button(vector2D_make(235, 175), "menu");
-				replay_button = create_button(vector2D_make(85,175), "again");
+				replay_button = create_button(vector2D_make(85+160-10,175), "again");				
+				menu_button = create_button(vector2D_make(235+160+10, 175), "menu");
+
 
 			}
 			

@@ -15,7 +15,7 @@ using namespace mx3;
 namespace game
 {
 
-#define MAX_STARS 12
+#define MAX_STARS 24
 	
 	class StarSystem
 	{

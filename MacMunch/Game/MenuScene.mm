@@ -79,52 +79,90 @@ namespace game
 		sprite->z = 3.0;
 		
 		int i = 1;
-		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 60), "Timed");
+		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-80 - i * 60), "Timed");
 
 		i = 2;
-		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 60), "Endless");
+		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-80 - i * 60), "Endless");
 
 		i = 3;
-		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 60), "Puzzle");
+		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-80 - i * 60), "Puzzle");
 
+		i = 5;
+		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Sound");
+		i = 6;
+		create_button (vector2D_make(SCREEN_W/2, SCREEN_H-100 - i * 50), "Music");
 	
 	}
 	
 	void MenuScene::end ()
 	{
-		
+		_entityManager->removeAllEntities();
 	}
 	
 	void MenuScene::update (float delta)
 	{
-		
 		mx3::InputDevice::sharedInstance()->update();
 		
 		if (mx3::InputDevice::sharedInstance()->touchUpReceived())
 		{
 			 int xc = mx3::InputDevice::sharedInstance()->touchLocation().x;
 			 int yc = mx3::InputDevice::sharedInstance()->touchLocation().y;
+
+			printf("%i, %i\n",xc,yc);
 			
-			if (xc >= 88 && xc <= 230 &&
-				yc >= 303 && yc <= 341)
+			if (xc >= 88+160 && xc <= 230+160 &&
+				yc >= 325 && yc <= 358)
 			{
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 				g_GameState.game_mode = GAME_MODE_TIMED;
 				g_pGame->startNewGame();
 			}
-			if (xc >= 88 && xc <= 230 &&
-				yc >= 244 && yc <= 277)
+			if (xc >= 88+160 && xc <= 230+160 &&
+				yc >= 267 && yc <= 298)
 			{
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 				g_GameState.game_mode = GAME_MODE_ENDLESS;
 				g_pGame->startNewGame();
 			}
-			if (xc >= 88 && xc <= 230 &&
-				yc >= 180 && yc <= 217)
+		
+			if (xc >= 88+160 && xc <= 230+160 &&
+				yc >= 200 && yc <= 235)
 			{
 				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 				g_GameState.game_mode = GAME_MODE_SWEEP;
 				g_pGame->startNewGame();
+			}
+
+			//sfx
+			if (xc >= 88+160 && xc <= 230+160 &&
+				yc >= 115 && yc <= 148)
+			{
+				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	
+				if (SoundSystem::sfx_vol <= 0.0)
+					mx3::SoundSystem::set_sfx_volume (0.9);	
+				else
+					mx3::SoundSystem::set_sfx_volume (0.0);	
+				
+				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+				[defs setFloat: (SoundSystem::sfx_vol) forKey: @"sfx_volume"];
+				[defs synchronize];
+			}
+			
+			//mfx
+			if (xc >= 88+160 && xc <= 230+160 &&
+				yc >= 61 && yc <= 97)
+			{
+				mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+
+				if (SoundSystem::music_vol <= 0.0)
+					mx3::SoundSystem::set_music_volume (0.5);	
+				else
+					mx3::SoundSystem::set_music_volume (0.0);	
+				
+				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+				[defs setFloat: (SoundSystem::music_vol) forKey: @"music_volume"];
+				[defs synchronize];
 			}
 			
 		 

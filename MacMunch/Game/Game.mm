@@ -245,7 +245,8 @@ namespace game
 	
 	void Game::returnToMainMenu ()
 	{
-		next_scene = new MenuScene();
+		if (current_scene->scene_type() != SCENE_TYPE_MAIN_MENU)
+			next_scene = new MenuScene();
 		//next_scene->init();
 	}
 

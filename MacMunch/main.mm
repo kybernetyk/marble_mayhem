@@ -18,7 +18,7 @@ int SDL_main(int argc, char *argv[])
 {
 //    return NSApplicationMain(argc,  (const char **) argv);
 	
-	printf("lol\n");
+//	printf("lol\n");
 	
 	// Init SDL video subsystem
 	if ( SDL_Init (SDL_INIT_VIDEO) < 0 ) 
@@ -27,14 +27,14 @@ int SDL_main(int argc, char *argv[])
 				SDL_GetError());
 		exit(1);
 	}
-	
+
+	SDL_WM_SetCaption ("Fruit Munch",0);
 	
 	float scale = 1.0;
 	
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_SetVideoMode(SCREEN_W*scale, SCREEN_H*scale, 0, SDL_OPENGL);
 	
-	SDL_WM_SetCaption ("MaCV3",0);
 
 	mx3::RenderDevice::sharedInstance()->init(scale);
 	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -52,6 +52,8 @@ int SDL_main(int argc, char *argv[])
 	float music_vol = [defs floatForKey: @"music_volume"];
 	BOOL parts = [defs boolForKey: @"particles_enabled"];
 	
+	NSLog(@"music vol: %f, sound vol: %f", music_vol, sfx_vol);
+	
 	/*	if (music_vol <= 0.0)
 	 {
 	 CDAudioManager *am = [CDAudioManager sharedManager];
@@ -66,12 +68,12 @@ int SDL_main(int argc, char *argv[])
 
 	mx3::SoundSystem::set_sfx_volume (sfx_vol);
 	mx3::SoundSystem::set_music_volume (music_vol);
-	mx3::SoundSystem::play_sound ("minyx_whisper.wav");
 	g_ParticlesEnabled = parts;
 	
 	
 	game::Game *the_game = new game::Game();
 	the_game->init();
+	mx3::SoundSystem::play_sound ("minyx_whisper.wav");
 
 	
 	//g_GameState.game_mode = GAME_MODE_TIMED;
@@ -84,6 +86,8 @@ int SDL_main(int argc, char *argv[])
 	bool bRunning = true;
 	while (bRunning)
 	{
+		NSAutoreleasePool	*pool = [[NSAutoreleasePool alloc] init];
+
 		while(SDL_PollEvent(&event))
 		{
 			switch(event.type)
@@ -91,6 +95,18 @@ int SDL_main(int argc, char *argv[])
 				case SDL_QUIT:
 					bRunning = false;
 					break;
+				case SDL_KEYDOWN:
+					if ( ( (KMOD_LMETA & event.key.keysym.mod) || (KMOD_RMETA & event.key.keysym.mod)) && event.key.keysym.sym == SDLK_q) 
+					{ 
+						bRunning = false;
+					} 
+					
+					if (event.key.keysym.sym == SDLK_ESCAPE)
+					{
+						
+						the_game->returnToMainMenu();
+					}
+					break;					
 				default:
 					break;
 			}
@@ -106,6 +122,7 @@ int SDL_main(int argc, char *argv[])
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);	 // Clear The Screen And The Depth Buffer
 		glLoadIdentity();	
 	
+		[pool drain];
 		usleep(16666);
 	}
 	

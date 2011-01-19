@@ -78,7 +78,7 @@ namespace game
 				int x = rand()%(int)(SCREEN_W-32);
 				int y = rand()%(int)SCREEN_H + 80;
 				int type = rand()%NUM_OF_STARTYPES;
-				float fall_speed = 32.0 + rand()%128;
+				float fall_speed = 32.0 + rand()%196;
 				
 				make_star(type, x, y, fall_speed);
 			}

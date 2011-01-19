@@ -295,7 +295,7 @@ namespace game
 					//we have to make sure that the marker is a PE at this point!
 					//user could have changed particles to on while the markers were bitmap markers
 					if (pe->_renderable_type ==  RENDERABLETYPE_PARTICLE_EMITTER)
-						[pe->pe->pe setDuration: 0.1];
+						[pe->pe->pe setDuration: 0.1];	//set duration to 0.1 so the pe can decay (def dur is -1 = infinite)
 					else
 						_entityManager->addComponent <MarkOfDeath> (e);		
 				}

@@ -52,7 +52,7 @@
 
 //screen size
 #ifdef ORIENTATION_PORTRAIT
-	#define SCREEN_W 320.0
+	#define SCREEN_W 640.0
 	#define SCREEN_H 480.0
 	#ifndef MAINVIEWNIBNAME
 		#define MAINVIEWNIBNAME @"MainViewController_portrait"

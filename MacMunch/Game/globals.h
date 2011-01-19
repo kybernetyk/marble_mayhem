@@ -32,7 +32,7 @@ namespace game
 		void reset ()
 		{
 			score = 0;
-			time_left = 60.0;
+			time_left = 90.0;
 			killed_last_frame = 0;
 			previous_kill = 0;
 			total_killed = 0;
@@ -62,10 +62,10 @@ namespace game
 #define BOARD_X_OFFSET (7+TILESIZE_X/2)
 #define BOARD_Y_OFFSET (72+TILESIZE_Y/2)
 	
-#define BOARD_NUM_COLS 6
+#define BOARD_NUM_COLS 6*2
 #define BOARD_NUM_ROWS (8)*2
 #define BOARD_NUM_VISIBLE_ROWS 8
-#define BOARD_NUM_MARKERS 16
+#define BOARD_NUM_MARKERS 32
 	
 #define SFX_TIME_UP 0x00
 #define SFX_GET_READY 0x01
