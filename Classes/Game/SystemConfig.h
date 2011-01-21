@@ -10,6 +10,7 @@
 
 //entity system checks and infos
 //#define __VERBOSE__
+#define APPIRATER_APP_ID				301377083
 
 #ifdef __VERBOSE__
 	#define CV3Log printf

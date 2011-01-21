@@ -49,7 +49,7 @@
 		[self retain]; //important! IB doesnt retain us!
 		
 		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
-						  // [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
+						   [NSNumber numberWithBool: YES], @"com.minyxgames.fruitmunch.1",
 						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 						   [NSNumber numberWithFloat: 0.3], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",

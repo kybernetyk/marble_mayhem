@@ -159,7 +159,7 @@ namespace game
 		Entity *bg = _entityManager->createNewEntity();
 		Position *pos = _entityManager->addComponent <Position> (bg);
 		Sprite *sprite = _entityManager->addComponent <Sprite> (bg);
-		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("amatuer_back.png");
+		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("game_back.png");
 		sprite->anchorPoint = vector2D_make(0.0, 0.0);
 		sprite->z = -5.0;
 		Name *name = _entityManager->addComponent <Name> (bg);

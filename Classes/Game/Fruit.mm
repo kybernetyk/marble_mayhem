@@ -21,16 +21,18 @@ namespace game
 		EntityManager *em = Entity::entityManager;
 		Entity *e = em->createNewEntity();
 
-		std::string filename = "fruits.png";
+		std::string filename = "bubbles.png";
+
+#define BSIZE 41
 		
-		int srcx = fruit_type%4;
-		int srcy = fruit_type/4;
+		int srcx = fruit_type%3;
+		int srcy = fruit_type/3;
 		
 		
 		
 		AtlasSprite *as = em->addComponent<AtlasSprite>(e);
 		as->res_handle = g_RenderableManager.acquireResource <TexturedAtlasQuad> (filename);
-		as->src = rect_make(srcx*53, srcy*53, 53, 53);
+		as->src = rect_make(srcx*BSIZE, srcy*BSIZE, BSIZE, BSIZE);
 		as->z = 3;
 		
 		
