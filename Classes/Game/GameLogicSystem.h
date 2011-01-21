@@ -27,7 +27,7 @@ namespace game
 		void remove_chain ();
 		
 		bool moves_left ();
-
+		bool moves_left_2 ();
 		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
 		void update_map ();
 		int count_empty_cols ();

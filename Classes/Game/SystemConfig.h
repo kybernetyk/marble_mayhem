@@ -9,7 +9,7 @@
 #pragma once
 
 //entity system checks and infos
-//#define __VERBOSE__
+#define __VERBOSE__
 #define APPIRATER_APP_ID				416081829
 
 #ifdef __VERBOSE__

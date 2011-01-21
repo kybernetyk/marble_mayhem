@@ -131,9 +131,9 @@ namespace game
 			//only add time for chain if we're playinh (not game over)
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += time_add;
+				g_GameState.time_left += time_add * (float)((float)g_GameState.num_of_fruits/4.0);
 			}
-			g_GameState.score += score;
+			g_GameState.score += score * (float)((float)g_GameState.num_of_fruits/4.0);
 			g_GameState.killed_last_frame = num_of_marks;
 			
 			int sfx = (num_of_marks-2);
@@ -241,10 +241,10 @@ namespace game
 					bonus = 500 * num_of_marks;
 				}
 			}
-			g_GameState.score += bonus;
+			g_GameState.score += bonus * (float)((float)g_GameState.num_of_fruits/4.0);
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1200.0;	//only add time bonus if we are and will not be game over
+				g_GameState.time_left += bonus/1200.0 * (float)((float)g_GameState.num_of_fruits/4.0);	//only add time bonus if we are and will not be game over
 			}
 			CV3Log("Bonus: %i\n", bonus);
 
@@ -260,7 +260,7 @@ namespace game
 				
 				CV3Log("sweep bonus: %i\n", sweep_bonus);
 				
-				g_GameState.score += sweep_bonus;
+				g_GameState.score += sweep_bonus * (float)((float)g_GameState.num_of_fruits/4.0);
 			}
 			
 			CV3Log("removign %i from gamestate ...\n",num_of_marks);
@@ -376,6 +376,77 @@ namespace game
 		return false;
 		
 	}
+
+	bool GameLogicSystem::moves_left_2 ()
+	{
+		//vertical
+		for (int row = 0; row < BOARD_NUM_VISIBLE_ROWS; row ++)
+		{
+			int currtype = -1;
+			for (int col = 0; col < BOARD_NUM_COLS; col ++)
+			{
+				Entity *e = _map[col][row];
+				if (!e)
+				{	
+					currtype = -1;
+					continue;
+				}
+				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				
+				//if there are any fruits in movement return true and do 
+				//a real check only if they are all idle
+				if (gbe->state != GBE_STATE_IDLE)
+					return true;
+				
+				if (currtype == -1)
+				{
+					currtype = gbe->type;
+				}
+				else
+				{
+					if (gbe->type == currtype)
+						return true;
+					else
+						currtype = gbe->type;
+				}
+			}
+		}
+		
+		//horizontal
+		for (int col = 0; col < BOARD_NUM_COLS; col ++)
+		{
+			int currtype = -1;
+			for (int row = 0; row < BOARD_NUM_VISIBLE_ROWS; row ++)
+			{
+				Entity *e = _map[col][row];
+				if (!e)
+				{	
+					currtype = -1;
+					continue;
+				}
+				
+				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				if (gbe->state != GBE_STATE_IDLE)
+					return true;
+				
+				if (currtype == -1)
+				{
+					currtype = gbe->type;
+				}
+				else
+				{
+					if (gbe->type == currtype)
+						return true;
+					else
+						currtype = gbe->type;
+				}
+			}
+		}
+		
+		return false;
+		
+	}
+	
 	
 	void GameLogicSystem::update_map ()
 	{
@@ -646,6 +717,8 @@ namespace game
 				else
 					g_GameState.next_state = GAME_STATE_SOLVED;
 				
+				g_GameState.gameover_reason = GO_REASON_IRRELEVANT;
+				
 //				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
 				
 				int bonus = ((BOARD_NUM_COLS * BOARD_NUM_ROWS) -  g_GameState.fruits_on_board) * 4;
@@ -673,9 +746,21 @@ namespace game
 				}
 
 				
-				g_GameState.score += bonus;
-				g_GameState.score += col_bonus;
+				g_GameState.score += bonus * (float)((float)g_GameState.num_of_fruits/4.0);
+				g_GameState.score += col_bonus * (float)((float)g_GameState.num_of_fruits/4.0);
 			}
 		}
+		else
+		{
+			//NSLog(@"left?");
+			update_map();
+			if (!moves_left_2())
+			{
+				g_GameState.next_state = GAME_STATE_GAMEOVER;
+				g_GameState.gameover_reason = GO_REASON_NOMOVES;
+				CV3Log("no moves left :[\n");
+			}
+		}
+		
 	}
 }

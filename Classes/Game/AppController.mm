@@ -53,6 +53,7 @@
 						   [NSNumber numberWithFloat: 0.9], @"sfx_volume",
 						   [NSNumber numberWithFloat: 0.3], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",
+						   [NSNumber numberWithInt: 4], @"num_of_fruits",
 						   nil];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
@@ -85,6 +86,8 @@
 	float sfx_vol = [defs floatForKey: @"sfx_volume"];
 	float music_vol = [defs floatForKey: @"music_volume"];
 	BOOL parts = [defs boolForKey: @"particles_enabled"];
+	int numoffruits = [defs integerForKey: @"num_of_fruits"];
+	g_GameState.num_of_fruits = numoffruits;
 
 /*	if (music_vol <= 0.0)
 	{
@@ -113,6 +116,7 @@
 	NSLog(@"showing main menu ...");
 	NSLog(@"main view: %@", mainView);
 	NSLog(@"main Menu View: %@", mainMenuView);
+	g_GameState.game_state = GAME_STATE_MAINMENU;
 	
 	[mainView addSubview: mainMenuView];
 }
@@ -205,6 +209,19 @@
 	[activity stopAnimating];
 	[fbShareButton setEnabled: YES];
 	
+	if (g_GameState.game_mode == GAME_MODE_ENDLESS ||
+		g_GameState.gameover_reason == GO_REASON_NOMOVES)
+	{
+//		[rankLabel setHidden: YES];
+		[fbShareButton setHidden: YES];
+	}
+	else
+	{
+//		[rankLabel setHidden: NO];
+		[fbShareButton setHidden: NO];
+	}
+	
+	
 	NSUInteger lastscore = [(GKScore*)[[g_pGameCenterManger top100_scores] lastObject] value];
 	NSInteger lastrank = [(GKScore*)[[g_pGameCenterManger top100_scores] lastObject] rank];
 	
@@ -237,6 +254,15 @@
 	{
 		[rankLabel setHidden: YES];
 	}
+	
+	if (g_GameState.game_mode == GAME_MODE_ENDLESS ||
+		g_GameState.gameover_reason == GO_REASON_NOMOVES)
+	{
+		[rankLabel setText: @"No more moves left :-["];
+		[rankLabel setHidden: NO];
+	}
+	
+	
 }
 
 - (IBAction) playAgain: (id) sender
@@ -281,11 +307,24 @@
 	float sfx_vol = [defs floatForKey: @"sfx_volume"];
 	float music_vol = [defs floatForKey: @"music_volume"];
 	BOOL parts = [defs boolForKey: @"particles_enabled"];
-
+	int numoffruits = [defs integerForKey: @"num_of_fruits"];
+	
+	
+	[numSegmenter setSelectedSegmentIndex: numoffruits - 4];
 	[sfxSlider setValue: sfx_vol];
 	[musicSlider setValue: music_vol];
 	[particleSwitch setOn: parts];
 
+	
+	if (g_GameState.game_state == GAME_STATE_MAINMENU)
+	{
+		[numSegmenter setEnabled: YES];
+	}
+	else
+	{
+		[numSegmenter setEnabled: NO];
+	}
+	
 /*	IBOutlet UISlider *sfxSlider;
 	IBOutlet UISlider *musicSlider;
 	IBOutlet UISwitch *particleSwitch;*/
@@ -405,6 +444,18 @@
 		[defs setFloat: vol forKey: @"music_volume"];
 	}
 }
+
+- (IBAction) numOfFruitsDidChange: (id) sender
+{
+	int num = [(UISegmentedControl *)sender selectedSegmentIndex] + 4; 
+	
+	NSLog(@"new number of fruits: %i\n", num);
+	
+	g_GameState.num_of_fruits = num;
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	[defs setInteger: num forKey: @"num_of_fruits"];
+}
+	
 
 - (IBAction) particlesDidChange: (id) sender
 {

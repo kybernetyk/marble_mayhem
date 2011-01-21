@@ -301,6 +301,7 @@ namespace game
 			{
 				g_GameState.time_left = 0.0;
 				g_GameState.next_state = GAME_STATE_GAMEOVER;
+				g_GameState.gameover_reason = GO_REASON_NOTIME;
 				_gameLogicSystem->handle_chain();
 			}
 

@@ -28,6 +28,7 @@
 	//settings
 	IBOutlet UISlider *sfxSlider;
 	IBOutlet UISlider *musicSlider;
+	IBOutlet UISegmentedControl *numSegmenter;
 	IBOutlet UISwitch *particleSwitch;
 	
 	//credits
@@ -60,6 +61,7 @@
 - (IBAction) volumeDidChange: (id) sender;
 - (IBAction) particlesDidChange: (id) sender;
 - (IBAction) playPing: (id) sender;
+- (IBAction) numOfFruitsDidChange: (id) sender;
 
 //credits
 - (IBAction) showCredits: (id) sender;

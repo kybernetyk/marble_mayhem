@@ -305,7 +305,7 @@ namespace game
 			{
 				if (!_map[col][check_index])
 				{
-					make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, spawn_index);
+					make_fruit(fruit_alternator + rand()%g_GameState.num_of_fruits, col, spawn_index);
 					g_GameState.fruits_on_board ++;
 				}
 			}
@@ -319,7 +319,7 @@ namespace game
 				{
 					if (!_map[col][row])
 					{
-						Entity *f = make_fruit(fruit_alternator + rand()%NUM_OF_FRUITS, col, row);
+						Entity *f = make_fruit(fruit_alternator + rand()%g_GameState.num_of_fruits, col, row);
 						g_GameState.fruits_on_board ++;
 						_map[col][row] = f;
 

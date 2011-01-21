@@ -17,8 +17,6 @@ namespace game
 #pragma mark -
 #pragma mark game 
 
-#define NUM_OF_FRUITS 4
-	
 #define GBE_STATE_IDLE 0
 #define GBE_STATE_MOVING_FALL 1
 
