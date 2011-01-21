@@ -175,9 +175,9 @@
 		NSString *strs[] = 
 		{
 			NULL,
-			@"com.minyxgames.fruitmunch.timed",
+			@"com.minyxgames.marblestar.timed",
 			NULL,
-			@"com.minyxgames.fruitmunch.puzzle"
+			@"com.minyxgames.marblestar.puzzle"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];
@@ -244,9 +244,9 @@
 	NSString *strs[] = 
 	{
 		NULL,
-		@"com.minyxgames.fruitmunch.timed",
+		@"com.minyxgames.marblestar.timed",
 		NULL,
-		@"com.minyxgames.fruitmunch.puzzle"
+		@"com.minyxgames.marblestar.puzzle"
 	};
 	
 	NSString *cat = strs[g_GameState.game_mode];

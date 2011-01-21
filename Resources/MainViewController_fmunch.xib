@@ -12,11 +12,11 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="33"/>
 			<integer value="59"/>
-			<integer value="24"/>
-			<integer value="83"/>
 			<integer value="116"/>
+			<integer value="83"/>
+			<integer value="33"/>
+			<integer value="24"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -732,11 +732,11 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIEditable">NO</bool>
-						<string type="base64-UTF8" key="IBUIText">RnJ1aXQgTXVuY2gKPT09PT09PT09PT0KClNGWCAmIEdGWCAmIE11c2ljCi0tLS0tLS0tLS0tLS0tLS0K
+						<string type="base64-UTF8" key="IBUIText">TWFyYmxlIFN0YXIKPT09PT09PT09PT0KClNGWCAmIEdGWCAmIE11c2ljCi0tLS0tLS0tLS0tLS0tLS0K
 UHJ6ZW15c8WCYXcgU3pwaWxld3NraQoKVm9pY2UgQWN0aW5nCi0tLS0tLS0tLS0tLQogSnVkaXRoIFRy
 YWlsbAoKUHV6emxlIE1vZGUgTXVzaWMKLS0tLS0tLS0tLS0tLS0tLQpGcmFuayBPcGhvZgpvcGVuZ2Ft
 ZWFydC5vcmcvdXNlci83MzEKCkNvZGUoKTsKLS0tLS0tLQpKYXJvc8WCYXcgU3pwaWxld3NraQoKKGMp
-IDIwMTAgTWlueXggR2FtZXMKd3d3Lk1pbnl4R2FtZXMuY29tA</string>
+IDIwMTEgTWlueXggR2FtZXMKd3d3Lk1pbnl4R2FtZXMuY29tA</string>
 						<reference key="IBUITextColor" ref="463655769"/>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Courier-Bold</string>

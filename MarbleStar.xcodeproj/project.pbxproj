@@ -488,12 +488,12 @@
 		03EBCCB712B6522000785F0F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		03FE160212B248E80066BED8 /* menu_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back_2.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* BubbleStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* MarbleStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* BubbleStar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleStar_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* BubbleStar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BubbleStar-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* MarbleStar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarbleStar_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* MarbleStar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MarbleStar-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1213,7 +1213,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* BubbleStar.app */,
+				1D6058910D05DD3D006BFB54 /* MarbleStar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1224,7 +1224,7 @@
 				03D1130E12B5233A00D1E6E4 /* TODO.txt */,
 				03ABF42C12AAC61100320143 /* Entitlements.plist */,
 				03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */,
-				8D1107310486CEB800E47090 /* BubbleStar-Info.plist */,
+				8D1107310486CEB800E47090 /* MarbleStar-Info.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				039967A012A8234D00D0C56D /* Resources */,
@@ -1237,7 +1237,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* BubbleStar_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* MarbleStar_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -1266,9 +1266,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* BubbleStar */ = {
+		1D6058900D05DD3D006BFB54 /* MarbleStar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "BubbleStar" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MarbleStar" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -1278,9 +1278,9 @@
 			);
 			dependencies = (
 			);
-			name = BubbleStar;
+			name = MarbleStar;
 			productName = Fruitmunch;
-			productReference = 1D6058910D05DD3D006BFB54 /* BubbleStar.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* MarbleStar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1288,7 +1288,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BubbleStar" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MarbleStar" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1302,7 +1302,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* BubbleStar */,
+				1D6058900D05DD3D006BFB54 /* MarbleStar */,
 			);
 		};
 /* End PBXProject section */
@@ -1543,9 +1543,9 @@
 				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BubbleStar_Prefix.pch;
-				INFOPLIST_FILE = "BubbleStar-Info.plist";
-				PRODUCT_NAME = BubbleStar;
+				GCC_PREFIX_HEADER = MarbleStar_Prefix.pch;
+				INFOPLIST_FILE = "MarbleStar-Info.plist";
+				PRODUCT_NAME = MarbleStar;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "App Store";
@@ -1581,9 +1581,9 @@
 				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BubbleStar_Prefix.pch;
-				INFOPLIST_FILE = "BubbleStar-Info.plist";
-				PRODUCT_NAME = BubbleStar;
+				GCC_PREFIX_HEADER = MarbleStar_Prefix.pch;
+				INFOPLIST_FILE = "MarbleStar-Info.plist";
+				PRODUCT_NAME = MarbleStar;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad-Hoc";
@@ -1597,9 +1597,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BubbleStar_Prefix.pch;
-				INFOPLIST_FILE = "BubbleStar-Info.plist";
-				PRODUCT_NAME = BubbleStar;
+				GCC_PREFIX_HEADER = MarbleStar_Prefix.pch;
+				INFOPLIST_FILE = "MarbleStar-Info.plist";
+				PRODUCT_NAME = MarbleStar;
 			};
 			name = Debug;
 		};
@@ -1610,9 +1610,9 @@
 				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BubbleStar_Prefix.pch;
-				INFOPLIST_FILE = "BubbleStar-Info.plist";
-				PRODUCT_NAME = BubbleStar;
+				GCC_PREFIX_HEADER = MarbleStar_Prefix.pch;
+				INFOPLIST_FILE = "MarbleStar-Info.plist";
+				PRODUCT_NAME = MarbleStar;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1664,7 +1664,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "BubbleStar" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MarbleStar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -1675,7 +1675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BubbleStar" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MarbleStar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
