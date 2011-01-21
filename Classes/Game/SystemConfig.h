@@ -10,7 +10,7 @@
 
 //entity system checks and infos
 //#define __VERBOSE__
-#define APPIRATER_APP_ID				301377083
+#define APPIRATER_APP_ID				416081829
 
 #ifdef __VERBOSE__
 	#define CV3Log printf
@@ -30,8 +30,8 @@
 
 
 #define USE_FACEBOOK
-#define FB_APP_ID @"154580501257727"
-#define FB_API_KEY @"ba9e96e77b1f0114604d5637d346b43f"
+#define FB_APP_ID @"175159862525272"
+#define FB_API_KEY @"0f6822c00a3e9b3b25522e4b25ecf0f7"
 
 
 #define USE_PROMOTION

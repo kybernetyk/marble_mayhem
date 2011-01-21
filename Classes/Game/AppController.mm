@@ -496,19 +496,19 @@
 		return ret;
 	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		return @"My Fruit Munch Time Challenge Score!";
+		return @"My Marble Star Time Challenge Score!";
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return @"My Fruit Munch Puzzle Mode Score!";
+		return @"My Marble Star Puzzle Mode Score!";
 	
-	return @"Fruit Munch";
+	return @"Marble Star";
 }
 - (NSString *) captionForFBShare
 {
 	NSString *ret = nil;
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		ret = [NSString stringWithFormat: @"I took a try on the Fruit Munch Time Challenge and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Marble Star Time Challenge and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		ret = [NSString stringWithFormat: @"I took a try on the Fruit Munch Puzzle Mode and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Marble Star Puzzle Mode and scored %i points!", g_GameState.score];
 	
 	NSString *add = nil;
 	
@@ -534,27 +534,27 @@
 	int rest = ((int)g_GameState.time_played) - (minutes * 60.0);
 	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		return [NSString stringWithFormat: @"Total # of fruits removed: %i. Session length: %02i:%02i min:sec. Fruit Munch is awesome!", g_GameState.total_killed, minutes, rest];
+		return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.total_killed, minutes, rest];
 
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return [NSString stringWithFormat: @"Fruits left: %i. Session length: %02i:%02i min:sec. Fruit Munch is awesome!", g_GameState.fruits_on_board, minutes, rest];
+		return [NSString stringWithFormat: @"Marbles left: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.fruits_on_board, minutes, rest];
 	
 	return @":-)";
 }
 
 - (NSString *) linkForFBShare
 {
-	return @"http://www.minyxgames.com/fruit-munch/";
+	return @"http://www.minyxgames.com/marble-star/";
 }
 
 - (NSString *) linkNameForFBShare
 {
-	return @"Fruit Munch!";
+	return @"Marble Star!";
 }
 
 - (NSString *) picurlForFBShare
 {
-	return @"http://www.minyxgames.com/fruit-munch/fb_pic.png";
+	return @"http://www.minyxgames.com/marble-star/fb_pic.png";
 }
 #pragma mark -
 #pragma mark in inapp
