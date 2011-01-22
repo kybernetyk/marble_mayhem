@@ -108,6 +108,9 @@
 		034E0DC712AED89A00CD8EFB /* ParticleSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8512AED89A00CD8EFB /* ParticleSystem.mm */; };
 		034E0DC812AED89A00CD8EFB /* RenderSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8812AED89A00CD8EFB /* RenderSystem.mm */; };
 		034E0DC912AED89A00CD8EFB /* SoundSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */; };
+		036FE5B012EAF70100BE6F90 /* BB_GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5AF12EAF70100BE6F90 /* BB_GameScene.mm */; };
+		036FE5D012EAF8D000BE6F90 /* BB_GameBoardSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5CF12EAF8D000BE6F90 /* BB_GameBoardSystem.mm */; };
+		036FE5D512EAF8E500BE6F90 /* BB_GameLogicSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5D412EAF8E500BE6F90 /* BB_GameLogicSystem.mm */; };
 		038280E212CD341E00452DF8 /* getready5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 038280E112CD341E00452DF8 /* getready5.wav */; };
 		038280F612CD347A00452DF8 /* getready1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 038280F512CD347A00452DF8 /* getready1.wav */; };
 		0382811012CD360F00452DF8 /* good1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0382810E12CD360F00452DF8 /* good1.wav */; };
@@ -381,6 +384,12 @@
 		034E0D8B12AED89A00CD8EFB /* SoundSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundSystem.mm; sourceTree = "<group>"; };
 		034E0D8C12AED89A00CD8EFB /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		03563DC012B588F300A73D33 /* ogl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogl.h; sourceTree = "<group>"; };
+		036FE5AE12EAF70100BE6F90 /* BB_GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB_GameScene.h; sourceTree = "<group>"; };
+		036FE5AF12EAF70100BE6F90 /* BB_GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BB_GameScene.mm; sourceTree = "<group>"; };
+		036FE5CE12EAF8D000BE6F90 /* BB_GameBoardSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB_GameBoardSystem.h; sourceTree = "<group>"; };
+		036FE5CF12EAF8D000BE6F90 /* BB_GameBoardSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BB_GameBoardSystem.mm; sourceTree = "<group>"; };
+		036FE5D312EAF8E500BE6F90 /* BB_GameLogicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB_GameLogicSystem.h; sourceTree = "<group>"; };
+		036FE5D412EAF8E500BE6F90 /* BB_GameLogicSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BB_GameLogicSystem.mm; sourceTree = "<group>"; };
 		038280E112CD341E00452DF8 /* getready5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = getready5.wav; sourceTree = "<group>"; };
 		038280F512CD347A00452DF8 /* getready1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = getready1.wav; sourceTree = "<group>"; };
 		0382810E12CD360F00452DF8 /* good1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good1.wav; sourceTree = "<group>"; };
@@ -999,6 +1008,33 @@
 			path = "Sound System";
 			sourceTree = "<group>";
 		};
+		036FE5A912EAF6DC00BE6F90 /* BB_GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				036FE5AE12EAF70100BE6F90 /* BB_GameScene.h */,
+				036FE5AF12EAF70100BE6F90 /* BB_GameScene.mm */,
+			);
+			name = BB_GameScene;
+			sourceTree = "<group>";
+		};
+		036FE5C412EAF8C400BE6F90 /* BB_GameBoardSystem */ = {
+			isa = PBXGroup;
+			children = (
+				036FE5CE12EAF8D000BE6F90 /* BB_GameBoardSystem.h */,
+				036FE5CF12EAF8D000BE6F90 /* BB_GameBoardSystem.mm */,
+			);
+			name = BB_GameBoardSystem;
+			sourceTree = "<group>";
+		};
+		036FE5D112EAF8D900BE6F90 /* BB_GameLogicSystem */ = {
+			isa = PBXGroup;
+			children = (
+				036FE5D312EAF8E500BE6F90 /* BB_GameLogicSystem.h */,
+				036FE5D412EAF8E500BE6F90 /* BB_GameLogicSystem.mm */,
+			);
+			name = BB_GameLogicSystem;
+			sourceTree = "<group>";
+		};
 		0397710812B1735400CA6126 /* Star System */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,6 +1165,7 @@
 		039968B912A8243300D0C56D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				036FE5A912EAF6DC00BE6F90 /* BB_GameScene */,
 				0306261012A9047000325249 /* MenuScene */,
 				0306260F12A9046800325249 /* GameScene */,
 			);
@@ -1156,6 +1193,8 @@
 		039968C012A8243300D0C56D /* Game Systems */ = {
 			isa = PBXGroup;
 			children = (
+				036FE5D112EAF8D900BE6F90 /* BB_GameLogicSystem */,
+				036FE5C412EAF8C400BE6F90 /* BB_GameBoardSystem */,
 				0397710812B1735400CA6126 /* Star System */,
 				039968CA12A8243300D0C56D /* HUD System */,
 				039968C712A8243300D0C56D /* Game Logic System */,
@@ -1506,6 +1545,9 @@
 				0320C5B712E9CC14007C4C1D /* NotificationSystem.mm in Sources */,
 				0320C5B912E9CC14007C4C1D /* PromotionViewController.mm in Sources */,
 				0320C5BC12E9CC14007C4C1D /* WebkitViewController.mm in Sources */,
+				036FE5B012EAF70100BE6F90 /* BB_GameScene.mm in Sources */,
+				036FE5D012EAF8D000BE6F90 /* BB_GameBoardSystem.mm in Sources */,
+				036FE5D512EAF8E500BE6F90 /* BB_GameLogicSystem.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

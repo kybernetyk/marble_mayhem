@@ -56,6 +56,7 @@ namespace game
 #define GAME_MODE_TIMED 0x01
 #define GAME_MODE_ENDLESS 0x02
 #define GAME_MODE_SWEEP 0x03
+#define GAME_MODE_BB 0x04
 
 #define GAME_STATE_MAINMENU 0x00
 #define GAME_STATE_PREP 0x01
@@ -66,6 +67,23 @@ namespace game
 #define SCENE_TYPE_MAIN_MENU 0x00
 #define SCENE_TYPE_GAME 0x01
 
+//in non bb modes - undef if remvoe by swipe. def if remove by touch	
+//uncomment following lines for bubble xxx
+/*
+#define ONETOUCH_MARK
+	
+#define TILESIZE_X 40.0
+#define TILESIZE_Y 40.0
+	
+#define BOARD_X_OFFSET (0+BB_TILESIZE_X/2)
+#define BOARD_Y_OFFSET (72+BB_TILESIZE_Y/2)
+	
+#define BOARD_NUM_COLS 8
+#define BOARD_NUM_ROWS (10)*2
+#define BOARD_NUM_VISIBLE_ROWS 10
+#define BOARD_NUM_MARKERS 32
+*/	
+	
 //fruit munch like dimensions
 #define TILESIZE_X 51.0
 #define TILESIZE_Y 51.0
@@ -76,8 +94,9 @@ namespace game
 #define BOARD_NUM_COLS 6
 #define BOARD_NUM_ROWS (8)*2
 #define BOARD_NUM_VISIBLE_ROWS 8
-#define BOARD_NUM_MARKERS 16
+#define BOARD_NUM_MARKERS 32
 
+	
 //bubble burst like dimensions
 #define BB_TILESIZE_X 40.0
 #define BB_TILESIZE_Y 40.0
@@ -88,7 +107,7 @@ namespace game
 #define BB_BOARD_NUM_COLS 8
 #define BB_BOARD_NUM_ROWS (10)*2
 #define BB_BOARD_NUM_VISIBLE_ROWS 10
-#define BB_BOARD_NUM_MARKERS 16
+#define BB_BOARD_NUM_MARKERS 32
 	
 #define SFX_TIME_UP 0x00
 #define SFX_GET_READY 0x01

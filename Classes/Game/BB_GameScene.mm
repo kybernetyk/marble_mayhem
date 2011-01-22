@@ -7,7 +7,7 @@
  *
  */
 
-#include "GameScene.h"
+#include "BB_GameScene.h"
 #include "InputDevice.h"
 #include "Entity.h"
 
@@ -29,48 +29,17 @@
 #import "GameCenterManager.h"
 #include "NotificationSystem.h"
 
-bool spawn_one = false;
-bool spawn_player = false;
-
 extern int g_ActiveGFX;
 
 namespace game 
 {
-	
-	std::string sounds[] =
-	{
-		"time_up.wav",
-		"getready3.wav",
-		"go1.wav",
-		"game_over.wav",
-		"blam1.wav",
-
-		"c2.wav",
-		"d2.wav",
-		"e2.wav",
-		"f2.wav",
-		"g2.wav",
-
-		"awesome2.wav",
-		"incredible1.wav",
-		"excellent3.wav",
-		"blam2.wav",
-		"solved2.wav",
-		"impressive2.wav",
-		"excellent1.wav",
-		"excellent2.wav",
-		"awesome1.wav",
-		"impressive1.wav",
-		"good1.wav",
-		"good5.wav"
-	};
-	
-	void GameScene::preload ()
+	extern std::string sounds[];
+	void BB_GameScene::preload ()
 	{
 
 	}
 	
-	void GameScene::reset ()
+	void BB_GameScene::reset ()
 	{
 		g_GameState.game_state = 0;
 		g_GameState.next_state = GAME_STATE_PREP;
@@ -87,7 +56,7 @@ namespace game
 		
 	}
 	
-	void GameScene::init ()
+	void BB_GameScene::init ()
 	{
 		srand(time(0));
 		
@@ -108,10 +77,10 @@ namespace game
 		_animationSystem = new AnimationSystem (_entityManager);
 		_starSystem = new StarSystem (_entityManager);
 		
-		_gameLogicSystem = new GameLogicSystem (_entityManager);
+		_gameLogicSystem = new BB_GameLogicSystem (_entityManager);
 		_hudSystem = new HUDSystem (_entityManager);
 		_playerControlledSystem = new PlayerControlledSystem (_entityManager);
-		_gameBoardSystem = new GameBoardSystem (_entityManager);
+		_gameBoardSystem = new BB_GameBoardSystem (_entityManager);
 		
 		
 	//	_soundSystem->preloadSounds();
@@ -175,13 +144,13 @@ namespace game
 		
 	}
 
-	void GameScene::end ()
+	void BB_GameScene::end ()
 	{
 		_entityManager->removeAllEntities();
 	}
 
 	
-	void GameScene::update (float delta)
+	void BB_GameScene::update (float delta)
 	{
 
 		//tex->updateTextureWithBufferData();
@@ -352,34 +321,24 @@ namespace game
 			}
 		}
 		
-		if (spawn_one)
-		{
-			spawn_one = false;
-		}
-		
-		if (spawn_player)
-		{
-			spawn_player = false;
-		}
-		
 		
 		//TODO: implement lateUpdate(dt) for systems that need to be updated after all other
 		_particleSystem->update(delta);
 	}
 
-	void GameScene::render ()
+	void BB_GameScene::render ()
 	{
 		
 		_renderSystem->render();
 
 	}
 
-	void GameScene::frameDone ()
+	void BB_GameScene::frameDone ()
 	{
 		_entityManager->setIsDirty (false);
 	}
 	
-	GameScene::~GameScene()
+	BB_GameScene::~BB_GameScene()
 	{
 		CV3Log("game scene dtor\n");
 		delete _entityManager;
@@ -399,7 +358,7 @@ namespace game
 		delete _starSystem;
 	}
 	
-	void GameScene::saveHiScore ()
+	void BB_GameScene::saveHiScore ()
 	{
 #ifdef USE_GAMECENTER
 		NSString *strs[] = 

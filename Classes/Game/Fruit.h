@@ -16,4 +16,5 @@ namespace mx3
 namespace game
 {
 	mx3::Entity *make_fruit (int fruit_type, int col, int row);
+	mx3::Entity *bb_make_fruit (int fruit_type, int col, int row);
 }

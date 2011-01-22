@@ -11,7 +11,7 @@
 #include "InputDevice.h"
 #include "ActionSystem.h"
 
-#include "GameLogicSystem.h"
+#include "BB_GameLogicSystem.h"
 #include "SoundSystem.h"
 #include "globals.h"
 
@@ -20,24 +20,24 @@
 
 namespace game 
 {
-	extern mx3::PE_Proxy *g_pMarkerCache[BOARD_NUM_MARKERS];
-	extern mx3::PE_Proxy *g_pExplosionCache[BOARD_NUM_MARKERS];
+	extern mx3::PE_Proxy *g_pMarkerCache[BB_BOARD_NUM_MARKERS];
+	extern mx3::PE_Proxy *g_pExplosionCache[BB_BOARD_NUM_MARKERS];
 
 	
-	GameLogicSystem::GameLogicSystem (EntityManager *entityManager)
+	BB_GameLogicSystem::BB_GameLogicSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
 
-		memset (markers, 0x00, BOARD_NUM_MARKERS * sizeof(Entity*));
+		memset (markers, 0x00, BB_BOARD_NUM_MARKERS * sizeof(Entity*));
 		
 		reset();
 	}
 
-	PE_Proxy *GameLogicSystem::get_free_explosion()
+	PE_Proxy *BB_GameLogicSystem::get_free_explosion()
 	{
 		PE_Proxy *prox = NULL;
 		
-		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		for (int i = 0; i < BB_BOARD_NUM_MARKERS; i++)
 		{
 			prox = g_pExplosionCache[i];
 			
@@ -48,11 +48,11 @@ namespace game
 	}
 	
 	
-	PE_Proxy *GameLogicSystem::get_free_marker()
+	PE_Proxy *BB_GameLogicSystem::get_free_marker()
 	{
 		PE_Proxy *prox = NULL;
 		
-		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		for (int i = 0; i < BB_BOARD_NUM_MARKERS; i++)
 		{
 			prox = g_pMarkerCache[i];
 			
@@ -63,7 +63,7 @@ namespace game
 	}
 	
 	
-	void GameLogicSystem::reset ()
+	void BB_GameLogicSystem::reset ()
 	{
 		
 		marked_color = -1;
@@ -76,11 +76,11 @@ namespace game
 
 		remove_all_markers();
 		
-		memset (markers, 0x00, BOARD_NUM_MARKERS * sizeof(Entity*));
+		memset (markers, 0x00, BB_BOARD_NUM_MARKERS * sizeof(Entity*));
 		marker_index = 0;
 	}
 	
-	void GameLogicSystem::remove_chain ()
+	void BB_GameLogicSystem::remove_chain ()
 	{
 		std::vector<Entity*> entities;
 		_entityManager->getEntitiesPossessingComponents(entities, GameBoardElement::COMPONENT_ID, Position::COMPONENT_ID, ARGLIST_END );
@@ -106,7 +106,7 @@ namespace game
 						{
 							ParticleSystem::createParticleEmitter (pe,
 																   0.25,
-																   vector2D_make(current_gbe->col * TILESIZE_X + BOARD_X_OFFSET, current_gbe->row*TILESIZE_Y+BOARD_Y_OFFSET));
+																   vector2D_make(current_gbe->col * BB_TILESIZE_X + BB_BOARD_X_OFFSET, current_gbe->row*BB_TILESIZE_Y+BB_BOARD_Y_OFFSET));
 							pe->setDuration(0.25);
 							pe->reset();
 							pe->start();
@@ -119,7 +119,7 @@ namespace game
 	}
 	
 	
-	void GameLogicSystem::handle_chain ()
+	void BB_GameLogicSystem::handle_chain ()
 	{
 		//score if the chain had 2 or more entries
 		if (num_of_marks >= 2)
@@ -254,7 +254,7 @@ namespace game
 			g_GameState.previous_kill = num_of_marks;
 			g_GameState.total_killed += num_of_marks;
 			
-			if (g_GameState.game_mode == GAME_MODE_SWEEP)
+			if (g_GameState.game_mode == GAME_MODE_BB)
 			{
 				int sweep_bonus = (g_GameState.total_killed * g_GameState.total_killed) + (score*time_add);
 				
@@ -279,9 +279,9 @@ namespace game
 		num_of_marks = 0;
 	}
 
-	void GameLogicSystem::remove_all_markers()
+	void BB_GameLogicSystem::remove_all_markers()
 	{
-		for (int i = 0; i < BOARD_NUM_MARKERS; i++)
+		for (int i = 0; i < BB_BOARD_NUM_MARKERS; i++)
 		{
 			Entity *e = markers[i];
 			if (e)
@@ -307,13 +307,13 @@ namespace game
 		}
 	}
 	
-	bool GameLogicSystem::moves_left ()
+	bool BB_GameLogicSystem::moves_left ()
 	{
 		//vertical
-		for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+		for (int row = 0; row < BB_BOARD_NUM_ROWS; row ++)
 		{
 			int currtype = -1;
-			for (int col = 0; col < BOARD_NUM_COLS; col ++)
+			for (int col = 0; col < BB_BOARD_NUM_COLS; col ++)
 			{
 				Entity *e = _map[col][row];
 				if (!e)
@@ -343,10 +343,10 @@ namespace game
 		}
 
 		//horizontal
-		for (int col = 0; col < BOARD_NUM_COLS; col ++)
+		for (int col = 0; col < BB_BOARD_NUM_COLS; col ++)
 		{
 			int currtype = -1;
-			for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+			for (int row = 0; row < BB_BOARD_NUM_ROWS; row ++)
 			{
 				Entity *e = _map[col][row];
 				if (!e)
@@ -377,13 +377,13 @@ namespace game
 		
 	}
 
-	bool GameLogicSystem::moves_left_2 ()
+	bool BB_GameLogicSystem::moves_left_2 ()
 	{
 		//vertical
-		for (int row = 0; row < BOARD_NUM_VISIBLE_ROWS; row ++)
+		for (int row = 0; row < BB_BOARD_NUM_VISIBLE_ROWS; row ++)
 		{
 			int currtype = -1;
-			for (int col = 0; col < BOARD_NUM_COLS; col ++)
+			for (int col = 0; col < BB_BOARD_NUM_COLS; col ++)
 			{
 				Entity *e = _map[col][row];
 				if (!e)
@@ -413,10 +413,10 @@ namespace game
 		}
 		
 		//horizontal
-		for (int col = 0; col < BOARD_NUM_COLS; col ++)
+		for (int col = 0; col < BB_BOARD_NUM_COLS; col ++)
 		{
 			int currtype = -1;
-			for (int row = 0; row < BOARD_NUM_VISIBLE_ROWS; row ++)
+			for (int row = 0; row < BB_BOARD_NUM_VISIBLE_ROWS; row ++)
 			{
 				Entity *e = _map[col][row];
 				if (!e)
@@ -448,9 +448,9 @@ namespace game
 	}
 	
 	
-	void GameLogicSystem::update_map ()
+	void BB_GameLogicSystem::update_map ()
 	{
-		memset(_map,0x00,BOARD_NUM_COLS*BOARD_NUM_ROWS*sizeof(Entity*));
+		memset(_map,0x00,BB_BOARD_NUM_COLS*BB_BOARD_NUM_ROWS*sizeof(Entity*));
 		
 		std::vector<Entity*>::const_iterator it = _entities.begin();
 		Entity *_current_entity = NULL;
@@ -469,7 +469,7 @@ namespace game
 	static int prev_col = -1;
 	static int prev_row = -1;
 	
-	void GameLogicSystem::mark_cell (int col, int row)
+	void BB_GameLogicSystem::mark_cell (int col, int row)
 	{
 		std::vector<Entity*>::const_iterator it = _entities.begin();
 		
@@ -507,7 +507,7 @@ namespace game
 							head_col = current_gbe->col;
 							head_row = current_gbe->row;
 							
-							if (marker_index < BOARD_NUM_MARKERS)
+							if (marker_index < BB_BOARD_NUM_MARKERS)
 							{
 								if (g_ParticlesEnabled)
 								{
@@ -516,7 +516,7 @@ namespace game
 									{
 										Entity *ent = ParticleSystem::createParticleEmitter (pe,
 																							 -1.0,
-																							 vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+																							 vector2D_make(col * BB_TILESIZE_X + BB_BOARD_X_OFFSET, row*BB_TILESIZE_Y+BB_BOARD_Y_OFFSET));
 										pe->setDuration(-1.0);
 										pe->reset();
 										pe->start();
@@ -528,8 +528,8 @@ namespace game
 								{
 									Entity *pe = _entityManager->createNewEntity();
 									Position *pos = _entityManager->addComponent <Position> (pe);
-									pos->x = col * TILESIZE_X + BOARD_X_OFFSET+2;
-									pos->y = row * TILESIZE_Y + BOARD_Y_OFFSET-4;
+									pos->x = col * BB_TILESIZE_X + BB_BOARD_X_OFFSET+2;
+									pos->y = row * BB_TILESIZE_Y + BB_BOARD_Y_OFFSET-4;
 									
 									Sprite *sp = _entityManager->addComponent <Sprite> (pe);
 									sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
@@ -547,24 +547,23 @@ namespace game
 		
 	}
 	
-	
-	void GameLogicSystem::mark_cells (int col, int row)
+	void BB_GameLogicSystem::mark_cells (int col, int row)
 	{
 		if (col < 0)
 			return;
 		if (row < 0)
 			return;
-		if (col >= BOARD_NUM_COLS)
+		if (col >= BB_BOARD_NUM_COLS)
 			return;
-		if (row >= BOARD_NUM_VISIBLE_ROWS)
+		if (row >= BB_BOARD_NUM_VISIBLE_ROWS)
 			return;
 		
 		Entity *e = _map[col][row];
 		if (!e)
 			return;
-		
+
 		GameBoardElement *current_gbe = NULL;
-		
+
 		current_gbe = _entityManager->getComponent <GameBoardElement> (e);
 		if (!current_gbe)
 			return;
@@ -579,8 +578,8 @@ namespace game
 		{
 			num_of_marks ++;
 			current_gbe->marked = true;
-			
-			if (marker_index < BOARD_NUM_MARKERS)
+
+			if (marker_index < BB_BOARD_NUM_MARKERS)
 			{
 				if (g_ParticlesEnabled)
 				{
@@ -589,7 +588,7 @@ namespace game
 					{
 						Entity *ent = ParticleSystem::createParticleEmitter (pe,
 																			 -1.0,
-																			 vector2D_make(col * TILESIZE_X + BOARD_X_OFFSET, row*TILESIZE_Y+BOARD_Y_OFFSET));
+																			 vector2D_make(col * BB_TILESIZE_X + BB_BOARD_X_OFFSET, row*BB_TILESIZE_Y+BB_BOARD_Y_OFFSET));
 						pe->setDuration(-1.0);
 						pe->reset();
 						pe->start();
@@ -601,8 +600,8 @@ namespace game
 				{
 					Entity *pe = _entityManager->createNewEntity();
 					Position *pos = _entityManager->addComponent <Position> (pe);
-					pos->x = col * TILESIZE_X + BOARD_X_OFFSET+2;
-					pos->y = row * TILESIZE_Y + BOARD_Y_OFFSET-4;
+					pos->x = col * BB_TILESIZE_X + BB_BOARD_X_OFFSET+2;
+					pos->y = row * BB_TILESIZE_Y + BB_BOARD_Y_OFFSET-4;
 					
 					Sprite *sp = _entityManager->addComponent <Sprite> (pe);
 					sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
@@ -611,7 +610,7 @@ namespace game
 					markers[marker_index++] = pe;	
 				}
 			}
-			
+
 			mark_cells(col , row - 1);
 			mark_cells(col + 1 , row);
 			mark_cells(col , row + 1);
@@ -620,19 +619,15 @@ namespace game
 		}
 		
 	}
-
 	
-	void GameLogicSystem::mark_chain ()
+	void BB_GameLogicSystem::mark_chain ()
 	{
-#ifdef ONETOUCH_MARK
 		vector2D v = InputDevice::sharedInstance()->touchLocation();
 		if (v.y <= 57.0)
 			return;
 		
-		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
-		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
-		int col_diff = (col - prev_col);
-		int row_diff = (row - prev_row);
+		int col = (v.x - BB_BOARD_X_OFFSET + BB_TILESIZE_X/2) / BB_TILESIZE_X;
+		int row = (v.y - BB_BOARD_Y_OFFSET + BB_TILESIZE_Y/2) / BB_TILESIZE_Y;
 
 		if (prev_col == -1 && prev_row == -1)
 		{	
@@ -642,13 +637,6 @@ namespace game
 		}
 		
 		return;
-#else
-		vector2D v = InputDevice::sharedInstance()->touchLocation();
-		if (v.y <= 57.0)
-			return;
-		
-		int col = (v.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
-		int row = (v.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
 		
 		int col_diff = (col - prev_col);
 		int row_diff = (row - prev_row);
@@ -656,13 +644,12 @@ namespace game
 		if (prev_col == -1 && prev_row == -1)
 		{
 			vector2D v2 = InputDevice::sharedInstance()->initialTouchLocation();
-			prev_col = (v2.x - BOARD_X_OFFSET + TILESIZE_X/2) / TILESIZE_X;
-			prev_row = (v2.y - BOARD_Y_OFFSET + TILESIZE_Y/2) / TILESIZE_Y;
+			prev_col = (v2.x - BB_BOARD_X_OFFSET + BB_TILESIZE_X/2) / BB_TILESIZE_X;
+			prev_row = (v2.y - BB_BOARD_Y_OFFSET + BB_TILESIZE_Y/2) / BB_TILESIZE_Y;
 			
 			mark_cell(prev_col, prev_row);
 			return;
 		}
-#endif		
 		
 		//nothing changed between frames
 		if (prev_col == col && prev_row == row)
@@ -743,14 +730,14 @@ namespace game
 		return;
 	}
 	
-	int GameLogicSystem::count_empty_cols ()
+	int BB_GameLogicSystem::count_empty_cols ()
 	{
 		update_map ();
 		int ret = 0;
-		for (int col = 0; col < BOARD_NUM_COLS; col++)
+		for (int col = 0; col < BB_BOARD_NUM_COLS; col++)
 		{
 			int sum = 0;
-			for (int row = 0; row < BOARD_NUM_ROWS; row ++)
+			for (int row = 0; row < BB_BOARD_NUM_ROWS; row ++)
 			{
 				if (_map[col][row])
 					sum ++;
@@ -762,7 +749,7 @@ namespace game
 		return ret;
 	}
 
-	void GameLogicSystem::update (float delta)
+	void BB_GameLogicSystem::update (float delta)
 	{
 		_delta = delta;
 		g_GameState.killed_last_frame = 0;
@@ -800,7 +787,7 @@ namespace game
 				prev_row = -1;
 		}
 		
-		if (g_GameState.game_mode == GAME_MODE_SWEEP)
+		if (g_GameState.game_mode == GAME_MODE_BB)
 		{
 			update_map();
 			if (!moves_left())
@@ -816,7 +803,7 @@ namespace game
 				
 //				printf("OMFG %i FRUITS LEFT!\n", g_GameState.fruits_on_board);
 				
-				int bonus = ((BOARD_NUM_COLS * BOARD_NUM_ROWS) -  g_GameState.fruits_on_board) * 4;
+				int bonus = ((BB_BOARD_NUM_COLS * BB_BOARD_NUM_ROWS) -  g_GameState.fruits_on_board) * 4;
 				bonus *= (bonus * 1.5);
 				
 //				printf("bonus score = %i\n", bonus);

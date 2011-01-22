@@ -15,8 +15,10 @@
 #include "Timer.h"
 #include "GameScene.h"
 #include "MenuScene.h"
+#include "BB_GameScene.h"
 #include "SimpleAudioEngine.h"
 #include "NotificationSystem.h"
+
 
 using namespace mx3;
 using namespace game;
@@ -238,7 +240,11 @@ namespace game
 	
 	void Game::startNewGame ()
 	{
-		next_scene = new GameScene();
+		if (g_GameState.game_mode == GAME_MODE_BB)
+			next_scene = new BB_GameScene();	
+		else
+			next_scene = new GameScene();
+	
 		next_scene->init();
 	}
 	

@@ -15,27 +15,28 @@ using namespace mx3;
 
 namespace game 
 {
-	class GameLogicSystem
+	class BB_GameLogicSystem
 	{
 	public:
-		GameLogicSystem (EntityManager *entityManager);
+		BB_GameLogicSystem (EntityManager *entityManager);
 		void update (float delta);
 		
 		void mark_cell (int col, int row);
+		void mark_cells (int col, int row);
 		void mark_chain ();
 		void handle_chain ();
 		void remove_chain ();
 		
 		bool moves_left ();
 		bool moves_left_2 ();
-		Entity *_map[BOARD_NUM_COLS][BOARD_NUM_ROWS];
+		Entity *_map[BB_BOARD_NUM_COLS][BB_BOARD_NUM_ROWS];
 		void update_map ();
 		int count_empty_cols ();
 		void reset ();
 		
 		PE_Proxy *get_free_explosion();
 		PE_Proxy *get_free_marker();
-		void mark_cells (int col, int row);
+		
 		void remove_all_markers();
 	protected:
 		std::vector<Entity*> _entities;
@@ -50,7 +51,7 @@ namespace game
 		int nokaut;
 		EntityManager *_entityManager;
 
-		Entity *markers[BOARD_NUM_MARKERS];
+		Entity *markers[BB_BOARD_NUM_MARKERS];
 		int marker_index;
 	};
 

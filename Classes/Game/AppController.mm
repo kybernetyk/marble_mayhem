@@ -181,7 +181,8 @@
 			NULL,
 			@"com.minyxgames.marblestar.timed",
 			NULL,
-			@"com.minyxgames.marblestar.puzzle"
+			@"com.minyxgames.marblestar.puzzle",
+			NULL
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];
@@ -272,7 +273,8 @@
 		NULL,
 		@"com.minyxgames.marblestar.timed",
 		NULL,
-		@"com.minyxgames.marblestar.puzzle"
+		@"com.minyxgames.marblestar.puzzle",
+		NULL
 	};
 	
 	NSString *cat = strs[g_GameState.game_mode];
