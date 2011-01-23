@@ -23,7 +23,7 @@ namespace game
 		
 		std::string filename = "bubbles.png";
 		
-#define BB_BSIZE 41
+#define BB_BSIZE 40
 		
 		int srcx = fruit_type%3;
 		int srcy = fruit_type/3;
@@ -59,7 +59,7 @@ namespace game
 
 		std::string filename = "bubbles.png";
 
-#define BSIZE 41
+#define BSIZE 40
 		
 		int srcx = fruit_type%3;
 		int srcy = fruit_type/3;

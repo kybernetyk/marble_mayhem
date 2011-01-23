@@ -23,13 +23,16 @@ namespace game
 	extern mx3::PE_Proxy *g_pMarkerCache[BB_BOARD_NUM_MARKERS];
 	extern mx3::PE_Proxy *g_pExplosionCache[BB_BOARD_NUM_MARKERS];
 
+	static int prev_col = -1;
+	static int prev_row = -1;
+	static bool may_react = true;
 	
 	BB_GameLogicSystem::BB_GameLogicSystem (EntityManager *entityManager)
 	{
 		_entityManager = entityManager;
 
 		memset (markers, 0x00, BB_BOARD_NUM_MARKERS * sizeof(Entity*));
-		
+		memset(_map,0x00,BB_BOARD_NUM_COLS*BB_BOARD_NUM_ROWS*sizeof(Entity*));
 		reset();
 	}
 
@@ -65,7 +68,6 @@ namespace game
 	
 	void BB_GameLogicSystem::reset ()
 	{
-		
 		marked_color = -1;
 		head_row = -1;
 		head_col = -1;
@@ -73,6 +75,7 @@ namespace game
 		last_sfx = -1;
 		awesome_count = 0;
 		nokaut = 0;
+		may_react = true;
 
 		remove_all_markers();
 		
@@ -268,13 +271,16 @@ namespace game
 			CV3Log("now left: %i\n", g_GameState.fruits_on_board);
 		}
 
+		printf("****************************** NUM OF MARKS: %i\n", num_of_marks);
+		
 		//g_GameState.previous_kill = num_of_marks;
 		
+		remove_chain ();
+
 		//remove the markers
 		remove_all_markers ();
 		
-		remove_chain ();
-		
+		marked_color = -1;
 		marker_index = 0;
 		num_of_marks = 0;
 	}
@@ -305,6 +311,23 @@ namespace game
 				}
 			}
 		}
+		
+		for (int row = 0; row < BB_BOARD_NUM_ROWS; row ++)
+		{
+			for (int col = 0; col < BB_BOARD_NUM_COLS; col ++)
+			{
+				Entity *e = _map[col][row];
+				if (!e)
+					continue;
+
+				GameBoardElement *gbe = _entityManager->getComponent <GameBoardElement> (e);
+				AtlasSprite *spr = _entityManager->getComponent <AtlasSprite> (e);
+
+				spr->alpha = 1.0;
+				gbe->marked = false;
+				gbe->mark_count = 0;
+			}
+		}	
 	}
 	
 	bool BB_GameLogicSystem::moves_left ()
@@ -466,120 +489,50 @@ namespace game
 		}
 	}
 
-	static int prev_col = -1;
-	static int prev_row = -1;
 	
-	void BB_GameLogicSystem::mark_cell (int col, int row)
-	{
-		std::vector<Entity*>::const_iterator it = _entities.begin();
-		
-		Entity *current_entity = NULL;
-		GameBoardElement *current_gbe = NULL;
-		while (it != _entities.end())
-		{
-			current_entity = *it;
-			++it;
-			current_gbe = _entityManager->getComponent <GameBoardElement> (current_entity);
-			
-			if (!current_gbe->marked)
-			{
-				if ((current_gbe->col == col) && (current_gbe->row == row))
-				{	
-					if (marked_color == -1)
-						marked_color = current_gbe->type;
-					if (head_col == -1 || head_row == -1)
-					{
-						head_row = current_gbe->row;
-						head_col = current_gbe->col;
-					}
-					
-					if (current_gbe->type == marked_color)
-					{	
-						int diff = 0;
-						
-						diff = ( abs (current_gbe->row - head_row) + 
-								abs (current_gbe->col - head_col));
-						
-						if (diff <= 1)
-						{	
-							num_of_marks ++;
-							current_gbe->marked = true;
-							head_col = current_gbe->col;
-							head_row = current_gbe->row;
-							
-							if (marker_index < BB_BOARD_NUM_MARKERS)
-							{
-								if (g_ParticlesEnabled)
-								{
-									PE_Proxy *pe = get_free_marker();
-									if (pe)
-									{
-										Entity *ent = ParticleSystem::createParticleEmitter (pe,
-																							 -1.0,
-																							 vector2D_make(col * BB_TILESIZE_X + BB_BOARD_X_OFFSET, row*BB_TILESIZE_Y+BB_BOARD_Y_OFFSET));
-										pe->setDuration(-1.0);
-										pe->reset();
-										pe->start();
-										markers[marker_index++] = ent;	
-									}
-									
-								}
-								else
-								{
-									Entity *pe = _entityManager->createNewEntity();
-									Position *pos = _entityManager->addComponent <Position> (pe);
-									pos->x = col * BB_TILESIZE_X + BB_BOARD_X_OFFSET+2;
-									pos->y = row * BB_TILESIZE_Y + BB_BOARD_Y_OFFSET-4;
-									
-									Sprite *sp = _entityManager->addComponent <Sprite> (pe);
-									sp->res_handle = g_RenderableManager.acquireResource <TexturedQuad> ("marker.png");
-									sp->z = 8.0;
-									
-									markers[marker_index++] = pe;	
-									
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
-	}
 	
-	void BB_GameLogicSystem::mark_cells (int col, int row)
+#pragma mark -
+#pragma mark THIS!
+	bool BB_GameLogicSystem::mark_cells (int col, int row)
 	{
 		if (col < 0)
-			return;
+			return false;
 		if (row < 0)
-			return;
+			return false;
 		if (col >= BB_BOARD_NUM_COLS)
-			return;
+			return false;
 		if (row >= BB_BOARD_NUM_VISIBLE_ROWS)
-			return;
+			return false;
 		
 		Entity *e = _map[col][row];
 		if (!e)
-			return;
+			return false;
 
 		GameBoardElement *current_gbe = NULL;
 
 		current_gbe = _entityManager->getComponent <GameBoardElement> (e);
 		if (!current_gbe)
-			return;
+			return false;
 		
 		if (marked_color == -1)
 			marked_color = current_gbe->type;
 		
 		if (current_gbe->type != marked_color)
-			return;
+			return false;
 		
 		if (!current_gbe->marked)
 		{
 			num_of_marks ++;
 			current_gbe->marked = true;
+			current_gbe->mark_count = 1;
 
-			if (marker_index < BB_BOARD_NUM_MARKERS)
+			AtlasSprite *spr = _entityManager->getComponent <AtlasSprite> (e);
+			if (e)
+			{
+				spr->alpha = 0.5;
+			}
+
+		/*	if (marker_index < BB_BOARD_NUM_MARKERS)
 			{
 				if (g_ParticlesEnabled)
 				{
@@ -609,125 +562,61 @@ namespace game
 					
 					markers[marker_index++] = pe;	
 				}
-			}
+			}*/
 
 			mark_cells(col , row - 1);
 			mark_cells(col + 1 , row);
 			mark_cells(col , row + 1);
 			mark_cells(col - 1, row );
-			return;
+			return false;
 		}
+		else
+			return true;
+
 		
 	}
+#pragma mark -
 	
-	void BB_GameLogicSystem::mark_chain ()
+	bool BB_GameLogicSystem::mark_chain ()
 	{
 		vector2D v = InputDevice::sharedInstance()->touchLocation();
 		if (v.y <= 57.0)
-			return;
+			return false;
 		
 		int col = (v.x - BB_BOARD_X_OFFSET + BB_TILESIZE_X/2) / BB_TILESIZE_X;
 		int row = (v.y - BB_BOARD_Y_OFFSET + BB_TILESIZE_Y/2) / BB_TILESIZE_Y;
 
-		if (prev_col == -1 && prev_row == -1)
-		{	
-			mark_cells (col, row);
-			prev_col = col;
-			prev_row = row;
-		}
-		
-		return;
-		
-		int col_diff = (col - prev_col);
-		int row_diff = (row - prev_row);
-		
-		if (prev_col == -1 && prev_row == -1)
+		//remove possible marked
+		if (may_react)
 		{
-			vector2D v2 = InputDevice::sharedInstance()->initialTouchLocation();
-			prev_col = (v2.x - BB_BOARD_X_OFFSET + BB_TILESIZE_X/2) / BB_TILESIZE_X;
-			prev_row = (v2.y - BB_BOARD_Y_OFFSET + BB_TILESIZE_Y/2) / BB_TILESIZE_Y;
-			
-			mark_cell(prev_col, prev_row);
-			return;
-		}
-		
-		//nothing changed between frames
-		if (prev_col == col && prev_row == row)
-			return;
-		
-		//if the column difference is larger than the row difference
-		//handle the column first
-		if ( abs(col_diff) > abs(row_diff) )
-		{
-			while (1) 
+			may_react = false;
+			Entity *e = _map[col][row];
+			if (e)
 			{
-				int a = 1;
-				if (col_diff < 0)
-					a = -1;
-				if (col_diff == 0)
-					a = 0;
-
-				prev_col += a;
-				mark_cell(prev_col, prev_row);
-				
-				if (prev_col == col)
-					break;
+				GameBoardElement *el = _entityManager->getComponent<GameBoardElement>(e);
+				if (el->mark_count == 0)
+				{
+					remove_all_markers();
+					marked_color = -1;
+					num_of_marks = 0;
+				}
+				if (el->mark_count == 1)
+				{
+					return true;
+				}
 			}
-			
-			while (1) 
-			{
-				int a = 1;
-				if (row_diff < 0)
-					a = -1;
-				if (row_diff == 0)
-					a = 0;
-
-				prev_row += a;
-				mark_cell(prev_col, prev_row);
-				
-				if (prev_row == row)
-					break;
-			}
-		}
-		else //handle row first
-		{
-			while (1) 
-			{
-				int a = 1;
-				if (row_diff < 0)
-					a = -1;
-				if (row_diff == 0)
-					a = 0;
-
-				prev_row += a;
-				mark_cell(prev_col, prev_row);
-				
-				if (prev_row == row)
-					break;
-			}
-			
-			while (1) 
-			{
-				int a = 1;
-				if (col_diff < 0)
-					a = -1;
-				if (col_diff == 0)
-					a = 0;
-				
-				prev_col += a;
-				mark_cell(prev_col, prev_row);
-				
-				if (prev_col == col)
-					break;
+			//mark
+			if (prev_col == -1 && prev_row == -1)
+			{	
+				mark_cells (col, row);
+				prev_col = col;
+				prev_row = row;
 			}
 			
 		}
 		
 		
-		prev_col = col;
-		prev_row = row;
-
-		return;
+		return false;
 	}
 	
 	int BB_GameLogicSystem::count_empty_cols ()
@@ -761,30 +650,35 @@ namespace game
 		bool touch = InputDevice::sharedInstance()->isTouchActive();
 		if (touch)
 		{
-			mark_chain();
+			if (mark_chain())
+			{	
+				handle_chain();
+			}
 		}
 		
 		if (InputDevice::sharedInstance()->touchUpReceived())
 		{
-			mark_chain ();	//just in case fps is too low and the time between last mark and up was too long
+		//	mark_chain ();	//just in case fps is too low and the time between last mark and up was too long
 							//to register all marks
 
-			marked_color = -1;
+//			marked_color = -1;
 			head_row = -1;
 			head_col = -1;
 			prev_col = -1;
 			prev_row = -1;
+			may_react = true;
 			
-			handle_chain();
+		//	handle_chain();
 		}
 		
 		if (!touch)
 		{
-				marked_color = -1;
+//				marked_color = -1;
 				head_row = -1;
 				head_col = -1;
 				prev_col = -1;
 				prev_row = -1;
+			may_react = true;
 		}
 		
 		if (g_GameState.game_mode == GAME_MODE_BB)

@@ -46,6 +46,7 @@ namespace game
 		bool landed;
 		
 		bool marked;
+		int mark_count;
 		
 		bool moving_sideways;
 		
@@ -68,6 +69,7 @@ namespace game
 			moving_sideways = false;
 			x_move_timer = 0.0;
 			x_off = 0.0;
+			mark_count = 0;
 			
 			fall_duration = 0.25;
 		}

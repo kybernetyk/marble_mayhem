@@ -21,9 +21,8 @@ namespace game
 		BB_GameLogicSystem (EntityManager *entityManager);
 		void update (float delta);
 		
-		void mark_cell (int col, int row);
-		void mark_cells (int col, int row);
-		void mark_chain ();
+		bool mark_cells (int col, int row);
+		bool mark_chain ();
 		void handle_chain ();
 		void remove_chain ();
 		
