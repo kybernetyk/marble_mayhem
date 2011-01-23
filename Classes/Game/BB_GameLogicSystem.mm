@@ -613,6 +613,14 @@ namespace game
 				prev_row = row;
 			}
 			
+			if (num_of_marks == 1)
+			{
+				remove_all_markers();
+				marked_color = -1;
+				num_of_marks = 0;
+				
+			}
+			
 		}
 		
 		
