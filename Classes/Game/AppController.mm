@@ -557,7 +557,7 @@
 }
 - (NSString *) captionForFBShare
 {
-	NSString *ret = nil;
+	NSString *ret = [NSString stringWithFormat: @"I played Marble Star and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
 		ret = [NSString stringWithFormat: @"I took a try on the Marble Star Time Challenge and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
@@ -592,7 +592,7 @@
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
 		return [NSString stringWithFormat: @"Marbles left: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.fruits_on_board, minutes, rest];
 	
-	return @":-)";
+	return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.total_killed, minutes, rest];
 }
 
 - (NSString *) linkForFBShare
@@ -607,7 +607,7 @@
 
 - (NSString *) picurlForFBShare
 {
-	return @"http://www.minyxgames.com/marble-star/fb_pic.png";
+	return @"http://www.minyxgames.com/marble-star/facebook_logo.png";
 }
 #pragma mark -
 #pragma mark in inapp
