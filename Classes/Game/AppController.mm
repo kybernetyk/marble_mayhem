@@ -449,6 +449,7 @@
 
 - (IBAction) numOfFruitsDidChange: (id) sender
 {
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 	int num = [(UISegmentedControl *)sender selectedSegmentIndex] + 4; 
 	
 	NSLog(@"new number of fruits: %i\n", num);
