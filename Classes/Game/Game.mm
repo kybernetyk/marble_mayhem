@@ -243,7 +243,7 @@ namespace game
 		if (g_GameState.game_mode == GAME_MODE_BB)
 			next_scene = new BB_GameScene();	
 		else
-			next_scene = new GameScene();
+			next_scene = new BB_GameScene();
 	
 		next_scene->init();
 	}

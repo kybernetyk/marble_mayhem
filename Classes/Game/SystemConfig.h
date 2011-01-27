@@ -9,8 +9,8 @@
 #pragma once
 
 //entity system checks and infos
-//#define __VERBOSE__
-#define APPIRATER_APP_ID 416081829
+#define __VERBOSE__
+#define APPIRATER_APP_ID 417222647
 
 #ifdef __VERBOSE__
 	#define CV3Log printf

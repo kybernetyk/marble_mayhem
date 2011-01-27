@@ -69,7 +69,7 @@ namespace game
 
 //in non bb modes - undef if remvoe by swipe. def if remove by touch	
 //uncomment following lines for bubble xxx
-/*
+
 #define ONETOUCH_MARK
 	
 #define TILESIZE_X 40.0
@@ -82,19 +82,18 @@ namespace game
 #define BOARD_NUM_ROWS (10)*2
 #define BOARD_NUM_VISIBLE_ROWS 10
 #define BOARD_NUM_MARKERS 32
-*/	
 	
 //fruit munch like dimensions
-#define TILESIZE_X 51.0
-#define TILESIZE_Y 51.0
-
-#define BOARD_X_OFFSET (7+TILESIZE_X/2)
-#define BOARD_Y_OFFSET (72+TILESIZE_Y/2)
-
-#define BOARD_NUM_COLS 6
-#define BOARD_NUM_ROWS (8)*2
-#define BOARD_NUM_VISIBLE_ROWS 8
-#define BOARD_NUM_MARKERS 32
+//#define TILESIZE_X 51.0
+//#define TILESIZE_Y 51.0
+//
+//#define BOARD_X_OFFSET (7+TILESIZE_X/2)
+//#define BOARD_Y_OFFSET (72+TILESIZE_Y/2)
+//
+//#define BOARD_NUM_COLS 6
+//#define BOARD_NUM_ROWS (8)*2
+//#define BOARD_NUM_VISIBLE_ROWS 8
+//#define BOARD_NUM_MARKERS 32
 
 	
 //bubble burst like dimensions

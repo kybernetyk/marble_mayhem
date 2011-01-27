@@ -550,19 +550,19 @@
 		return ret;
 	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		return @"My Marble Star Time Challenge Score!";
+		return @"My Marble Mayhem Time Challenge Score!";
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return @"My Marble Star Puzzle Mode Score!";
+		return @"My Marble Mayhem Puzzle Mode Score!";
 	
-	return @"Marble Star";
+	return @"Marble Mayhem";
 }
 - (NSString *) captionForFBShare
 {
-	NSString *ret = [NSString stringWithFormat: @"I played Marble Star and scored %i points!", g_GameState.score];
+	NSString *ret = [NSString stringWithFormat: @"I played Marble Mayhem and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		ret = [NSString stringWithFormat: @"I took a try on the Marble Star Time Challenge and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Marble Mayhem Time Challenge and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		ret = [NSString stringWithFormat: @"I took a try on the Marble Star Puzzle Mode and scored %i points!", g_GameState.score];
+		ret = [NSString stringWithFormat: @"I took a try on the Marble Mayhem Puzzle Mode and scored %i points!", g_GameState.score];
 	
 	NSString *add = nil;
 	
@@ -588,22 +588,22 @@
 	int rest = ((int)g_GameState.time_played) - (minutes * 60.0);
 	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
-		return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.total_killed, minutes, rest];
+		return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.total_killed, minutes, rest];
 
 	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return [NSString stringWithFormat: @"Marbles left: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.fruits_on_board, minutes, rest];
+		return [NSString stringWithFormat: @"Marbles left: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.fruits_on_board, minutes, rest];
 	
-	return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Star is awesome!", g_GameState.total_killed, minutes, rest];
+	return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.total_killed, minutes, rest];
 }
 
 - (NSString *) linkForFBShare
 {
-	return @"http://www.minyxgames.com/marble-star/";
+	return @"http://www.minyxgames.com/marble-mayhem/";
 }
 
 - (NSString *) linkNameForFBShare
 {
-	return @"Marble Star!";
+	return @"Marble Mayhem!";
 }
 
 - (NSString *) picurlForFBShare
