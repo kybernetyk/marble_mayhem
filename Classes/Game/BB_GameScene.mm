@@ -96,7 +96,7 @@ namespace game
 		{
 			std::string mfx[] = 
 			{
-//				"music1.wav",
+				"music4.mp3",
 				"music2.m4a",
 				"music3.m4a"
 			};
@@ -111,8 +111,9 @@ namespace game
 		{
 			std::string mfx[] = 
 			{
-	
-				"music4.mp3"
+				"music4.mp3",
+				"music2.m4a",
+				"music3.m4a"
 			};
 			
 			int sz = sizeof (mfx) / sizeof (std::string);

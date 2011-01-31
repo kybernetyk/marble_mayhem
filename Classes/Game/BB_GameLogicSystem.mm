@@ -129,12 +129,13 @@ namespace game
 		{
 			int score = (num_of_marks * 15) * num_of_marks;
 			float num = num_of_marks;
+			
 			float time_add = ((float)(num*0.18*num*0.18));		//0.18
 			
 			//only add time for chain if we're playinh (not game over)
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += time_add * (float)((float)g_GameState.num_of_fruits/4.0);
+			//	g_GameState.time_left += time_add * (float)((float)g_GameState.num_of_fruits/4.0);
 			}
 			g_GameState.score += score * (float)((float)g_GameState.num_of_fruits/4.0);
 			g_GameState.killed_last_frame = num_of_marks;
@@ -247,7 +248,7 @@ namespace game
 			g_GameState.score += bonus * (float)((float)g_GameState.num_of_fruits/4.0);
 			if (g_GameState.game_state == GAME_STATE_PLAY && g_GameState.next_state == GAME_STATE_PLAY)
 			{
-				g_GameState.time_left += bonus/1200.0 * (float)((float)g_GameState.num_of_fruits/4.0);	//only add time bonus if we are and will not be game over
+				g_GameState.time_left += bonus/3600.0 * (float)((float)g_GameState.num_of_fruits/4.0);	//only add time bonus if we are and will not be game over
 			}
 			CV3Log("Bonus: %i\n", bonus);
 

@@ -124,6 +124,8 @@
 		036FE5B012EAF70100BE6F90 /* BB_GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5AF12EAF70100BE6F90 /* BB_GameScene.mm */; };
 		036FE5D012EAF8D000BE6F90 /* BB_GameBoardSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5CF12EAF8D000BE6F90 /* BB_GameBoardSystem.mm */; };
 		036FE5D512EAF8E500BE6F90 /* BB_GameLogicSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036FE5D412EAF8E500BE6F90 /* BB_GameLogicSystem.mm */; };
+		0377CE0F12F6E7550005D280 /* button_02l.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377CE0D12F6E7550005D280 /* button_02l.png */; };
+		0377CE1012F6E7550005D280 /* button_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377CE0E12F6E7550005D280 /* button_02.png */; };
 		038280E212CD341E00452DF8 /* getready5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 038280E112CD341E00452DF8 /* getready5.wav */; };
 		038280F612CD347A00452DF8 /* getready1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 038280F512CD347A00452DF8 /* getready1.wav */; };
 		0382811012CD360F00452DF8 /* good1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0382810E12CD360F00452DF8 /* good1.wav */; };
@@ -432,6 +434,8 @@
 		036FE5CF12EAF8D000BE6F90 /* BB_GameBoardSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BB_GameBoardSystem.mm; sourceTree = "<group>"; };
 		036FE5D312EAF8E500BE6F90 /* BB_GameLogicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BB_GameLogicSystem.h; sourceTree = "<group>"; };
 		036FE5D412EAF8E500BE6F90 /* BB_GameLogicSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BB_GameLogicSystem.mm; sourceTree = "<group>"; };
+		0377CE0D12F6E7550005D280 /* button_02l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_02l.png; sourceTree = "<group>"; };
+		0377CE0E12F6E7550005D280 /* button_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_02.png; sourceTree = "<group>"; };
 		038280E112CD341E00452DF8 /* getready5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = getready5.wav; sourceTree = "<group>"; };
 		038280F512CD347A00452DF8 /* getready1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = getready1.wav; sourceTree = "<group>"; };
 		0382810E12CD360F00452DF8 /* good1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = good1.wav; sourceTree = "<group>"; };
@@ -493,8 +497,6 @@
 		03ABF17712AA627600320143 /* goldstars.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstars.pex; sourceTree = "<group>"; };
 		03ABF18212AA636600320143 /* goldstar2.pex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = goldstar2.pex; sourceTree = "<group>"; };
 		03ABF3E312AABAFB00320143 /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
-		03ABF42C12AAC61100320143 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntitlementsDebug.plist; sourceTree = "<group>"; };
 		03AD77C212BD05A400724C7C /* puzzle_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puzzle_mode.png; sourceTree = "<group>"; };
 		03AD784B12BD331800724C7C /* music4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music4.mp3; sourceTree = "<group>"; };
 		03B503D012BE546B00119A74 /* clocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clocks.png; sourceTree = "<group>"; };
@@ -1159,6 +1161,8 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0377CE0D12F6E7550005D280 /* button_02l.png */,
+				0377CE0E12F6E7550005D280 /* button_02.png */,
 				0320C4A412E9C4E3007C4C1D /* game_back.png */,
 				0382812512CD37AA00452DF8 /* getready3.wav */,
 				0382810E12CD360F00452DF8 /* good1.wav */,
@@ -1375,8 +1379,6 @@
 			isa = PBXGroup;
 			children = (
 				03D1130E12B5233A00D1E6E4 /* TODO.txt */,
-				03ABF42C12AAC61100320143 /* Entitlements.plist */,
-				03ABF43C12AAC67500320143 /* EntitlementsDebug.plist */,
 				8D1107310486CEB800E47090 /* MarbleMayhem-Info.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1580,6 +1582,8 @@
 				033A76B112F31C51008F799F /* PromotionViewController.xib in Resources */,
 				033A76B312F31C51008F799F /* promo_head.png in Resources */,
 				033A76B512F31C51008F799F /* WebkitViewController.xib in Resources */,
+				0377CE0F12F6E7550005D280 /* button_02l.png in Resources */,
+				0377CE1012F6E7550005D280 /* button_02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1686,7 +1690,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1701,7 +1704,7 @@
 				LLVM_LTO = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E7466C94-AD98-4F92-B71D-7C17884841C8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A735842-F8C1-4683-BAFB-4B7A9FC0DE32";
 				SDKROOT = iphoneos;
 			};
 			name = "App Store";
@@ -1710,7 +1713,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1728,7 +1730,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1752,7 +1753,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1770,7 +1770,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1789,7 +1788,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1820,7 +1818,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LLVM_LTO = NO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FD6529B0-CB0E-4A4B-80A0-02F6515BDA4C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ACFAA08-425A-4A8A-9D7E-E37E3218A811";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1829,7 +1827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaroslaw Szpilewski (4M65AH57PH)";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -1843,6 +1841,7 @@
 				LLVM_LTO = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ACFAA08-425A-4A8A-9D7E-E37E3218A811";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

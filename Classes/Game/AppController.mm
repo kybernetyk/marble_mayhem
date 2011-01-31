@@ -551,8 +551,8 @@
 	
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
 		return @"My Marble Mayhem Time Challenge Score!";
-	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		return @"My Marble Mayhem Puzzle Mode Score!";
+	if (g_GameState.game_mode == GAME_MODE_SWEEP || GAME_MODE_BB)
+		return @"My Marble Mayhem Classic Mode Score!";
 	
 	return @"Marble Mayhem";
 }
@@ -561,8 +561,8 @@
 	NSString *ret = [NSString stringWithFormat: @"I played Marble Mayhem and scored %i points!", g_GameState.score];
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
 		ret = [NSString stringWithFormat: @"I took a try on the Marble Mayhem Time Challenge and scored %i points!", g_GameState.score];
-	if (g_GameState.game_mode == GAME_MODE_SWEEP)
-		ret = [NSString stringWithFormat: @"I took a try on the Marble Mayhem Puzzle Mode and scored %i points!", g_GameState.score];
+	if (g_GameState.game_mode == GAME_MODE_SWEEP || GAME_MODE_BB)
+		ret = [NSString stringWithFormat: @"I took a try on the Marble Mayhem Classic Mode and scored %i points!", g_GameState.score];
 	
 	NSString *add = nil;
 	
@@ -590,7 +590,7 @@
 	if (g_GameState.game_mode == GAME_MODE_TIMED)
 		return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.total_killed, minutes, rest];
 
-	if (g_GameState.game_mode == GAME_MODE_SWEEP)
+	if (g_GameState.game_mode == GAME_MODE_SWEEP || GAME_MODE_BB)
 		return [NSString stringWithFormat: @"Marbles left: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.fruits_on_board, minutes, rest];
 	
 	return [NSString stringWithFormat: @"Total # of marbles removed: %i. Session length: %02i:%02i min:sec. Marble Mayhem is awesome!", g_GameState.total_killed, minutes, rest];
@@ -608,7 +608,7 @@
 
 - (NSString *) picurlForFBShare
 {
-	return @"http://www.minyxgames.com/marble-star/facebook_logo.png";
+	return @"http://www.minyxgames.com/marble-mayhem/facebook_logo.png";
 }
 #pragma mark -
 #pragma mark in inapp
