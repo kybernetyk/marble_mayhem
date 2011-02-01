@@ -77,7 +77,7 @@ namespace game
 		nokaut = 0;
 		may_react = true;
 
-		remove_all_markers();
+	//	remove_all_markers();
 		
 		memset (markers, 0x00, BB_BOARD_NUM_MARKERS * sizeof(Entity*));
 		marker_index = 0;
