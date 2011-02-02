@@ -28,12 +28,6 @@ using namespace mx3;
 
 namespace game 
 {
-	struct Button
-	{
-		Entity *btn_sprite;
-		Entity *btn_caption;
-	};
-	
 	class BB_GameScene : public mx3::Scene
 	{
 	public:
@@ -56,7 +50,7 @@ namespace game
 		{
 			return SCENE_TYPE_GAME;
 		}
-		Button create_button (vector2D pos, const char *text, const char *btn_graphic = "button_left.png");
+		
 	protected:
 		EntityManager *_entityManager;
 		RenderSystem *_renderSystem;

@@ -46,16 +46,14 @@ namespace game
 			return SCENE_TYPE_MAIN_MENU;
 		}
 		
-		mx3::Entity *create_button (vector2D pos, const char *text, const char *btn_graphic = "button_left.png");
-		
 		~MenuScene();
 	protected:
 		
-		mx3::Entity *btn_timed;
-		mx3::Entity *btn_endless;
-		mx3::Entity *btn_classic;
-		mx3::Entity *btn_sound;
-		mx3::Entity *btn_music;
+		Button btn_timed;
+		Button btn_endless;
+		Button btn_classic;
+		Button btn_sound;
+		Button btn_music;
 		
 		mx3::EntityManager *_entityManager;
 		mx3::RenderSystem *_renderSystem;

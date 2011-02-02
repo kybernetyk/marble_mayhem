@@ -198,40 +198,6 @@ namespace game
 		
 	}
 	
-	Button BB_GameScene::create_button (vector2D pos, const char *text, const char *btn_graphic)
-	{
-		Entity *ent = _entityManager->createNewEntity();
-		
-		Position *posi = _entityManager->addComponent <Position> (ent);
-		posi->x = pos.x;
-		posi->y = pos.y;
-		
-		Sprite *sprite = _entityManager->addComponent <Sprite> (ent);
-		sprite->res_handle = g_RenderableManager.acquireResource <TexturedQuad> (btn_graphic);
-		sprite->anchorPoint = vector2D_make(0.5, 0.5);
-		sprite->z = 4.0;
-		
-		
-		Entity *capt = _entityManager->createNewEntity();
-		
-		Position *position = _entityManager->addComponent <Position> (capt);
-		position->x = pos.x;
-		position->y = pos.y;
-		//position->scale_x = position->scale_y = 0.5;
-		
-		TextLabel *label = _entityManager->addComponent<TextLabel> (capt);
-		label->res_handle = g_RenderableManager.acquireResource <OGLFont>("impact20.fnt");
-		label->anchorPoint =  vector2D_make(0.5, 0.2);
-		label->text = text;
-		label->z = 6.0;
-		
-		Button ret;
-		ret.btn_sprite = ent;
-		ret.btn_caption = capt;
-		
-		return ret;
-	}
-	
 	
 
 	void BB_GameScene::end ()
