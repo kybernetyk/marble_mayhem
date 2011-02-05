@@ -362,13 +362,17 @@ namespace game
 	void BB_GameScene::saveHiScore ()
 	{
 #ifdef USE_GAMECENTER
+		
 		NSString *strs[] = 
 		{
 			NULL,
 			@"com.minyxgames.marblemayhem.timed",
 			NULL,
 			@"com.minyxgames.marblemayhem.puzzle",
-			NULL
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];

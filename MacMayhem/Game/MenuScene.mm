@@ -69,23 +69,23 @@ namespace game
 		if (SoundSystem::sfx_vol <= 0.0)
 		{	
 			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_sound.btn_caption);
-			lbl->text = "     Sound On";
+			lbl->text = "     Sound Off";
 		}
 		else
 		{	
 			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_sound.btn_caption);
-			lbl->text = "     Sound Off";
+			lbl->text = "     Sound On";
 		}
 		
 		if (SoundSystem::music_vol <= 0.0)
 		{	
 			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_music.btn_caption);
-			lbl->text = "     Music On";
+			lbl->text = "     Music Off";
 		}
 		else
 		{
 			mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_music.btn_caption);
-			lbl->text = "     Music Off";
+			lbl->text = "     Music On";
 		}
 		
 		
@@ -158,13 +158,13 @@ namespace game
 				{	
 					mx3::SoundSystem::set_sfx_volume (0.9);	
 					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_sound.btn_caption);
-					lbl->text = "     Sound Off";
+					lbl->text = "     Sound On";
 				}
 				else
 				{	
 					mx3::SoundSystem::set_sfx_volume (0.0);	
 					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_sound.btn_caption);
-					lbl->text = "     Sound On";
+					lbl->text = "     Sound Off";
 				}
 				
 				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
@@ -183,12 +183,12 @@ namespace game
 				{	
 					mx3::SoundSystem::set_music_volume (0.5);	
 					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_music.btn_caption);
-					lbl->text = "     Music Off";
+					lbl->text = "     Music On";
 				}
 				else
 				{	mx3::SoundSystem::set_music_volume (0.0);	
 					mx3::TextLabel *lbl = _entityManager->getComponent<TextLabel>(btn_music.btn_caption);
-					lbl->text = "     Music On";
+					lbl->text = "     Music Off";
 				}
 				
 				NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];

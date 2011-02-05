@@ -182,7 +182,10 @@
 			@"com.minyxgames.marblemayhem.timed",
 			NULL,
 			@"com.minyxgames.marblemayhem.puzzle",
-			NULL
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle",
+			@"com.minyxgames.marblemayhem.puzzle"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];
@@ -274,7 +277,10 @@
 		@"com.minyxgames.marblemayhem.timed",
 		NULL,
 		@"com.minyxgames.marblemayhem.puzzle",
-		NULL
+		@"com.minyxgames.marblemayhem.puzzle",
+		@"com.minyxgames.marblemayhem.puzzle",
+		@"com.minyxgames.marblemayhem.puzzle",
+		@"com.minyxgames.marblemayhem.puzzle"
 	};
 	
 	NSString *cat = strs[g_GameState.game_mode];

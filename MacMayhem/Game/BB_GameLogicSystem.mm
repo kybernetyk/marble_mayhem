@@ -275,7 +275,6 @@ namespace game
 			CV3Log("now left: %i\n", g_GameState.fruits_on_board);
 		}
 
-		printf("****************************** NUM OF MARKS: %i\n", num_of_marks);
 		
 		//g_GameState.previous_kill = num_of_marks;
 		

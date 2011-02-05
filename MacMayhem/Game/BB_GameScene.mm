@@ -64,7 +64,7 @@ bool point_in_entity (mx3::vector2D vec, Entity *e)
 			return false;
 			break;
 	};
-	printf("is %f,%f in (%f,%f <-> %f,%f)?\n",vec.x,vec.y, x,y,x+w,x+h);
+	//printf("is %f,%f in (%f,%f <-> %f,%f)?\n",vec.x,vec.y, x,y,x+w,x+h);
 	if (vec.x >= x && vec.x <= x + w &&
 		vec.y >= y && vec.y <= y + h)
 		return true;
@@ -216,7 +216,7 @@ namespace game
 			int xc = mx3::InputDevice::sharedInstance()->touchLocation().x;
 			int yc = mx3::InputDevice::sharedInstance()->touchLocation().y;
 			vector2D vec = vector2D_make(xc, yc);
-			printf("x: %i, y: %i\n", xc,yc);
+			//printf("x: %i, y: %i\n", xc,yc);
 			//pause button
 			if (xc >= 282+320 && xc < 301+320 &&
 				yc >= 18 && yc < 36)
