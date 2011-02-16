@@ -1,0 +1,10 @@
+TODO
+====
+
+1.0:
+[s] - logo
+[s] - icon
+[j] - werbung fuer lite version
+[j] - promo shit for iap promo
+[j] - website
+[j] - app store desc/screens

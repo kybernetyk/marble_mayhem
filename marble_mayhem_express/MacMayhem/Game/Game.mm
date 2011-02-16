@@ -13,19 +13,17 @@
 #include "globals.h"
 #include "RenderDevice.h"
 #include "Timer.h"
-#include "GameScene.h"
-#include "MenuScene.h"
 #include "BB_GameScene.h"
+#include "MenuScene.h"
 #include "SimpleAudioEngine.h"
 #include "NotificationSystem.h"
-
 
 using namespace mx3;
 using namespace game;
 
 namespace game 
 {
-	//#define FIXED_STEP_LOOP
+	#define FIXED_STEP_LOOP
 	
 	const int TICKS_PER_SECOND = DESIRED_FPS;
 	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
@@ -64,8 +62,8 @@ namespace game
 		}
 		
 		
-		g_TextureManager.accquireTexture ("game_back.png");
-		g_TextureManager.accquireTexture ("bubbles.png");
+		g_TextureManager.accquireTexture ("amatuer_back.png");
+		g_TextureManager.accquireTexture ("fruits.png");
 		g_TextureManager.accquireTexture ("impact20_0.png");
 		Texture2D *t = g_TextureManager.accquireTexture ("schriften.png");
 		t->setAntiAliasTexParams();
@@ -169,6 +167,7 @@ namespace game
 			
 			next_scene = NULL;
 			next_game_tick = mx3::GetTickCount();
+			current_scene->init();
 		}
 		if (paused)
 			return;
@@ -185,7 +184,7 @@ namespace game
 			next_game_tick += SKIP_TICKS;
 			loops++;	
 		}
-	
+		
 #else
 		current_scene->update(timer.fdelta());	//blob rotation doesn't work well with high dynamic delta! fix this before enabling dynamic delta
 #endif
@@ -240,18 +239,15 @@ namespace game
 	
 	void Game::startNewGame ()
 	{
-		if (g_GameState.game_mode == GAME_MODE_BB)
-			next_scene = new BB_GameScene();	
-		else
-			next_scene = new BB_GameScene();
-	
-		next_scene->init();
+		next_scene = new BB_GameScene();
+		//next_scene->init();
 	}
 	
 	void Game::returnToMainMenu ()
 	{
-		next_scene = new MenuScene();
-		next_scene->init();
+		if (current_scene->scene_type() != SCENE_TYPE_MAIN_MENU)
+			next_scene = new MenuScene();
+		//next_scene->init();
 	}
 
 	void Game::setPaused (bool b)

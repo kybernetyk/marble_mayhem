@@ -185,7 +185,8 @@ namespace game
 			next_game_tick += SKIP_TICKS;
 			loops++;	
 		}
-	
+		printf("%i\n",loops);
+		
 #else
 		current_scene->update(timer.fdelta());	//blob rotation doesn't work well with high dynamic delta! fix this before enabling dynamic delta
 #endif

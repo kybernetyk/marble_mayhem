@@ -1,0 +1,10 @@
+Bubble game
+how to clone:
+
+  git clone <url>
+  git submodule init
+  git submodule update
+
+IMPORTANT:
+	cd FrameworkV3
+	git checkout master
