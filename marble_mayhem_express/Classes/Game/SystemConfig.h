@@ -10,7 +10,7 @@
 
 //entity system checks and infos
 //#define __VERBOSE__
-#define APPIRATER_APP_ID 417222647
+#define APPIRATER_APP_ID 420895961
 
 #ifdef __VERBOSE__
 	#define CV3Log printf
@@ -22,6 +22,10 @@
 //#define __RUNTIME_INFORMATION__
 //#define __ABORT_GUARDS__
 //#define __ENTITY_MANAGER_WARNINGS__
+#define USE_ADS
+#define ADMOB_PUBLISHER_ID @"a14d5bcf5daeb4d" 
+#define HOUSEAD_TARGET_URL @"http://itunes.apple.com/us/app/marble-mayhem/id417222647?mt=8&ls=1"
+
 
 #define USE_GAMECENTER
 #define USE_INAPPSTORE

@@ -368,11 +368,11 @@ namespace game
 			NULL,
 			@"com.minyxgames.marblemayhem.timed",
 			NULL,
-			@"com.minyxgames.marblemayhem.puzzle",
-			@"com.minyxgames.marblemayhem.puzzle",
-			@"com.minyxgames.marblemayhem.puzzle",
-			@"com.minyxgames.marblemayhem.puzzle",
-			@"com.minyxgames.marblemayhem.puzzle"
+			@"com.minyxgames.marblemayhemexpress.classic",
+			@"com.minyxgames.marblemayhemexpress.classic",
+			@"com.minyxgames.marblemayhemexpress.classic",
+			@"com.minyxgames.marblemayhemexpress.classic",
+			@"com.minyxgames.marblemayhemexpress.classic"
 		};
 		
 		NSString *cat = strs[g_GameState.game_mode];

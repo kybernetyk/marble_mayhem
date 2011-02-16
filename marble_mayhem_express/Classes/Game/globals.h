@@ -80,7 +80,7 @@ namespace game
 	
 #define BOARD_NUM_COLS 8
 #define BOARD_NUM_ROWS (10)*2
-#define BOARD_NUM_VISIBLE_ROWS 10
+#define BOARD_NUM_VISIBLE_ROWS 9
 #define BOARD_NUM_MARKERS 32
 	
 //fruit munch like dimensions
@@ -105,7 +105,7 @@ namespace game
 	
 #define BB_BOARD_NUM_COLS 8
 #define BB_BOARD_NUM_ROWS (10)*2
-#define BB_BOARD_NUM_VISIBLE_ROWS 10
+#define BB_BOARD_NUM_VISIBLE_ROWS 9
 #define BB_BOARD_NUM_MARKERS 32
 	
 #define SFX_TIME_UP 0x00
