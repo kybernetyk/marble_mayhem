@@ -30,7 +30,11 @@
 	IBOutlet UISlider *musicSlider;
 	IBOutlet UISegmentedControl *numSegmenter;
 	IBOutlet UISwitch *particleSwitch;
-	
+
+	IBOutlet UISwitch *colorBlindSwitch;
+	IBOutlet UISwitch *voiceSwitch;
+	IBOutlet UISwitch *starsSwitch;
+
 	//credits
 	IBOutlet UITextView *creditsText;
 }
@@ -53,6 +57,11 @@
 
 - (IBAction) showSettings: (id) sender;
 - (IBAction) hideSettings: (id) sender;
+
+- (IBAction) colorBlindDidChange: (id) sender;
+- (IBAction) voiceDidChange: (id) sender;
+- (IBAction) starsDidChange: (id) sender;
+
 
 - (IBAction) playAgain: (id) sender;
 - (IBAction) goToMainMenuFromGameOverView: (id) sender;

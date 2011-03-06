@@ -22,7 +22,9 @@ namespace game
 		Entity *e = em->createNewEntity();
 		
 		std::string filename = "bubbles.png";
-		
+		if (g_colorblind_enabled)
+			filename = "color_blind.png";
+
 #define BB_BSIZE 40
 		
 		int srcx = fruit_type%3;
@@ -58,6 +60,8 @@ namespace game
 		Entity *e = em->createNewEntity();
 
 		std::string filename = "bubbles.png";
+		if (g_colorblind_enabled)
+			filename = "color_blind.png";
 
 #define BSIZE 41
 		

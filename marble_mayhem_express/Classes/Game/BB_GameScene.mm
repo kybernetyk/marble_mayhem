@@ -75,7 +75,11 @@ namespace game
 		_corpseRetrievalSystem = new CorpseRetrievalSystem (_entityManager);
 		_soundSystem = new SoundSystem (_entityManager);
 		_animationSystem = new AnimationSystem (_entityManager);
-		_starSystem = new StarSystem (_entityManager);
+
+		if (g_stars_enabled)
+			_starSystem = new StarSystem (_entityManager);
+		else
+			_starSystem = NULL;
 		
 		_gameLogicSystem = new BB_GameLogicSystem (_entityManager);
 		_hudSystem = new HUDSystem (_entityManager);
@@ -185,7 +189,9 @@ namespace game
 				preptmp = (int)prep_timer;
 				g_GameState.reset();
 
-				SoundSystem::make_new_sound (SFX_GET_READY);
+				if (g_voice_enabled)
+					SoundSystem::make_new_sound (SFX_GET_READY);
+				
 				//SoundSystem::make_new_sound (SFX_COUNTDOWN);
 				//_hudSystem->set_prep_text ("Get Ready ...");
 				_hudSystem->change_prep_state (PREP_STATE_READY);
@@ -210,10 +216,13 @@ namespace game
 			
 			if (g_GameState.game_state == GAME_STATE_GAMEOVER)
 			{
-				if (g_GameState.game_mode == GAME_MODE_TIMED)
-					SoundSystem::make_new_sound (SFX_TIME_UP);
-				else
-					SoundSystem::make_new_sound (SFX_GAME_OVER);
+				if (g_voice_enabled)
+				{
+					if (g_GameState.game_mode == GAME_MODE_TIMED)
+						SoundSystem::make_new_sound (SFX_TIME_UP);
+					else
+						SoundSystem::make_new_sound (SFX_GAME_OVER);
+				}
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_GAMEOVER);
 //				_hudSystem->show_prep_label();
@@ -226,7 +235,8 @@ namespace game
 
 			if (g_GameState.game_state == GAME_STATE_SOLVED)
 			{
-				SoundSystem::make_new_sound (SFX_SOLVED);
+				if (g_voice_enabled)
+					SoundSystem::make_new_sound (SFX_SOLVED);
 				//_hudSystem->set_prep_text ("Game Over!");
 				_hudSystem->change_prep_state (PREP_STATE_SOLVED);
 //				_hudSystem->show_prep_label();
@@ -260,7 +270,10 @@ namespace game
 		_soundSystem->update(delta);
 		
 		_animationSystem->update(delta);		
-		_starSystem->update(delta);
+
+		if (g_stars_enabled)
+			_starSystem->update(delta);
+		
 		if (g_GameState.game_state == GAME_STATE_PLAY)
 		{
 			_gameLogicSystem->update(delta);
@@ -308,7 +321,8 @@ namespace game
 			{
 				if (!go_played)
 				{	
-					SoundSystem::make_new_sound (SFX_GO);
+					if (g_voice_enabled)
+						SoundSystem::make_new_sound (SFX_GO);
 					go_played = true;
 				}
 				//_hudSystem->set_prep_text ("Go!");

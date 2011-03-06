@@ -14,3 +14,7 @@
 game::GameState g_GameState;
 float g_FPS = 0.0;
 bool g_ParticlesEnabled = true;
+
+bool g_colorblind_enabled = false;
+bool g_stars_enabled = true;
+bool g_voice_enabled = true;

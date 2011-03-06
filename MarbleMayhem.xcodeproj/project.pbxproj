@@ -1618,6 +1618,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FrameworkV3/Classes/ComponentV3/Runtime/Platforms/iOS/MXAdController/AdMob\"",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_NAME = MarbleMayhem;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1696,6 +1697,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FrameworkV3/Classes/ComponentV3/Runtime/Platforms/iOS/MXAdController/AdMob\"",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_NAME = MarbleMayhem;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A735842-F8C1-4683-BAFB-4B7A9FC0DE32";
 				VALIDATE_PRODUCT = YES;
