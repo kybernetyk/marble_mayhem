@@ -54,8 +54,12 @@
 						   [NSNumber numberWithFloat: 0.3], @"music_volume",
 						   [NSNumber numberWithBool: YES], @"particles_enabled",
 						   [NSNumber numberWithInt: 4], @"num_of_fruits",
+						   [NSNumber numberWithBool: NO], @"colorblind_enabled",
+						   [NSNumber numberWithBool: YES], @"voice_enabled",
+						   [NSNumber numberWithBool: YES], @"stars_enabled",
 						   nil];
 		
+
 		[[NSUserDefaults standardUserDefaults] registerDefaults: d];
 		
 		
@@ -101,6 +105,10 @@
 		
 	}*/
 	
+	g_colorblind_enabled = [defs boolForKey: @"colorblind_enabled"];
+	g_voice_enabled = [defs boolForKey: @"voice_enabled"];
+	g_stars_enabled = [defs boolForKey: @"stars_enabled"];
+
 	
 	mx3::SoundSystem::set_sfx_volume (sfx_vol);
 	mx3::SoundSystem::set_music_volume (music_vol);
@@ -322,7 +330,10 @@
 	[sfxSlider setValue: sfx_vol];
 	[musicSlider setValue: music_vol];
 	[particleSwitch setOn: parts];
-
+	
+	[colorBlindSwitch setOn: [defs boolForKey: @"colorblind_enabled"]];
+	[voiceSwitch setOn: [defs boolForKey: @"voice_enabled"]];
+	[starsSwitch setOn: [defs boolForKey: @"stars_enabled"]];
 	
 	if (g_GameState.game_state == GAME_STATE_MAINMENU)
 	{
@@ -482,6 +493,35 @@
 	else
 		mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
 }
+
+- (IBAction) colorBlindDidChange: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	g_colorblind_enabled = [sender isOn];
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	[defs setBool: g_colorblind_enabled forKey: @"colorblind_enabled"];
+}
+
+- (IBAction) voiceDidChange: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	g_voice_enabled = [sender isOn];
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	[defs setBool: g_voice_enabled forKey: @"voice_enabled"];
+	
+}
+
+- (IBAction) starsDidChange: (id) sender
+{
+	mx3::SoundSystem::play_sound (MENU_ITEM_SFX);
+	g_stars_enabled = [sender isOn];
+	
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	[defs setBool: g_stars_enabled forKey: @"stars_enabled"];
+}
+
 
 #pragma mark -
 #pragma mark in app datasource

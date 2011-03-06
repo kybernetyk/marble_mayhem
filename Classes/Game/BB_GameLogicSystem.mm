@@ -214,7 +214,7 @@ namespace game
 				
 				last_sfx = sfx;
 				
-				if (play)
+				if (g_voice_enabled && play)
 					SoundSystem::make_new_sound (sfx);	
 				
 			}

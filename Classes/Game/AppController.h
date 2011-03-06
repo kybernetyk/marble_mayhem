@@ -31,6 +31,10 @@
 	IBOutlet UISegmentedControl *numSegmenter;
 	IBOutlet UISwitch *particleSwitch;
 	
+	IBOutlet UISwitch *colorBlindSwitch;
+	IBOutlet UISwitch *voiceSwitch;
+	IBOutlet UISwitch *starsSwitch;
+	
 	//credits
 	IBOutlet UITextView *creditsText;
 }
@@ -62,6 +66,10 @@
 - (IBAction) particlesDidChange: (id) sender;
 - (IBAction) playPing: (id) sender;
 - (IBAction) numOfFruitsDidChange: (id) sender;
+
+- (IBAction) colorBlindDidChange: (id) sender;
+- (IBAction) voiceDidChange: (id) sender;
+- (IBAction) starsDidChange: (id) sender;
 
 //credits
 - (IBAction) showCredits: (id) sender;

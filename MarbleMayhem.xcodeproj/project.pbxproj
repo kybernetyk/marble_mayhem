@@ -216,6 +216,12 @@
 		03E4E8F412B3CA41008F937B /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E4E8F312B3CA41008F937B /* checkmark.png */; };
 		03EBCCB512B651F200785F0F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03EBCCB412B651F200785F0F /* logo.png */; };
 		03EBCCB812B6522000785F0F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03EBCCB712B6522000785F0F /* click.mp3 */; };
+		03F944531323C00100BF4FEE /* color_blind.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F944521323C00100BF4FEE /* color_blind.png */; };
+		03F944561323C03100BF4FEE /* MainViewController_fmunch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F944551323C03100BF4FEE /* MainViewController_fmunch.xib */; };
+		03F9445B1323C04700BF4FEE /* button_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F944571323C04700BF4FEE /* button_02.png */; };
+		03F9445C1323C04700BF4FEE /* button_02l.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F944581323C04700BF4FEE /* button_02l.png */; };
+		03F9445D1323C04700BF4FEE /* button_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F944591323C04700BF4FEE /* button_left.png */; };
+		03F9445E1323C04700BF4FEE /* button_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F9445A1323C04700BF4FEE /* button_right.png */; };
 		03FE160312B248E80066BED8 /* menu_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FE160212B248E80066BED8 /* menu_back_2.png */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -537,6 +543,12 @@
 		03E4E8F312B3CA41008F937B /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		03EBCCB412B651F200785F0F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		03EBCCB712B6522000785F0F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		03F944521323C00100BF4FEE /* color_blind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_blind.png; sourceTree = "<group>"; };
+		03F944551323C03100BF4FEE /* MainViewController_fmunch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController_fmunch.xib; sourceTree = "<group>"; };
+		03F944571323C04700BF4FEE /* button_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_02.png; sourceTree = "<group>"; };
+		03F944581323C04700BF4FEE /* button_02l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_02l.png; sourceTree = "<group>"; };
+		03F944591323C04700BF4FEE /* button_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_left.png; sourceTree = "<group>"; };
+		03F9445A1323C04700BF4FEE /* button_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_right.png; sourceTree = "<group>"; };
 		03FE160212B248E80066BED8 /* menu_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_back_2.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* MarbleMayhem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleMayhem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -575,7 +587,13 @@
 		039967A012A8234D00D0C56D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03F944521323C00100BF4FEE /* color_blind.png */,
+				03F944571323C04700BF4FEE /* button_02.png */,
+				03F944581323C04700BF4FEE /* button_02l.png */,
+				03F944591323C04700BF4FEE /* button_left.png */,
+				03F9445A1323C04700BF4FEE /* button_right.png */,
 				0320C4A412E9C4E3007C4C1D /* game_back.png */,
+				03F944551323C03100BF4FEE /* MainViewController_fmunch.xib */,
 				0382812512CD37AA00452DF8 /* getready3.wav */,
 				0382810E12CD360F00452DF8 /* good1.wav */,
 				0382810F12CD360F00452DF8 /* good5.wav */,
@@ -1456,6 +1474,12 @@
 				03CF4D871301502400EE0D6A /* PromotionViewController.xib in Resources */,
 				03CF4D891301502400EE0D6A /* promo_head.png in Resources */,
 				03CF4D8B1301502400EE0D6A /* WebkitViewController.xib in Resources */,
+				03F944531323C00100BF4FEE /* color_blind.png in Resources */,
+				03F944561323C03100BF4FEE /* MainViewController_fmunch.xib in Resources */,
+				03F9445B1323C04700BF4FEE /* button_02.png in Resources */,
+				03F9445C1323C04700BF4FEE /* button_02l.png in Resources */,
+				03F9445D1323C04700BF4FEE /* button_left.png in Resources */,
+				03F9445E1323C04700BF4FEE /* button_right.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,7 +1586,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1586,7 +1609,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1628,7 +1651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1646,7 +1669,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1665,7 +1687,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Desktop/Fruitmunch/EntitlementsDebug.plist";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jaroslaw Szpilewski";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MarbleMayhem_Prefix.pch;
@@ -1675,6 +1697,7 @@
 					"\"$(SRCROOT)/FrameworkV3/Classes/ComponentV3/Runtime/Platforms/iOS/MXAdController/AdMob\"",
 				);
 				PRODUCT_NAME = MarbleMayhem;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A735842-F8C1-4683-BAFB-4B7A9FC0DE32";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

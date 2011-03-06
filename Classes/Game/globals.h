@@ -136,4 +136,7 @@ extern game::GameState g_GameState;
 extern bool g_ParticlesEnabled;
 extern float g_FPS;
 	
+extern bool g_colorblind_enabled;
+extern bool g_stars_enabled;
+extern bool g_voice_enabled;
 
