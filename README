@@ -8,3 +8,7 @@ how to clone:
 IMPORTANT:
 	cd FrameworkV3
 	git checkout master
+
+LICENSE:
+code: GPL3
+artwork: Proprietary 
